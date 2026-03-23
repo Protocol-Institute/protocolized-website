@@ -1,0 +1,158 @@
+---
+import Base from "../layouts/Base.astro";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  name: "About — Protocolized",
+  description:
+    "Learn about Protocolized, its mission, history, team, and relationship to Protocol Society.",
+  url: "https://protocolized.com/about",
+};
+---
+
+<Base
+  title="About"
+  description="Learn about Protocolized, its mission, history, team, and relationship to Protocol Society."
+  jsonLd={jsonLd}
+>
+  <div class="py-16 px-6 lg:px-8">
+    <div class="max-w-prose mx-auto">
+      <h1 class="font-serif text-5xl text-dark mb-8">About</h1>
+
+      <!-- Mission -->
+      <section class="mb-12" aria-labelledby="mission-heading">
+        <h2 id="mission-heading" class="font-serif text-2xl text-dark mb-4">
+          Mission
+        </h2>
+        <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
+          <p>
+            Protocolized is a research and practice initiative focused on
+            protocols — the rules, standards, and agreements that structure
+            coordination at every scale.
+          </p>
+          <p>
+            Protocols are everywhere: from network protocols to legal contracts,
+            from scientific methods to social norms. Understanding how they work,
+            how they're designed, and how they can be improved is essential for
+            anyone trying to build better institutions, better organizations, or
+            better technology.
+          </p>
+          <p>
+            We collect and create resources — papers, frameworks, tools,
+            datasets, games — that help researchers, practitioners, and
+            organizations understand and apply protocol thinking.
+          </p>
+        </div>
+      </section>
+
+      <!-- History -->
+      <section class="mb-12" aria-labelledby="history-heading">
+        <h2 id="history-heading" class="font-serif text-2xl text-dark mb-4">
+          History
+        </h2>
+        <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
+          <p>
+            Protocolized evolved from the{" "}
+            <a
+              href="https://summerofprotocols.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-[#085041] transition-colors"
+            >
+              Summer of Protocols
+            </a>{" "}
+            program, a research initiative that produced foundational work on
+            protocol theory and practice. The archive of that program —
+            including papers, presentations, and research outputs — remains
+            available at{" "}
+            <a
+              href="https://summerofprotocols.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-[#085041] transition-colors"
+            >
+              summerofprotocols.com
+            </a>.
+          </p>
+          <p>
+            Protocolized is the ongoing home for this work: a persistent,
+            growing library and community for everyone working on and with
+            protocols.
+          </p>
+        </div>
+      </section>
+
+      <!-- Protocol Society -->
+      <section class="mb-12" aria-labelledby="ps-heading">
+        <h2 id="ps-heading" class="font-serif text-2xl text-dark mb-4">
+          Protocol Society
+        </h2>
+        <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
+          <p>
+            Protocolized is part of{" "}
+            <a
+              href="https://protocolsociety.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-[#085041] transition-colors"
+            >
+              Protocol Society
+            </a>
+            , the parent organization. Protocol Society is dedicated to
+            advancing the study and practice of protocols across fields.
+            Protocolized is its public-facing resource hub and community
+            platform.
+          </p>
+        </div>
+
+        <div class="mt-6 flex flex-wrap gap-4">
+          <a
+            href="https://protocolsociety.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Protocol Society →
+          </a>
+          <a
+            href="https://summerofprotocols.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            SoP Archive →
+          </a>
+        </div>
+      </section>
+
+      <!-- Contact / contribute -->
+      <section class="bg-primary-light rounded-xl p-8" aria-labelledby="join-heading">
+        <h2 id="join-heading" class="font-serif text-2xl text-dark mb-3">
+          Get involved
+        </h2>
+        <p class="font-sans text-secondary mb-6 leading-relaxed">
+          The best way to stay current and participate is through our Discord
+          and newsletter. If you have a resource to contribute or want to
+          collaborate, reach out via Discord.
+        </p>
+        <div class="flex flex-wrap gap-4">
+          <a
+            href="https://discord.gg/Aj5FbGsNYV"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-primary"
+          >
+            Join Discord
+          </a>
+          <a
+            href="/newsletter"
+            class="btn-secondary"
+          >
+            Subscribe to newsletter
+          </a>
+        </div>
+      </section>
+    </div>
+  </div>
+</Base>

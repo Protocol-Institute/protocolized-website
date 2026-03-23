@@ -1,0 +1,197 @@
+---
+import Base from "./Base.astro";
+import BadgeType from "../components/BadgeType.astro";
+
+interface Author {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  title: string;
+  type: string;
+  authors: Author[];
+  date: Date;
+  description: string;
+  tags: string[];
+  audience: string[];
+  file?: string;
+  url?: string;
+  thumbnail?: string;
+  slug: string;
+}
+
+const {
+  title,
+  type,
+  authors,
+  date,
+  description,
+  tags,
+  audience,
+  file,
+  url,
+  thumbnail,
+  slug,
+} = Astro.props;
+
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+});
+
+const primaryAction = file
+  ? { label: "Download", href: file, download: true }
+  : url
+    ? { label: "Open resource", href: url, external: true }
+    : null;
+
+const schemaTypeMap: Record<string, string> = {
+  paper: "ScholarlyArticle",
+  "working-paper": "ScholarlyArticle",
+  framework: "CreativeWork",
+  "workshop-template": "CreativeWork",
+  game: "CreativeWork",
+  dataset: "Dataset",
+  interview: "Interview",
+  presentation: "PresentationDigitalDocument",
+  code: "SoftwareSourceCode",
+  image: "ImageObject",
+  "prompt-template": "CreativeWork",
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": schemaTypeMap[type] ?? "CreativeWork",
+  name: title,
+  description,
+  datePublished: date.toISOString(),
+  author: authors.map((a) => ({
+    "@type": "Person",
+    name: a.name,
+    ...(a.url ? { url: a.url } : {}),
+  })),
+  keywords: tags,
+  url: `https://protocolized.com/resources/${slug}`,
+};
+---
+
+<Base title={title} description={description} jsonLd={jsonLd}>
+  <div class="py-12 px-6 lg:px-8">
+    <div class="max-w-prose mx-auto">
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center gap-2 text-sm font-sans text-secondary" role="list">
+          <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+          <li aria-hidden="true" class="text-gray-300">›</li>
+          <li><a href="/resources" class="hover:text-primary transition-colors">Resources</a></li>
+          <li aria-hidden="true" class="text-gray-300">›</li>
+          <li class="text-dark truncate max-w-xs" aria-current="page">{title}</li>
+        </ol>
+      </nav>
+
+      <!-- Title -->
+      <h1 class="font-serif text-4xl md:text-5xl text-dark leading-tight mb-6">
+        {title}
+      </h1>
+
+      <!-- Metadata bar -->
+      <div class="flex flex-wrap items-center gap-3 mb-6 pb-6 border-b border-gray-100">
+        <BadgeType type={type} />
+        {
+          authors.length > 0 && (
+            <span class="text-sm font-sans text-secondary">
+              {authors.map((a, i) => (
+                <>
+                  {a.url ? (
+                    <a
+                      href={a.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hover:text-primary transition-colors"
+                    >
+                      {a.name}
+                    </a>
+                  ) : (
+                    a.name
+                  )}
+                  {i < authors.length - 1 ? ", " : ""}
+                </>
+              ))}
+            </span>
+          )
+        }
+        <time datetime={date.toISOString()} class="text-sm font-sans text-secondary">
+          {formattedDate}
+        </time>
+        {
+          audience.length > 0 && (
+            <div class="flex flex-wrap gap-1.5">
+              {audience.map((a) => (
+                <a
+                  href={`/resources?audience=${a}`}
+                  class="text-xs font-sans bg-gray-100 text-secondary px-2.5 py-1 rounded-full hover:bg-primary-light hover:text-primary transition-colors capitalize"
+                >
+                  {a}
+                </a>
+              ))}
+            </div>
+          )
+        }
+      </div>
+
+      <!-- Primary action -->
+      {
+        primaryAction && (
+          <div class="mb-8">
+            <a
+              href={primaryAction.href}
+              class="btn-primary text-base px-6 py-3"
+              {...(primaryAction.external
+                ? {
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                  }
+                : {})}
+              {...(primaryAction.download ? { download: true } : {})}
+            >
+              {primaryAction.label} →
+            </a>
+          </div>
+        )
+      }
+
+      <!-- Description -->
+      <div class="prose font-body text-dark max-w-none mb-8">
+        <p class="text-lg leading-relaxed text-secondary">{description}</p>
+      </div>
+
+      <!-- Body content (from markdown) -->
+      <div class="prose prose-lg font-body max-w-none mb-12">
+        <slot />
+      </div>
+
+      <!-- Tags -->
+      {
+        tags.length > 0 && (
+          <div class="mb-12">
+            <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-3">
+              Topics
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {tags.map((tag) => (
+                <a
+                  href={`/resources?q=${encodeURIComponent(tag)}`}
+                  class="text-sm font-sans bg-gray-100 text-secondary px-3 py-1.5 rounded-full hover:bg-primary-light hover:text-primary transition-colors"
+                >
+                  {tag}
+                </a>
+              ))}
+            </div>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</Base>

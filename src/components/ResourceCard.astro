@@ -1,0 +1,87 @@
+---
+import BadgeType from "./BadgeType.astro";
+
+interface Author {
+  name: string;
+  url?: string;
+}
+
+interface Props {
+  slug: string;
+  title: string;
+  type: string;
+  description: string;
+  authors: Author[];
+  date: Date;
+  tags: string[];
+  featured?: boolean;
+}
+
+const { slug, title, type, description, authors, date, tags, featured } =
+  Astro.props;
+
+const formattedDate = date.toLocaleDateString("en-US", {
+  year: "numeric",
+  month: "short",
+});
+
+const topTags = tags.slice(0, 3);
+---
+
+<article
+  class="card p-5 flex flex-col gap-3 group relative"
+  data-type={type}
+  data-tags={JSON.stringify(tags)}
+  data-authors={JSON.stringify(authors.map((a) => a.name))}
+>
+  <div class="flex items-start justify-between gap-3">
+    <BadgeType type={type} />
+    {
+      featured && (
+        <span class="badge font-sans" style="background-color:#FAECE7;color:#D85A30;">
+          Featured
+        </span>
+      )
+    }
+  </div>
+
+  <div>
+    <h3 class="font-serif text-lg text-dark leading-snug mb-1">
+      <a
+        href={`/resources/${slug}`}
+        class="hover:text-primary transition-colors after:absolute after:inset-0"
+      >
+        {title}
+      </a>
+    </h3>
+    <p class="text-sm font-body text-secondary line-clamp-2 leading-relaxed">
+      {description}
+    </p>
+  </div>
+
+  <div class="mt-auto flex items-center justify-between gap-2">
+    <div class="flex flex-wrap gap-1">
+      {
+        topTags.map((tag) => (
+          <span class="text-xs font-sans text-secondary bg-gray-100 px-2 py-0.5 rounded-full">
+            {tag}
+          </span>
+        ))
+      }
+    </div>
+    <time
+      datetime={date.toISOString()}
+      class="text-xs font-sans text-secondary whitespace-nowrap shrink-0"
+    >
+      {formattedDate}
+    </time>
+  </div>
+
+  {
+    authors.length > 0 && (
+      <p class="text-xs font-sans text-secondary">
+        {authors.map((a) => a.name).join(", ")}
+      </p>
+    )
+  }
+</article>

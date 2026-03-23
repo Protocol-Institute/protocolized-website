@@ -1,0 +1,92 @@
+---
+import Base from "../layouts/Base.astro";
+---
+
+<Base
+  title="Newsletter"
+  description="Subscribe to the Protocolized newsletter on Substack. Get the latest on protocols, coordination, and new resources."
+>
+  <div class="py-16 px-6 lg:px-8">
+    <div class="max-w-prose mx-auto">
+      <h1 class="font-serif text-5xl text-dark mb-4">Newsletter</h1>
+      <p class="font-body text-xl text-secondary mb-10 leading-relaxed">
+        Written updates, new resources, and protocol thinking — straight to
+        your inbox.
+      </p>
+
+      <!-- Substack embed block -->
+      <section class="card p-8 mb-10" aria-label="Subscribe to newsletter">
+        <h2 class="font-serif text-2xl text-dark mb-2">Subscribe</h2>
+        <p class="font-body text-secondary mb-6 leading-relaxed">
+          The Protocolized newsletter is published on Substack. Subscribe to
+          get new posts and resource announcements directly.
+        </p>
+
+        <!-- Substack embed iframe -->
+        <div class="mb-6">
+          <iframe
+            src="https://protocolized.summerofprotocols.com/embed"
+            width="100%"
+            height="150"
+            style="border:1px solid #EEE; background:white; border-radius:8px;"
+            frameborder="0"
+            scrolling="no"
+            title="Subscribe to Protocolized on Substack"
+          ></iframe>
+        </div>
+
+        <p class="text-sm font-sans text-secondary">
+          Or visit directly:{" "}
+          <a
+            href="https://protocolized.summerofprotocols.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-[#085041] transition-colors"
+          >
+            protocolized.summerofprotocols.com
+          </a>
+        </p>
+      </section>
+
+      <!-- What to expect -->
+      <section class="mb-10" aria-labelledby="expect-heading">
+        <h2 id="expect-heading" class="font-serif text-2xl text-dark mb-4">
+          What you'll get
+        </h2>
+        <ul class="space-y-3 font-body text-secondary">
+          {
+            [
+              "New resources added to the library",
+              "Essays and commentary on protocol theory and practice",
+              "Event announcements: workshops, reading groups, talks",
+              "Signals from the broader field: interesting work happening elsewhere",
+            ].map((item) => (
+              <li class="flex items-start gap-3">
+                <span
+                  class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0"
+                  aria-hidden="true"
+                />
+                {item}
+              </li>
+            ))
+          }
+        </ul>
+      </section>
+
+      <!-- Archive link -->
+      <div class="pt-8 border-t border-gray-100">
+        <p class="font-sans text-sm text-secondary">
+          Want to browse before subscribing?{" "}
+          <a
+            href="https://protocolized.summerofprotocols.com/archive"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-primary hover:text-[#085041] transition-colors"
+          >
+            Read the archive on Substack →
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</Base>

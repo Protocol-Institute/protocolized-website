@@ -1,0 +1,133 @@
+---
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/resources", label: "Resources" },
+  { href: "/about", label: "About" },
+  { href: "/community", label: "Community" },
+  { href: "/newsletter", label: "Newsletter" },
+];
+
+const currentPath = Astro.url.pathname;
+
+function isActive(href: string) {
+  if (href === "/") return currentPath === "/";
+  return currentPath.startsWith(href);
+}
+---
+
+<header class="sticky top-0 z-40 bg-surface/95 backdrop-blur-sm border-b border-gray-200">
+  <div class="max-w-wide mx-auto px-6 lg:px-8">
+    <nav
+      class="flex items-center justify-between h-16"
+      aria-label="Main navigation"
+    >
+      <!-- Logo -->
+      <a
+        href="/"
+        class="font-serif text-xl text-dark hover:text-primary transition-colors"
+        aria-label="Protocolized — Home"
+      >
+        Protocolized
+      </a>
+
+      <!-- Desktop nav -->
+      <ul class="hidden md:flex items-center gap-1" role="list">
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors",
+                  isActive(href)
+                    ? "text-primary bg-primary-light"
+                    : "text-secondary hover:text-dark hover:bg-gray-100",
+                ]}
+                aria-current={isActive(href) ? "page" : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="md:hidden p-2 rounded-md text-secondary hover:text-dark hover:bg-gray-100 transition-colors"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <svg
+          id="menu-icon"
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+        <svg
+          id="close-icon"
+          class="w-5 h-5 hidden"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <ul class="flex flex-col gap-1" role="list">
+        {
+          navLinks.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={[
+                  "block px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors",
+                  isActive(href)
+                    ? "text-primary bg-primary-light"
+                    : "text-secondary hover:text-dark hover:bg-gray-100",
+                ]}
+                aria-current={isActive(href) ? "page" : undefined}
+              >
+                {label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById("mobile-menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const menuIcon = document.getElementById("menu-icon");
+  const closeIcon = document.getElementById("close-icon");
+
+  btn?.addEventListener("click", () => {
+    const isOpen = menu?.classList.contains("hidden") === false;
+    menu?.classList.toggle("hidden");
+    menuIcon?.classList.toggle("hidden");
+    closeIcon?.classList.toggle("hidden");
+    btn?.setAttribute("aria-expanded", String(!isOpen));
+  });
+</script>

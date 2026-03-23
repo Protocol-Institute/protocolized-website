@@ -1,0 +1,16 @@
+---
+title: "Chore Protocols"
+type: article
+authors:
+  - name: "Protocolized"
+    url: "https://protocolized.summerofprotocols.com"
+date: 2026-03-13
+description: "In this issue: The evolution of communal maintenance, experimental American phalanxes, compute-hungry societies, and hardened housing commons. Also, stay tuned for an editorial livestream – and some big announcements – on March 12th."
+tags:
+  - protocol
+audience:
+  - researcher
+  - practitioner
+featured: false
+url: "https://protocolized.summerofprotocols.com/p/chore-protocols"
+---

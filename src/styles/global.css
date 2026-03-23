@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-serif: "Instrument Serif", Georgia, serif;
+    --font-body: "Lora", Georgia, serif;
+    --font-sans: "Outfit", system-ui, sans-serif;
+    --font-mono: "JetBrains Mono", "Courier New", monospace;
+  }
+
+  html {
+    @apply text-dark bg-surface;
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-serif);
+  }
+
+  body {
+    @apply min-h-screen flex flex-col;
+  }
+
+  a:focus-visible,
+  button:focus-visible,
+  [tabindex]:focus-visible {
+    @apply outline-2 outline-offset-2 outline-primary;
+  }
+}
+
+@layer components {
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-sans font-medium;
+  }
+
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-primary text-white font-sans font-medium text-sm transition-colors hover:bg-[#085041] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-primary text-primary font-sans font-medium text-sm transition-colors hover:bg-primary-light focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border border-gray-200 hover:shadow-sm transition-shadow;
+  }
+}

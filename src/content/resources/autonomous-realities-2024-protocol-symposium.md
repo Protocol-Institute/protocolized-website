@@ -1,0 +1,19 @@
+---
+title: "Autonomous Realities - 2024 Protocol Symposium"
+type: presentation
+authors:
+  - name: "Botao Amber Hu"
+  - name: "Yisi Liu"
+date: 2024-09-30
+description: "A research salon with Salon V."
+tags:
+  - protocols
+  - ai
+  - governance
+  - symposium-2024
+audience:
+  - researcher
+  - practitioner
+featured: false
+url: "https://www.youtube.com/watch?v=xIJP3Dtj7Sc"
+---

@@ -1,0 +1,26 @@
+---
+interface Props {
+  audience: string;
+  description: string;
+  filter: string;
+  icon: string;
+}
+
+const { audience, description, filter, icon } = Astro.props;
+---
+
+<a
+  href={`/resources?audience=${filter}`}
+  class="card p-6 flex flex-col gap-3 hover:border-primary-light hover:shadow-sm transition-all group"
+>
+  <div class="text-2xl" aria-hidden="true">{icon}</div>
+  <div>
+    <h3 class="font-sans font-semibold text-dark text-base mb-1 group-hover:text-primary transition-colors">
+      {audience}
+    </h3>
+    <p class="text-sm font-sans text-secondary leading-relaxed">{description}</p>
+  </div>
+  <span class="text-sm font-sans text-primary font-medium mt-auto">
+    Browse resources →
+  </span>
+</a>

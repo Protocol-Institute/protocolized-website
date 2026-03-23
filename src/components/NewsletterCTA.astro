@@ -1,0 +1,31 @@
+---
+interface Props {
+  compact?: boolean;
+}
+const { compact = false } = Astro.props;
+---
+
+<section
+  class:list={[
+    "bg-primary-light rounded-xl border border-primary/20",
+    compact ? "p-6" : "p-8 md:p-12",
+  ]}
+>
+  <div class="max-w-xl">
+    <h2 class:list={["font-serif text-dark mb-2", compact ? "text-2xl" : "text-3xl"]}>
+      Stay current.
+    </h2>
+    <p class="font-sans text-secondary mb-6 leading-relaxed">
+      Get the latest on protocols, coordination, and new resources — delivered
+      via our Substack newsletter.
+    </p>
+    <a
+      href="https://protocolized.summerofprotocols.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-primary"
+    >
+      Subscribe on Substack
+    </a>
+  </div>
+</section>

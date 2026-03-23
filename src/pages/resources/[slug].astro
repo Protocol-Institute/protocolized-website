@@ -1,0 +1,69 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Resource from "../../layouts/Resource.astro";
+import ResourceCard from "../../components/ResourceCard.astro";
+
+export async function getStaticPaths() {
+  const resources = await getCollection("resources");
+  return resources.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+// Related resources: same tags, different slug
+const allResources = await getCollection("resources");
+const related = allResources
+  .filter(
+    (r) =>
+      r.slug !== entry.slug &&
+      r.data.tags.some((t) => entry.data.tags.includes(t))
+  )
+  .sort(
+    (a, b) =>
+      // Sort by number of matching tags descending
+      b.data.tags.filter((t) => entry.data.tags.includes(t)).length -
+      a.data.tags.filter((t) => entry.data.tags.includes(t)).length
+  )
+  .slice(0, 3);
+---
+
+<Resource
+  title={entry.data.title}
+  type={entry.data.type}
+  authors={entry.data.authors}
+  date={entry.data.date}
+  description={entry.data.description}
+  tags={entry.data.tags}
+  audience={entry.data.audience}
+  file={entry.data.file}
+  url={entry.data.url}
+  thumbnail={entry.data.thumbnail}
+  slug={entry.slug}
+>
+  <Content />
+
+  {
+    related.length > 0 && (
+      <div class="not-prose mt-16 pt-8 border-t border-gray-100">
+        <h2 class="font-serif text-2xl text-dark mb-6">Related resources</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          {related.map((r) => (
+            <ResourceCard
+              slug={r.slug}
+              title={r.data.title}
+              type={r.data.type}
+              description={r.data.description}
+              authors={r.data.authors}
+              date={r.data.date}
+              tags={r.data.tags}
+            />
+          ))}
+        </div>
+      </div>
+    )
+  }
+</Resource>

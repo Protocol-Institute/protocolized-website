@@ -1,0 +1,34 @@
+---
+interface Props {
+  type: string;
+}
+
+const { type } = Astro.props;
+
+const badgeConfig: Record<string, { bg: string; text: string; label: string }> = {
+  "paper": { bg: "#EEEDFE", text: "#3C3489", label: "Paper" },
+  "working-paper": { bg: "#EEEDFE", text: "#3C3489", label: "Working Paper" },
+  "framework": { bg: "#E1F5EE", text: "#085041", label: "Framework" },
+  "workshop-template": { bg: "#FAECE7", text: "#712B13", label: "Workshop Template" },
+  "game": { bg: "#FBEAF0", text: "#72243E", label: "Game" },
+  "dataset": { bg: "#E6F1FB", text: "#0C447C", label: "Dataset" },
+  "interview": { bg: "#FAEEDA", text: "#633806", label: "Interview" },
+  "presentation": { bg: "#FAEEDA", text: "#633806", label: "Presentation" },
+  "code": { bg: "#EAF3DE", text: "#27500A", label: "Code" },
+  "prompt-template": { bg: "#EAF3DE", text: "#27500A", label: "Prompt Template" },
+  "image": { bg: "#F1EFE8", text: "#444441", label: "Image" },
+  "talk": { bg: "#E8F0FB", text: "#1A3A6B", label: "Talk" },
+  "lecture": { bg: "#E8F0FB", text: "#1A3A6B", label: "Lecture" },
+  "video": { bg: "#E8F0FB", text: "#1A3A6B", label: "Video" },
+  "article": { bg: "#F5F0E8", text: "#5C4A1E", label: "Article" },
+};
+
+const config = badgeConfig[type] ?? { bg: "#F1EFE8", text: "#444441", label: type };
+---
+
+<span
+  class="badge font-sans"
+  style={`background-color: ${config.bg}; color: ${config.text};`}
+>
+  {config.label}
+</span>

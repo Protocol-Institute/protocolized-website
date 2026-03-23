@@ -1,0 +1,124 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-white border-t border-gray-200 mt-auto">
+  <div class="max-w-wide mx-auto px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <!-- Brand -->
+      <div>
+        <p class="font-serif text-lg text-dark mb-2">Protocolized</p>
+        <p class="text-sm text-secondary font-sans leading-relaxed">
+          Accelerating Order. A research and practice initiative focused on
+          protocols.
+        </p>
+      </div>
+
+      <!-- Navigation -->
+      <div>
+        <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-3">
+          Pages
+        </p>
+        <ul class="space-y-2" role="list">
+          {
+            [
+              { href: "/resources", label: "Resources" },
+              { href: "/about", label: "About" },
+              { href: "/community", label: "Community" },
+              { href: "/newsletter", label: "Newsletter" },
+            ].map(({ href, label }) => (
+              <li>
+                <a
+                  href={href}
+                  class="text-sm font-sans text-secondary hover:text-primary transition-colors"
+                >
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <!-- External / Utility links -->
+      <div>
+        <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-3">
+          Links
+        </p>
+        <ul class="space-y-2" role="list">
+          <li>
+            <a
+              href="https://protocolsociety.org"
+              class="text-sm font-sans text-secondary hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Protocol Society ↗
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://summerofprotocols.com"
+              class="text-sm font-sans text-secondary hover:text-primary transition-colors"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Archive (SoP) ↗
+            </a>
+          </li>
+          <li>
+            <a
+              href="/llms.txt"
+              class="text-sm font-sans text-secondary hover:text-primary transition-colors"
+            >
+              llms.txt
+            </a>
+          </li>
+          <li>
+            <a
+              href="/rss.xml"
+              class="text-sm font-sans text-secondary hover:text-primary transition-colors"
+            >
+              RSS feed
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p class="text-xs font-sans text-secondary">
+        © {year} Protocolized / Protocol Society
+      </p>
+      <div class="flex items-center gap-4">
+        <a
+          href="https://discord.gg/Aj5FbGsNYV"
+          class="text-xs font-sans text-secondary hover:text-primary transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Join Discord"
+        >
+          Discord
+        </a>
+        <a
+          href="https://www.youtube.com/@protocolized"
+          class="text-xs font-sans text-secondary hover:text-primary transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="YouTube channel"
+        >
+          YouTube
+        </a>
+        <a
+          href="https://protocolized.summerofprotocols.com"
+          class="text-xs font-sans text-secondary hover:text-primary transition-colors"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Newsletter on Substack"
+        >
+          Newsletter
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>

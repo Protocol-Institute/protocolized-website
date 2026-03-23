@@ -1,0 +1,48 @@
+name: Sync Substack Posts
+
+on:
+  schedule:
+    # Run every day at 8am UTC
+    - cron: '0 8 * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install feedparser
+
+      - name: Sync Substack posts
+        run: python3 scripts/sync-substack.py
+
+      - name: Check for new files
+        id: changes
+        run: |
+          git add src/content/resources/
+          if git diff --cached --quiet; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git diff --cached --name-only
+          fi
+
+      - name: Commit and push new posts
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          COUNT=$(git diff --cached --name-only | wc -l | tr -d ' ')
+          git commit -m "chore: sync $COUNT new Substack post(s) from Protocolized"
+          git push
