@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://protocolized.com/sitemap-index.xml
+Sitemap: https://protocolized.io/sitemap-index.xml
