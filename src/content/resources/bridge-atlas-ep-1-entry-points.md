@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-11-01
 description: "Welcome to the inaugural episode of Bridge Atlas, a limited-run video podcast series hosted by Christine D. Kim. For this introductory episode, Christine is joined by , protocol coordination co-team lead at the Ethereum Foundation, and , program m..."
 tags:
   - protocols

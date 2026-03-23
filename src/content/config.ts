@@ -20,6 +20,7 @@ const resources = defineCollection({
       "lecture",
       "article",
       "video",
+      "fiction",
     ]),
     authors: z.array(
       z.object({

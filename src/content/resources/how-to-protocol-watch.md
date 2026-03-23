@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-12-31
 description: "The story of Charles Darwin’s finches would sound strange if Darwin was, himself, a finch."
 tags:
   - protocol

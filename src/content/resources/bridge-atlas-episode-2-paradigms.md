@@ -4,7 +4,7 @@ type: interview
 authors:
   - name: "Nils Gilman"
   - name: "Josh Stark"
-date: 2025-10-31
+date: 2025-11-05
 description: "A presentation exploring bridge atlas - episode 2: paradigms | nils gilman and josh stark."
 tags:
   - protocols

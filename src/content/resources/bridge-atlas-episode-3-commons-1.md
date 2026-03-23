@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-11-10
 description: "Welcome back to another episode of Bridge Atlas, a video podcast series hosted by Christine D. Kim. In this episode, we discuss Ethereum through the lens of the commons with two Summer of Protocols alumni: Trent Van Epps and Yancey Strickler."
 tags:
   - protocols

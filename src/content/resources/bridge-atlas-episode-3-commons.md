@@ -4,7 +4,7 @@ type: interview
 authors:
   - name: "Yancey Strickler"
   - name: "Trent Van Epps"
-date: 2025-11-04
+date: 2025-11-10
 description: "A presentation exploring bridge atlas - episode 3: commons | yancey strickler & trent van epps."
 tags:
   - protocols

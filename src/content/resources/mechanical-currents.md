@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-09-09
 description: "In this issue: A monthly update from our Special Interest Group on Protocols for Business (SIGP4B). How are businesses adopting AI and what are current outlooks for productivity, QA, and task estimation?"
 tags:
   - protocols

@@ -1,10 +1,10 @@
 ---
 title: "American Skyway"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2026-02-23
 description: "“Will the delegate from New Texas stand and be recognized.”"
 tags:
   - protocols

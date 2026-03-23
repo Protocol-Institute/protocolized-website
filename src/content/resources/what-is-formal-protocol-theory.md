@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-08-20
 description: "For the past three months or so, a group of us have been meeting every other Friday for an hour (10 AM PT, 5PM UTC), on the Summer of Protocols Discord, to talk about how to build rigorous foundations under the currently gooey subject matter of pr..."
 tags:
   - protocol

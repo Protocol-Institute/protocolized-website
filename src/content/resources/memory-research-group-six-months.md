@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-12-27
 description: "This is an archive-driven summary of the Memory Research Group during its first six months. By the end of January, we’ll send an email update on how the group plans to renew and resume in the new year."
 tags:
   - memory

@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-10-22
 description: "In this issue: Introducing Bridge Atlas, the overarching theme for our Fall program, announcing our third protocol fiction contest titled Building and Burning Bridges; previewing a special Bridge Atlas salon series hosted by Christine Kim; and ope..."
 tags:
   - protocols

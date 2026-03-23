@@ -1,10 +1,10 @@
 ---
 title: "In the Garden of Eden Baby"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-08-27
 description: "In this issue: With humanity’s last gasp imminent, all that remains to amuse the filthy rich is pitting their superintelligent AIs against each another in a fight for Earth’s most desirable and esoteric indulgences. Myth of Sisyphus’s story takes ..."
 tags:
   - protocols
