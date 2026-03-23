@@ -3,7 +3,7 @@ import tailwind from "@astrojs/tailwind";
 import sitemap from "@astrojs/sitemap";
 
 export default defineConfig({
-  site: "https://protocolized.com",
+  site: "https://protocolized.io",
   integrations: [tailwind(), sitemap()],
   output: "static",
 });
