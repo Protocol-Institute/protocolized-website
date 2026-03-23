@@ -4,7 +4,7 @@ type: interview
 authors:
   - name: "Emmett Shear"
   - name: "Alex Stokes"
-date: 2025-11-08
+date: 2025-11-15
 description: "A presentation exploring bridge atlas - episode 4: alignment | emmett shear & alex stokes."
 tags:
   - protocols

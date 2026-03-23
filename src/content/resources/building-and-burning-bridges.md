@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-10-22
 description: "We’re pleased to announce the third protocol fiction contest of 2025, on the theme of Building and Burning Bridges. To enter:"
 tags:
   - protocols

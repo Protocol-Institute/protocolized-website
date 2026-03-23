@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-05-22
 description: "In this issue: A story from a futuristic hospice in Neo-Kyoto, where palliative care has advanced significantly, thanks to personalized care chips, protocolization, and new technologies. Plus – a meetup in San Francisco on May 25, two Edge Esmeral..."
 tags:
   - protocols

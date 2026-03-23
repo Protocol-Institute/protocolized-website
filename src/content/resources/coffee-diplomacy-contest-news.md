@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-11-28
 description: "Update on our current writing contestWe’ve extended the deadline for Building and Burning Bridges, our Bridge Atlas-inspired short story contest. The judging panel has now assembled and includes Nils Gilman, who appeared in episode 2 of the Bridge..."
 tags:
   - protocols

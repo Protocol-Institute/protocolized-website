@@ -1,10 +1,10 @@
 ---
 title: "Mr Cork and the Red Bus"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-10-28
 description: "In this issue: A transport system that wants to cleanse London’s streets of the unscripted and the spontaneous is the setting for a first Protocolized story from Kannen. Also – the first episode of Bridge Atlas, our new salon series hosted by Chri..."
 tags:
   - protocols

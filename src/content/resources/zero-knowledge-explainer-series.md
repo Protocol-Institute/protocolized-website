@@ -3,7 +3,7 @@ title: "Zero-Knowledge Explainer Series"
 type: paper
 authors:
   - name: "Summer of Protocols"
-date: 2024-01-01
+date: 2025-04-18
 description: "is a domain of cryptography, similar to ice guesses correctly, the probability she has encryption which we covered in the first simply gotten lucky on each chance"
 tags:
   - protocols

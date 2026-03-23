@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-05-28
 description: "In this issue: A shortlist story from the Terminological Twists challenge, comprising vignettes from a 500-year period of pencilled peril. Also, a snapshot of this week’s in-person event, and next week’s guest talk."
 tags:
   - protocols

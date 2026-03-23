@@ -4,7 +4,7 @@ type: interview
 authors:
   - name: "Shreya Shankar"
   - name: "Justin Drake"
-date: 2025-11-13
+date: 2025-11-23
 description: "A presentation exploring bridge atlas - episode 5: verifiability | shreya shankar & justin drake."
 tags:
   - protocols

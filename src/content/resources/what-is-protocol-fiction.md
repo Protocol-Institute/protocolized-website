@@ -4,7 +4,7 @@ type: article
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2026-02-11
 description: "This is the question that the recently formed Protocol Fiction Special Interest Group (SIGFIC) has been meeting biweekly to work out."
 tags:
   - protocol

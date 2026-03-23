@@ -3,7 +3,7 @@ title: "Memory Research Group"
 type: talk
 authors:
   - name: "Kei Kräuter"
-date: 2025-06-25
+date: 2025-12-27
 description: "A presentation exploring memory research group."
 tags:
   - protocols

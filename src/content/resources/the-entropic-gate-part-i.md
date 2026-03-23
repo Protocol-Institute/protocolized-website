@@ -1,10 +1,10 @@
 ---
 title: "The Entropic Gate Part I"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
     url: "https://protocolized.summerofprotocols.com"
-date: 2026-03-13
+date: 2025-03-28
 description: "In this issue: The algorithms that direct our attention feel overwhelming sometimes. It’s as if they liquify us into rivers of desire and outrage. What if our built environment flowed like us? How far could this go? Explore a future after the fall..."
 tags:
   - protocols
