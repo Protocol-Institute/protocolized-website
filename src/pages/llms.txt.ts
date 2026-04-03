@@ -29,7 +29,7 @@ ${resourceLines}
 
 - Discord: https://discord.gg/Aj5FbGsNYV
 - YouTube: https://www.youtube.com/@protocolized
-- Newsletter: https://protocolized.summerofprotocols.com
+- Magazine: https://protocolized.summerofprotocols.com
 
 ## External Links
 

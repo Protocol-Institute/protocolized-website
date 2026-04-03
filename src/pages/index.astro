@@ -2,7 +2,7 @@
 import Base from "../layouts/Base.astro";
 import AudienceCard from "../components/AudienceCard.astro";
 import ResourceCard from "../components/ResourceCard.astro";
-import NewsletterCTA from "../components/NewsletterCTA.astro";
+import MagazineCTA from "../components/MagazineCTA.astro";
 import { getCollection } from "astro:content";
 
 const allResources = await getCollection("resources");
@@ -117,7 +117,7 @@ const jsonLd = {
         {articlesWithImages.length > 0 && (
           <div class="lg:w-7/12">
             <div class="flex items-center justify-between mb-4">
-              <p class="font-serif text-lg text-dark">Latest from the newsletter</p>
+              <p class="font-serif text-lg text-dark">Latest from the magazine</p>
               <a
                 href="https://protocolized.summerofprotocols.com"
                 target="_blank"
@@ -279,10 +279,10 @@ const jsonLd = {
     )
   }
 
-  <!-- Newsletter CTA -->
+  <!-- Magazine CTA -->
   <section class="py-16 px-6 lg:px-8 bg-white border-t border-gray-100">
     <div class="max-w-wide mx-auto">
-      <NewsletterCTA />
+      <MagazineCTA />
     </div>
   </section>
 
@@ -336,10 +336,14 @@ const jsonLd = {
   const dots = document.querySelectorAll<HTMLButtonElement>(".carousel-dot");
   const prevBtn = document.getElementById("carousel-prev");
   const nextBtn = document.getElementById("carousel-next");
+  const carousel = document.getElementById("article-carousel");
 
   if (track && dots.length > 0) {
     let current = 0;
     const total = dots.length;
+    const INTERVAL = 5000;
+    let timer: ReturnType<typeof setInterval> | null = null;
+    let paused = false;
 
     function goTo(index: number) {
       current = ((index % total) + total) % total;
@@ -350,28 +354,28 @@ const jsonLd = {
       });
     }
 
-    // Auto-rotate every 6 seconds
-    let timer = setInterval(() => goTo(current + 1), 6000);
-
-    function resetTimer() {
-      clearInterval(timer);
-      timer = setInterval(() => goTo(current + 1), 6000);
+    function startTimer() {
+      if (timer) clearInterval(timer);
+      timer = setInterval(() => goTo(current + 1), INTERVAL);
     }
 
-    prevBtn?.addEventListener("click", () => { goTo(current - 1); resetTimer(); });
-    nextBtn?.addEventListener("click", () => { goTo(current + 1); resetTimer(); });
+    function stopTimer() {
+      if (timer) { clearInterval(timer); timer = null; }
+    }
+
+    prevBtn?.addEventListener("click", () => { goTo(current - 1); if (!paused) startTimer(); });
+    nextBtn?.addEventListener("click", () => { goTo(current + 1); if (!paused) startTimer(); });
     dots.forEach((dot) => {
       dot.addEventListener("click", () => {
         goTo(Number(dot.dataset.index));
-        resetTimer();
+        if (!paused) startTimer();
       });
     });
 
-    // Pause on hover
-    const carousel = document.getElementById("article-carousel");
-    carousel?.addEventListener("mouseenter", () => clearInterval(timer));
-    carousel?.addEventListener("mouseleave", () => {
-      timer = setInterval(() => goTo(current + 1), 6000);
-    });
+    carousel?.addEventListener("mouseenter", () => { paused = true; stopTimer(); });
+    carousel?.addEventListener("mouseleave", () => { paused = false; startTimer(); });
+
+    // Start auto-rotation
+    startTimer();
   }
 </script>
