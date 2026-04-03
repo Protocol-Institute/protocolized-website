@@ -1,6 +1,6 @@
 ---
 title: "The Librarians"
-type: paper
+type: fiction
 authors:
   - name: "Summer of Protocols"
 date: 2024-12-01
@@ -11,6 +11,7 @@ tags:
   - memory
   - culture
   - community
+  - anthology
 audience:
   - researcher
   - practitioner
