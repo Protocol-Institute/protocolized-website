@@ -16,6 +16,30 @@ const latestArticles = allResources
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 5);
 
+// Fetch OG images from Substack at build time
+const articlesWithImages = await Promise.all(
+  latestArticles.map(async (article) => {
+    let ogImage: string | null = null;
+    if (article.data.url) {
+      try {
+        const res = await fetch(article.data.url, {
+          headers: { "User-Agent": "Mozilla/5.0" },
+        });
+        const html = await res.text();
+        const match = html.match(
+          /<meta[^>]*property="og:image"[^>]*content="([^"]+)"/
+        ) ?? html.match(
+          /<meta[^>]*content="([^"]+)"[^>]*property="og:image"/
+        );
+        ogImage = match?.[1] ?? null;
+      } catch {
+        // Silently fall back to no image
+      }
+    }
+    return { ...article, ogImage };
+  })
+);
+
 const audienceCards = [
   {
     audience: "Researchers",
@@ -63,133 +87,133 @@ const jsonLd = {
   description="Accelerating Order. Protocolized is a research and practice initiative focused on protocols — the rules, standards, and agreements that structure coordination at every scale."
   jsonLd={jsonLd}
 >
-  <!-- Hero -->
-  <section class="py-24 md:py-32 px-6 lg:px-8">
+  <!-- Hero + Featured articles -->
+  <section class="py-20 md:py-28 px-6 lg:px-8">
     <div class="max-w-wide mx-auto">
-      <div class="max-w-2xl">
-        <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-dark mb-4 leading-none tracking-tight">
-          Protocolized
-        </h1>
-        <p class="font-serif text-2xl md:text-3xl text-primary mb-6 italic">
-          Accelerating Order.
-        </p>
-        <p class="font-body text-lg text-secondary mb-8 leading-relaxed max-w-lg">
-          A research and practice initiative focused on protocols — the rules,
-          standards, and agreements that structure coordination at every scale.
-        </p>
-        <div class="flex flex-wrap gap-4">
-          <a href="/resources" class="btn-primary text-base px-6 py-3">
-            Explore resources
-          </a>
-          <a href="/community" class="btn-secondary text-base px-6 py-3">
-            Join the community
-          </a>
+      <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
+        <!-- Left: title + CTA -->
+        <div class="lg:w-5/12 shrink-0">
+          <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-dark mb-4 leading-none tracking-tight">
+            Protocolized
+          </h1>
+          <p class="font-serif text-2xl md:text-3xl text-primary mb-6 italic">
+            Accelerating Order.
+          </p>
+          <p class="font-body text-lg text-secondary mb-8 leading-relaxed max-w-lg">
+            A research and practice initiative focused on protocols — the rules,
+            standards, and agreements that structure coordination at every scale.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/resources" class="btn-primary text-base px-6 py-3">
+              Explore resources
+            </a>
+            <a href="/community" class="btn-secondary text-base px-6 py-3">
+              Join the community
+            </a>
+          </div>
         </div>
+
+        <!-- Right: article carousel -->
+        {articlesWithImages.length > 0 && (
+          <div class="lg:w-7/12">
+            <div class="flex items-center justify-between mb-4">
+              <p class="font-serif text-lg text-dark">Latest from the newsletter</p>
+              <a
+                href="https://protocolized.summerofprotocols.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-sans text-primary hover:text-[#085041] transition-colors shrink-0"
+              >
+                View all on Substack →
+              </a>
+            </div>
+            <div class="relative overflow-hidden rounded-xl" id="article-carousel">
+              <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
+                {articlesWithImages.map((article, i) => (
+                  <article class="w-full shrink-0" data-slide={i}>
+                    <a
+                      href={article.data.url ?? `/resources/${article.slug}`}
+                      target={article.data.url ? "_blank" : undefined}
+                      rel={article.data.url ? "noopener noreferrer" : undefined}
+                      class="block group"
+                    >
+                      <!-- OG image -->
+                      <div class="aspect-[2/1] bg-gray-100 rounded-xl overflow-hidden mb-4">
+                        {article.ogImage ? (
+                          <img
+                            src={article.ogImage}
+                            alt={article.data.title}
+                            class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
+                            loading={i === 0 ? "eager" : "lazy"}
+                          />
+                        ) : (
+                          <div class="w-full h-full flex items-center justify-center bg-primary-light">
+                            <span class="font-serif text-2xl text-primary/40">Protocolized</span>
+                          </div>
+                        )}
+                      </div>
+                      <!-- Article info -->
+                      <div class="flex items-start gap-3">
+                        <div class="flex-1 min-w-0">
+                          <h3 class="font-serif text-lg md:text-xl text-dark leading-snug mb-1 group-hover:text-primary transition-colors">
+                            {article.data.title}
+                          </h3>
+                          <p class="text-sm font-body text-secondary leading-relaxed line-clamp-2">
+                            {article.data.description}
+                          </p>
+                        </div>
+                        <time
+                          datetime={article.data.date.toISOString()}
+                          class="text-xs font-sans text-secondary whitespace-nowrap shrink-0 pt-1"
+                        >
+                          {article.data.date.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </time>
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+              <!-- Prev / Next buttons -->
+              <button
+                id="carousel-prev"
+                class="absolute left-2 top-[25%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors shadow-sm"
+                aria-label="Previous article"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                id="carousel-next"
+                class="absolute right-2 top-[25%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors shadow-sm"
+                aria-label="Next article"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            <!-- Carousel indicators -->
+            <div class="flex justify-center gap-2 mt-4">
+              {articlesWithImages.map((_, i) => (
+                <button
+                  class:list={[
+                    "carousel-dot w-2 h-2 rounded-full transition-colors",
+                    i === 0 ? "bg-primary" : "bg-gray-300",
+                  ]}
+                  data-index={i}
+                  aria-label={`Go to slide ${i + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
     </div>
   </section>
-
-  <!-- Latest from Substack carousel -->
-  {latestArticles.length > 0 && (
-    <section class="py-12 px-6 lg:px-8 bg-white border-y border-gray-100">
-      <div class="max-w-wide mx-auto">
-        <div class="flex items-center justify-between mb-6">
-          <div>
-            <h2 class="font-serif text-2xl text-dark mb-1">Latest from the newsletter</h2>
-            <p class="font-sans text-secondary text-sm">Recent pieces from our Substack.</p>
-          </div>
-          <a
-            href="https://protocolized.summerofprotocols.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-sm font-sans text-primary hover:text-[#085041] transition-colors shrink-0"
-          >
-            View all on Substack →
-          </a>
-        </div>
-        <div class="relative overflow-hidden" id="article-carousel">
-          <div class="flex transition-transform duration-500 ease-in-out" id="carousel-track">
-            {latestArticles.map((article, i) => (
-              <article
-                class="w-full shrink-0 px-1"
-                data-slide={i}
-              >
-                <div class="card p-6 md:p-8 flex flex-col gap-3 h-full">
-                  <span class="badge font-sans text-xs" style="background-color:#F5F0E8;color:#5C4A1E;">
-                    Article
-                  </span>
-                  <h3 class="font-serif text-xl md:text-2xl text-dark leading-snug">
-                    <a
-                      href={article.data.url ?? `/resources/${article.slug}`}
-                      class="hover:text-primary transition-colors"
-                      target={article.data.url ? "_blank" : undefined}
-                      rel={article.data.url ? "noopener noreferrer" : undefined}
-                    >
-                      {article.data.title}
-                    </a>
-                  </h3>
-                  <p class="text-sm font-body text-secondary leading-relaxed line-clamp-3">
-                    {article.data.description}
-                  </p>
-                  <div class="mt-auto flex items-center justify-between">
-                    <time
-                      datetime={article.data.date.toISOString()}
-                      class="text-xs font-sans text-secondary"
-                    >
-                      {article.data.date.toLocaleDateString("en-US", {
-                        year: "numeric",
-                        month: "long",
-                        day: "numeric",
-                      })}
-                    </time>
-                    <div class="flex gap-1">
-                      {article.data.tags.slice(0, 3).map((tag) => (
-                        <span class="text-xs font-sans text-secondary bg-gray-100 px-2 py-0.5 rounded-full">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </article>
-            ))}
-          </div>
-          <!-- Carousel indicators -->
-          <div class="flex justify-center gap-2 mt-4">
-            {latestArticles.map((_, i) => (
-              <button
-                class:list={[
-                  "carousel-dot w-2 h-2 rounded-full transition-colors",
-                  i === 0 ? "bg-primary" : "bg-gray-300",
-                ]}
-                data-index={i}
-                aria-label={`Go to slide ${i + 1}`}
-              />
-            ))}
-          </div>
-          <!-- Prev / Next buttons -->
-          <button
-            id="carousel-prev"
-            class="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors"
-            aria-label="Previous article"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-            </svg>
-          </button>
-          <button
-            id="carousel-next"
-            class="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 rounded-full bg-white/80 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors"
-            aria-label="Next article"
-          >
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </section>
-  )}
 
   <!-- Audience pathways -->
   <section class="py-16 px-6 lg:px-8 bg-white border-y border-gray-100">
