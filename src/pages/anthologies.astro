@@ -1,0 +1,96 @@
+---
+import Base from "../layouts/Base.astro";
+import BadgeType from "../components/BadgeType.astro";
+import { getCollection } from "astro:content";
+
+const allResources = await getCollection("resources");
+const anthologies = allResources
+  .filter((r) => r.data.tags.includes("anthology"))
+  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Anthologies — Protocolized",
+  description:
+    "Fiction anthologies from the Protocolized universe — speculative stories exploring protocols, coordination, and the systems that shape our world.",
+  url: "https://protocolized.io/anthologies",
+};
+---
+
+<Base
+  title="Anthologies"
+  description="Fiction anthologies from the Protocolized universe — speculative stories exploring protocols, coordination, and the systems that shape our world."
+  jsonLd={jsonLd}
+>
+  <div class="py-16 px-6 lg:px-8">
+    <div class="max-w-wide mx-auto">
+      <div class="mb-10">
+        <h1 class="font-serif text-5xl text-dark mb-4">Anthologies</h1>
+        <p class="font-body text-lg text-secondary leading-relaxed max-w-2xl">
+          Speculative fiction anthologies exploring protocols, coordination, and
+          the systems that shape our world. Each collection imagines futures
+          where the invisible rules governing society become visible — and
+          changeable.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {
+          anthologies.map((anthology) => (
+            <article class="card p-6 flex flex-col gap-4 relative">
+              <div class="flex items-start justify-between gap-2">
+                <BadgeType type={anthology.data.type} />
+                <span
+                  class="badge font-sans text-xs"
+                  style="background-color:#F0E8F5;color:#4A1E5C;"
+                >
+                  Anthology
+                </span>
+              </div>
+              <div>
+                <h2 class="font-serif text-2xl text-dark leading-snug mb-2">
+                  <a
+                    href={`/resources/${anthology.slug}`}
+                    class="hover:text-primary transition-colors after:absolute after:inset-0"
+                  >
+                    {anthology.data.title}
+                  </a>
+                </h2>
+                <p class="text-sm font-body text-secondary leading-relaxed">
+                  {anthology.data.description}
+                </p>
+              </div>
+              <div class="mt-auto pt-4 border-t border-gray-100">
+                <div class="flex items-center justify-between gap-2">
+                  <p class="text-xs font-sans text-secondary">
+                    {anthology.data.authors.map((a) => a.name).join(", ")}
+                  </p>
+                  <time
+                    datetime={anthology.data.date.toISOString()}
+                    class="text-xs font-sans text-secondary whitespace-nowrap"
+                  >
+                    {anthology.data.date.toLocaleDateString("en-US", {
+                      year: "numeric",
+                      month: "short",
+                    })}
+                  </time>
+                </div>
+                <div class="flex flex-wrap gap-1 mt-2">
+                  {anthology.data.tags
+                    .filter((t) => t !== "anthology")
+                    .slice(0, 4)
+                    .map((tag) => (
+                      <span class="text-xs font-sans text-secondary bg-gray-100 px-2 py-0.5 rounded-full">
+                        {tag}
+                      </span>
+                    ))}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</Base>

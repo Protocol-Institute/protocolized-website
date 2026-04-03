@@ -17,7 +17,7 @@ export const GET: APIRoute = async () => {
 
 ## About
 
-Protocolized is part of Protocol Society, a parent organization dedicated to advancing the study and practice of protocols across fields.
+Protocolized is part of Protocol Institute, a parent organization dedicated to advancing the study and practice of protocols across fields.
 
 The site is a public-facing resource hub: a library of papers, frameworks, games, datasets, code, and tools related to protocols and coordination, alongside a community of researchers, practitioners, and academics.
 
@@ -33,7 +33,7 @@ ${resourceLines}
 
 ## External Links
 
-- Protocol Society: https://protocolsociety.org
+- Protocol Institute: https://protocolsociety.org
 - Summer of Protocols Archive: https://summerofprotocols.com
 
 ## Machine-readable endpoints

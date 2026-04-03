@@ -1,6 +1,6 @@
 ---
 title: "Terminological Twists"
-type: paper
+type: fiction
 authors:
   - name: "Summer of Protocols"
 date: 2025-03-13
@@ -10,6 +10,7 @@ tags:
   - fiction
   - culture
   - theory
+  - anthology
 audience:
   - researcher
   - practitioner

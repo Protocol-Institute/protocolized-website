@@ -10,6 +10,7 @@ const resources = allResources
     slug: r.slug,
     title: r.data.title,
     type: r.data.type,
+    mediaType: ["video", "talk", "lecture", "presentation"].includes(r.data.type) ? "video" : "text",
     description: r.data.description,
     authors: r.data.authors,
     date: r.data.date.toISOString(),
@@ -46,6 +47,13 @@ const typeLabels: Record<string, string> = {
   video: "Video",
   article: "Article",
   fiction: "Fiction",
+};
+
+const videoTypes = new Set(["video", "talk", "lecture", "presentation"]);
+const mediaTypes = ["video", "text"] as const;
+const mediaTypeLabels: Record<string, string> = {
+  video: "Video",
+  text: "Text",
 };
 
 const jsonLd = {
@@ -135,6 +143,26 @@ const jsonLd = {
             </div>
           </div>
 
+          <!-- Media type filter -->
+          <div class="mb-6">
+            <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-2">
+              Media
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {
+                mediaTypes.map((mt) => (
+                  <button
+                    class="filter-pill font-sans text-xs px-3 py-1.5 rounded-full border border-gray-200 text-secondary hover:border-primary hover:text-primary transition-colors"
+                    data-filter="media"
+                    data-value={mt}
+                  >
+                    {mediaTypeLabels[mt]}
+                  </button>
+                ))
+              }
+            </div>
+          </div>
+
           <!-- Audience filter -->
           <div class="mb-6">
             <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-2">
@@ -213,6 +241,7 @@ const jsonLd = {
                   class="card p-5 flex flex-col gap-3 resource-item relative"
                   data-slug={resource.slug}
                   data-type={resource.type}
+                  data-media-type={resource.mediaType}
                   data-tags={JSON.stringify(resource.tags)}
                   data-audience={JSON.stringify(resource.audience)}
                   data-title={resource.title.toLowerCase()}
@@ -295,6 +324,7 @@ const jsonLd = {
   const state = {
     query: "",
     types: new Set<string>(),
+    mediaTypes: new Set<string>(),
     audiences: new Set<string>(),
     sort: "newest",
   };
@@ -317,6 +347,7 @@ const jsonLd = {
   const grid = document.getElementById("resource-grid");
   const emptyState = document.getElementById("empty-state");
   const typePills = document.querySelectorAll<HTMLButtonElement>('[data-filter="type"]');
+  const mediaPills = document.querySelectorAll<HTMLButtonElement>('[data-filter="media"]');
   const audienceCheckboxes = document.querySelectorAll<HTMLInputElement>(".audience-checkbox");
 
   // Initialize UI from URL state
@@ -382,13 +413,16 @@ const jsonLd = {
       const matchesType =
         state.types.size === 0 || state.types.has(item.dataset.type ?? "");
 
+      const matchesMedia =
+        state.mediaTypes.size === 0 || state.mediaTypes.has(item.dataset.mediaType ?? "");
+
       const matchesAudience =
         state.audiences.size === 0 ||
         JSON.parse(item.dataset.audience ?? "[]").some((a: string) =>
           state.audiences.has(a)
         );
 
-      const show = matchesQuery && matchesType && matchesAudience;
+      const show = matchesQuery && matchesType && matchesMedia && matchesAudience;
       item.style.display = show ? "" : "none";
       if (show) visible++;
     });
@@ -400,7 +434,7 @@ const jsonLd = {
 
     // Show/hide clear button
     const hasFilters =
-      state.query || state.types.size > 0 || state.audiences.size > 0;
+      state.query || state.types.size > 0 || state.mediaTypes.size > 0 || state.audiences.size > 0;
     clearBtn?.classList.toggle("hidden", !hasFilters);
 
     updateURL();
@@ -422,6 +456,23 @@ const jsonLd = {
         pill.classList.add("text-secondary", "border-gray-200");
       } else {
         state.types.add(value);
+        pill.classList.add("bg-primary", "text-white", "border-primary");
+        pill.classList.remove("text-secondary", "border-gray-200");
+      }
+      applyFilters();
+    });
+  });
+
+  // Media pills
+  mediaPills.forEach((pill) => {
+    pill.addEventListener("click", () => {
+      const value = pill.dataset.value ?? "";
+      if (state.mediaTypes.has(value)) {
+        state.mediaTypes.delete(value);
+        pill.classList.remove("bg-primary", "text-white", "border-primary");
+        pill.classList.add("text-secondary", "border-gray-200");
+      } else {
+        state.mediaTypes.add(value);
         pill.classList.add("bg-primary", "text-white", "border-primary");
         pill.classList.remove("text-secondary", "border-gray-200");
       }
@@ -452,9 +503,14 @@ const jsonLd = {
   clearBtn?.addEventListener("click", () => {
     state.query = "";
     state.types.clear();
+    state.mediaTypes.clear();
     state.audiences.clear();
     if (searchInput) searchInput.value = "";
     typePills.forEach((pill) => {
+      pill.classList.remove("bg-primary", "text-white", "border-primary");
+      pill.classList.add("text-secondary", "border-gray-200");
+    });
+    mediaPills.forEach((pill) => {
       pill.classList.remove("bg-primary", "text-white", "border-primary");
       pill.classList.add("text-secondary", "border-gray-200");
     });
