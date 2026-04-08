@@ -13,13 +13,13 @@ export const GET: APIRoute = async () => {
 
   const content = `# Protocolized
 
-> Accelerating Order. Protocolized is a research and practice initiative focused on protocols — the rules, standards, and agreements that structure coordination at every scale.
+> Accelerating Order. Protocolized is a sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute.
 
 ## About
 
 Protocolized is part of Protocol Institute, a parent organization dedicated to advancing the study and practice of protocols across fields.
 
-The site is a public-facing resource hub: a library of papers, frameworks, games, datasets, code, and tools related to protocols and coordination, alongside a community of researchers, practitioners, and academics.
+The magazine publishes stories, articles, and columns exploring protocols through fiction and critical thinking. The research library hosts papers, talks, templates, and more from the Summer of Protocols program.
 
 ## Resources
 
