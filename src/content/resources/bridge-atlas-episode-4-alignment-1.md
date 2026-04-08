@@ -7,6 +7,7 @@ authors:
 date: 2025-11-15
 description: "Welcome back to the fourth episode of the Bridge Atlas series, hosted by Christine D. Kim. Today, we’re diving into Ethereum through the lens of alignment with Alex Stokes, Ethereum Foundation Protocol Coordination Co-Team Lead, and Emmett Shear, ..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

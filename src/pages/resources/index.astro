@@ -10,7 +10,7 @@ const resources = allResources
     slug: r.slug,
     title: r.data.title,
     type: r.data.type,
-    mediaType: ["video", "talk", "lecture", "presentation"].includes(r.data.type) ? "video" : "text",
+    mediaType: ["talk", "lecture", "presentation"].includes(r.data.type) ? "video" : "text",
     description: r.data.description,
     authors: r.data.authors,
     date: r.data.date.toISOString(),
@@ -44,12 +44,11 @@ const typeLabels: Record<string, string> = {
   "prompt-template": "Prompt Template",
   talk: "Talk",
   lecture: "Lecture",
-  video: "Video",
   article: "Article",
   fiction: "Fiction",
 };
 
-const videoTypes = new Set(["video", "talk", "lecture", "presentation"]);
+const videoTypes = new Set(["talk", "lecture", "presentation"]);
 const mediaTypes = ["video", "text"] as const;
 const mediaTypeLabels: Record<string, string> = {
   video: "Video",

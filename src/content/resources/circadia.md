@@ -7,6 +7,7 @@ authors:
 date: 2025-07-23
 description: "In this issue: Sometimes we set the rhythms. Other times, the rhythms set us. What happens in a world whose inhabitants sleep perfectly? Also – join us in an hour (10am PDT, July 23) for a guest talk on poetry, protocols, and infinite games with R..."
 tags:
+  - story
   - protocols
 audience:
   - researcher

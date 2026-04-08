@@ -7,6 +7,7 @@ authors:
 date: 2025-05-07
 description: "In this issue: A Canadian design lab navigates the risks – and opportunities – posed by the widespread adoption of brain-computer interfaces in a world inhabited by metamegafauna. Also, an important update on tomorrow’s guest talk, a fresh hard te..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

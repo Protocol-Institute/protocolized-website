@@ -7,6 +7,7 @@ authors:
 date: 2025-12-14
 description: "Stanley Chen rewrites every line that LLMs generate for him. He believes current models are neither sufficient as writers nor as judges of literary merit. And yet, long before the public had heard of ChatGPT, he made LLMs an essential part of his ..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

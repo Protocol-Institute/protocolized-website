@@ -7,6 +7,7 @@ authors:
 date: 2025-02-14
 description: "In this issue: Food safety, Hollnagel’s ETTO principle (revisited), tension theory, manufacturing serendipity, the four horsemen of tensegral failure."
 tags:
+  - article
   - protocols
 audience:
   - researcher

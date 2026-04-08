@@ -7,6 +7,7 @@ authors:
 date: 2025-11-01
 description: "Welcome to the inaugural episode of Bridge Atlas, a limited-run video podcast series hosted by Christine D. Kim. For this introductory episode, Christine is joined by , protocol coordination co-team lead at the Ethereum Foundation, and , program m..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

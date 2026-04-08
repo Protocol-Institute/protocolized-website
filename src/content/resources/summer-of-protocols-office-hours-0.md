@@ -1,6 +1,6 @@
 ---
 title: "Summer of Protocols Office Hours 0"
-type: video
+type: talk
 authors:
   - name: "Protocolized"
 date: 2023-03-20

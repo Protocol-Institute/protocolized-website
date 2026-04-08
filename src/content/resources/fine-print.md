@@ -7,6 +7,7 @@ authors:
 date: 2025-05-28
 description: "In this issue: A shortlist story from the Terminological Twists challenge, comprising vignettes from a 500-year period of pencilled peril. Also, a snapshot of this week’s in-person event, and next week’s guest talk."
 tags:
+  - story
   - protocols
 audience:
   - researcher

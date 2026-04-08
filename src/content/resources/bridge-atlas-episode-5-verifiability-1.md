@@ -7,6 +7,7 @@ authors:
 date: 2025-11-23
 description: "Welcome back to the final episode of the Bridge Atlas series, hosted by Christine D. Kim. We discuss Ethereum and AI systems through the lens of verifiability, with  guests Shreya Shankar, a PhD researcher at Berkeley, and Justin Drake, an Ethereu..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

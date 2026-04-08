@@ -7,6 +7,7 @@ authors:
 date: 2025-03-14
 description: "In this issue: Overview of the Summer of Protocols 2025 program, curriculum development grants for faculty, scene-making with science fiction, distributed AI x blockchains technical foundations workshop in Thailand in April, momentum-maintenance p..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

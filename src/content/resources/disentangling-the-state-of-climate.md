@@ -7,6 +7,7 @@ authors:
 date: 2025-12-06
 description: "In this issue: Engineer, analyst, artist, and former Summer of Protocols visiting researcher Cory Levinson surveys current climate protocols."
 tags:
+  - article
   - climate
 audience:
   - researcher

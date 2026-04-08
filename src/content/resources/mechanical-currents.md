@@ -7,6 +7,7 @@ authors:
 date: 2025-09-09
 description: "In this issue: A monthly update from our Special Interest Group on Protocols for Business (SIGP4B). How are businesses adopting AI and what are current outlooks for productivity, QA, and task estimation?"
 tags:
+  - article
   - protocols
 audience:
   - researcher

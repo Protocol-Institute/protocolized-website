@@ -7,6 +7,7 @@ authors:
 date: 2026-03-02
 description: "In our kickoff Obliquities editorial on February 2, we argued that we are witnessing a shift from destination intelligence to intelligence media (by analogy to social media). We argued that these media transport social kernels (by analogy to the s..."
 tags:
+  - column
   - protocols
 audience:
   - researcher

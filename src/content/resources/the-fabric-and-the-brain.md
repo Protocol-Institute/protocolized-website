@@ -7,6 +7,7 @@ authors:
 date: 2026-03-31
 description: "Articulating agent ecologies with high-personality planetary computation"
 tags:
+  - column
   - protocols
   - AI
 audience:

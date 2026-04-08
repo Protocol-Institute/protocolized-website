@@ -7,6 +7,7 @@ authors:
 date: 2026-03-04
 description: "In the first installment of Theorizing Protocolization, we introduced protocolization as a progressively developing planetary transformation, that is, the metabolization of technologically-mediated behaviors into reliable coordination infrastructu..."
 tags:
+  - article
   - protocol
 audience:
   - researcher

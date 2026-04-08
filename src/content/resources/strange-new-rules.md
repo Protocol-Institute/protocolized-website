@@ -7,6 +7,7 @@ authors:
 date: 2025-02-07
 description: "In this issue: (Re)launch notes, Chiang’s Law, Chosen Ones, Great Men vs. Great Bureaucrats, Straussian Romantasy and Idiot Theories, strange women lying in ponds distributing swords, protocolization debt, Whitehead advances, worlds and rules, pro..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

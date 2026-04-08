@@ -7,6 +7,7 @@ authors:
 date: 2025-12-31
 description: "The story of Charles Darwin’s finches would sound strange if Darwin was, himself, a finch."
 tags:
+  - article
   - protocol
 audience:
   - researcher

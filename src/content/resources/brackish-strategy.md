@@ -7,6 +7,7 @@ authors:
 date: 2025-08-06
 description: "In this issue: learnings from the first month of our Special Interest Group on Protocols for Business. From the importance of conflict to ideas from basketball and bear management. Brackish (adjective): a mix of saltwater and freshwater, at once q..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

@@ -7,6 +7,7 @@ authors:
 date: 2025-11-05
 description: "Welcome back to another episode of Bridge Atlas, a video podcast series hosted by Christine D. Kim. In this episode, we look at the world through the lenses of hardness and planetary thinking, with , Executive Editor of the Berggruen Press and Dep..."
 tags:
+  - article
   - protocols
 audience:
   - researcher

@@ -7,6 +7,7 @@ authors:
 date: 2026-03-27
 description: "A translator maintaining a shadow bridge between superpowers discovers something she cannot unsee."
 tags:
+  - story
   - protocols
   - AI
 audience:

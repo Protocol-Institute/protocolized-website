@@ -7,6 +7,7 @@ authors:
 date: 2026-01-11
 description: "Rafa Fernández is the host of the Protocols for Business SIG, which meets every two weeks on Discord to discuss protocols in business settings, and you’re welcome to join the next session. Link to join at the end of the article."
 tags:
+  - article
   - protocols
 audience:
   - researcher

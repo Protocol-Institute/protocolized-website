@@ -1,6 +1,6 @@
 ---
 title: "SoP 2025 Town Hall"
-type: video
+type: talk
 authors:
   - name: "Protocolized"
 date: 2025-03-21

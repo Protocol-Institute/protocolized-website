@@ -7,6 +7,7 @@ authors:
 date: 2025-10-25
 description: "In this issue: Nicolás Madoery, participant in SoP24 and director of FUTURX, maps tensions between emerging technology and culture, then charts a way forward from a protocol lens. Summer of Protocols and FUTURX will host a meetup in Buenos Aires o..."
 tags:
+  - article
   - AI
 audience:
   - researcher

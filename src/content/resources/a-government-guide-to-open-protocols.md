@@ -7,6 +7,7 @@ authors:
 date: 2026-03-19
 description: "Public sector teams must go beyond the in-house or off-the-shelf dichotomy to take advantage of open protocols, which offer a unique way to manage both software costs and geopolitical exposure"
 tags:
+  - article
   - protocols
   - governance
 audience:

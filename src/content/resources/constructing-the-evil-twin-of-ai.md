@@ -7,6 +7,7 @@ authors:
 date: 2025-10-15
 description: "In this issue: Latest happenings in our Special Interest Group in Formal Protocol Theory; report on the Protocol Foundations Workshop; the Tan Paper project; meditation on protocols as the evil twins of AI; and two new writing bounties."
 tags:
+  - article
   - AI
 audience:
   - researcher

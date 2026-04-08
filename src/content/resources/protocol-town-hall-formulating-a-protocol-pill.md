@@ -1,6 +1,6 @@
 ---
 title: "Protocol Town Hall | Formulating a Protocol Pill"
-type: video
+type: talk
 authors:
   - name: "Protocolized"
 date: 2024-01-17
