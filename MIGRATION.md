@@ -76,9 +76,9 @@ DNS TTL is typically 3600s — plan for up to 1h propagation.
 
 In repo settings → Pages → set source to "None" after DNS is confirmed working.
 
-### Step 6 — Transfer Cloudflare project to PI account (when ready)
+### Step 6 — Migrate to PI account (when ready)
 
-Once the PI organization has its own Cloudflare account, transfer the Pages project from the personal account.
+Cloudflare has no native "transfer project" feature. Migration is a reconnection + data copy, not a transfer. See the dedicated section below.
 
 ## Future: C3PO Integration
 
@@ -104,6 +104,54 @@ The `public/resources/` directory contains ~353 MB of PDFs committed to git. Thi
 4. Remove PDFs from the repo (large file history requires `git-filter-repo`)
 
 This is a separate migration from the Pages switch and can happen after C3PO is live.
+
+## Developing in Personal Account → Migrating to PI Account
+
+Resources can be built and tested in a personal CF account while the PI org account is being established. Each resource type migrates differently.
+
+**Key invariant:** `wrangler.toml` intentionally omits `account_id` — Wrangler picks it up from the `CLOUDFLARE_ACCOUNT_ID` env var or GitHub Actions secret. The config file is account-neutral and requires no edits when switching accounts.
+
+### Pages project
+
+No native transfer exists. In the PI CF dashboard:
+1. Create a new Pages project connected to `Protocol-Institute/protocolized-website`
+2. Same settings as Step 1: framework preset Astro, build command `npm run build`, output `dist`, `NODE_VERSION=22`
+3. Update the GitHub Actions secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to PI account values — the deploy workflow is otherwise unchanged
+4. Re-add custom domain `protocolized.io`; update DNS to point to the new `*.pages.dev` URL
+5. Delete the personal-account Pages project
+
+### Workers (C3PO)
+
+Code lives in Git. In the PI account:
+```bash
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler deploy
+```
+Re-add any secrets in the PI account dashboard (`wrangler secret put <NAME>`). No file changes required.
+
+### R2 (PDF storage)
+
+Use `rclone` to copy between accounts. Both accounts expose R2 via an S3-compatible API:
+```bash
+# Configure two rclone remotes (one per account) using R2 S3 API tokens
+rclone copy cf-personal:protocolized-resources cf-pi:protocolized-resources --progress
+```
+Use the same bucket name (`protocolized-resources`) in both accounts — the `wrangler.toml` binding name and all `file:` fields in resource markdown stay the same.
+
+### D1 (if added in future)
+
+D1 database IDs are account-specific UUIDs. When a `[[d1_databases]]` binding is added to `wrangler.toml`, the `database_id` field will be different between accounts. Migration:
+```bash
+# Export from personal account
+wrangler d1 export <db-name> --output=backup.sql
+# Create in PI account and import
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler d1 create <db-name>
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler d1 execute <db-name> --file=backup.sql
+```
+Then update `database_id` in `wrangler.toml` to the new PI account value (one-line change).
+
+### Secrets and environment variables
+
+CF Pages env vars and secrets are account/project-specific — they are not in the repo. Keep a record of all env vars set in the personal-account project and re-add them in the PI project. (See the key management policy in `Code/.env.keys` for the authoritative list.)
 
 ## Rollback Plan
 
