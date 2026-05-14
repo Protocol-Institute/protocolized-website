@@ -1,0 +1,21 @@
+# Cloudflare Pages + Workers configuration
+# https://developers.cloudflare.com/pages/
+
+name = "protocolized-website"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-01-01"
+
+# Future: bind the C3PO research assistant Worker as a service binding.
+# When C3PO (github.com/vgururao/c3po, migrating to Protocol-Institute/c3po)
+# is deployed as a CF Worker, add a service binding here so the
+# protocolized.io frontend can call it without cross-origin requests:
+#
+# [[services]]
+# binding = "C3PO"
+# service = "c3po-worker"
+#
+# And bind Cloudflare R2 for PDF storage once PDFs are moved out of the repo:
+#
+# [[r2_buckets]]
+# binding = "RESOURCES"
+# bucket_name = "protocolized-resources"
