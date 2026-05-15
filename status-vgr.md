@@ -10,4 +10,5 @@
 
 ## Done
 <!-- completed items, reverse chronological -->
+- **2026-05-14** — Added devlog system (data/devlog.json, devlog_session.py, devlog_render.py). Backfilled Sessions 1–4 from git history. Added startup and wrap-up rituals to CLAUDE.md. CLAUDE.md updated with PI admin repo banner (../admin/keys.md, ../admin/security.md).
 - **2026-05-14** — Created Cloudflare Pages migration branch (`feat/cloudflare-migration`) with updated `deploy.yml` (cloudflare/pages-action@v1), `wrangler.toml` (with C3PO and R2 service binding stubs), `MIGRATION.md`, and GitHub Issues #1 (migration discussion) and #2 (Timber task for CF account/domain setup). Migration requires Timber to transfer protocolized.io nameservers to Cloudflare.
