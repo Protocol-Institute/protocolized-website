@@ -1,5 +1,7 @@
 # Protocolized — CLAUDE.md
 
+> **PI key registry & security policy:** see [`../admin/keys.md`](../admin/keys.md) and [`../admin/security.md`](../admin/security.md) . Do not register PI keys in `Code/.env.keys`.
+
 ## What is this project?
 
 Protocolized is the website for a sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute. It lives at [protocolized.io](https://protocolized.io).
@@ -97,6 +99,53 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 - The Substack sync script (`scripts/sync-substack.py`) runs via GitHub Actions on a daily cron. It can also be run manually with `python3 scripts/sync-substack.py`.
 - Commits from the sync bot use the message format: `chore: sync N new Substack post(s) from Protocolized`.
 - The build must produce zero errors. Run `npm run build` before pushing.
+
+## At Session Start
+
+**Always do this first before any other work:**
+
+1. Run `python3 devlog_session.py start` — records session start time to `/tmp/protocolized_devlog_session_start.txt`.
+2. Run `python3 ../admin/expenses/track.py status` — shows all active PI project sessions and flags any overlap. If another project session is already running, no action needed; overlap is tracked automatically.
+3. Read `status-vgr.md` — review active and upcoming items from the last session.
+4. Check Substack sync activity since last session — how many posts have been synced, and are there any pending?
+   ```bash
+   git log --oneline --grep="sync" -10   # recent sync commits
+   ```
+   Then check the live feed against the most recent synced post date in `src/content/` to see if any unsynced posts exist.
+5. Check branch state — how far has `feat/cloudflare-migration` drifted from `main`?
+   ```bash
+   git log main..feat/cloudflare-migration --oneline   # on CF branch, not yet on main
+   git log feat/cloudflare-migration..main --oneline   # on main, not yet merged into CF branch
+   ```
+6. Check framework decision status — has the Phase 1 framework choice (Option A/B/C from `ROADMAP.md`) been made? If yes, update the roadmap and proceed to Phase 2 planning.
+7. Briefly summarize to Venkat: sync activity since last session, CF migration status (is Timber's nameserver transfer done?), framework decision state, and active items from `status-vgr.md`.
+
+---
+
+## After Each Session
+
+**Documentation (always):**
+1. `data/devlog.json` — add session entry with items in HTML. Run `python3 devlog_session.py end` for the timestamp. Run `python3 devlog_render.py` to regenerate `DEVLOG.md`. The devlog is the primary record of architectural decisions, framework choices, and infrastructure work — write for a public technical audience.
+2. `status-vgr.md` — add a dated log entry with PT start–end times and a one-line summary of what changed.
+3. `CLAUDE.md` — update stack notes, roadmap status, or schema changes if anything changed.
+
+**Build & verify (if code or content changed):**
+4. `npm run build` — verify clean build, zero errors, before committing.
+
+**Repo:**
+5. `git add` relevant files (never `.env`); `git commit`; `git push`. Push to `main` for GitHub Pages deploy; push to `feat/cloudflare-migration` for CF Pages preview once migration is live.
+
+**Expenses (always):**
+6. `python3 ../admin/expenses/track.py end` — computes billable hours from all active session start files; detects overlap; prints a pre-filled log entry.
+7. Paste the entry into `../admin/expenses/log-{your-id}.json` sessions array; fill in `api_costs` (any API charges incurred this session) and `notes`.
+8. `python3 ../admin/expenses/render.py` — regenerates `EXPENSES.md` and `expenses.csv`.
+
+**Memory:**
+9. Update Claude memory (`/Users/Venkat/.claude/projects/.../memory/`) — save anything non-obvious about the content schema, sync pipeline, framework decision state, or workflow preferences that would help future sessions. Do not duplicate what's in CLAUDE.md or recoverable from code.
+
+## Keys
+
+No keys are currently in use for this repo. When CF Workers are added (post Phase 0 migration), keys (Cloudflare API token, future service keys) will be provisioned via `../.env.keys` and inventoried in `../admin/keys.md`. Do not use `Code/.env.keys` for PI keys.
 
 ## Things to watch out for
 
