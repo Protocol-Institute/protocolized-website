@@ -1,9 +1,9 @@
 {
   "meta": {
-    "total": 561,
-    "pi_coined": 233,
-    "pi_specific": 320,
-    "curated": 8,
+    "total": 566,
+    "pi_coined": 239,
+    "pi_specific": 321,
+    "curated": 6,
     "letters": [
       "A",
       "B",
@@ -602,17 +602,23 @@
       "id": "bartleby-protocol",
       "term": "Bartleby protocol",
       "letter": "B",
-      "triage": "curated",
-      "triage_label": "Curated",
+      "triage": "a",
+      "triage_label": "PI-coined",
       "definitions": [
         {
           "text": "A protocol where a participant derives agency through passive non-compliance, opting out by simply not engaging. Named after Melville's Bartleby, who responds to every request with \"I would prefer not to.\" A strategy of last resort when all other forms of voice fail.",
           "source": "Introduction to the Protocol Reader",
           "source_slug": "introduction-to-the-protocol-reader",
           "type": "curated"
+        },
+        {
+          "text": "A protocol named after Melville's character where meaningful agency can only be found through inaction and passive resistance, rather than through active participation or compliance.",
+          "source": "Introduction to The Protocol Reader",
+          "source_slug": "introduction-to-the-protocol-reader",
+          "type": "corpus"
         }
       ],
-      "context": ""
+      "context": "In her account, Nadia suggests two other categories of protocols—Whitehead protocols, protocols that represent Whitehead advances and embody net benign and positive patterns of control, and Bartleby protocols, named for the Melville short story, where agency can only be found through inaction and passive resistance."
     },
     {
       "id": "bartleby-failure-archetype",
@@ -2049,6 +2055,22 @@
         }
       ],
       "context": "In future we might have both static and dynamic residential addresses; your unchanging and easy-to-memorize static home address would point to a dynamic address describing the shifting locations and boundaries of the walls surrounding whatever place you happened to live in at a particular point in time."
+    },
+    {
+      "id": "dyoresearchers",
+      "term": "DYOResearchers",
+      "letter": "D",
+      "triage": "a",
+      "triage_label": "PI-coined",
+      "definitions": [
+        {
+          "text": "Amateur scientists and independent researchers who conduct their own investigations and experiments, typically drawing on freely available online knowledge and documentation.",
+          "source": "Unprotocolized Knowledge",
+          "source_slug": "unprotocolized-knowledge",
+          "type": "corpus"
+        }
+      ],
+      "context": "The products of intellectual labor now live freely online, inspiring swaths of DYOResearchers."
     },
     {
       "id": "ecologies-of-behavior",
@@ -3654,17 +3676,23 @@
       "id": "kafka-protocol",
       "term": "Kafka protocol",
       "letter": "K",
-      "triage": "curated",
-      "triage_label": "Curated",
+      "triage": "a",
+      "triage_label": "PI-coined",
       "definitions": [
         {
           "text": "A protocol that traps participants in pointless loops with no recourse — named by analogy to Kafka's bureaucratic nightmares. The defining structure: the protocol holds all power; the participant has none and cannot determine the rules by which they are being judged.",
           "source": "Introduction to the Protocol Reader",
           "source_slug": "introduction-to-the-protocol-reader",
           "type": "curated"
+        },
+        {
+          "text": "A speculative protocol representing the absolute worst conceivable design for given circumstances, used as a diagnostic and thought-experimental tool to understand oppressive or destructive protocol dynamics.",
+          "source": "Introduction to The Protocol Reader",
+          "source_slug": "introduction-to-the-protocol-reader",
+          "type": "corpus"
         }
       ],
-      "context": ""
+      "context": "Through exploring the ways protocols can become oppressive and destructive, Nadia's research inspired what has since become both a term of art and a research technique in our program—the Kafka protocol: a speculative protocol that is the absolute worst one conceivable for given circumstances. It turns out that the thought experiment of Kafka protocols—which some real-world protocols such as TSA airport security approximate—is a surprisingly useful diagnostic tool."
     },
     {
       "id": "kafka-failure-archetype",
@@ -6783,6 +6811,22 @@
       "context": "New interfaces could inform us of our constantly-changing proximities to different places as we go about our daily lives. It thus becomes a moving target, more suitable for being monitored by an interface like a radar display rather than a static map."
     },
     {
+      "id": "public-good-in-daos-and-collective-systems",
+      "term": "public good (in DAOs and collective systems)",
+      "letter": "P",
+      "triage": "b",
+      "triage_label": "PI-specific",
+      "definitions": [
+        {
+          "text": "A benefit or outcome that advantages a community or collective as a whole, though its definition and boundaries are often contested and difficult to specify precisely.",
+          "source": "Killswitch Protocols: Or On Engineering Recursive System Death",
+          "source_slug": "killswitch-protocols-or-on-engineering-recursive-system-death",
+          "type": "corpus"
+        }
+      ],
+      "context": "At a more structural level, the issue of clearly defining the 'public good' for a given system itself outstrips the ability to define all margins of this good. In the case of DAOs, certain components of organizational processes lack sufficient resolution for algorithmic reconciliation."
+    },
+    {
       "id": "pulsing-landscapes",
       "term": "pulsing landscapes",
       "letter": "P",
@@ -8435,6 +8479,22 @@
       "context": "A tension is a tradeoff plus a conflict. This definition emerged from a week-long futures workshop held as part of our 2024 program in collaboration with Edge City, an ongoing experiment in virtual urbanism, and 0xParc, a protocols research collective."
     },
     {
+      "id": "tensions-game",
+      "term": "Tensions Game",
+      "letter": "T",
+      "triage": "a",
+      "triage_label": "PI-coined",
+      "definitions": [
+        {
+          "text": "A peer-to-peer research methodology and collective-visioning mechanism where participants exchange constraint cards representing key tensions, imagining futures progressively shaped by them.",
+          "source": "Introduction to The Protocol Reader",
+          "source_slug": "introduction-to-the-protocol-reader",
+          "type": "corpus"
+        }
+      ],
+      "context": "In one exercise, participants collected 'tension cards' from each other—for example 'ossification vs. adaptability' or 'regionalism vs. nationalism'—and imagine futures progressively constrained by them. The activity worked beautifully and led to some fascinating output. The Tensions Game, as we call it now, has become a key research tool of the program."
+    },
+    {
       "id": "the-carbon-flywheel",
       "term": "the carbon flywheel",
       "letter": "T",
@@ -9061,6 +9121,22 @@
       "context": "Participants can get trapped in endless loops or 'whirlpools' with no resolution."
     },
     {
+      "id": "whitehead-advance",
+      "term": "Whitehead advance",
+      "letter": "W",
+      "triage": "a",
+      "triage_label": "PI-coined",
+      "definitions": [
+        {
+          "text": "A technological or behavioral advance that enables important operations to be performed without conscious thought, extending the number of things civilization can do automatically.",
+          "source": "Introduction to The Protocol Reader",
+          "source_slug": "introduction-to-the-protocol-reader",
+          "type": "corpus"
+        }
+      ],
+      "context": "The phrase Whitehead advance has become a term of art in our research conversations. Whitehead advances often take the form of protocols. It took a pandemic to make most of us realize that we possessed disciplined handwashing behaviors, and that at one time they constituted a Whitehead advance in public health."
+    },
+    {
       "id": "whitehead-advance-whitehead-protocol",
       "term": "Whitehead advance / Whitehead protocol",
       "letter": "W",
@@ -9091,6 +9167,22 @@
         }
       ],
       "context": "Whitehead — success archetype. 'Civilization advances by extending the number of important operations which we can perform without thinking about them.' Balanced power between protocol and participant."
+    },
+    {
+      "id": "whitehead-protocol",
+      "term": "Whitehead protocol",
+      "letter": "W",
+      "triage": "a",
+      "triage_label": "PI-coined",
+      "definitions": [
+        {
+          "text": "A protocol that represents Whitehead advances and embodies net benign and positive patterns of control that enable operations to happen unconsciously and beneficially.",
+          "source": "Introduction to The Protocol Reader",
+          "source_slug": "introduction-to-the-protocol-reader",
+          "type": "corpus"
+        }
+      ],
+      "context": "In her account, Nadia suggests two other categories of protocols—Whitehead protocols, protocols that represent Whitehead advances and embody net benign and positive patterns of control, and Bartleby protocols, named for the Melville short story, where agency can only be found through inaction and passive resistance."
     },
     {
       "id": "whitehead-success-archetype",
