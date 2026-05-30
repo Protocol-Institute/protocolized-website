@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Killswitch-Protocols.pdf"
+file: "https://files.protocolized.io/Killswitch-Protocols.pdf"
 ---

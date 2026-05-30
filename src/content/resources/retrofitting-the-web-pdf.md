@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Retrofitting-the-Web-Dorian-Taylor.pdf"
+file: "https://files.protocolized.io/Retrofitting-the-Web-Dorian-Taylor.pdf"
 ---

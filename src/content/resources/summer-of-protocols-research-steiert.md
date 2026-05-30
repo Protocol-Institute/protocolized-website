@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/03-STEIERT-2023-12-13.pdf"
+file: "https://files.protocolized.io/03-STEIERT-2023-12-13.pdf"
 ---

@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Control-and-Consciousness-of-Time-Saffron-Huang.pdf"
+file: "https://files.protocolized.io/Control-and-Consciousness-of-Time-Saffron-Huang.pdf"
 ---

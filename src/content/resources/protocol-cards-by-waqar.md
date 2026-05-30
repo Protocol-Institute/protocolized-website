@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/69-WAQAR-CARDS.pdf"
+file: "https://files.protocolized.io/69-WAQAR-CARDS.pdf"
 ---

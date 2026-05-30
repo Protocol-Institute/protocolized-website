@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Addressing-Tim-Beiko-Mario-Havel.pdf"
+file: "https://files.protocolized.io/Addressing-Tim-Beiko-Mario-Havel.pdf"
 ---

@@ -15,5 +15,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Shoreline-Adaptations-Case-File.pdf"
+file: "https://files.protocolized.io/Shoreline-Adaptations-Case-File.pdf"
 ---

@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/The-Unreasonable-Sufficiency-of-Protocols.pdf"
+file: "https://files.protocolized.io/The-Unreasonable-Sufficiency-of-Protocols.pdf"
 ---

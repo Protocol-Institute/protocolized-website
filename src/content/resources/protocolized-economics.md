@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/42-e76-POWERS.pdf"
+file: "https://files.protocolized.io/42-e76-POWERS.pdf"
 ---

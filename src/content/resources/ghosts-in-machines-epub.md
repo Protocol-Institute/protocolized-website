@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-file: "/resources/GHOSTS_IN_MACHINES_FINAL.epub"
+file: "https://files.protocolized.io/GHOSTS_IN_MACHINES_FINAL.epub"
 ---

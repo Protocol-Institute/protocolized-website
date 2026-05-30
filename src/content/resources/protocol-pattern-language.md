@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Protocol-Pattern-Language-2-Drew-Austin.pdf"
+file: "https://files.protocolized.io/Protocol-Pattern-Language-2-Drew-Austin.pdf"
 ---

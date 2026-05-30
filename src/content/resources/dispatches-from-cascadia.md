@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Dispatches-from-Cascadia-Rithikha-Rajamohan.pdf"
+file: "https://files.protocolized.io/Dispatches-from-Cascadia-Rithikha-Rajamohan.pdf"
 ---

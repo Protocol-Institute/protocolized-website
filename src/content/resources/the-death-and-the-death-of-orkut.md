@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/The-Death-and-the-Death-of-Orkut-Alice-Noujaim.pdf"
+file: "https://files.protocolized.io/The-Death-and-the-Death-of-Orkut-Alice-Noujaim.pdf"
 ---

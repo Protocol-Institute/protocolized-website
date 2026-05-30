@@ -15,5 +15,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/66-FANGTING.pdf"
+file: "https://files.protocolized.io/66-FANGTING.pdf"
 ---

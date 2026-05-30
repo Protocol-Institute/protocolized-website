@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Founding-Memorabilia-from-the-Order-of-Protocological-Death.pdf"
+file: "https://files.protocolized.io/Founding-Memorabilia-from-the-Order-of-Protocological-Death.pdf"
 ---

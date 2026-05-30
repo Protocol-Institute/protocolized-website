@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/15-e41-KITTEL-rev-2024-06-12-1448.pdf"
+file: "https://files.protocolized.io/15-e41-KITTEL-rev-2024-06-12-1448.pdf"
 ---

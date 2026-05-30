@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/15-e41-KITTEL-SHORIN-PREPRINT.pdf"
+file: "https://files.protocolized.io/15-e41-KITTEL-SHORIN-PREPRINT.pdf"
 ---

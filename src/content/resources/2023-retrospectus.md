@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/01-RETROSPECTUS-2023-12-13.pdf"
+file: "https://files.protocolized.io/01-RETROSPECTUS-2023-12-13.pdf"
 ---

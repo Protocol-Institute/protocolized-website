@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/60-BRISTLEMOUTH-LANG-2023-12-13.pdf"
+file: "https://files.protocolized.io/60-BRISTLEMOUTH-LANG-2023-12-13.pdf"
 ---

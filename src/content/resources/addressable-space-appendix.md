@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Addressable-Space-Appendix-1-Chenoe-Hart.pdf"
+file: "https://files.protocolized.io/Addressable-Space-Appendix-1-Chenoe-Hart.pdf"
 ---

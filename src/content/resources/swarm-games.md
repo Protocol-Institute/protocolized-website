@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/68-FERNANDEZ-Swarm-Games-pxlm.pdf"
+file: "https://files.protocolized.io/68-FERNANDEZ-Swarm-Games-pxlm.pdf"
 ---

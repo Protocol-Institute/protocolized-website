@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/10-e36-SCHROFF-2-PAGER.pdf"
+file: "https://files.protocolized.io/10-e36-SCHROFF-2-PAGER.pdf"
 ---

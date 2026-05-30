@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Good-Death-Sarah-Friend.pdf"
+file: "https://files.protocolized.io/Good-Death-Sarah-Friend.pdf"
 ---

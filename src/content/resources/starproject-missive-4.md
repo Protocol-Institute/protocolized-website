@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/56-LEWIS-M5-Missive-4-nu-for-web.pdf"
+file: "https://files.protocolized.io/56-LEWIS-M5-Missive-4-nu-for-web.pdf"
 ---

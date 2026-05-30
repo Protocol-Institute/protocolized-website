@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/FERNANDEZ-Flow-speculative-brochure.pdf"
+file: "https://files.protocolized.io/FERNANDEZ-Flow-speculative-brochure.pdf"
 ---

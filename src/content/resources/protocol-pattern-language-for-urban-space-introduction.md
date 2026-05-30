@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/54-AUSTIN-00-2023-12-13.pdf"
+file: "https://files.protocolized.io/54-AUSTIN-00-2023-12-13.pdf"
 ---

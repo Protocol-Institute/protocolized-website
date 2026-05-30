@@ -16,5 +16,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-file: "/resources/THE_LIBRARIANS_FINAL.epub"
+file: "https://files.protocolized.io/THE_LIBRARIANS_FINAL.epub"
 ---

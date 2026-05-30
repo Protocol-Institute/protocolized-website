@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Weaving-Memory-Spencer-Chang.pdf"
+file: "https://files.protocolized.io/Weaving-Memory-Spencer-Chang.pdf"
 ---

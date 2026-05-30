@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Exit-to-Protocol-Shuya-Gong.pdf"
+file: "https://files.protocolized.io/Exit-to-Protocol-Shuya-Gong.pdf"
 ---

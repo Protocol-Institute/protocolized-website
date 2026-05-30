@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/A-Phenomenology-of-Protocols-Janna-Tay.pdf"
+file: "https://files.protocolized.io/A-Phenomenology-of-Protocols-Janna-Tay.pdf"
 ---

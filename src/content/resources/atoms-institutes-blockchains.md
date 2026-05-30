@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Atoms-Institutes-Blockchains-Josh-Stark.pdf"
+file: "https://files.protocolized.io/Atoms-Institutes-Blockchains-Josh-Stark.pdf"
 ---

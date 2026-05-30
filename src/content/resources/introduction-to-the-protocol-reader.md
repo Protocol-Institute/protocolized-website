@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Introduction-to-the-Protocol-Reader-Venkatesh-Rao.pdf"
+file: "https://files.protocolized.io/Introduction-to-the-Protocol-Reader-Venkatesh-Rao.pdf"
 ---

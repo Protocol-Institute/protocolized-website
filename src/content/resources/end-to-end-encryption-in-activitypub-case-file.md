@@ -15,5 +15,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/ActivityPub-E2EE-Case-File.pdf"
+file: "https://files.protocolized.io/ActivityPub-E2EE-Case-File.pdf"
 ---

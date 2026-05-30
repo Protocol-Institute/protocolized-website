@@ -15,5 +15,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-file: "/resources/TERMINOLOGICAL_TWISTS_FINAL.epub"
+file: "https://files.protocolized.io/TERMINOLOGICAL_TWISTS_FINAL.epub"
 ---

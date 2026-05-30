@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Plurality-in-Practice-Case-File.pdf"
+file: "https://files.protocolized.io/Plurality-in-Practice-Case-File.pdf"
 ---

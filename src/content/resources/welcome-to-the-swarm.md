@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/17-e43-FERNANDEZ.pdf"
+file: "https://files.protocolized.io/17-e43-FERNANDEZ.pdf"
 ---

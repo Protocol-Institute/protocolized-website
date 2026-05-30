@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/98-GONG-card-set-2024-03-28.pdf"
+file: "https://files.protocolized.io/98-GONG-card-set-2024-03-28.pdf"
 ---

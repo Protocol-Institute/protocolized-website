@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Kafka-Index-Nadia-Asparouhova.pdf"
+file: "https://files.protocolized.io/Kafka-Index-Nadia-Asparouhova.pdf"
 ---

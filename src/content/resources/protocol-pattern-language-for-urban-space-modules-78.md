@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/54-AUSTIN-7-8.pdf"
+file: "https://files.protocolized.io/54-AUSTIN-7-8.pdf"
 ---

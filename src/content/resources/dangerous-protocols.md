@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Dangerous-Protocols-Nadia-Asparouhova.pdf"
+file: "https://files.protocolized.io/Dangerous-Protocols-Nadia-Asparouhova.pdf"
 ---

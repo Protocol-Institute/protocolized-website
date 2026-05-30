@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/53-HAVEL-004.pdf"
+file: "https://files.protocolized.io/53-HAVEL-004.pdf"
 ---

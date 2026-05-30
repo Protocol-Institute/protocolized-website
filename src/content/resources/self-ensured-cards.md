@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/65-SCHROFF_GONG-Self-Ensured-cards.pdf"
+file: "https://files.protocolized.io/65-SCHROFF_GONG-Self-Ensured-cards.pdf"
 ---

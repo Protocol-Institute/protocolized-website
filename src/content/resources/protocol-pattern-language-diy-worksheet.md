@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/54-AUSTIN-DIY.pdf"
+file: "https://files.protocolized.io/54-AUSTIN-DIY.pdf"
 ---

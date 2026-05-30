@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/55-e75-HART-M5-AP7-8-for-web.pdf"
+file: "https://files.protocolized.io/55-e75-HART-M5-AP7-8-for-web.pdf"
 ---

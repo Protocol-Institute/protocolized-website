@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/04-LANG-2023-12-13.pdf"
+file: "https://files.protocolized.io/04-LANG-2023-12-13.pdf"
 ---

@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/61-MAZE-RAO-2023-12-13.pdf"
+file: "https://files.protocolized.io/61-MAZE-RAO-2023-12-13.pdf"
 ---

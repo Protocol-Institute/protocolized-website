@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/The-Swarm-Effect-Chinas-2022-Covid-Protests-Anon.pdf"
+file: "https://files.protocolized.io/The-Swarm-Effect-Chinas-2022-Covid-Protests-Anon.pdf"
 ---

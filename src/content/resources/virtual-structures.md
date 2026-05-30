@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Virtual-Structures-Laura-Sinisterra.pdf"
+file: "https://files.protocolized.io/Virtual-Structures-Laura-Sinisterra.pdf"
 ---

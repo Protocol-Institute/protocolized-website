@@ -14,5 +14,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Fire-Protocols-Case-File.pdf"
+file: "https://files.protocolized.io/Fire-Protocols-Case-File.pdf"
 ---

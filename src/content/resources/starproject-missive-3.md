@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/56-LEWIS-M3-Missive-3.pdf"
+file: "https://files.protocolized.io/56-LEWIS-M3-Missive-3.pdf"
 ---

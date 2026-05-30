@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/55-e75-HART-M4-AP5-6.pdf"
+file: "https://files.protocolized.io/55-e75-HART-M4-AP5-6.pdf"
 ---

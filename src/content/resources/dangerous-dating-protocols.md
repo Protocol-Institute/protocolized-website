@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Dangerous-Dating-Protocols-Shreeda-Segan.pdf"
+file: "https://files.protocolized.io/Dangerous-Dating-Protocols-Shreeda-Segan.pdf"
 ---

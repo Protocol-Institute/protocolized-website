@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Capital-Enclosure-for-Software-Commons-Trent-Van-Epps.pdf"
+file: "https://files.protocolized.io/Capital-Enclosure-for-Software-Commons-Trent-Van-Epps.pdf"
 ---

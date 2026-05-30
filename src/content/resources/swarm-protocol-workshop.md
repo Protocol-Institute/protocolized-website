@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/67-FERNANDEZ-Swarm-Protocol-Workshop.pdf"
+file: "https://files.protocolized.io/67-FERNANDEZ-Swarm-Protocol-Workshop.pdf"
 ---

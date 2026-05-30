@@ -15,5 +15,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/53-BEIKO-001-2023-12-13.pdf"
+file: "https://files.protocolized.io/53-BEIKO-001-2023-12-13.pdf"
 ---

@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Safe-New-World-Timber-Stinson-Schroff.pdf"
+file: "https://files.protocolized.io/Safe-New-World-Timber-Stinson-Schroff.pdf"
 ---

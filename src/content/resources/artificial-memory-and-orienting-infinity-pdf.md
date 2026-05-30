@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Artificial-Memory-and-Orienting-Infinity-Kei-Kreutler.pdf"
+file: "https://files.protocolized.io/Artificial-Memory-and-Orienting-Infinity-Kei-Kreutler.pdf"
 ---

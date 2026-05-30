@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/SCHROFF-Protocol-Watching-HANDOUT.pdf"
+file: "https://files.protocolized.io/SCHROFF-Protocol-Watching-HANDOUT.pdf"
 ---

@@ -12,5 +12,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Starproject-Missive-1.pdf"
+file: "https://files.protocolized.io/Starproject-Missive-1.pdf"
 ---

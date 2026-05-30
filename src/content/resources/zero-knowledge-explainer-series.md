@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/Zero-Knowledge-Explainer-Series.pdf"
+file: "https://files.protocolized.io/Zero-Knowledge-Explainer-Series.pdf"
 ---

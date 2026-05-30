@@ -15,5 +15,5 @@ audience:
   - practitioner
   - academic
 featured: false
-file: "/resources/Protocol-Reader-2025-02-04-1329 (3).epub"
+file: "https://files.protocolized.io/Protocol-Reader-2025-02-04-1329 (3).epub"
 ---

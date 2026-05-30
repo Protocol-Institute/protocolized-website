@@ -13,5 +13,5 @@ audience:
   - researcher
   - academic
 featured: false
-file: "/resources/The-Fundamentals-of-Protocol-Systems-Angela-Walch.pdf"
+file: "https://files.protocolized.io/The-Fundamentals-of-Protocol-Systems-Angela-Walch.pdf"
 ---
