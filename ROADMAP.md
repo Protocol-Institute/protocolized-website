@@ -15,13 +15,18 @@ CF resources needed across all phases:
 
 ---
 
-## Phase 0 — CF Pages Migration *(in progress)*
+## Phase 0 — CF Pages Migration ✓ *(complete 2026-05-30)*
 
-See `MIGRATION.md`. Prerequisite for all phases below.
+- protocolized.io live on Cloudflare Pages (PI org account)
+- All 82 PDFs + 4 EPUBs migrated to R2 bucket `protocolized-resources`
+- Served at `https://files.protocolized.io` (custom domain on R2)
+- 76 resource `file:` references rewritten to R2 URLs; binaries removed from repo
+- `protocolized.io` + `www.protocolized.io` custom domains active on CF Pages
+- GitHub Pages disable pending (manual step in repo settings)
 
 ---
 
-## Phase 1 — Framework Evaluation and Decision *(before any dynamic work begins)*
+## Phase 1 — Framework Evaluation and Decision ✓ *(decided 2026-05-30: Hono + HTMX)*
 
 The current stack (Astro 5, `output: "static"`) was chosen for a static magazine/library site. The planned features — live Substack, C3PO chat, streaming MCP, semantic search, ETH auth, content gating — make this a dynamic web application. **Committing to the framework now prevents a painful mid-build switch later.**
 
@@ -275,22 +280,58 @@ If PI issues a membership NFT or ERC-20: Worker checks on-chain balance via Alch
 ## Dependency Graph
 
 ```
-Phase 0 (CF migration)
-  └── Phase 1 (framework decision) ← gate for all dynamic work
+Phase 0 (CF migration) ✓
+  └── Phase 1 (framework decision) ✓ → Hono + HTMX
         ├── Phase 2 (live Substack + events)
         ├── Phase 3 (IPFS migration) ← prerequisite for Phase 6 gating
         │     └── Phase 6 (ETH auth + content gating)
         │           └── Phase 7 (donations + patron membership)
         ├── Phase 4 (C3PO + semantic search)
         │     └── Phase 5 (MCP server)
-        └── Phase 7 (Stripe — can start independently of Phase 6)
+        ├── Phase 7 (Stripe — can start independently of Phase 6)
+        └── Phase 8 (print ops + ProtocolKit) ← parallel, no hard dependencies
 ```
+
+---
+
+## Phase 8 — Print Ops + ProtocolKit *(can run parallel to Phase 2)*
+
+protocolized.io is the portal for all PI publishing, including print. This phase adds
+a print-publishing surface to the site and makes ProtocolKit (currently homeless after
+summerofprotocols.com redirects) a first-class product page.
+
+### ProtocolKit product page
+
+ProtocolKit is a physical research kit produced during SoP23. It needs a permanent home
+on protocolized.io as a published artifact. The page should cover:
+- What it is and what's in it
+- Availability (currently "by request" — may evolve to a print-on-demand or order flow)
+- Connection to the research corpus it was built from
+
+Route: `/protocolkit` or under a future `/print` section.
+
+### Print ops section (`/print`)
+
+A landing section for PI's physical publishing:
+- ProtocolKit
+- Protocol Reader (physical/print edition — future)
+- Protocolized Anthologies (future)
+- Any future zines, card sets, or limited print runs from the resource library
+
+The print ops section is the prerequisite for properly migrating ProtocolKit away from SoP.
+The Hono rebuild (Phase 1) should be designed with `/print` as a planned route from the start.
+
+### Protocol School curriculum integration
+
+When SoP25 Teaching Fellows publish their course materials, they belong here as resources.
+This is not gated on Phase 8 — add them to the resource library as they become available.
+Track pending materials in `status-vgr.md`.
 
 ---
 
 ## Open Questions
 
-- **Framework** (Phase 1): Option A (Astro hybrid), B (bespoke Workers + Hono), or C (SvelteKit)? Decision needed before Phase 2.
+- **Framework** (Phase 1): **Decided: Hono + HTMX (Option B).** Full Workers rebuild.
 - **Content layer**: migrate existing 280 Markdown resource files to D1, or keep Markdown + add D1 for new content? Affects all options.
 - **IPFS pinning**: Pinata vs Filebase? (Pinata recommended — active, good API, generous free tier.)
 - **SIWE wallet widget**: Dynamic.xyz vs Privy? Coordinate with .org to use the same provider across both sites.

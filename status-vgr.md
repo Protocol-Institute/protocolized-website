@@ -5,8 +5,47 @@
 
 ## Upcoming
 <!-- planned changes or features -->
-- Migrate hosting from GitHub Pages to Cloudflare Pages (required for C3PO integration)
-- Timber needs to: set up CF account + CF-managed domain for protocolized.io (nameserver transfer at Google Domains), create Pages project, set API token + GitHub secrets (see GitHub Issue #2)
+
+### Infrastructure
+- Disable GitHub Pages in repo settings (source → None) — protocolized.io now serves from CF Pages
+- Add `--remote` note to CLAUDE.md for all future `wrangler r2 object` commands (local miniflare trap)
+- Purge PDF/EPUB git history with `git-filter-repo` to reclaim repo size (353 MB removed from HEAD but still in history)
+
+### SoP Resource Migration (from summerofprotocols.com)
+Add resource entries for the following SoP content not yet in the library.
+
+**Missing research essays:**
+- Protocols Don't Build Pyramids — Drew Austin (essay, summerofprotocols.com/research/protocols-dont-build-pyramids)
+- Protocols in (Emergency) Time — Olivia Steiert (essay, summerofprotocols.com/research/protocols-in-emergency-time)
+- The Swarm and the Formation — Rafael Fernández (essay, summerofprotocols.com/research/the-swarm-and-the-formation)
+- New Time Machines — Aaron Lewis, Kei Kreutler, Alice Noujaim, Nahee Kim, Spencer Chang (serialized fiction, summerofprotocols.com/research/new-time-machines)
+
+**Bridge Atlas episodes 2–5** (Christine Kim, podcast series on Ethereum stewardship — ep.1 already in library):
+- Ep. 2: Commons and Crises
+- Ep. 3: Computing and Society
+- Ep. 4: Protocol Design Considerations
+- Ep. 5: Future Trust and Institutions
+
+**Missing "pill" creative micro-works** (all from SoP, type=fiction/image/game as appropriate):
+- A Pattern Language for Digital Spaces — Guo Liu (comic/graphic)
+- all just fresh-off-the-boat or floating — hua xi zi (video)
+- Below the API — Stephen Bailey (fiction)
+- Farflora — Sevenfloor / Xiaoting Tan (generative art / NFT)
+- FutureRack — Chenoe Hart (comic, 19" equipment rack as flexible standard)
+- Meet me on the deep net — Lizz Thabet (browser game)
+- Memories of Us — Will Abramson (fiction)
+- Micronaut Odyssey — Wendi Yan (video)
+- On-chain Data Sculpture Exhibition — Haotian Fang (video)
+- protocol.guide — Willie Shaw Fineberg (external mini-site / tool)
+- Protocol Party — Mashal Waqar (game — distinct from the card sets already in library)
+- Protocol with uncommunicables — Yuemin Huang (video)
+- Re-Move — Nahee Kim (visual narrative)
+- Renotations — Ben Zucker (musical protocol kit)
+- Technium Underground: The Eternal Return of Hara — Kay Yu (fiction)
+- Terminal Highway — Sachin Benny (fiction)
+- The Caucus — Randy Lubin (fiction/game)
+
+**ProtocolKit** — Physical research kit from SoP23. Add a resource entry now (type=`framework`, link to SoP page); a full product page is tracked in ROADMAP Phase 8.
 
 ## Done
 <!-- completed items, reverse chronological -->
