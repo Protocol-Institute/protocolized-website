@@ -154,6 +154,70 @@
           "html": "<strong>PI admin repo reference:</strong> CLAUDE.md updated with a PI key/security policy banner pointing to <code>../admin/keys.md</code> and <code>../admin/security.md</code>. The <code>## Keys</code> section notes that no keys are currently in use; when CF Workers are added, all PI keys go through <code>../.env.keys</code> and <code>../admin/keys.md</code> — not <code>Code/.env.keys</code>. The admin repo (<code>Protocol-Institute/admin</code>, private) is the single source of truth for PI contributor expenses, key ownership, and security policy."
         }
       ]
+    },
+    {
+      "id": 5,
+      "sort_key": 5.0,
+      "label": "Session 6",
+      "title": "C3PO Link Box and Protocol Lexicon",
+      "date": "2026-05-19",
+      "time_pt": "",
+      "tracks": ["c3po-integration", "ux"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": false,
+      "items": [
+        {
+          "title": "C3PO link box (2026-05-19):",
+          "html": "<strong>C3PO link box (2026-05-19):</strong> Added a beta-labeled link box to the top of the resources page sidebar (<code>src/pages/resources/index.astro</code>). Teal/coral styling; links to the deployed C3PO worker with a <code>?ref=protocolized-resources</code> query param for traffic-source tracking. Opens in a new tab. This is a surface entry point — the full service binding integration is planned for Phase 4."
+        },
+        {
+          "title": "Protocol Lexicon page (2026-05-20):",
+          "html": "<strong>Protocol Lexicon page (<code>/resources/protocol-lexicon</code>, 2026-05-20):</strong> 561 terms compiled from the C3PO corpus triage plus an existing 46-term hand-curated Markdown file. Three tiers: 233 PI-coined terms, 320 PI-specific terms, 8 curated external terms. Static Astro page backed by <code>public/api/lexicon.json</code>. Features: spotlight card (random selection with daily shuffle via date seed), live search (debounced input against term + definition), A-Z index bar (jump anchors), two-column card grid, triage badge system, source links. Build script at <code>scripts/build-lexicon.py</code>: merges the triage CSV with the hand-curated Markdown and writes JSON. A separate resource entry (<code>src/content/resources/protocol-lexicon.md</code>) links the library to the lexicon page."
+        },
+        {
+          "title": "Lexicon triage completion:",
+          "html": "<strong>Lexicon triage completion:</strong> 12 remaining terms triaged to close out the lexicon build sprint. Updated <code>status-vgr.md</code> with triage status and updated the session ritual in CLAUDE.md to reference the new lexicon infrastructure."
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "sort_key": 6.0,
+      "label": "Session 7",
+      "title": "Cloudflare Pages Migration, R2 PDF Migration, and Hono Framework Decision",
+      "date": "2026-05-30",
+      "time_pt": "",
+      "tracks": ["cloudflare-migration", "framework", "operations"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "CF Pages migration (Phase 0 complete):",
+          "html": "<strong>CF Pages migration — Phase 0 complete (2026-05-30):</strong> protocolized.io now serves from Cloudflare Pages under the PI org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). CF Pages project name: <code>protocolized-website</code>. Custom domains <code>protocolized.io</code> and <code>www.protocolized.io</code> active. GitHub Pages remains live as a dead-end fallback until manually disabled in repo settings."
+        },
+        {
+          "title": "R2 PDF migration:",
+          "html": "<strong>R2 PDF migration:</strong> All 82 PDFs and 4 EPUBs (353 MB) migrated from <code>public/resources/</code> to the R2 bucket <code>protocolized-resources</code>, served at <code>https://files.protocolized.io</code> via a custom R2 domain. 76 resource Markdown frontmatter <code>file:</code> fields rewritten from <code>/resources/filename.pdf</code> to <code>https://files.protocolized.io/filename.pdf</code>. Key incident: wrangler 4.x silently routes R2 writes to local miniflare storage when a <code>wrangler.toml</code> is present in CWD — all initial uploads went to <code>.wrangler/state/v3/</code> instead of CF. Fixed by re-uploading from <code>/tmp/</code> with <code>--remote</code> flag. Rule added to CLAUDE.md: always use <code>--remote</code> for <code>wrangler r2 object</code> and <code>wrangler d1 execute</code> commands."
+        },
+        {
+          "title": "Git history purge:",
+          "html": "<strong>Git history purge:</strong> PDFs removed from the git tree with <code>git rm --cached</code>, then fully expunged from all commit history using <code>git-filter-repo --path public/resources/ --invert-paths</code>. Repo size: 353 MB → ~1 MB. Remote re-added after filter-repo removed it (expected behavior); force-pushed clean history."
+        },
+        {
+          "title": "Framework decision — Hono + HTMX (Phase 1 complete):",
+          "html": "<strong>Framework decision — Hono + HTMX (Phase 1 complete):</strong> After reviewing the three options (Astro hybrid, Hono Workers, SvelteKit), chose <strong>Option B: Hono + HTMX on CF Workers</strong>. Rationale: the site's future feature set (streaming C3PO, semantic search, ETH auth, content gating) makes it fundamentally a dynamic web app, not a static magazine. Hono is CF-native, streaming is first-class, and a single coherent architecture avoids accumulating hybrid-mode complexity. ROADMAP.md Phases 0 and 1 marked complete; Phase 8 (Print Ops + ProtocolKit) added as a parallel track."
+        },
+        {
+          "title": "SoP content gap analysis:",
+          "html": "<strong>SoP content gap analysis:</strong> Cross-checked 53 SoP research items against 287 protocolized.io resource files. Found 21 items missing from the library: 4 research essays, 5 Bridge Atlas podcast episodes (ep 2–5 + ep 1 already in library), 17 creative \"pill\" micro-works (fiction, video, game, generative art). Added to the <code>status-vgr.md</code> Upcoming backlog. Separately identified 7 items belonging on protocol-institute.org (SoP program history, alumni directory, corporate workshops, CC+ license, Symposium 2025 archive, Teaching Fellows list, Regional Pilots); written to <code>../website/sop-migration.md</code>."
+        },
+        {
+          "title": "Hono migration plan:",
+          "html": "<strong>Hono migration plan (<code>worker/PLAN.md</code>):</strong> Full plan for replacing the Astro site with a CF Worker. D1 schema (single <code>resources</code> table), Hono JSX routes for all current pages, CSS strategy (copy Astro-compiled Tailwind output), content migration script (287 Markdown → D1), sync script dual-write strategy (Markdown + D1 during transition), and timeline targeting domain cutover before Monday 2026-06-02 8am UTC (next Substack cron run). Fallback: Astro CF Pages stays live; rollback = move custom domain back in CF dashboard."
+        }
+      ]
     }
   ]
 }
