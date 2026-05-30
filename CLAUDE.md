@@ -10,6 +10,25 @@ The site has two main sections:
 1. **Magazine** — stories, articles, and columns synced daily from the Protocolized Substack
 2. **Research library** — 280 resources (papers, talks, frameworks, datasets, etc.) from the Summer of Protocols program
 
+## Incoming Redirects — summerofprotocols.com
+
+`summerofprotocols.com` is being migrated to Cloudflare and will then redirect to
+`protocolized.io` (catch-all) and `protocol-institute.org` (specific institutional
+paths). This site receives the **catch-all** — most unmapped SoP URLs will land here.
+
+Paths explicitly redirected here:
+- `/research/*` and `/essays/*` → `/resources`
+- All other unmapped SoP paths → `/` (homepage)
+
+**Implication for this project:** the `/resources` page and homepage will receive
+inbound traffic from old summerofprotocols.com links. Keep those pages functional
+and well-described. If a resource that lived on SoP is missing from the library,
+it should be added before the redirect goes live.
+
+Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md`.
+
+---
+
 ## Stack
 
 - **Framework**: Astro 5.x (static output)
