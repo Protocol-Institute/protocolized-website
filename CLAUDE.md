@@ -31,12 +31,18 @@ Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md
 
 ## Stack
 
+**Current (live fallback):**
 - **Framework**: Astro 5.x (static output)
 - **Styling**: Tailwind CSS 3.x with custom design tokens
-- **Content**: Astro Content Collections (Markdown files with YAML frontmatter)
+- **Content**: Astro Content Collections (Markdown files in `src/content/resources/`)
 - **Search**: Fuse.js for client-side fuzzy search
-- **Deploy**: GitHub Pages via GitHub Actions (push to `main` triggers deploy)
+- **Deploy**: Cloudflare Pages (CF Pages project `protocolized-website`, PI org account)
 - **Node**: v22 (CI uses `node-version: 22`; locally via nvm)
+
+**In-progress migration (see `worker/PLAN.md`):**
+- **Framework**: Hono + HTMX on Cloudflare Workers
+- **Content**: D1 database (`protocolized-resources`); 287 Markdown files migrating to D1
+- **Deploy**: CF Worker with custom domain `protocolized.io`; Astro CF Pages stays as fallback until Worker is stable
 
 ## Commands
 
@@ -121,19 +127,13 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 
 ## At Session Start
 
-1. Read `status-vgr.md` — review active and upcoming items from the last session.
-2. Check Substack sync activity since last session — how many posts have been synced, and are there any pending?
+1. Read `status-vgr.md` — review active and upcoming items.
+2. Check Substack sync activity since last session:
    ```bash
-   git log --oneline --grep="sync" -10   # recent sync commits
+   git log --oneline --grep="sync" -10
    ```
-   Then check the live feed against the most recent synced post date in `src/content/` to see if any unsynced posts exist.
-3. Check branch state — how far has `feat/cloudflare-migration` drifted from `main`?
-   ```bash
-   git log main..feat/cloudflare-migration --oneline   # on CF branch, not yet on main
-   git log feat/cloudflare-migration..main --oneline   # on main, not yet merged into CF branch
-   ```
-4. Check framework decision status — has the Phase 1 framework choice (Option A/B/C from `ROADMAP.md`) been made? If yes, update the roadmap and proceed to Phase 2 planning.
-5. Briefly summarize to Venkat: sync activity since last session, CF migration status (is Timber's nameserver transfer done?), framework decision state, and active items from `status-vgr.md`.
+3. If Hono Worker work is ongoing, check `worker/PLAN.md` for current implementation state.
+4. Summarize to Venkat: sync activity, active items from `status-vgr.md`, and Worker migration progress.
 
 ---
 
@@ -147,14 +147,29 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 3. `npm run build` — verify clean build, zero errors, before committing.
 
 **Repo:**
-4. `git add` relevant files (never `.env`); `git commit`; `git push`. Push to `main` for GitHub Pages deploy; push to `feat/cloudflare-migration` for CF Pages preview once migration is live.
+4. `git add` relevant files (never `.env`); `git commit`; `git push`. Push to `main` — CF Pages auto-deploys Astro fallback. Worker deploys separately via `wrangler deploy` from `worker/`.
 
 **Memory:**
 5. Update Claude memory (`/Users/Venkat/.claude/projects/.../memory/`) — save anything non-obvious about the content schema, sync pipeline, framework decision state, or workflow preferences that would help future sessions. Do not duplicate what's in CLAUDE.md or recoverable from code.
 
 ## Keys
 
-No keys are currently in use for this repo. When CF Workers are added (post Phase 0 migration), keys (Cloudflare API token, future service keys) will be provisioned via `../.env.keys` and inventoried in `../admin/keys.md`. Do not use `Code/.env.keys` for PI keys.
+- `CLOUDFLARE_API_TOKEN` — in `../admin/keys.md`; used by GitHub Actions deploy and wrangler CLI.
+- All PI keys go in `../admin/keys.md`, not `Code/.env.keys`.
+
+## Wrangler CLI
+
+**Critical:** When a `wrangler.toml` is present in the CWD, wrangler 4.x defaults to
+**local miniflare storage** for R2/D1 commands. Always use `--remote` for any operation
+against live CF resources:
+
+```bash
+wrangler r2 object put bucket/key --file=... --remote
+wrangler d1 execute DB_NAME --remote --file=schema.sql
+wrangler d1 execute DB_NAME --remote --command="INSERT ..."
+```
+
+Omitting `--remote` silently succeeds but writes to `.wrangler/state/v3/` instead of CF.
 
 ## Things to watch out for
 
