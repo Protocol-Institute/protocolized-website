@@ -1,0 +1,241 @@
+import { Hono } from "hono";
+import { marked } from "marked";
+import {
+  getAllResources,
+  getResource,
+  getFeaturedResources,
+  getLatestArticles,
+  getRelatedResources,
+  getAnthologies,
+} from "./db";
+import { HomePage } from "./html/home";
+import { ResourcesPage } from "./html/resources";
+import { ResourcePage } from "./html/resource";
+import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
+
+interface Env {
+  DB: D1Database;
+}
+
+const app = new Hono<{ Bindings: Env }>();
+
+app.get("/", async (c) => {
+  const [featured, articles] = await Promise.all([
+    getFeaturedResources(c.env.DB),
+    getLatestArticles(c.env.DB, 5),
+  ]);
+  return c.html(
+    <HomePage
+      currentPath="/"
+      featuredResources={featured}
+      latestArticles={articles}
+    />
+  );
+});
+
+app.get("/about", (c) =>
+  c.html(<AboutPage currentPath="/about" />)
+);
+
+app.get("/community", (c) =>
+  c.html(<CommunityPage currentPath="/community" />)
+);
+
+app.get("/magazine", (c) =>
+  c.html(<MagazinePage currentPath="/magazine" />)
+);
+
+app.get("/anthologies", async (c) => {
+  const anthologies = await getAnthologies(c.env.DB);
+  return c.html(
+    <AnthologiesPage currentPath="/anthologies" anthologies={anthologies} />
+  );
+});
+
+app.get("/resources", async (c) => {
+  const resources = await getAllResources(c.env.DB);
+  return c.html(
+    <ResourcesPage currentPath="/resources" resources={resources} />
+  );
+});
+
+app.get("/resources/:slug", async (c) => {
+  const slug = c.req.param("slug");
+
+  // protocol-lexicon is served as a static asset; this route shouldn't be hit
+  // but handle it gracefully just in case
+  if (slug === "protocol-lexicon") {
+    return c.redirect("/resources/protocol-lexicon/", 301);
+  }
+
+  const resource = await getResource(c.env.DB, slug);
+  if (!resource) {
+    return c.html(notFound(), 404);
+  }
+
+  const [related, bodyHtml] = await Promise.all([
+    getRelatedResources(c.env.DB, slug, resource.tags),
+    resource.body
+      ? Promise.resolve(marked.parse(resource.body) as string)
+      : Promise.resolve(""),
+  ]);
+
+  return c.html(
+    <ResourcePage
+      currentPath={`/resources/${slug}`}
+      resource={resource}
+      related={related}
+      bodyHtml={bodyHtml}
+    />
+  );
+});
+
+app.get("/api/resources.json", async (c) => {
+  const resources = await getAllResources(c.env.DB);
+  const data = resources.map((r) => ({
+    slug: r.slug,
+    title: r.title,
+    type: r.type,
+    mediaType: ["talk", "lecture", "presentation"].includes(r.type)
+      ? "video"
+      : "text",
+    description: r.description,
+    authors: r.authors,
+    date: r.date,
+    tags: r.tags,
+    audience: r.audience,
+    featured: r.featured,
+  }));
+  return c.json(data);
+});
+
+app.get("/llms.txt", async (c) => {
+  const resources = await getAllResources(c.env.DB);
+  const lines = resources
+    .map((r) => `- [${r.title}](/resources/${r.slug})`)
+    .join("\n");
+
+  const content = `# Protocolized
+
+> Accelerating Order. Protocolized is a sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute.
+
+## About
+
+Protocolized is part of Protocol Institute, a parent organization dedicated to advancing the study and practice of protocols across fields.
+
+The magazine publishes stories, articles, and columns exploring protocols through fiction and critical thinking. The research library hosts papers, talks, templates, and more from the Summer of Protocols program.
+
+## Resources
+
+${lines}
+
+## Community
+
+- Discord: https://discord.gg/Aj5FbGsNYV
+- YouTube: https://www.youtube.com/@protocolized
+- Magazine: https://protocolized.summerofprotocols.com
+
+## External Links
+
+- Protocol Institute: https://protocolsociety.org
+- Summer of Protocols Archive: https://summerofprotocols.com
+
+## Machine-readable endpoints
+
+- Resource catalog: /api/resources.json
+- RSS feed: /rss.xml
+- Sitemap: /sitemap.xml
+`;
+
+  return new Response(content, {
+    headers: { "Content-Type": "text/plain; charset=utf-8" },
+  });
+});
+
+app.get("/rss.xml", async (c) => {
+  const resources = await getAllResources(c.env.DB);
+  const items = resources
+    .map((r) => {
+      const pubDate = new Date(r.date + "T00:00:00Z").toUTCString();
+      const cats = [...r.tags, r.type]
+        .map((t) => `<category>${t}</category>`)
+        .join("");
+      const authors = r.authors.map((a) => a.name).join(", ");
+      return `
+    <item>
+      <title><![CDATA[${r.title}]]></title>
+      <link>https://protocolized.io/resources/${r.slug}</link>
+      <guid>https://protocolized.io/resources/${r.slug}</guid>
+      <description><![CDATA[${r.description}]]></description>
+      <pubDate>${pubDate}</pubDate>
+      ${cats}
+      <author>${authors}</author>
+    </item>`;
+    })
+    .join("");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Protocolized Resources</title>
+    <link>https://protocolized.io</link>
+    <description>New resources on protocols — papers, frameworks, games, datasets, code, and more.</description>
+    <language>en-us</language>
+    <atom:link href="https://protocolized.io/rss.xml" rel="self" type="application/rss+xml" />
+    ${items}
+  </channel>
+</rss>`;
+
+  return new Response(xml, {
+    headers: { "Content-Type": "application/rss+xml; charset=utf-8" },
+  });
+});
+
+app.get("/sitemap.xml", async (c) => {
+  const resources = await getAllResources(c.env.DB);
+  const staticPaths = ["/", "/about", "/community", "/magazine", "/anthologies", "/resources"];
+  const resourcePaths = resources.map((r) => `/resources/${r.slug}`);
+  const allPaths = [...staticPaths, ...resourcePaths];
+
+  const urls = allPaths
+    .map(
+      (p) =>
+        `  <url><loc>https://protocolized.io${p}</loc></url>`
+    )
+    .join("\n");
+
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
+
+  return new Response(xml, {
+    headers: { "Content-Type": "application/xml; charset=utf-8" },
+  });
+});
+
+function notFound() {
+  return (
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <title>Not found — Protocolized</title>
+        <link rel="stylesheet" href="/style.css" />
+      </head>
+      <body class="min-h-screen flex items-center justify-center bg-surface">
+        <div class="text-center">
+          <p class="font-sans text-secondary text-sm mb-4">404</p>
+          <h1 class="font-serif text-4xl text-dark mb-4">Resource not found</h1>
+          <p class="font-sans text-secondary mb-8">
+            This resource doesn't exist or may have been moved.
+          </p>
+          <a href="/resources" class="btn-primary">
+            Browse all resources →
+          </a>
+        </div>
+      </body>
+    </html>
+  );
+}
+
+export default app;

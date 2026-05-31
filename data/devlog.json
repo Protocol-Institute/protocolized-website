@@ -18,7 +18,10 @@
       "title": "Resource Library Foundation",
       "date": "2026-03-23",
       "time_pt": "",
-      "tracks": ["content-sync", "ux"],
+      "tracks": [
+        "content-sync",
+        "ux"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": false,
@@ -48,7 +51,10 @@
       "title": "Rebrand, Logo Iterations, and GitHub Pages Deploy",
       "date": "2026-04-03",
       "time_pt": "",
-      "tracks": ["ux", "content-sync"],
+      "tracks": [
+        "ux",
+        "content-sync"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": false,
@@ -94,7 +100,11 @@
       "title": "Contributor Onboarding, CF Migration Branch, and Framework Decision",
       "date": "2026-05-12",
       "time_pt": "",
-      "tracks": ["cloudflare-migration", "framework", "c3po-integration"],
+      "tracks": [
+        "cloudflare-migration",
+        "framework",
+        "c3po-integration"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": false,
@@ -136,7 +146,9 @@
       "title": "Devlog System, Session Rituals, and Org Admin Infrastructure",
       "date": "2026-05-14",
       "time_pt": "14:30–18:56 PT",
-      "tracks": ["operations"],
+      "tracks": [
+        "operations"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": false,
@@ -162,7 +174,10 @@
       "title": "C3PO Link Box and Protocol Lexicon",
       "date": "2026-05-19",
       "time_pt": "",
-      "tracks": ["c3po-integration", "ux"],
+      "tracks": [
+        "c3po-integration",
+        "ux"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": false,
@@ -188,7 +203,11 @@
       "title": "Cloudflare Pages Migration, R2 PDF Migration, and Hono Framework Decision",
       "date": "2026-05-30",
       "time_pt": "",
-      "tracks": ["cloudflare-migration", "framework", "operations"],
+      "tracks": [
+        "cloudflare-migration",
+        "framework",
+        "operations"
+      ],
       "costs_usd": {},
       "vector_counts": {},
       "deployed": true,
@@ -216,6 +235,43 @@
         {
           "title": "Hono migration plan:",
           "html": "<strong>Hono migration plan (<code>worker/PLAN.md</code>):</strong> Full plan for replacing the Astro site with a CF Worker. D1 schema (single <code>resources</code> table), Hono JSX routes for all current pages, CSS strategy (copy Astro-compiled Tailwind output), content migration script (287 Markdown → D1), sync script dual-write strategy (Markdown + D1 during transition), and timeline targeting domain cutover before Monday 2026-06-02 8am UTC (next Substack cron run). Fallback: Astro CF Pages stays live; rollback = move custom domain back in CF dashboard."
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "sort_key": 7.0,
+      "label": "Session 8",
+      "title": "Hono Worker — Full Scaffold",
+      "date": "2026-05-31",
+      "time_pt": "",
+      "tracks": [
+        "cloudflare-migration",
+        "framework"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": false,
+      "items": [
+        {
+          "title": "Worker scaffolded (all routes):",
+          "html": "<strong>Worker fully scaffolded:</strong> All Hono CF Worker source files written for feature-parity with the Astro site. <code>worker/src/index.ts</code> wires 11 routes: <code>/</code>, <code>/about</code>, <code>/community</code>, <code>/magazine</code>, <code>/anthologies</code>, <code>/resources</code>, <code>/resources/:slug</code>, <code>/api/resources.json</code>, <code>/llms.txt</code>, <code>/rss.xml</code>, <code>/sitemap.xml</code>. Static assets (logo, lexicon HTML/JSON) served from <code>worker/public/</code> via the <code>[assets]</code> binding."
+        },
+        {
+          "title": "Hono JSX templates:",
+          "html": "<strong>Hono JSX templates:</strong> Five TSX component files implement the full UI in Hono JSX: <code>base.tsx</code> (HTML shell with sticky nav + footer, mobile menu), <code>home.tsx</code> (article carousel, audience pathway cards, featured resource grid, CTA strip), <code>resources.tsx</code> (full filter sidebar — type pills, media toggle, audience checkboxes, sort select — plus vanilla-JS client filter with URL-state sync), <code>resource.tsx</code> (detail page with breadcrumb, metadata bar, markdown body via <code>marked</code>, related resources), <code>static-pages.tsx</code> (about/community/magazine/anthologies). Design parity with Astro site: same Tailwind tokens, badge colors, component classes."
+        },
+        {
+          "title": "Migration script:",
+          "html": "<strong>Migration script (<code>scripts/migrate-to-d1.py</code>):</strong> Reads all 288 resource Markdown files, parses frontmatter with a zero-dependency YAML parser, emits batched SQL INSERT OR REPLACE statements, and runs them via <code>wrangler d1 execute</code>. Supports <code>--remote</code> flag for production import."
+        },
+        {
+          "title": "Worker infra:",
+          "html": "<strong>Worker infra:</strong> <code>worker/package.json</code> (hono, marked, @tailwindcss/typography, wrangler), <code>worker/tsconfig.json</code> (jsxImportSource: hono/jsx), <code>worker/tailwind.config.mjs</code> (same tokens as Astro site), <code>worker/schema.sql</code> (resources table + 3 indexes), <code>worker/wrangler.toml</code> (account_id set; database_id = PLACEHOLDER pending D1 create). CSS compiled: <code>worker/public/style.css</code>. Key management policy documented in CLAUDE.md: PI org keys live in <code>../.env.keys</code> at org root."
+        },
+        {
+          "title": "Remaining before cutover:",
+          "html": "<strong>Remaining before domain cutover:</strong> (1) Copy static assets to <code>worker/public/</code> (logo, robots.txt, lexicon HTML/JSON). (2) Create D1 database and fill in <code>database_id</code> in wrangler.toml. (3) Run migration. (4) Local test with <code>wrangler dev</code>. (5) <code>wrangler deploy</code>. (6) Move <code>protocolized.io</code> custom domain from CF Pages → Worker in CF dashboard."
         }
       ]
     }

@@ -41,16 +41,34 @@ Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md
 
 **In-progress migration (see `worker/PLAN.md`):**
 - **Framework**: Hono + HTMX on Cloudflare Workers
-- **Content**: D1 database (`protocolized-resources`); 287 Markdown files migrating to D1
+- **Content**: D1 database (`protocolized-resources`); 288 Markdown files migrating to D1
 - **Deploy**: CF Worker with custom domain `protocolized.io`; Astro CF Pages stays as fallback until Worker is stable
+- **Status (2026-05-31):** Worker fully scaffolded — all routes, DB helpers, JSX templates, migration script, CSS built. Remaining: create D1, run migration, local test, deploy.
 
 ## Commands
 
+**Astro (root):**
 ```sh
 npm install       # install dependencies
 npm run dev       # start dev server on http://localhost:4321
 npm run build     # production build to dist/
 npm run preview   # preview production build locally
+```
+
+**Worker (from `worker/`):**
+```sh
+npm install           # install worker dependencies
+npm run build:css     # compile Tailwind → public/style.css
+npm run dev           # wrangler dev (local miniflare D1)
+npm run deploy        # build CSS + wrangler deploy (requires CLOUDFLARE_API_TOKEN)
+```
+
+**D1 (from `worker/`, requires CLOUDFLARE_API_TOKEN):**
+```sh
+wrangler d1 create protocolized-resources          # one-time: create DB, capture ID
+wrangler d1 execute protocolized-resources --file=schema.sql --remote
+# then from repo root:
+python3 scripts/migrate-to-d1.py --remote          # import all 288 resources
 ```
 
 ## Project structure
@@ -60,7 +78,7 @@ src/
 ├── components/        # Astro components (Nav, Footer, ResourceCard, BadgeType, etc.)
 ├── content/
 │   ├── config.ts      # Zod schema for the resources collection
-│   └── resources/     # ~280 Markdown resource files
+│   └── resources/     # 288 Markdown resource files
 ├── layouts/
 │   ├── Base.astro     # HTML shell (fonts, JSON-LD, nav/footer)
 │   └── Resource.astro # Resource detail page layout
@@ -77,10 +95,23 @@ src/
 │   ├── llms.txt.ts          # LLM-readable site summary
 │   └── rss.xml.ts           # RSS feed
 scripts/
-│   └── sync-substack.py     # Syncs Substack RSS → resource Markdown files
+├── sync-substack.py    # Syncs Substack RSS → resource Markdown files
+├── build-lexicon.py    # Builds /api/lexicon.json from corpus triage data
+└── migrate-to-d1.py   # One-time: imports all 288 resources to D1
+worker/                # Hono CF Worker (in-progress replacement for Astro)
+├── src/
+│   ├── index.ts        # All routes
+│   ├── db.ts           # D1 query helpers
+│   └── html/           # Hono JSX page components
+├── public/             # Static assets (style.css, logo, robots.txt, lexicon)
+├── schema.sql          # D1 DDL
+├── wrangler.toml       # Worker config (update database_id after D1 create)
+└── package.json
+data/
+└── devlog.json         # Session devlog (rendered at /devlog by scripts/devlog_render.py)
 .github/workflows/
-│   ├── deploy.yml           # Build & deploy to GitHub Pages on push to main
-│   └── sync-substack.yml    # Daily cron to sync new Substack posts
+├── deploy.yml          # Build & deploy Astro to CF Pages on push to main
+└── sync-substack.yml   # Daily cron to sync new Substack posts
 ```
 
 ## Design tokens
@@ -132,8 +163,12 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
    ```bash
    git log --oneline --grep="sync" -10
    ```
-3. If Hono Worker work is ongoing, check `worker/PLAN.md` for current implementation state.
-4. Summarize to Venkat: sync activity, active items from `status-vgr.md`, and Worker migration progress.
+3. If Hono Worker work is ongoing, check `worker/PLAN.md` and `worker/wrangler.toml` for current implementation state (esp. whether `database_id` has been filled in yet).
+4. For any wrangler/CF ops, export the API token from the org key store:
+   ```sh
+   export CLOUDFLARE_API_TOKEN=$(grep CLOUDFLARE_API_TOKEN ../../.env.keys | cut -d= -f2)
+   ```
+5. Summarize to Venkat: sync activity, active items from `status-vgr.md`, and Worker migration progress.
 
 ---
 
@@ -154,8 +189,20 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 
 ## Keys
 
-- `CLOUDFLARE_API_TOKEN` — in `../admin/keys.md`; used by GitHub Actions deploy and wrangler CLI.
-- All PI keys go in `../admin/keys.md`, not `Code/.env.keys`.
+**Policy:** All PI org keys are managed via the `/admin` project:
+- **Registry** (names, owners, no values): `../admin/keys.md`
+- **Values**: `../.env.keys` at the org root (`protocol-institute/.env.keys`). Dropbox-ignored, never committed.
+
+To use keys locally, source the org-level file or copy needed keys into a local `.env` in this project root (gitignored):
+```sh
+export $(grep -v '^#' ../../.env.keys | xargs)   # source all org keys
+# or just: export CLOUDFLARE_API_TOKEN=<value from ../.env.keys>
+```
+
+Current keys used by this project (values in `../.env.keys`):
+- `CLOUDFLARE_API_TOKEN` — PI org CF token. Used by wrangler CLI and GitHub Actions deploy.
+
+The PI org Cloudflare account ID (`7e8c7969b2464d23795c555bc6a32af8`) is set in `worker/wrangler.toml`.
 
 ## Wrangler CLI
 

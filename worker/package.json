@@ -1,0 +1,22 @@
+{
+  "name": "protocolized-worker",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "npm run build:css && wrangler deploy",
+    "build:css": "npx tailwindcss -i src/styles/input.css -o public/style.css --minify",
+    "watch:css": "npx tailwindcss -i src/styles/input.css -o public/style.css --watch"
+  },
+  "dependencies": {
+    "hono": "^4.7.0",
+    "marked": "^15.0.0"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250509.0",
+    "@tailwindcss/typography": "^0.5.15",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.8.3",
+    "wrangler": "^4.0.0"
+  }
+}
