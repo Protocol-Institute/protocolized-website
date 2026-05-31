@@ -240,8 +240,33 @@
     },
     {
       "id": 7,
-      "sort_key": 7.0,
+      "sort_key": 7.5,
       "label": "Session 8",
+      "title": "C3PO Migration to PI Org + c3po.protocolized.io",
+      "date": "2026-05-31",
+      "time_pt": "",
+      "tracks": [
+        "cloudflare-migration",
+        "c3po-integration"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "C3PO Worker migrated to PI org account:",
+          "html": "<strong>C3PO Worker migrated to PI org account:</strong> The C3PO RAG assistant Worker was moved from the personal Cloudflare account (<code>vgr-702</code>) to the Protocol Institute org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). This consolidates all PI infrastructure under the org account, consistent with CF Pages and R2 already on PI org."
+        },
+        {
+          "title": "c3po.protocolized.io subdomain live:",
+          "html": "<strong>c3po.protocolized.io subdomain live:</strong> Custom domain <code>c3po.protocolized.io</code> configured and active, replacing the old personal worker URL <code>c3po.vgr-702.workers.dev</code>. The resources page sidebar C3PO link updated accordingly (<code>src/pages/resources/index.astro</code>)."
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "sort_key": 8.0,
+      "label": "Session 9",
       "title": "Hono Worker — Full Scaffold",
       "date": "2026-05-31",
       "time_pt": "",
