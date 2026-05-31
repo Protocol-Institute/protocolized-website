@@ -254,12 +254,12 @@
       "deployed": true,
       "items": [
         {
-          "title": "C3PO Worker migrated to PI org account:",
-          "html": "<strong>C3PO Worker migrated to PI org account:</strong> The C3PO RAG assistant Worker was moved from the personal Cloudflare account (<code>vgr-702</code>) to the Protocol Institute org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). This consolidates all PI infrastructure under the org account, consistent with CF Pages and R2 already on PI org."
+          "title": "C3PO migrated to PI org CF account:",
+          "html": "<strong>C3PO migrated to PI org CF account:</strong> The C3PO RAG assistant Worker was moved from the personal Cloudflare account to the Protocol Institute org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). C3PO assets (Pinecone index, model configs) migrated to PI infrastructure. DNS was already on Cloudflare from prior setup; no DNS changes required. This consolidates all PI compute and storage under the org account alongside CF Pages and R2 (already migrated in session 7)."
         },
         {
           "title": "c3po.protocolized.io subdomain live:",
-          "html": "<strong>c3po.protocolized.io subdomain live:</strong> Custom domain <code>c3po.protocolized.io</code> configured and active, replacing the old personal worker URL <code>c3po.vgr-702.workers.dev</code>. The resources page sidebar C3PO link updated accordingly (<code>src/pages/resources/index.astro</code>)."
+          "html": "<strong>c3po.protocolized.io subdomain live:</strong> Custom subdomain <code>c3po.protocolized.io</code> configured on the PI org CF account, replacing the personal worker URL <code>c3po.vgr-702.workers.dev</code>. The Protocolized resources page sidebar C3PO link updated to the new URL with the <code>?ref=protocolized-resources</code> tracking parameter. Bot is now fully embedded as a PI-hosted service."
         }
       ]
     },
