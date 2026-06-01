@@ -113,3 +113,75 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **Hono migration plan (`worker/PLAN.md`):** Full plan for replacing the Astro site with a CF Worker. D1 schema (single `resources` table), Hono JSX routes for all current pages, CSS strategy (copy Astro-compiled Tailwind output), content migration script (287 Markdown → D1), sync script dual-write strategy (Markdown + D1 during transition), and timeline targeting domain cutover before Monday 2026-06-02 8am UTC (next Substack cron run). Fallback: Astro CF Pages stays live; rollback = move custom domain back in CF dashboard.
 
 ---
+
+## Session 8: C3PO Migration to PI Org + c3po.protocolized.io
+
+*2026-05-31*
+
+**Tracks:** cloudflare-migration, c3po-integration
+
+- **C3PO migrated to PI org CF account:** The C3PO RAG assistant Worker was moved from the personal Cloudflare account to the Protocol Institute org account (`7e8c7969b2464d23795c555bc6a32af8`). C3PO assets (Pinecone index, model configs) migrated to PI infrastructure. DNS was already on Cloudflare from prior setup; no DNS changes required. This consolidates all PI compute and storage under the org account alongside CF Pages and R2 (already migrated in session 7).
+
+- **c3po.protocolized.io subdomain live:** Custom subdomain `c3po.protocolized.io` configured on the PI org CF account, replacing the personal worker URL `c3po.vgr-702.workers.dev`. The Protocolized resources page sidebar C3PO link updated to the new URL with the `?ref=protocolized-resources` tracking parameter. Bot is now fully embedded as a PI-hosted service.
+
+---
+
+## Session 9: Hono Worker — Full Scaffold
+
+*2026-05-31*
+
+**Tracks:** cloudflare-migration, framework
+
+- **Worker fully scaffolded:** All Hono CF Worker source files written for feature-parity with the Astro site. `worker/src/index.ts` wires 11 routes: `/`, `/about`, `/community`, `/magazine`, `/anthologies`, `/resources`, `/resources/:slug`, `/api/resources.json`, `/llms.txt`, `/rss.xml`, `/sitemap.xml`. Static assets (logo, lexicon HTML/JSON) served from `worker/public/` via the `[assets]` binding.
+
+- **Hono JSX templates:** Five TSX component files implement the full UI in Hono JSX: `base.tsx` (HTML shell with sticky nav + footer, mobile menu), `home.tsx` (article carousel, audience pathway cards, featured resource grid, CTA strip), `resources.tsx` (full filter sidebar — type pills, media toggle, audience checkboxes, sort select — plus vanilla-JS client filter with URL-state sync), `resource.tsx` (detail page with breadcrumb, metadata bar, markdown body via `marked`, related resources), `static-pages.tsx` (about/community/magazine/anthologies). Design parity with Astro site: same Tailwind tokens, badge colors, component classes.
+
+- **Migration script (`scripts/migrate-to-d1.py`):** Reads all 288 resource Markdown files, parses frontmatter with a zero-dependency YAML parser, emits batched SQL INSERT OR REPLACE statements, and runs them via `wrangler d1 execute`. Supports `--remote` flag for production import.
+
+- **Worker infra:** `worker/package.json` (hono, marked, @tailwindcss/typography, wrangler), `worker/tsconfig.json` (jsxImportSource: hono/jsx), `worker/tailwind.config.mjs` (same tokens as Astro site), `worker/schema.sql` (resources table + 3 indexes), `worker/wrangler.toml` (account_id set; database_id = PLACEHOLDER pending D1 create). CSS compiled: `worker/public/style.css`. Key management policy documented in CLAUDE.md: PI org keys live in `../.env.keys` at org root.
+
+- **Remaining before domain cutover:** (1) Copy static assets to `worker/public/` (logo, robots.txt, lexicon HTML/JSON). (2) Create D1 database and fill in `database_id` in wrangler.toml. (3) Run migration. (4) Local test with `wrangler dev`. (5) `wrangler deploy`. (6) Move `protocolized.io` custom domain from CF Pages → Worker in CF dashboard.
+
+---
+
+## Session 10: Phase 1 Complete — Worker Deployed
+
+*2026-06-01 · 9:30–10:20am*
+
+**Tracks:** cloudflare-migration, content-sync
+
+- **D1 database created and populated:** `protocolized-resources` (id: `1b47f2d7-9c84-4078-a27a-2f3eea9f41b7`, WNAM region) created via wrangler. Schema applied with both tables: `resources` (288 rows migrated from Markdown) and `posts` (empty, ready for Phase 2 Substack mirror). Migration script ran in 6 batches, ~10 seconds total.
+
+- **Hono Worker deployed to Cloudflare:** `protocolized-website.team-7e8.workers.dev` — all routes tested (200s across `/`, `/resources`, `/resources/:slug`, `/magazine`, `/about`, `/community`, `/anthologies`, `/rss.xml`, `/llms.txt`, `/api/resources.json`; 404 on unknown slugs). Two pre-deploy fixes: renamed `index.ts` → `index.tsx` (JSX requires .tsx extension for tsc) and added `skipLibCheck: true` (Hono JSX DOM event types conflict with `@cloudflare/workers-types`). Static assets copied to `worker/public/`. Pending manual step: move `protocolized.io` custom domain from CF Pages → Worker in CF dashboard.
+
+- **Substack cover images backfilled into D1:** Discovered the Astro home page fetched OG images from Substack at build time — the Worker had no thumbnails in D1, so the home page showed none. Fix: `scripts/backfill-thumbnails.py` fetches `cover_image` for all 117 Substack posts via the paginated `/api/v1/posts` endpoint and writes to `resources.thumbnail` in D1. Single-batch SQL execution. Images now showing on the Worker home page. These are still substackcdn.com/S3 URLs; Phase 2 will mirror them to R2.
+
+- **Phase 2 plan finalised:** Compared c3po’s Substack API access (paginated list fetch, `updated_at` change detection, Haiku enrichment, Pinecone output) with protocolized-website needs (D1 + R2 output). Decision: independent sync script with borrowed change-detection pattern, no cross-repo coupling. Backfill uses c3po’s existing `api_metadata.json` and `enriched_meta.json` as input (no re-fetching metadata). Fresh Substack export (138 posts, 2026-06-01) unzipped to `data/substack/`. Every post page will show a prominent “Read on Substack” link. Full plan in `plans/phase2-substack-mirror.md`.
+
+---
+
+## Session 11: Status Check — Domain Cutover Deferred
+
+*2026-06-01*
+
+**Tracks:** cloudflare-migration
+
+- **Domain cutover deferred intentionally:** Decision made to keep `protocolized.io` on CF Pages until the Worker has full feature parity. The cutover itself is a 30-second manual step in the CF dashboard and is not a blocker for development. Confirmed GH Pages disabling and git history purge (removing PDFs from repo) were both completed in earlier sessions.
+
+---
+
+## Session 12: Phase 2 Complete — Posts Mirrored, Substack Links Internalized
+
+*2026-06-01*
+
+**Tracks:** cloudflare-migration, content-sync
+
+- **117 Substack posts fully mirrored to D1 + R2:** `scripts/mirror-substack.py` reads c3po's `api_metadata.json` and export HTML files, mirrors images to R2, uploads body HTML to `posts/{slug}/body.html` in R2, and writes metadata to D1. Body HTML stored in R2 rather than D1 due to D1's 100KB SQL statement limit — D1 stores a `body_r2_key` pointer instead. State tracked in `data/mirror_state.json` for resumable runs. Two posts without export files (`irrigation-by-protocol-when-vineyards`, `the-overloaded-train`) fetched from the Substack API. Fix script (`fix-missing-body-r2.py`) patched 115 posts that had D1 rows without `body_r2_key` from earlier failed runs.
+
+- **New Worker routes for magazine content:** `/magazine` queries D1 for all posts (ordered by date) and renders a card list with cover image, section badge, byline, and subtitle. `/p/:slug` fetches body HTML from R2 via the `FILES` R2 binding and renders it with Tailwind Typography prose styles. Falls back gracefully if body is missing. Prev/next navigation uses `previous_slug`/`next_slug` from D1. R2 bucket binding added to `wrangler.toml`.
+
+- **All Substack clickthroughs eliminated:** Added `substackToInternalUrl()` helper in `static-pages.tsx` that detects `protocolized.summerofprotocols.com/p/{slug}` URLs and rewrites them to internal `/p/{slug}` routes. Applied throughout: homepage carousel cards, resource index cards, and resource detail page primary action all resolve to `/p/:slug` instead of opening Substack. Article resource cards now link directly to the post page, bypassing the resource detail page. &ldquo;View on Substack&rdquo; demoted to a small inline link in the post byline (author &middot; date &middot; View on Substack &uarr;).
+
+- **Fixed Worker crash on `/magazine` and `/p/:slug`:** `getLatestPosts()` and `getAdjacentPosts()` use partial column SELECTs (no `enriched_categories`, `substack_categories`, or `authors`), but `parsePostRow()` called `JSON.parse()` on those columns unconditionally — causing `SyntaxError: &quot;undefined&quot; is not valid JSON`. Fixed by guarding all JSON parses with null checks and fallback empty arrays.
+
+---

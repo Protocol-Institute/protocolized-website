@@ -174,18 +174,51 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 
 ## After Each Session
 
-**Documentation (always):**
-1. `status-vgr.md` — add a dated log entry with PT start–end times and a one-line summary of what changed.
-2. `CLAUDE.md` — update stack notes, roadmap status, or schema changes if anything changed.
+**Before starting wrap-up:** Do not initiate wrap-up unilaterally. Wait until Venkat says to wrap up or asks "what did we do."
 
-**Build & verify (if code or content changed):**
-3. `npm run build` — verify clean build, zero errors, before committing.
+**Checklist — complete in order:**
 
-**Repo:**
-4. `git add` relevant files (never `.env`); `git commit`; `git push`. Push to `main` — CF Pages auto-deploys Astro fallback. Worker deploys separately via `wrangler deploy` from `worker/`.
+1. **`status-vgr.md`** — add a dated entry to the Done section. Move any completed Upcoming items to Done.
+2. **`CLAUDE.md`** — update stack notes, Worker status, schema changes, or deployment info if anything changed.
+3. **`data/devlog.json`** — append a new session record (see schema below). **Never skip.** This is the load-bearing architectural record.
+4. **Regenerate devlog:** `python3 devlog_render.py` from repo root (updates the rendered devlog page).
+5. **Repo** — `git add` relevant files (never `.env`); `git commit`; `git push origin main`.
+6. **Memory** — save anything non-obvious about the Worker architecture, sync pipeline, schema decisions, or workflow preferences. Do not duplicate what's in CLAUDE.md or recoverable from code.
 
-**Memory:**
-5. Update Claude memory (`/Users/Venkat/.claude/projects/.../memory/`) — save anything non-obvious about the content schema, sync pipeline, framework decision state, or workflow preferences that would help future sessions. Do not duplicate what's in CLAUDE.md or recoverable from code.
+**Devlog JSON schema** (append to `data/devlog.json` → `sessions` array):
+
+```json
+{
+  "id": <next integer>,
+  "sort_key": <session_number as float>,
+  "label": "Session N",
+  "title": "Short descriptive title",
+  "date": "YYYY-MM-DD",
+  "time_pt": "",
+  "tracks": ["cloudflare-migration" | "content-sync" | "c3po-integration" | "framework" | "operations" | "ux"],
+  "costs_usd": {},
+  "vector_counts": {},
+  "deployed": true | false,
+  "items": [
+    { "title": "Component or decision name:", "html": "Explanation in HTML." }
+  ]
+}
+```
+
+**Devlog writing standard** — write `items` as if briefing a future engineer on architectural decisions, not just changes. Explain *why*, name the current state of the affected subsystem, and note anything that closes off alternatives or locks in a direction.
+
+**Wrap-up report (never skip):**
+
+After completing the checklist, report to Venkat with a table:
+
+| # | Item | Status | Notes |
+|---|------|--------|-------|
+| 1 | status-vgr.md | ✅ / ❌ | |
+| 2 | CLAUDE.md | ✅ / ❌ / n/a | |
+| 3 | devlog.json | ✅ / ❌ | |
+| 4 | devlog_render.py | ✅ / ❌ | |
+| 5 | git commit + push | ✅ / ❌ | |
+| 6 | Memory updated | ✅ / ❌ / n/a | |
 
 ## Keys
 
