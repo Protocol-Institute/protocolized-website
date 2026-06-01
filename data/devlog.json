@@ -299,6 +299,39 @@
           "html": "<strong>Remaining before domain cutover:</strong> (1) Copy static assets to <code>worker/public/</code> (logo, robots.txt, lexicon HTML/JSON). (2) Create D1 database and fill in <code>database_id</code> in wrangler.toml. (3) Run migration. (4) Local test with <code>wrangler dev</code>. (5) <code>wrangler deploy</code>. (6) Move <code>protocolized.io</code> custom domain from CF Pages → Worker in CF dashboard."
         }
       ]
+    },
+    {
+      "id": 9,
+      "sort_key": 9.0,
+      "label": "Session 10",
+      "title": "Phase 1 Complete — Worker Deployed",
+      "date": "2026-06-01",
+      "time_pt": "9:30–10:20am",
+      "tracks": [
+        "cloudflare-migration",
+        "content-sync"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "D1 created and resources migrated:",
+          "html": "<strong>D1 database created and populated:</strong> <code>protocolized-resources</code> (id: <code>1b47f2d7-9c84-4078-a27a-2f3eea9f41b7</code>, WNAM region) created via wrangler. Schema applied with both tables: <code>resources</code> (288 rows migrated from Markdown) and <code>posts</code> (empty, ready for Phase 2 Substack mirror). Migration script ran in 6 batches, ~10 seconds total."
+        },
+        {
+          "title": "Worker deployed:",
+          "html": "<strong>Hono Worker deployed to Cloudflare:</strong> <code>protocolized-website.team-7e8.workers.dev</code> — all routes tested (200s across <code>/</code>, <code>/resources</code>, <code>/resources/:slug</code>, <code>/magazine</code>, <code>/about</code>, <code>/community</code>, <code>/anthologies</code>, <code>/rss.xml</code>, <code>/llms.txt</code>, <code>/api/resources.json</code>; 404 on unknown slugs). Two pre-deploy fixes: renamed <code>index.ts</code> → <code>index.tsx</code> (JSX requires .tsx extension for tsc) and added <code>skipLibCheck: true</code> (Hono JSX DOM event types conflict with <code>@cloudflare/workers-types</code>). Static assets copied to <code>worker/public/</code>. Pending manual step: move <code>protocolized.io</code> custom domain from CF Pages → Worker in CF dashboard."
+        },
+        {
+          "title": "Thumbnail backfill:",
+          "html": "<strong>Substack cover images backfilled into D1:</strong> Discovered the Astro home page fetched OG images from Substack at build time — the Worker had no thumbnails in D1, so the home page showed none. Fix: <code>scripts/backfill-thumbnails.py</code> fetches <code>cover_image</code> for all 117 Substack posts via the paginated <code>/api/v1/posts</code> endpoint and writes to <code>resources.thumbnail</code> in D1. Single-batch SQL execution. Images now showing on the Worker home page. These are still substackcdn.com/S3 URLs; Phase 2 will mirror them to R2."
+        },
+        {
+          "title": "Substack mirror plan (Phase 2):",
+          "html": "<strong>Phase 2 plan finalised:</strong> Compared c3po’s Substack API access (paginated list fetch, <code>updated_at</code> change detection, Haiku enrichment, Pinecone output) with protocolized-website needs (D1 + R2 output). Decision: independent sync script with borrowed change-detection pattern, no cross-repo coupling. Backfill uses c3po’s existing <code>api_metadata.json</code> and <code>enriched_meta.json</code> as input (no re-fetching metadata). Fresh Substack export (138 posts, 2026-06-01) unzipped to <code>data/substack/</code>. Every post page will show a prominent “Read on Substack” link. Full plan in <code>plans/phase2-substack-mirror.md</code>."
+        }
+      ]
     }
   ]
 }

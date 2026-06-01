@@ -39,11 +39,12 @@ Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md
 - **Deploy**: Cloudflare Pages (CF Pages project `protocolized-website`, PI org account)
 - **Node**: v22 (CI uses `node-version: 22`; locally via nvm)
 
-**In-progress migration (see `worker/PLAN.md`):**
-- **Framework**: Hono + HTMX on Cloudflare Workers
-- **Content**: D1 database (`protocolized-resources`); 288 Markdown files migrating to D1
-- **Deploy**: CF Worker with custom domain `protocolized.io`; Astro CF Pages stays as fallback until Worker is stable
-- **Status (2026-05-31):** Worker fully scaffolded — all routes, DB helpers, JSX templates, migration script, CSS built. Remaining: create D1, run migration, local test, deploy.
+**Worker (deployed, pending domain cutover):**
+- **Framework**: Hono + JSX on Cloudflare Workers (`worker/src/index.tsx`)
+- **Content**: D1 database `protocolized-resources` (id: `1b47f2d7-9c84-4078-a27a-2f3eea9f41b7`); 288 resources migrated; `posts` table created (empty, for Phase 2 Substack mirror)
+- **Deploy**: Live at `https://protocolized-website.team-7e8.workers.dev`; Astro CF Pages stays as fallback until `protocolized.io` custom domain is moved to Worker in CF dashboard
+- **Status (2026-06-01):** Worker deployed, all routes tested. Pending: move `protocolized.io` custom domain from CF Pages → Worker in CF dashboard (30-second manual step).
+- **Phase 2**: Substack post mirror (body HTML + images → R2) — see `plans/phase2-substack-mirror.md`
 
 ## Commands
 
