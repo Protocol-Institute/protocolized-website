@@ -6,3 +6,7 @@ raw_resources/
 .claude/
 .env
 .env.local
+.wrangler/
+worker/.wrangler/
+data/substack/
+*.zip

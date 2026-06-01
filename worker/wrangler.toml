@@ -1,5 +1,5 @@
 name = "protocolized-website"
-main = "src/index.ts"
+main = "src/index.tsx"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 account_id = "7e8c7969b2464d23795c555bc6a32af8"
@@ -7,7 +7,7 @@ account_id = "7e8c7969b2464d23795c555bc6a32af8"
 [[d1_databases]]
 binding = "DB"
 database_name = "protocolized-resources"
-database_id = "PLACEHOLDER"  # fill in after: wrangler d1 create protocolized-resources
+database_id = "1b47f2d7-9c84-4078-a27a-2f3eea9f41b7"
 
 [assets]
 directory = "./public"
