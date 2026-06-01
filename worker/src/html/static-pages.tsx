@@ -247,87 +247,126 @@ export function CommunityPage({ currentPath }: { currentPath: string }) {
   );
 }
 
-export function MagazinePage({ currentPath }: { currentPath: string }) {
+export function MagazinePage({
+  currentPath,
+  posts,
+}: {
+  currentPath: string;
+  posts: import("../db").Post[];
+}) {
   const script = mobileMenuScript();
   return (
     <Base
       title="Magazine"
-      description="Subscribe to the Protocolized magazine on Substack."
+      description="Essays, fiction, and protocol thinking from Protocolized."
       currentPath={currentPath}
       bodyScript={script}
     >
       <div class="py-16 px-6 lg:px-8">
-        <div class="max-w-prose mx-auto">
-          <h1 class="font-serif text-5xl text-dark mb-4">Magazine</h1>
-          <p class="font-body text-xl text-secondary mb-10 leading-relaxed">
-            Written updates, new resources, and protocol thinking — straight to your inbox.
-          </p>
-
-          <section class="card p-8 mb-10" aria-label="Subscribe to magazine">
-            <h2 class="font-serif text-2xl text-dark mb-2">Subscribe</h2>
-            <p class="font-body text-secondary mb-6 leading-relaxed">
-              The Protocolized magazine is published on Substack. Subscribe to
-              get new posts and resource announcements directly.
+        <div class="max-w-wide mx-auto">
+          <div class="max-w-2xl mb-10">
+            <h1 class="font-serif text-5xl text-dark mb-4">Magazine</h1>
+            <p class="font-body text-xl text-secondary leading-relaxed">
+              Essays, fiction, and protocol thinking — published on Substack.
             </p>
-            <div class="mb-6">
-              <iframe
-                src="https://protocolized.summerofprotocols.com/embed"
-                width="100%"
-                height="150"
-                style="border:1px solid #EEE; background:white; border-radius:8px;"
-                frameborder="0"
-                scrolling="no"
-                title="Subscribe to Protocolized on Substack"
-              />
+          </div>
+
+          {/* Subscribe strip */}
+          <div class="mb-12 p-6 rounded-xl bg-primary-light border border-primary/20 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+            <div>
+              <p class="font-sans font-medium text-dark mb-1">Subscribe to Protocolized</p>
+              <p class="font-sans text-sm text-secondary">New posts to your inbox.</p>
             </div>
-            <p class="text-sm font-sans text-secondary">
-              Or visit directly:{" "}
-              <a
-                href="https://protocolized.summerofprotocols.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="text-primary hover:text-[#085041] transition-colors"
-              >
-                protocolized.summerofprotocols.com
-              </a>
-            </p>
-          </section>
+            <a
+              href="https://protocolized.summerofprotocols.com/#/portal/signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-primary shrink-0"
+            >
+              Subscribe ↗
+            </a>
+          </div>
 
-          <section class="mb-10" aria-labelledby="expect-heading">
-            <h2 id="expect-heading" class="font-serif text-2xl text-dark mb-4">
-              What you'll get
-            </h2>
-            <ul class="space-y-3 font-body text-secondary">
-              {[
-                "New resources added to the library",
-                "Essays and commentary on protocol theory and practice",
-                "Event announcements: workshops, reading groups, talks",
-                "Signals from the broader field: interesting work happening elsewhere",
-              ].map((item) => (
-                <li class="flex items-start gap-3">
-                  <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary shrink-0" aria-hidden="true" />
-                  {item}
-                </li>
+          {/* Post list */}
+          {posts.length > 0 ? (
+            <div class="divide-y divide-gray-100">
+              {posts.map((post) => (
+                <PostCard post={post} />
               ))}
-            </ul>
-          </section>
-
-          <div class="pt-8 border-t border-gray-100">
-            <p class="font-sans text-sm text-secondary">
-              Want to browse before subscribing?{" "}
+            </div>
+          ) : (
+            <div class="text-center py-16">
+              <p class="font-sans text-secondary mb-4">
+                Posts are being mirrored — check back soon, or read on Substack.
+              </p>
               <a
                 href="https://protocolized.summerofprotocols.com/archive"
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-primary hover:text-[#085041] transition-colors"
+                class="btn-primary"
               >
-                Read the archive on Substack →
+                Read on Substack →
               </a>
-            </p>
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </Base>
+  );
+}
+
+function PostCard({ post }: { post: import("../db").Post }) {
+  const substackUrl =
+    post.substack_url ??
+    `https://protocolized.summerofprotocols.com/p/${post.slug}`;
+
+  return (
+    <article class="py-8 flex gap-6 group">
+      {post.cover_image && (
+        <a href={`/p/${post.slug}`} class="shrink-0 hidden sm:block" tabindex={-1} aria-hidden="true">
+          <img
+            src={post.cover_image}
+            alt=""
+            class="w-24 h-24 object-cover rounded-lg"
+            loading="lazy"
+          />
+        </a>
+      )}
+      <div class="flex-1 min-w-0">
+        <div class="flex items-center gap-3 mb-2">
+          <span class="text-xs font-sans font-medium text-primary bg-primary-light px-2 py-0.5 rounded-full">
+            {post.section}
+          </span>
+          <time datetime={post.date} class="text-xs font-sans text-secondary">
+            {fmtDate(post.date, "short")}
+          </time>
+        </div>
+        <h2 class="font-serif text-xl text-dark leading-snug mb-2">
+          <a
+            href={`/p/${post.slug}`}
+            class="hover:text-primary transition-colors"
+          >
+            {post.title}
+          </a>
+        </h2>
+        {post.subtitle && (
+          <p class="font-body text-sm text-secondary leading-relaxed line-clamp-2 mb-3">
+            {post.subtitle}
+          </p>
+        )}
+        <div class="flex items-center gap-4">
+          <span class="text-xs font-sans text-secondary">{post.primary_author}</span>
+          <a
+            href={substackUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-xs font-sans text-secondary hover:text-primary transition-colors"
+          >
+            Read on Substack ↗
+          </a>
+        </div>
+      </div>
+    </article>
   );
 }
 

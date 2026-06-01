@@ -7,14 +7,19 @@ import {
   getLatestArticles,
   getRelatedResources,
   getAnthologies,
+  getPost,
+  getLatestPosts,
+  getAdjacentPosts,
 } from "./db";
 import { HomePage } from "./html/home";
 import { ResourcesPage } from "./html/resources";
 import { ResourcePage } from "./html/resource";
+import { PostPage } from "./html/post";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
 
 interface Env {
   DB: D1Database;
+  FILES: R2Bucket;
 }
 
 const app = new Hono<{ Bindings: Env }>();
@@ -41,8 +46,38 @@ app.get("/community", (c) =>
   c.html(<CommunityPage currentPath="/community" />)
 );
 
-app.get("/magazine", (c) =>
-  c.html(<MagazinePage currentPath="/magazine" />)
+app.get("/magazine", async (c) => {
+  const posts = await getLatestPosts(c.env.DB, 100);
+  return c.html(<MagazinePage currentPath="/magazine" posts={posts} />);
+});
+
+app.get("/p/:slug", async (c) => {
+  const slug = c.req.param("slug");
+  const post = await getPost(c.env.DB, slug);
+  if (!post) {
+    return c.redirect(
+      `https://protocolized.summerofprotocols.com/p/${slug}`,
+      302
+    );
+  }
+  const [{ prev, next }, bodyObj] = await Promise.all([
+    getAdjacentPosts(c.env.DB, post),
+    post.body_r2_key ? c.env.FILES.get(post.body_r2_key) : Promise.resolve(null),
+  ]);
+  const bodyHtml = bodyObj ? await bodyObj.text() : null;
+  return c.html(
+    <PostPage
+      currentPath={`/p/${slug}`}
+      post={post}
+      bodyHtml={bodyHtml}
+      prev={prev}
+      next={next}
+    />
+  );
+});
+
+app.get("/p/:slug/", (c) =>
+  c.redirect(`/p/${c.req.param("slug")}`, 301)
 );
 
 app.get("/anthologies", async (c) => {

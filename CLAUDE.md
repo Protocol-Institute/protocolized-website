@@ -202,8 +202,18 @@ export $(grep -v '^#' ../../.env.keys | xargs)   # source all org keys
 
 Current keys used by this project (values in `../.env.keys`):
 - `CLOUDFLARE_API_TOKEN` — PI org CF token. Used by wrangler CLI and GitHub Actions deploy.
+  - This token works for **wrangler** R2/D1 operations (`wrangler r2 object put`, `wrangler d1 execute`).
+  - It does **not** work as boto3/S3-compatible API credentials. boto3 requires a separate R2 API token (`R2_ACCESS_KEY_ID` + `R2_SECRET_ACCESS_KEY`) created in CF dashboard → R2 → Manage API Tokens. As of 2026-06-01, no such token exists — R2 uploads use wrangler subprocess instead.
 
 The PI org Cloudflare account ID (`7e8c7969b2464d23795c555bc6a32af8`) is set in `worker/wrangler.toml`.
+
+## R2 Bucket
+
+R2 bucket `protocolized-resources` is live and serving `files.protocolized.io`.
+- PDFs and EPUBs: `files.protocolized.io/*.pdf` etc (migrated Session 7)
+- Post images (Phase 2): will be at `files.protocolized.io/images/{hash[:2]}/{hash}.ext`
+- Bucket is writable via `wrangler r2 object put protocolized-resources/key --file=... --remote`
+- No separate R2 API token exists yet; if boto3 is needed for bulk uploads, create one in CF dashboard.
 
 ## Wrangler CLI
 

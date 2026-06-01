@@ -7,9 +7,7 @@
 <!-- planned changes or features -->
 
 ### Infrastructure
-- Disable GitHub Pages in repo settings (source → None) — protocolized.io now serves from CF Pages
 - Add `--remote` note to CLAUDE.md for all future `wrangler r2 object` commands (local miniflare trap)
-- Purge PDF/EPUB git history with `git-filter-repo` to reclaim repo size (353 MB removed from HEAD but still in history)
 
 ### SoP Resource Migration (from summerofprotocols.com)
 Add resource entries for the following SoP content not yet in the library.
@@ -49,6 +47,8 @@ Add resource entries for the following SoP content not yet in the library.
 
 ## Done
 <!-- completed items, reverse chronological -->
+- **2026-06-01** — Session 12. Phase 2 complete: 117 Substack posts mirrored to D1 + R2. Body HTML stored at `posts/{slug}/body.html` in R2 (D1 100KB limit workaround). Cover images mirrored to R2. `/magazine` route lists all posts from D1. `/p/:slug` route serves body from R2 with Substack CTA fallback. Fix script (`fix-missing-body-r2.py`) patched 115 posts that had D1 metadata but no body in R2. Worker redeployed. Two posts (irrigation-by-protocol-when-vineyards, the-overloaded-train) had no export HTML — fetched from API in an earlier run; both serving correctly.
+- **2026-06-01** — Session 11. Confirmed domain cutover is not a blocker — Phase 2 + full feature parity first, then cut over. GH Pages disabled; PDF/EPUB git history purged (confirmed done last session).
 - **2026-06-01** — Session 10 (9:30–10:20am PT). Phase 1 complete: D1 created, 288 resources migrated, Worker deployed to `protocolized-website.team-7e8.workers.dev`. Fixed index.ts→tsx + skipLibCheck. Backfilled 117 Substack cover images into resources.thumbnail. Reviewed Substack API access vs c3po; merged c3po plan into `plans/phase2-substack-mirror.md`. Fresh export unzipped to `data/substack/` (138 posts). Pending: move protocolized.io domain to Worker in CF dashboard; then Phase 2 (Substack post mirror).
 - **2026-05-31** — Session 8: C3PO Worker migrated to PI org CF account; c3po.protocolized.io subdomain live; resources page link updated.
 - **2026-05-31** — Session 9 (partial). Hono Worker scaffolded: all source files written (`worker/src/index.ts`, `db.ts`, `html/base.tsx`, `home.tsx`, `resources.tsx`, `resource.tsx`, `static-pages.tsx`), plus `schema.sql`, `wrangler.toml`, `package.json`, `tsconfig.json`, `tailwind.config.mjs`. `scripts/migrate-to-d1.py` written. `npm install` done in `worker/`. CSS compiled (`worker/public/style.css`). **Paused before D1 creation and local test.** Resume at: copy static assets → create D1 → apply schema → run migration → `wrangler dev` → deploy.

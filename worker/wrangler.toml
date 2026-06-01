@@ -9,5 +9,9 @@ binding = "DB"
 database_name = "protocolized-resources"
 database_id = "1b47f2d7-9c84-4078-a27a-2f3eea9f41b7"
 
+[[r2_buckets]]
+binding = "FILES"
+bucket_name = "protocolized-resources"
+
 [assets]
 directory = "./public"

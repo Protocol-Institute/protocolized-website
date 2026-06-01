@@ -122,3 +122,112 @@ export async function getAnthologies(db: D1Database): Promise<Resource[]> {
     .all<ResourceRow>();
   return result.results.map(parseRow).filter((r) => r.tags.includes("anthology"));
 }
+
+// ── Posts ──────────────────────────────────────────────────────────────────
+
+export interface Post {
+  slug: string;
+  title: string;
+  subtitle?: string;
+  date: string;
+  section: string;
+  primary_author: string;
+  authors: string[];
+  cover_image?: string;
+  body_r2_key?: string;
+  summary?: string;
+  enriched_categories: string[];
+  substack_categories: string[];
+  reaction_count: number;
+  previous_slug?: string;
+  next_slug?: string;
+  substack_url?: string;
+  image_count: number;
+  mirrored_at?: string;
+}
+
+interface PostRow {
+  slug: string;
+  title: string;
+  subtitle: string | null;
+  date: string;
+  section: string;
+  primary_author: string;
+  authors: string;
+  cover_image: string | null;
+  body_r2_key: string | null;
+  summary: string | null;
+  enriched_categories: string;
+  substack_categories: string;
+  reaction_count: number;
+  previous_slug: string | null;
+  next_slug: string | null;
+  substack_url: string | null;
+  image_count: number;
+  mirrored_at: string | null;
+}
+
+function parsePostRow(row: PostRow): Post {
+  return {
+    slug: row.slug,
+    title: row.title,
+    subtitle: row.subtitle ?? undefined,
+    date: row.date,
+    section: row.section ?? "Protocolized",
+    primary_author: row.primary_author ?? "Protocolized",
+    authors: row.authors ? JSON.parse(row.authors) : [],
+    cover_image: row.cover_image ?? undefined,
+    body_r2_key: row.body_r2_key ?? undefined,
+    summary: row.summary ?? undefined,
+    enriched_categories: row.enriched_categories ? JSON.parse(row.enriched_categories) : [],
+    substack_categories: row.substack_categories ? JSON.parse(row.substack_categories) : [],
+    reaction_count: row.reaction_count ?? 0,
+    previous_slug: row.previous_slug ?? undefined,
+    next_slug: row.next_slug ?? undefined,
+    substack_url: row.substack_url ?? undefined,
+    image_count: row.image_count ?? 0,
+    mirrored_at: row.mirrored_at ?? undefined,
+  };
+}
+
+export async function getPost(db: D1Database, slug: string): Promise<Post | null> {
+  const row = await db
+    .prepare("SELECT * FROM posts WHERE slug = ?")
+    .bind(slug)
+    .first<PostRow>();
+  return row ? parsePostRow(row) : null;
+}
+
+export async function getLatestPosts(db: D1Database, limit = 50): Promise<Post[]> {
+  const result = await db
+    .prepare(
+      "SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts ORDER BY date DESC LIMIT ?"
+    )
+    .bind(limit)
+    .all<PostRow>();
+  return result.results.map(parsePostRow);
+}
+
+export async function getAdjacentPosts(
+  db: D1Database,
+  post: Post
+): Promise<{ prev: Post | null; next: Post | null }> {
+  const [prevRow, nextRow] = await Promise.all([
+    post.previous_slug
+      ? db
+          .prepare("SELECT slug, title, date FROM posts WHERE slug = ?")
+          .bind(post.previous_slug)
+          .first<PostRow>()
+      : null,
+    post.next_slug
+      ? db
+          .prepare("SELECT slug, title, date FROM posts WHERE slug = ?")
+          .bind(post.next_slug)
+          .first<PostRow>()
+      : null,
+  ]);
+  return {
+    prev: prevRow ? parsePostRow(prevRow) : null,
+    next: nextRow ? parsePostRow(nextRow) : null,
+  };
+}
