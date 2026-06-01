@@ -1,5 +1,5 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript } from "./static-pages";
+import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
 import type { Resource } from "../db";
 
 const AUDIENCE_CARDS = [
@@ -139,12 +139,10 @@ export function HomePage({
                 <div class="flex items-center justify-between mb-4">
                   <p class="font-serif text-lg text-dark">Latest from the magazine</p>
                   <a
-                    href="https://protocolized.summerofprotocols.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href="/magazine"
                     class="text-xs font-sans text-primary hover:text-[#085041] transition-colors shrink-0"
                   >
-                    View all on Substack →
+                    View all →
                   </a>
                 </div>
                 <div class="relative overflow-hidden rounded-xl" id="article-carousel">
@@ -152,12 +150,16 @@ export function HomePage({
                     class="flex transition-transform duration-500 ease-in-out"
                     id="carousel-track"
                   >
-                    {latestArticles.map((article, i) => (
+                    {latestArticles.map((article, i) => {
+                      const internalUrl = substackToInternalUrl(article.url);
+                      const href = internalUrl ?? article.url ?? `/resources/${article.slug}`;
+                      const isExternal = !internalUrl && !!article.url;
+                      return (
                       <article class="w-full shrink-0" data-slide={i}>
                         <a
-                          href={article.url ?? `/resources/${article.slug}`}
-                          target={article.url ? "_blank" : undefined}
-                          rel={article.url ? "noopener noreferrer" : undefined}
+                          href={href}
+                          target={isExternal ? "_blank" : undefined}
+                          rel={isExternal ? "noopener noreferrer" : undefined}
                           class="block group"
                         >
                           <div class="aspect-[2/1] bg-gray-100 rounded-xl overflow-hidden mb-4">
@@ -194,7 +196,8 @@ export function HomePage({
                           </div>
                         </a>
                       </article>
-                    ))}
+                      );
+                    })}
                   </div>
 
                   <button

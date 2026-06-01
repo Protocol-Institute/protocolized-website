@@ -472,6 +472,14 @@ export function TypeBadge({ type }: { type: string }) {
   );
 }
 
+const SUBSTACK_POST_RE = /protocolized\.summerofprotocols\.com\/p\/([a-z0-9-]+)/;
+
+export function substackToInternalUrl(url: string | undefined): string | null {
+  if (!url) return null;
+  const m = url.match(SUBSTACK_POST_RE);
+  return m ? `/p/${m[1]}` : null;
+}
+
 export function fmtDate(
   dateStr: string,
   style: "short" | "long" = "short"

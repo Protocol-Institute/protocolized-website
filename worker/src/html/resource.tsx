@@ -1,5 +1,5 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript } from "./static-pages";
+import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
 import type { Resource } from "../db";
 
 const SCHEMA_TYPE: Record<string, string> = {
@@ -27,8 +27,11 @@ export function ResourcePage({
   related: Resource[];
   bodyHtml: string;
 }) {
+  const internalPostUrl = substackToInternalUrl(resource.url);
   const primaryAction = resource.file
     ? { label: "Download", href: resource.file, download: true, external: false }
+    : internalPostUrl
+    ? { label: "Read article", href: internalPostUrl, external: false, download: false }
     : resource.url
     ? { label: "Open resource", href: resource.url, external: true, download: false }
     : null;
