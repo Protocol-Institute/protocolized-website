@@ -332,6 +332,59 @@
           "html": "<strong>Phase 2 plan finalised:</strong> Compared c3po’s Substack API access (paginated list fetch, <code>updated_at</code> change detection, Haiku enrichment, Pinecone output) with protocolized-website needs (D1 + R2 output). Decision: independent sync script with borrowed change-detection pattern, no cross-repo coupling. Backfill uses c3po’s existing <code>api_metadata.json</code> and <code>enriched_meta.json</code> as input (no re-fetching metadata). Fresh Substack export (138 posts, 2026-06-01) unzipped to <code>data/substack/</code>. Every post page will show a prominent “Read on Substack” link. Full plan in <code>plans/phase2-substack-mirror.md</code>."
         }
       ]
+    },
+    {
+      "id": 10,
+      "sort_key": 10.0,
+      "label": "Session 11",
+      "title": "Status Check — Domain Cutover Deferred",
+      "date": "2026-06-01",
+      "time_pt": "",
+      "tracks": [
+        "cloudflare-migration"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": false,
+      "items": [
+        {
+          "title": "Domain cutover deferred:",
+          "html": "<strong>Domain cutover deferred intentionally:</strong> Decision made to keep <code>protocolized.io</code> on CF Pages until the Worker has full feature parity. The cutover itself is a 30-second manual step in the CF dashboard and is not a blocker for development. Confirmed GH Pages disabling and git history purge (removing PDFs from repo) were both completed in earlier sessions."
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "sort_key": 11.0,
+      "label": "Session 12",
+      "title": "Phase 2 Complete — Posts Mirrored, Substack Links Internalized",
+      "date": "2026-06-01",
+      "time_pt": "",
+      "tracks": [
+        "cloudflare-migration",
+        "content-sync"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Substack post mirror (Phase 2):",
+          "html": "<strong>117 Substack posts fully mirrored to D1 + R2:</strong> <code>scripts/mirror-substack.py</code> reads c3po's <code>api_metadata.json</code> and export HTML files, mirrors images to R2, uploads body HTML to <code>posts/{slug}/body.html</code> in R2, and writes metadata to D1. Body HTML stored in R2 rather than D1 due to D1's 100KB SQL statement limit — D1 stores a <code>body_r2_key</code> pointer instead. State tracked in <code>data/mirror_state.json</code> for resumable runs. Two posts without export files (<code>irrigation-by-protocol-when-vineyards</code>, <code>the-overloaded-train</code>) fetched from the Substack API. Fix script (<code>fix-missing-body-r2.py</code>) patched 115 posts that had D1 rows without <code>body_r2_key</code> from earlier failed runs."
+        },
+        {
+          "title": "New Worker routes:",
+          "html": "<strong>New Worker routes for magazine content:</strong> <code>/magazine</code> queries D1 for all posts (ordered by date) and renders a card list with cover image, section badge, byline, and subtitle. <code>/p/:slug</code> fetches body HTML from R2 via the <code>FILES</code> R2 binding and renders it with Tailwind Typography prose styles. Falls back gracefully if body is missing. Prev/next navigation uses <code>previous_slug</code>/<code>next_slug</code> from D1. R2 bucket binding added to <code>wrangler.toml</code>."
+        },
+        {
+          "title": "Substack links internalized:",
+          "html": "<strong>All Substack clickthroughs eliminated:</strong> Added <code>substackToInternalUrl()</code> helper in <code>static-pages.tsx</code> that detects <code>protocolized.summerofprotocols.com/p/{slug}</code> URLs and rewrites them to internal <code>/p/{slug}</code> routes. Applied throughout: homepage carousel cards, resource index cards, and resource detail page primary action all resolve to <code>/p/:slug</code> instead of opening Substack. Article resource cards now link directly to the post page, bypassing the resource detail page. &ldquo;View on Substack&rdquo; demoted to a small inline link in the post byline (author &middot; date &middot; View on Substack &uarr;)."
+        },
+        {
+          "title": "Bug fix — JSON parse on partial SELECTs:",
+          "html": "<strong>Fixed Worker crash on <code>/magazine</code> and <code>/p/:slug</code>:</strong> <code>getLatestPosts()</code> and <code>getAdjacentPosts()</code> use partial column SELECTs (no <code>enriched_categories</code>, <code>substack_categories</code>, or <code>authors</code>), but <code>parsePostRow()</code> called <code>JSON.parse()</code> on those columns unconditionally — causing <code>SyntaxError: &quot;undefined&quot; is not valid JSON</code>. Fixed by guarding all JSON parses with null checks and fallback empty arrays."
+        }
+      ]
     }
   ]
 }
