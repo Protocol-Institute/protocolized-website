@@ -1,5 +1,5 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript } from "./static-pages";
+import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
 import type { Resource } from "../db";
 
 const TYPE_LABELS: Record<string, string> = {
@@ -392,7 +392,7 @@ export function ResourcesPage({
                     <div>
                       <h3 class="font-serif text-lg text-dark leading-snug mb-1">
                         <a
-                          href={`/resources/${r.slug}`}
+                          href={substackToInternalUrl(r.url) ?? `/resources/${r.slug}`}
                           class="hover:text-primary transition-colors after:absolute after:inset-0"
                         >
                           {r.title}
