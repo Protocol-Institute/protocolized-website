@@ -316,10 +316,6 @@ export function MagazinePage({
 }
 
 function PostCard({ post }: { post: import("../db").Post }) {
-  const substackUrl =
-    post.substack_url ??
-    `https://protocolized.summerofprotocols.com/p/${post.slug}`;
-
   return (
     <article class="py-8 flex gap-6 group">
       {post.cover_image && (
@@ -354,17 +350,7 @@ function PostCard({ post }: { post: import("../db").Post }) {
             {post.subtitle}
           </p>
         )}
-        <div class="flex items-center gap-4">
-          <span class="text-xs font-sans text-secondary">{post.primary_author}</span>
-          <a
-            href={substackUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="text-xs font-sans text-secondary hover:text-primary transition-colors"
-          >
-            Read on Substack ↗
-          </a>
-        </div>
+        <span class="text-xs font-sans text-secondary">{post.primary_author}</span>
       </div>
     </article>
   );

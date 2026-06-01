@@ -85,33 +85,20 @@ export function PostPage({
                 {post.subtitle}
               </p>
             )}
-            <div class="flex items-center gap-4 text-sm font-sans text-secondary mb-6">
+            <div class="flex items-center gap-4 text-sm font-sans text-secondary mb-8">
               <span class="font-medium text-dark">{post.primary_author}</span>
               <span aria-hidden="true" class="text-gray-300">·</span>
               <time datetime={post.date}>{fmtDate(post.date, "long")}</time>
-            </div>
-
-            {/* Prominent "Read on Substack" — above the fold */}
-            <a
-              href={substackUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex items-center gap-3 p-4 rounded-xl border-2 border-primary/30 bg-primary-light hover:border-primary hover:bg-primary/10 transition-colors group"
-              aria-label="Read this post on Substack (opens in new tab)"
-            >
-              <svg
-                class="w-5 h-5 text-primary shrink-0"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-                aria-hidden="true"
+              <span aria-hidden="true" class="text-gray-300">·</span>
+              <a
+                href={substackUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hover:text-primary transition-colors"
               >
-                <path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
-              </svg>
-              <span class="font-sans text-sm font-medium text-primary group-hover:text-[#085041] transition-colors">
-                Read on Substack — subscribe for new posts
-              </span>
-              <span class="ml-auto text-primary text-sm" aria-hidden="true">↗</span>
-            </a>
+                View on Substack ↗
+              </a>
+            </div>
           </header>
 
           {/* Cover image */}
