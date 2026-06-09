@@ -25,15 +25,15 @@ interface Env {
 const app = new Hono<{ Bindings: Env }>();
 
 app.get("/", async (c) => {
-  const [featured, articles] = await Promise.all([
+  const [featured, posts] = await Promise.all([
     getFeaturedResources(c.env.DB),
-    getLatestArticles(c.env.DB, 5),
+    getLatestPosts(c.env.DB, 5),
   ]);
   return c.html(
     <HomePage
       currentPath="/"
       featuredResources={featured}
-      latestArticles={articles}
+      latestPosts={posts}
     />
   );
 });

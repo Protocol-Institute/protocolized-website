@@ -21,11 +21,24 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Install dependencies
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+
+      - name: Install Python dependencies
         run: pip install feedparser
+
+      - name: Install worker dependencies (for wrangler)
+        run: npm ci
+        working-directory: worker
 
       - name: Sync Substack posts
         run: python3 scripts/sync-substack.py
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
 
       - name: Check for new files
         id: changes

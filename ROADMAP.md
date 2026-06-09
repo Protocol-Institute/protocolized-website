@@ -22,7 +22,7 @@ CF resources needed across all phases:
 - Served at `https://files.protocolized.io` (custom domain on R2)
 - 76 resource `file:` references rewritten to R2 URLs; binaries removed from repo
 - `protocolized.io` + `www.protocolized.io` custom domains active on CF Pages
-- GitHub Pages disable pending (manual step in repo settings)
+- GitHub Pages disabled; domain moved to Cloudflare Workers (2026-06-09)
 
 ---
 

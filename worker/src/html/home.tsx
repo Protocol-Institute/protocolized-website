@@ -1,6 +1,6 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
-import type { Resource } from "../db";
+import { TypeBadge, fmtDate, mobileMenuScript } from "./static-pages";
+import type { Resource, Post } from "../db";
 
 const AUDIENCE_CARDS = [
   {
@@ -32,11 +32,11 @@ const AUDIENCE_CARDS = [
 export function HomePage({
   currentPath,
   featuredResources,
-  latestArticles,
+  latestPosts,
 }: {
   currentPath: string;
   featuredResources: Resource[];
-  latestArticles: Resource[];
+  latestPosts: Post[];
 }) {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -52,7 +52,7 @@ export function HomePage({
     ],
   };
 
-  const carouselScript = latestArticles.length > 0 ? `
+  const carouselScript = latestPosts.length > 0 ? `
     (function() {
       var track = document.getElementById('carousel-track');
       var dots = document.querySelectorAll('.carousel-dot');
@@ -134,7 +134,7 @@ export function HomePage({
               </div>
             </div>
 
-            {latestArticles.length > 0 && (
+            {latestPosts.length > 0 && (
               <div class="lg:w-7/12">
                 <div class="flex items-center justify-between mb-4">
                   <p class="font-serif text-lg text-dark">Latest from the magazine</p>
@@ -150,23 +150,14 @@ export function HomePage({
                     class="flex transition-transform duration-500 ease-in-out"
                     id="carousel-track"
                   >
-                    {latestArticles.map((article, i) => {
-                      const internalUrl = substackToInternalUrl(article.url);
-                      const href = internalUrl ?? article.url ?? `/resources/${article.slug}`;
-                      const isExternal = !internalUrl && !!article.url;
-                      return (
+                    {latestPosts.map((post, i) => (
                       <article class="w-full shrink-0" data-slide={i}>
-                        <a
-                          href={href}
-                          target={isExternal ? "_blank" : undefined}
-                          rel={isExternal ? "noopener noreferrer" : undefined}
-                          class="block group"
-                        >
+                        <a href={`/p/${post.slug}`} class="block group">
                           <div class="aspect-[2/1] bg-gray-100 rounded-xl overflow-hidden mb-4">
-                            {article.thumbnail ? (
+                            {post.cover_image ? (
                               <img
-                                src={article.thumbnail}
-                                alt={article.title}
+                                src={post.cover_image}
+                                alt={post.title}
                                 class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                                 loading={i === 0 ? "eager" : "lazy"}
                               />
@@ -181,23 +172,22 @@ export function HomePage({
                           <div class="flex items-start gap-3">
                             <div class="flex-1 min-w-0">
                               <h3 class="font-serif text-lg md:text-xl text-dark leading-snug mb-1 group-hover:text-primary transition-colors">
-                                {article.title}
+                                {post.title}
                               </h3>
                               <p class="text-sm font-body text-secondary leading-relaxed line-clamp-2">
-                                {article.description}
+                                {post.subtitle ?? post.summary ?? ""}
                               </p>
                             </div>
                             <time
-                              datetime={article.date}
+                              datetime={post.date}
                               class="text-xs font-sans text-secondary whitespace-nowrap shrink-0 pt-1"
                             >
-                              {fmtDate(article.date, "short")}
+                              {fmtDate(post.date, "short")}
                             </time>
                           </div>
                         </a>
                       </article>
-                      );
-                    })}
+                    ))}
                   </div>
 
                   <button
@@ -220,7 +210,7 @@ export function HomePage({
                   </button>
                 </div>
                 <div class="flex justify-center gap-2 mt-4">
-                  {latestArticles.map((_, i) => (
+                  {latestPosts.map((_, i) => (
                     <button
                       class={`carousel-dot w-2 h-2 rounded-full transition-colors ${i === 0 ? "bg-primary" : "bg-gray-300"}`}
                       data-index={i}
