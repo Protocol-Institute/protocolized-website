@@ -10,11 +10,14 @@ import {
   getPost,
   getLatestPosts,
   getAdjacentPosts,
+  getAllBooks,
+  getBook,
 } from "./db";
 import { HomePage } from "./html/home";
 import { ResourcesPage } from "./html/resources";
 import { ResourcePage } from "./html/resource";
 import { PostPage } from "./html/post";
+import { BooksPage, BookPage } from "./html/books";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
 
 interface Env {
@@ -79,6 +82,35 @@ app.get("/p/:slug", async (c) => {
 app.get("/p/:slug/", (c) =>
   c.redirect(`/p/${c.req.param("slug")}`, 301)
 );
+
+app.get("/books", async (c) => {
+  const books = await getAllBooks(c.env.DB);
+  return c.html(<BooksPage currentPath="/books" books={books} />);
+});
+
+app.get("/books/:slug", async (c) => {
+  const slug = c.req.param("slug");
+  const book = await getBook(c.env.DB, slug);
+  if (!book) return c.html(notFound(), 404);
+
+  const [related, bodyHtml] = await Promise.all([
+    book.tags.length > 0
+      ? getRelatedResources(c.env.DB, slug, book.tags)
+      : Promise.resolve([]),
+    book.body
+      ? Promise.resolve(marked.parse(book.body) as string)
+      : Promise.resolve(""),
+  ]);
+
+  return c.html(
+    <BookPage
+      currentPath={`/books/${slug}`}
+      book={book}
+      related={related}
+      bodyHtml={bodyHtml}
+    />
+  );
+});
 
 app.get("/anthologies", async (c) => {
   const anthologies = await getAnthologies(c.env.DB);

@@ -46,3 +46,22 @@ CREATE TABLE IF NOT EXISTS posts (
 CREATE INDEX IF NOT EXISTS idx_posts_date ON posts(date DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_section ON posts(section);
 CREATE INDEX IF NOT EXISTS idx_posts_mirrored ON posts(mirrored_at);
+
+CREATE TABLE IF NOT EXISTS books (
+  slug         TEXT PRIMARY KEY,
+  title        TEXT NOT NULL,
+  subtitle     TEXT,
+  editor       TEXT,
+  date         TEXT NOT NULL,
+  description  TEXT NOT NULL,
+  body         TEXT,
+  cover_image  TEXT,
+  url          TEXT,
+  file         TEXT,
+  toc          TEXT NOT NULL DEFAULT '[]',
+  contributors TEXT NOT NULL DEFAULT '[]',
+  tags         TEXT NOT NULL DEFAULT '[]',
+  sort_order   INTEGER NOT NULL DEFAULT 0,
+  published    INTEGER NOT NULL DEFAULT 1
+);
+CREATE INDEX IF NOT EXISTS idx_books_sort ON books(sort_order ASC, date DESC);

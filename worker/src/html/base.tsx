@@ -3,9 +3,10 @@ import type { Child } from "hono/jsx";
 const NAV_LINKS = [
   { href: "/", label: "Home" },
   { href: "/resources", label: "Resources" },
+  { href: "/books", label: "Books" },
+  { href: "/magazine", label: "Magazine" },
   { href: "/about", label: "About" },
   { href: "/community", label: "Community" },
-  { href: "/magazine", label: "Magazine" },
 ];
 
 function isActive(href: string, currentPath: string): boolean {
@@ -224,9 +225,10 @@ function Footer() {
             <ul class="space-y-2" role="list">
               {[
                 { href: "/resources", label: "Resources" },
+                { href: "/books", label: "Books" },
+                { href: "/magazine", label: "Magazine" },
                 { href: "/about", label: "About" },
                 { href: "/community", label: "Community" },
-                { href: "/magazine", label: "Magazine" },
               ].map(({ href, label }) => (
                 <li>
                   <a

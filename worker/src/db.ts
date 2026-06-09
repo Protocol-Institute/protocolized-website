@@ -123,6 +123,89 @@ export async function getAnthologies(db: D1Database): Promise<Resource[]> {
   return result.results.map(parseRow).filter((r) => r.tags.includes("anthology"));
 }
 
+// ── Books ─────────────────────────────────────────────────────────────────
+
+export interface TocEntry {
+  title: string;
+  author?: string;
+}
+
+export interface Contributor {
+  name: string;
+  role?: string;
+}
+
+export interface Book {
+  slug: string;
+  title: string;
+  subtitle?: string;
+  editor?: string;
+  date: string;
+  description: string;
+  body?: string;
+  cover_image?: string;
+  url?: string;
+  file?: string;
+  toc: TocEntry[];
+  contributors: Contributor[];
+  tags: string[];
+  sort_order: number;
+  published: boolean;
+}
+
+interface BookRow {
+  slug: string;
+  title: string;
+  subtitle: string | null;
+  editor: string | null;
+  date: string;
+  description: string;
+  body: string | null;
+  cover_image: string | null;
+  url: string | null;
+  file: string | null;
+  toc: string;
+  contributors: string;
+  tags: string;
+  sort_order: number;
+  published: number;
+}
+
+function parseBookRow(row: BookRow): Book {
+  return {
+    slug: row.slug,
+    title: row.title,
+    subtitle: row.subtitle ?? undefined,
+    editor: row.editor ?? undefined,
+    date: row.date,
+    description: row.description,
+    body: row.body ?? undefined,
+    cover_image: row.cover_image ?? undefined,
+    url: row.url ?? undefined,
+    file: row.file ?? undefined,
+    toc: JSON.parse(row.toc),
+    contributors: JSON.parse(row.contributors),
+    tags: JSON.parse(row.tags),
+    sort_order: row.sort_order,
+    published: row.published === 1,
+  };
+}
+
+export async function getAllBooks(db: D1Database): Promise<Book[]> {
+  const result = await db
+    .prepare("SELECT * FROM books WHERE published = 1 ORDER BY sort_order ASC, date DESC")
+    .all<BookRow>();
+  return result.results.map(parseBookRow);
+}
+
+export async function getBook(db: D1Database, slug: string): Promise<Book | null> {
+  const row = await db
+    .prepare("SELECT * FROM books WHERE slug = ? AND published = 1")
+    .bind(slug)
+    .first<BookRow>();
+  return row ? parseBookRow(row) : null;
+}
+
 // ── Posts ──────────────────────────────────────────────────────────────────
 
 export interface Post {

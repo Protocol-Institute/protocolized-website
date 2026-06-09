@@ -482,7 +482,7 @@ export function substackToInternalUrl(url: string | undefined): string | null {
 
 export function fmtDate(
   dateStr: string,
-  style: "short" | "long" = "short"
+  style: "short" | "long" | "year" = "short"
 ): string {
   const d = new Date(dateStr + "T00:00:00Z");
   if (style === "long") {
@@ -492,6 +492,9 @@ export function fmtDate(
       day: "numeric",
       timeZone: "UTC",
     });
+  }
+  if (style === "year") {
+    return d.toLocaleDateString("en-US", { year: "numeric", timeZone: "UTC" });
   }
   return d.toLocaleDateString("en-US", {
     year: "numeric",
