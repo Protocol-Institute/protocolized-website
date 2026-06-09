@@ -182,7 +182,13 @@ export function BookPage({
                       <li class="flex gap-3 text-sm font-sans">
                         <span class="text-secondary shrink-0 w-5 text-right">{i + 1}.</span>
                         <span>
-                          <span class="text-dark">{entry.title}</span>
+                          {entry.url ? (
+                            <a href={entry.url} class="text-dark hover:text-primary transition-colors">
+                              {entry.title}
+                            </a>
+                          ) : (
+                            <span class="text-dark">{entry.title}</span>
+                          )}
                           {entry.author && (
                             <span class="text-secondary"> — {entry.author}</span>
                           )}

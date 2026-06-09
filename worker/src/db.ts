@@ -128,6 +128,7 @@ export async function getAnthologies(db: D1Database): Promise<Resource[]> {
 export interface TocEntry {
   title: string;
   author?: string;
+  url?: string;
 }
 
 export interface Contributor {
