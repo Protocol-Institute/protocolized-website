@@ -4,10 +4,14 @@
 <!-- current tasks or in-progress work -->
 
 ## Upcoming
-<!-- planned changes or features -->
+
+### Books
+- Add content + cover images for Bridges (slug seeded, `published = 0`)
+- Add cover images for all 4 books (currently placeholder)
+- Add print/EPUB links when available (`file` = R2 PDF, `url` = external)
 
 ### Infrastructure
-- Add `--remote` note to CLAUDE.md for all future `wrangler r2 object` commands (local miniflare trap)
+- Automate `migrate-to-d1.py` on push when `src/content/resources/` changes (GH Actions job)
 
 ### SoP Resource Migration (from summerofprotocols.com)
 Add resource entries for the following SoP content not yet in the library.
@@ -47,6 +51,7 @@ Add resource entries for the following SoP content not yet in the library.
 
 ## Done
 <!-- completed items, reverse chronological -->
+- **2026-06-09** — Session 13. Domain cutover complete: protocolized.io now served by Hono Worker (deleted conflicting GitHub Pages A records, added custom domain in CF dashboard). Carousel fixed (was querying resources type=article; now queries posts table). Backfilled 3 missing posts (Jun 1/3/9) to D1+R2 via Substack API. Sync pipeline overhauled: deploy.yml replaced GH Pages workflow with Worker deploy; sync-substack.py now dual-writes Markdown + D1+R2 after each new post; CLOUDFLARE_API_TOKEN added as GH Actions secret. Removed add-new-posts.py (one-time script). Books section launched: /books index + /books/:slug detail pages; D1 books table; 4 books seeded (Protocol Reader + 3 fiction collections with linked ToCs; Bridges stub unpublished). Books added to nav and footer.
 - **2026-06-01** — Session 12. Phase 2 complete + UX fixes. 117 posts mirrored to D1 + R2 (body HTML at `posts/{slug}/body.html`). Fixed JSON parse crash on partial D1 SELECTs. Substack clickthroughs eliminated: carousel, resource cards, and resource detail pages all resolve Substack post URLs to internal `/p/:slug`. Article resource cards skip detail page and go directly to post. "View on Substack" demoted to inline byline link. All 117 posts confirmed serving body content (2 newest fetched from Substack API, rest from export files).
 - **2026-06-01** — Session 11. Confirmed domain cutover is not a blocker — Phase 2 + full feature parity first, then cut over. GH Pages disabled; PDF/EPUB git history purged (confirmed done last session).
 - **2026-06-01** — Session 10 (9:30–10:20am PT). Phase 1 complete: D1 created, 288 resources migrated, Worker deployed to `protocolized-website.team-7e8.workers.dev`. Fixed index.ts→tsx + skipLibCheck. Backfilled 117 Substack cover images into resources.thumbnail. Reviewed Substack API access vs c3po; merged c3po plan into `plans/phase2-substack-mirror.md`. Fresh export unzipped to `data/substack/` (138 posts). Pending: move protocolized.io domain to Worker in CF dashboard; then Phase 2 (Substack post mirror).

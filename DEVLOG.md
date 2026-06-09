@@ -185,3 +185,19 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **Fixed Worker crash on `/magazine` and `/p/:slug`:** `getLatestPosts()` and `getAdjacentPosts()` use partial column SELECTs (no `enriched_categories`, `substack_categories`, or `authors`), but `parsePostRow()` called `JSON.parse()` on those columns unconditionally — causing `SyntaxError: &quot;undefined&quot; is not valid JSON`. Fixed by guarding all JSON parses with null checks and fallback empty arrays.
 
 ---
+
+## Session 13: Domain Cutover, Sync Overhaul, Books Section
+
+*2026-06-09*
+
+**Tracks:** cloudflare-migration, content-sync, ux
+
+- **`protocolized.io` now served by the Hono Worker.** The site had been on GitHub Pages (4 A records at 185.199.x.x) with Cloudflare proxying in front — the CF Pages project existed but was not receiving traffic. To cut over: deleted the 4 GitHub Pages A records in the CF DNS tab, then added `protocolized.io` and `www.protocolized.io` as custom domains on the Worker in the CF dashboard. CF Pages project remains as an instant rollback (30-second domain flip), but the Astro static build no longer serves live traffic.
+
+- **Homepage carousel was querying the wrong table.** `getLatestArticles()` queried `resources WHERE type = 'article'` — those are research library entries, not magazine posts. The carousel was either empty or showing stale library articles. Fix: home route now calls `getLatestPosts()` against the `posts` table; `home.tsx` updated to accept `Post[]` instead of `Resource[]` and render `cover_image`/`subtitle` fields.
+
+- **Three changes make the sync pipeline end-to-end:** (1) `deploy.yml` replaced the old GitHub Pages workflow with a Worker deploy (`npm run deploy` from `worker/`). (2) `sync-substack.py` now dual-writes: after creating a Markdown file for each new post, it calls the Substack API to fetch body HTML and cover image, mirrors both to R2, and writes metadata to D1 — gated on `CLOUDFLARE_API_TOKEN` being present so local runs still work. (3) `CLOUDFLARE_API_TOKEN` added as a GitHub Actions secret via `gh secret set`. Three posts that had accumulated since the last D1 write (Jun 1, 3, 9) were backfilled manually via a one-time `add-new-posts.py` script (since deleted).
+
+- **New `/books` section with index and detail pages.** D1 `books` table: `slug`, `title`, `subtitle`, `editor`, `date`, `description`, `body` (markdown), `cover_image`, `url`, `file` (R2 PDF), `toc` (JSON array of `{title, author?, url?}`), `contributors` (JSON), `tags` (for related-resources query), `sort_order`, `published`. Index page: 2–3 col grid with 2:3 cover placeholder, clipped description. Detail page: cover + meta left, body/ToC/contributors/related resources right; download button when `file` or `url` present. ToC entries link to internal `/p/:slug` routes where stories are already mirrored. Four books seeded: *The Protocol Reader* (published), *Terminological Twists*, *The Librarians*, *Ghosts in Machines* (all published with full ToC and contributors); *Bridges* stub unpublished. Books added to nav and footer.
+
+---
