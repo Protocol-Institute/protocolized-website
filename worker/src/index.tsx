@@ -135,6 +135,9 @@ app.get("/resources", async (c) => {
 app.get("/resources/protocol-lexicon", (c) =>
   c.html(<LexiconPage currentPath="/resources/protocol-lexicon" />)
 );
+app.get("/resources/protocol-lexicon/", (c) =>
+  c.redirect("/resources/protocol-lexicon", 301)
+);
 
 app.get("/resources/:slug", async (c) => {
   const slug = c.req.param("slug");
