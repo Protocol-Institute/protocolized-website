@@ -8,7 +8,13 @@
 ### Books
 - Add content + cover images for Bridges (slug seeded, `published = 0`)
 - Add cover images for all 4 books (currently placeholder)
+- Add cover images for 4 new series books (Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles)
 - Add print/EPUB links when available (`file` = R2 PDF, `url` = external)
+
+### Jamverse / Series
+- Jamverse PR #1 (update story links to protocolized.io) awaiting Sachin Benny review/merge
+- When Stockton Chronicles ch.2+3 publish on Substack: sync auto-populates, series data already set — no extra steps needed
+- After merge, confirm jamverse.protocolized.io story links work end-to-end
 
 ### Infrastructure
 - Automate `migrate-to-d1.py` on push when `src/content/resources/` changes (GH Actions job)
@@ -51,6 +57,7 @@ Add resource entries for the following SoP content not yet in the library.
 
 ## Done
 <!-- completed items, reverse chronological -->
+- **2026-06-10** — Session 14. Hono migration audit: restored lexicon page (was 404-looping), fixed sitemap (now includes /books, /p/:slug × 120, /resources/protocol-lexicon), added /api/lexicon.json redirect. Series navigation for 4 Jamverse story cycles: Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles — 4 new books in D1, series_slug/series_position on posts, SeriesNav component top+bottom of post pages, breadcrumb updated. Placeholder pages for un-mirrored Stockton ch.2+3 (is_placeholder column, "coming soon" display, sync script fixed to upsert preserving series data). PR #1 submitted to jamverse repo pointing all 14 story links to protocolized.io mirrors; Sachin Benny as reviewer.
 - **2026-06-09** — Session 13. Domain cutover complete: protocolized.io now served by Hono Worker (deleted conflicting GitHub Pages A records, added custom domain in CF dashboard). Carousel fixed (was querying resources type=article; now queries posts table). Backfilled 3 missing posts (Jun 1/3/9) to D1+R2 via Substack API. Sync pipeline overhauled: deploy.yml replaced GH Pages workflow with Worker deploy; sync-substack.py now dual-writes Markdown + D1+R2 after each new post; CLOUDFLARE_API_TOKEN added as GH Actions secret. Removed add-new-posts.py (one-time script). Books section launched: /books index + /books/:slug detail pages; D1 books table; 4 books seeded (Protocol Reader + 3 fiction collections with linked ToCs; Bridges stub unpublished). Books added to nav and footer.
 - **2026-06-01** — Session 12. Phase 2 complete + UX fixes. 117 posts mirrored to D1 + R2 (body HTML at `posts/{slug}/body.html`). Fixed JSON parse crash on partial D1 SELECTs. Substack clickthroughs eliminated: carousel, resource cards, and resource detail pages all resolve Substack post URLs to internal `/p/:slug`. Article resource cards skip detail page and go directly to post. "View on Substack" demoted to inline byline link. All 117 posts confirmed serving body content (2 newest fetched from Substack API, rest from export files).
 - **2026-06-01** — Session 11. Confirmed domain cutover is not a blocker — Phase 2 + full feature parity first, then cut over. GH Pages disabled; PDF/EPUB git history purged (confirmed done last session).

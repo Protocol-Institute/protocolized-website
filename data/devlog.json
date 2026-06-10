@@ -415,6 +415,36 @@
           "html": "<strong>New <code>/books</code> section with index and detail pages.</strong> D1 <code>books</code> table: <code>slug</code>, <code>title</code>, <code>subtitle</code>, <code>editor</code>, <code>date</code>, <code>description</code>, <code>body</code> (markdown), <code>cover_image</code>, <code>url</code>, <code>file</code> (R2 PDF), <code>toc</code> (JSON array of <code>{title, author?, url?}</code>), <code>contributors</code> (JSON), <code>tags</code> (for related-resources query), <code>sort_order</code>, <code>published</code>. Index page: 2–3 col grid with 2:3 cover placeholder, clipped description. Detail page: cover + meta left, body/ToC/contributors/related resources right; download button when <code>file</code> or <code>url</code> present. ToC entries link to internal <code>/p/:slug</code> routes where stories are already mirrored. Four books seeded: <em>The Protocol Reader</em> (published), <em>Terminological Twists</em>, <em>The Librarians</em>, <em>Ghosts in Machines</em> (all published with full ToC and contributors); <em>Bridges</em> stub unpublished. Books added to nav and footer."
         }
       ]
+    },
+    {
+      "id": 13,
+      "sort_key": 14.0,
+      "label": "Session 14",
+      "title": "Hono Migration Audit, Series Navigation, Jamverse Integration",
+      "date": "2026-06-10",
+      "time_pt": "",
+      "tracks": ["cloudflare-migration", "ux", "framework"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Hono migration audit — three gaps closed:",
+          "html": "<strong>Three features missing from the Hono Worker were identified and restored:</strong> (1) <strong>Protocol Lexicon page</strong> (<code>/resources/protocol-lexicon</code>) was 404-looping — the Worker scaffold had a comment saying it would be served as a static asset, but no static HTML was ever created and the route redirected to itself. Fixed by creating <code>worker/src/html/lexicon.tsx</code>: Hono JSX component that server-renders all 566 term cards from <code>worker/public/lexicon.json</code> (imported at build time via <code>resolveJsonModule: true</code>), with a spotlight card that fetches <code>/lexicon.json</code> client-side and DOM-based search. A trailing-slash redirect was also needed (<code>/resources/protocol-lexicon/</code> → canonical). (2) <strong>Sitemap</strong> was frozen at scaffold time and missing 120+ URLs: all <code>/p/:slug</code> posts, <code>/books</code> and <code>/books/:slug</code>, and <code>/resources/protocol-lexicon</code>. Sitemap route now queries D1 for all three tables in parallel and emits 421 URLs. (3) <strong><code>/api/lexicon.json</code></strong> path had moved to <code>/lexicon.json</code> during migration — added a 301 redirect for backward compatibility."
+        },
+        {
+          "title": "Series navigation for Jamverse story cycles:",
+          "html": "<strong>Series reading navigation scaffolded for four story cycles that form the Jamverse extended universe at jamverse.protocolized.io.</strong> Architecture: two new columns on the <code>posts</code> D1 table (<code>series_slug TEXT</code>, <code>series_position INTEGER</code>) with a covering index. Each story cycle is registered as a book in the <code>books</code> table (4 new entries: Trainverse / Sachin Benny, Legends &amp; Ledgers / Elizabeth Maher, Zoothesia / Spencer Nitkey, Stockton Chronicles / Randy Lubin). A new <code>getSeriesContext()</code> DB helper runs 3 parallel D1 queries — book title+TOC, prev post, next post by position — and falls back to the book TOC for stories not in D1 (e.g. external Randy Lubin stories). Post pages with <code>series_slug</code> set receive a compact <code>SeriesNav</code> component rendered at both top and bottom: <code>&lt;&lt; prev | ↑ Series Title (Part N of M) | next &gt;&gt;</code>. Breadcrumb updates to <code>Home › Books › {Series} › {Title}</code> for series posts. 12 posts tagged with series data via D1 UPDATE."
+        },
+        {
+          "title": "Placeholder pages for un-mirrored Stockton Chronicles stories:",
+          "html": "<strong>The Caucus and Joan Henry vs the Algorithm are published on Randy Lubin's site, not yet on the Protocolized Substack.</strong> Rather than breaking the series reading experience with external redirects, two internal placeholder pages were created (<code>/p/the-caucus</code>, <code>/p/joan-henry-vs-the-algorithm</code>) with full series navigation and a styled &ldquo;Coming soon to Protocolized&rdquo; card linking out to randylubin.com. A new <code>is_placeholder INTEGER DEFAULT 0</code> column on posts controls three behaviors: (1) placeholder posts are excluded from the magazine feed and sitemap; (2) <code>post.tsx</code> shows the coming-soon card instead of body content; (3) <code>sync-substack.py</code> changed from <code>INSERT OR REPLACE</code> (delete+insert, wiped all columns) to <code>INSERT ... ON CONFLICT(slug) DO UPDATE SET</code> listing only content fields — this preserves <code>series_slug</code>, <code>series_position</code>, and resets <code>is_placeholder = 0</code> when the real Substack post arrives. No manual steps needed when those stories eventually publish."
+        },
+        {
+          "title": "Jamverse PR — story links updated to protocolized.io:",
+          "html": "<strong>PR #1 submitted to Protocol-Institute/jamverse</strong> replacing all 14 story URLs across 7 HTML files. 12 Substack URLs (<code>protocolized.summerofprotocols.com/p/*</code>) replaced with <code>protocolized.io/p/*</code>; 2 Randy Lubin URLs (<code>randylubin.com/fiction/...</code>) replaced with the new internal placeholder pages. The <code>devlog.html</code> in jamverse was left unchanged — it contains a text-only historical reference to randylubin.com, not a navigation link. Sachin Benny (lead dev on jamverse) set as PR reviewer."
+        }
+      ]
     }
   ]
 }

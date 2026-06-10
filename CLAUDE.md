@@ -43,7 +43,7 @@ Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md
 - **Framework**: Hono + JSX on Cloudflare Workers (`worker/src/index.tsx`)
 - **Content**: D1 database `protocolized-resources` (id: `1b47f2d7-9c84-4078-a27a-2f3eea9f41b7`); 288 resources + 117 posts migrated. Post body HTML in R2 at `posts/{slug}/body.html`; D1 stores `body_r2_key` pointer (avoids 100KB statement limit).
 - **Deploy**: Live at `https://protocolized-website.team-7e8.workers.dev`; Astro CF Pages stays as fallback until `protocolized.io` custom domain is moved to Worker in CF dashboard
-- **Status (2026-06-09):** Domain cutover complete — `protocolized.io` now served by Worker. Phase 2 complete. All 117 posts + 3 backfilled (Jun 1/3/9) in D1+R2. `sync-substack.py` dual-writes Markdown + D1+R2 on each new post. `deploy.yml` deploys Worker on push to main. `CLOUDFLARE_API_TOKEN` set as GH Actions secret. Books section live at `/books` with D1 `books` table.
+- **Status (2026-06-10):** Domain cutover complete — `protocolized.io` now served by Worker. Phase 2 complete. All 117 posts + 3 backfilled (Jun 1/3/9) in D1+R2. `sync-substack.py` dual-writes Markdown + D1+R2 on each new post (uses ON CONFLICT upsert to preserve `series_slug`/`series_position`/`is_placeholder`). `deploy.yml` deploys Worker on push to main. `CLOUDFLARE_API_TOKEN` set as GH Actions secret. Books section live at `/books` with D1 `books` table. 4 series books added (Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles) for Jamverse extended universe. Posts table has `series_slug`, `series_position`, `is_placeholder` columns for series navigation. Protocol Lexicon live at `/resources/protocol-lexicon`.
 
 ## Commands
 
