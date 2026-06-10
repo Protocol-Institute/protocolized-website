@@ -40,12 +40,15 @@ CREATE TABLE IF NOT EXISTS posts (
   substack_url         TEXT,
   image_count          INTEGER DEFAULT 0,
   mirrored_at          TEXT,
-  synced_at            TEXT NOT NULL
+  synced_at            TEXT NOT NULL,
+  series_slug          TEXT,           -- FK → books.slug for series posts
+  series_position      INTEGER         -- 1-based position within the series
 );
 
 CREATE INDEX IF NOT EXISTS idx_posts_date ON posts(date DESC);
 CREATE INDEX IF NOT EXISTS idx_posts_section ON posts(section);
 CREATE INDEX IF NOT EXISTS idx_posts_mirrored ON posts(mirrored_at);
+CREATE INDEX IF NOT EXISTS idx_posts_series ON posts(series_slug, series_position);
 
 CREATE TABLE IF NOT EXISTS books (
   slug         TEXT PRIMARY KEY,

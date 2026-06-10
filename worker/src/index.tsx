@@ -12,6 +12,7 @@ import {
   getAdjacentPosts,
   getAllBooks,
   getBook,
+  getSeriesContext,
 } from "./db";
 import { HomePage } from "./html/home";
 import { ResourcesPage } from "./html/resources";
@@ -64,9 +65,12 @@ app.get("/p/:slug", async (c) => {
       302
     );
   }
-  const [{ prev, next }, bodyObj] = await Promise.all([
+  const [{ prev, next }, bodyObj, seriesCtx] = await Promise.all([
     getAdjacentPosts(c.env.DB, post),
     post.body_r2_key ? c.env.FILES.get(post.body_r2_key) : Promise.resolve(null),
+    post.series_slug && post.series_position != null
+      ? getSeriesContext(c.env.DB, post.series_slug, post.series_position)
+      : Promise.resolve(null),
   ]);
   const bodyHtml = bodyObj ? await bodyObj.text() : null;
   return c.html(
@@ -76,6 +80,7 @@ app.get("/p/:slug", async (c) => {
       bodyHtml={bodyHtml}
       prev={prev}
       next={next}
+      seriesCtx={seriesCtx}
     />
   );
 });

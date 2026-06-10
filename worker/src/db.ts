@@ -228,6 +228,8 @@ export interface Post {
   substack_url?: string;
   image_count: number;
   mirrored_at?: string;
+  series_slug?: string;
+  series_position?: number;
 }
 
 interface PostRow {
@@ -249,6 +251,8 @@ interface PostRow {
   substack_url: string | null;
   image_count: number;
   mirrored_at: string | null;
+  series_slug: string | null;
+  series_position: number | null;
 }
 
 function parsePostRow(row: PostRow): Post {
@@ -271,6 +275,8 @@ function parsePostRow(row: PostRow): Post {
     substack_url: row.substack_url ?? undefined,
     image_count: row.image_count ?? 0,
     mirrored_at: row.mirrored_at ?? undefined,
+    series_slug: row.series_slug ?? undefined,
+    series_position: row.series_position ?? undefined,
   };
 }
 
@@ -314,4 +320,67 @@ export async function getAdjacentPosts(
     prev: prevRow ? parsePostRow(prevRow) : null,
     next: nextRow ? parsePostRow(nextRow) : null,
   };
+}
+
+// ── Series context ─────────────────────────────────────────────────────────
+
+export interface SeriesEntry {
+  slug?: string;
+  title: string;
+  url: string;
+  external?: boolean;
+}
+
+export interface SeriesContext {
+  seriesTitle: string;
+  seriesSlug: string;
+  position: number;
+  totalParts: number;
+  prev: SeriesEntry | null;
+  next: SeriesEntry | null;
+}
+
+export async function getSeriesContext(
+  db: D1Database,
+  seriesSlug: string,
+  position: number
+): Promise<SeriesContext | null> {
+  const [bookRow, prevPost, nextPost] = await Promise.all([
+    db
+      .prepare("SELECT title, toc FROM books WHERE slug = ?")
+      .bind(seriesSlug)
+      .first<{ title: string; toc: string }>(),
+    db
+      .prepare("SELECT slug, title FROM posts WHERE series_slug = ? AND series_position = ?")
+      .bind(seriesSlug, position - 1)
+      .first<{ slug: string; title: string }>(),
+    db
+      .prepare("SELECT slug, title FROM posts WHERE series_slug = ? AND series_position = ?")
+      .bind(seriesSlug, position + 1)
+      .first<{ slug: string; title: string }>(),
+  ]);
+
+  if (!bookRow) return null;
+
+  const toc: TocEntry[] = JSON.parse(bookRow.toc);
+  const totalParts = toc.length;
+
+  // Prefer D1 post; fall back to TOC entry for external/un-mirrored stories
+  let prev: SeriesEntry | null = null;
+  if (prevPost) {
+    prev = { slug: prevPost.slug, title: prevPost.title, url: `/p/${prevPost.slug}` };
+  } else if (position > 1) {
+    const tocEntry = toc[position - 2];
+    if (tocEntry?.url) prev = { title: tocEntry.title, url: tocEntry.url, external: true };
+  }
+
+  let next: SeriesEntry | null = null;
+  if (nextPost) {
+    next = { slug: nextPost.slug, title: nextPost.title, url: `/p/${nextPost.slug}` };
+  } else if (position < totalParts) {
+    const tocEntry = toc[position];
+    if (tocEntry?.url) next = { title: tocEntry.title, url: tocEntry.url, external: true };
+  }
+
+  return { seriesTitle: bookRow.title, seriesSlug, position, totalParts, prev, next };
 }

@@ -1,6 +1,75 @@
 import { Base } from "./base";
 import { fmtDate, mobileMenuScript } from "./static-pages";
-import type { Post } from "../db";
+import type { Post, SeriesContext } from "../db";
+
+function SeriesNav({
+  ctx,
+  position,
+}: {
+  ctx: SeriesContext;
+  position: "top" | "bottom";
+}) {
+  const { seriesTitle, seriesSlug, prev, next } = ctx;
+  const upHref = `/books/${seriesSlug}`;
+  const isBottom = position === "bottom";
+
+  return (
+    <nav
+      aria-label={`${seriesTitle} series navigation`}
+      class={
+        "series-nav flex items-center gap-2 rounded-lg border border-primary/20 bg-primary-light/20 px-4 py-3 text-sm font-sans" +
+        (isBottom ? " mt-2" : " mb-8")
+      }
+    >
+      {/* Prev */}
+      <div class="flex-1 min-w-0">
+        {prev ? (
+          <a
+            href={prev.url}
+            class="group flex items-center gap-1.5 text-secondary hover:text-primary transition-colors"
+            {...(prev.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            <span class="flex-shrink-0">←</span>
+            <span class="truncate group-hover:text-primary">{prev.title}</span>
+            {prev.external && <span class="flex-shrink-0 text-xs opacity-60">↗</span>}
+          </a>
+        ) : (
+          <span class="text-gray-300 select-none">←</span>
+        )}
+      </div>
+
+      {/* Up — series home */}
+      <div class="flex-shrink-0 text-center px-3 border-l border-r border-primary/20">
+        <a
+          href={upHref}
+          class="block font-medium text-primary hover:underline leading-tight"
+        >
+          ↑ {seriesTitle}
+        </a>
+        <span class="text-xs text-secondary">
+          Part {ctx.position} of {ctx.totalParts}
+        </span>
+      </div>
+
+      {/* Next */}
+      <div class="flex-1 min-w-0 text-right">
+        {next ? (
+          <a
+            href={next.url}
+            class="group flex items-center justify-end gap-1.5 text-secondary hover:text-primary transition-colors"
+            {...(next.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          >
+            {next.external && <span class="flex-shrink-0 text-xs opacity-60">↗</span>}
+            <span class="truncate group-hover:text-primary">{next.title}</span>
+            <span class="flex-shrink-0">→</span>
+          </a>
+        ) : (
+          <span class="text-gray-300 select-none">→</span>
+        )}
+      </div>
+    </nav>
+  );
+}
 
 export function PostPage({
   currentPath,
@@ -8,12 +77,14 @@ export function PostPage({
   bodyHtml,
   prev,
   next,
+  seriesCtx,
 }: {
   currentPath: string;
   post: Post;
   bodyHtml: string | null;
   prev: Post | null;
   next: Post | null;
+  seriesCtx: SeriesContext | null;
 }) {
   const substackUrl =
     post.substack_url ??
@@ -40,6 +111,30 @@ export function PostPage({
 
   const script = mobileMenuScript();
 
+  const breadcrumb = seriesCtx ? (
+    <ol class="flex items-center gap-2 text-sm font-sans text-secondary" role="list">
+      <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+      <li aria-hidden="true" class="text-gray-300">›</li>
+      <li><a href="/books" class="hover:text-primary transition-colors">Books</a></li>
+      <li aria-hidden="true" class="text-gray-300">›</li>
+      <li>
+        <a href={`/books/${seriesCtx.seriesSlug}`} class="hover:text-primary transition-colors">
+          {seriesCtx.seriesTitle}
+        </a>
+      </li>
+      <li aria-hidden="true" class="text-gray-300">›</li>
+      <li class="text-dark truncate max-w-xs" aria-current="page">{post.title}</li>
+    </ol>
+  ) : (
+    <ol class="flex items-center gap-2 text-sm font-sans text-secondary" role="list">
+      <li><a href="/" class="hover:text-primary transition-colors">Home</a></li>
+      <li aria-hidden="true" class="text-gray-300">›</li>
+      <li><a href="/magazine" class="hover:text-primary transition-colors">Magazine</a></li>
+      <li aria-hidden="true" class="text-gray-300">›</li>
+      <li class="text-dark truncate max-w-xs" aria-current="page">{post.title}</li>
+    </ol>
+  );
+
   return (
     <Base
       title={post.title}
@@ -54,21 +149,12 @@ export function PostPage({
         <div class="max-w-prose mx-auto">
 
           {/* Breadcrumb */}
-          <nav aria-label="Breadcrumb" class="mb-8">
-            <ol class="flex items-center gap-2 text-sm font-sans text-secondary" role="list">
-              <li>
-                <a href="/" class="hover:text-primary transition-colors">Home</a>
-              </li>
-              <li aria-hidden="true" class="text-gray-300">›</li>
-              <li>
-                <a href="/magazine" class="hover:text-primary transition-colors">Magazine</a>
-              </li>
-              <li aria-hidden="true" class="text-gray-300">›</li>
-              <li class="text-dark truncate max-w-xs" aria-current="page">
-                {post.title}
-              </li>
-            </ol>
+          <nav aria-label="Breadcrumb" class="mb-6">
+            {breadcrumb}
           </nav>
+
+          {/* Series nav — top */}
+          {seriesCtx && <SeriesNav ctx={seriesCtx} position="top" />}
 
           {/* Header */}
           <header class="mb-8">
@@ -135,8 +221,11 @@ export function PostPage({
             </div>
           )}
 
+          {/* Series nav — bottom */}
+          {seriesCtx && <SeriesNav ctx={seriesCtx} position="bottom" />}
+
           {/* Footer Substack CTA */}
-          <div class="border-t border-gray-100 pt-8 mb-10">
+          <div class="border-t border-gray-100 pt-8 mt-10 mb-10">
             <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div>
                 <p class="font-serif text-lg text-dark mb-1">Protocolized Magazine</p>
@@ -155,7 +244,7 @@ export function PostPage({
             </div>
           </div>
 
-          {/* Prev / next navigation */}
+          {/* Prev / next navigation (chronological) */}
           {(prev || next) && (
             <nav aria-label="Post navigation" class="border-t border-gray-100 pt-8">
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
