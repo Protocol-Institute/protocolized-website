@@ -8,6 +8,7 @@
     "jsxImportSource": "hono/jsx",
     "strict": true,
     "skipLibCheck": true,
+    "resolveJsonModule": true,
     "types": ["@cloudflare/workers-types"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]

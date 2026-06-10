@@ -18,6 +18,7 @@ import { ResourcesPage } from "./html/resources";
 import { ResourcePage } from "./html/resource";
 import { PostPage } from "./html/post";
 import { BooksPage, BookPage } from "./html/books";
+import { LexiconPage } from "./html/lexicon";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
 
 interface Env {
@@ -126,14 +127,12 @@ app.get("/resources", async (c) => {
   );
 });
 
+app.get("/resources/protocol-lexicon", (c) =>
+  c.html(<LexiconPage currentPath="/resources/protocol-lexicon" />)
+);
+
 app.get("/resources/:slug", async (c) => {
   const slug = c.req.param("slug");
-
-  // protocol-lexicon is served as a static asset; this route shouldn't be hit
-  // but handle it gracefully just in case
-  if (slug === "protocol-lexicon") {
-    return c.redirect("/resources/protocol-lexicon/", 301);
-  }
 
   const resource = await getResource(c.env.DB, slug);
   if (!resource) {
@@ -156,6 +155,8 @@ app.get("/resources/:slug", async (c) => {
     />
   );
 });
+
+app.get("/api/lexicon.json", (c) => c.redirect("/lexicon.json", 301));
 
 app.get("/api/resources.json", async (c) => {
   const resources = await getAllResources(c.env.DB);
@@ -259,10 +260,19 @@ app.get("/rss.xml", async (c) => {
 });
 
 app.get("/sitemap.xml", async (c) => {
-  const resources = await getAllResources(c.env.DB);
-  const staticPaths = ["/", "/about", "/community", "/magazine", "/anthologies", "/resources"];
+  const [resources, books, posts] = await Promise.all([
+    getAllResources(c.env.DB),
+    getAllBooks(c.env.DB),
+    getLatestPosts(c.env.DB, 10000),
+  ]);
+  const staticPaths = [
+    "/", "/about", "/community", "/magazine", "/anthologies",
+    "/resources", "/resources/protocol-lexicon", "/books",
+  ];
   const resourcePaths = resources.map((r) => `/resources/${r.slug}`);
-  const allPaths = [...staticPaths, ...resourcePaths];
+  const bookPaths = books.map((b) => `/books/${b.slug}`);
+  const postPaths = posts.map((p) => `/p/${p.slug}`);
+  const allPaths = [...staticPaths, ...resourcePaths, ...bookPaths, ...postPaths];
 
   const urls = allPaths
     .map(
