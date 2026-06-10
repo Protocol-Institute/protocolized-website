@@ -230,6 +230,7 @@ export interface Post {
   mirrored_at?: string;
   series_slug?: string;
   series_position?: number;
+  is_placeholder?: boolean;
 }
 
 interface PostRow {
@@ -253,6 +254,7 @@ interface PostRow {
   mirrored_at: string | null;
   series_slug: string | null;
   series_position: number | null;
+  is_placeholder: number | null;
 }
 
 function parsePostRow(row: PostRow): Post {
@@ -277,6 +279,7 @@ function parsePostRow(row: PostRow): Post {
     mirrored_at: row.mirrored_at ?? undefined,
     series_slug: row.series_slug ?? undefined,
     series_position: row.series_position ?? undefined,
+    is_placeholder: row.is_placeholder === 1 ? true : undefined,
   };
 }
 
@@ -291,7 +294,7 @@ export async function getPost(db: D1Database, slug: string): Promise<Post | null
 export async function getLatestPosts(db: D1Database, limit = 50): Promise<Post[]> {
   const result = await db
     .prepare(
-      "SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts ORDER BY date DESC LIMIT ?"
+      "SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts WHERE is_placeholder IS NULL OR is_placeholder = 0 ORDER BY date DESC LIMIT ?"
     )
     .bind(limit)
     .all<PostRow>();

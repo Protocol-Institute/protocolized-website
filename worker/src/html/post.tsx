@@ -89,6 +89,8 @@ export function PostPage({
   const substackUrl =
     post.substack_url ??
     `https://protocolized.summerofprotocols.com/p/${post.slug}`;
+  const isPlaceholder = !!post.is_placeholder;
+  const substackSubscribeUrl = "https://protocolized.summerofprotocols.com";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -176,14 +178,16 @@ export function PostPage({
               <span aria-hidden="true" class="text-gray-300">·</span>
               <time datetime={post.date}>{fmtDate(post.date, "long")}</time>
               <span aria-hidden="true" class="text-gray-300">·</span>
-              <a
-                href={substackUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="hover:text-primary transition-colors"
-              >
-                View on Substack ↗
-              </a>
+              {!isPlaceholder && (
+                <a
+                  href={substackUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="hover:text-primary transition-colors"
+                >
+                  View on Substack ↗
+                </a>
+              )}
             </div>
           </header>
 
@@ -205,6 +209,22 @@ export function PostPage({
               class="prose max-w-none mb-12"
               dangerouslySetInnerHTML={{ __html: bodyHtml }}
             />
+          ) : isPlaceholder ? (
+            <div class="mb-12 p-8 rounded-xl border border-primary/20 bg-primary-light/20 text-center">
+              <p class="font-serif text-xl text-dark mb-3">Coming soon to Protocolized</p>
+              <p class="font-sans text-sm text-secondary mb-6 max-w-sm mx-auto">
+                This story will be mirrored here when it's published on Substack.
+                In the meantime, you can read it on the author's site.
+              </p>
+              <a
+                href={substackUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn-primary"
+              >
+                Read this story →
+              </a>
+            </div>
           ) : (
             <div class="mb-12 p-8 rounded-xl border border-gray-200 text-center">
               <p class="font-sans text-secondary mb-4">
@@ -234,7 +254,7 @@ export function PostPage({
                 </p>
               </div>
               <a
-                href={substackUrl}
+                href={substackSubscribeUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary shrink-0"

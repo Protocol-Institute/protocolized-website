@@ -42,7 +42,8 @@ CREATE TABLE IF NOT EXISTS posts (
   mirrored_at          TEXT,
   synced_at            TEXT NOT NULL,
   series_slug          TEXT,           -- FK → books.slug for series posts
-  series_position      INTEGER         -- 1-based position within the series
+  series_position      INTEGER,        -- 1-based position within the series
+  is_placeholder       INTEGER DEFAULT 0  -- 1 = coming-soon stub; excluded from magazine feed
 );
 
 CREATE INDEX IF NOT EXISTS idx_posts_date ON posts(date DESC);

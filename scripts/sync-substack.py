@@ -313,7 +313,7 @@ def sync_post_to_d1(slug):
     prev_slug = data.get("previous_post_slug")
     next_slug = data.get("next_post_slug")
 
-    sql = f"""INSERT OR REPLACE INTO posts (
+    sql = f"""INSERT INTO posts (
   slug, title, subtitle, date, section, primary_author, authors,
   cover_image, cover_image_original, body_r2_key,
   summary, enriched_categories, substack_categories,
@@ -331,7 +331,19 @@ def sync_post_to_d1(slug):
   {_sq(prev_slug)}, {_sq(next_slug)},
   {_sq(f"{SUBSTACK_BASE}/p/{slug}")},
   {int(image_count)}, {_sq(mirrored_at)}, {_sq(now)}
-);"""
+) ON CONFLICT(slug) DO UPDATE SET
+  title = excluded.title, subtitle = excluded.subtitle,
+  date = excluded.date, section = excluded.section,
+  primary_author = excluded.primary_author, authors = excluded.authors,
+  cover_image = excluded.cover_image, cover_image_original = excluded.cover_image_original,
+  body_r2_key = excluded.body_r2_key, summary = excluded.summary,
+  enriched_categories = excluded.enriched_categories,
+  substack_categories = excluded.substack_categories,
+  reaction_count = excluded.reaction_count,
+  previous_slug = excluded.previous_slug, next_slug = excluded.next_slug,
+  substack_url = excluded.substack_url, image_count = excluded.image_count,
+  mirrored_at = excluded.mirrored_at, synced_at = excluded.synced_at,
+  is_placeholder = 0;"""
 
     _d1_exec(sql)
 
