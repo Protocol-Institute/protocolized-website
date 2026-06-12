@@ -30,7 +30,7 @@ export function BooksPage({
           {books.length === 0 ? (
             <p class="font-sans text-secondary">No books yet.</p>
           ) : (
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
               {books.map((book) => (
                 <BookCard book={book} />
               ))}
@@ -48,8 +48,8 @@ function BookCard({ book }: { book: Book }) {
     : book.description;
 
   return (
-    <a href={`/books/${book.slug}`} class="group flex flex-col">
-      <div class="aspect-[2/3] bg-primary-light rounded-lg overflow-hidden mb-4 relative">
+    <a href={`/books/${book.slug}`} class="group flex gap-5 items-start">
+      <div class="w-20 h-28 sm:w-24 sm:h-36 shrink-0 bg-primary-light rounded overflow-hidden">
         {book.cover_image ? (
           <img
             src={book.cover_image}
@@ -58,18 +58,18 @@ function BookCard({ book }: { book: Book }) {
             loading="lazy"
           />
         ) : (
-          <div class="w-full h-full flex flex-col items-center justify-center p-6 text-center">
-            <span class="font-serif text-xl text-primary leading-snug">{book.title}</span>
+          <div class="w-full h-full flex flex-col items-center justify-center p-2 text-center">
+            <span class="font-serif text-xs text-primary leading-tight">{book.title}</span>
           </div>
         )}
       </div>
 
-      <div class="flex-1 flex flex-col">
-        <div class="flex items-center gap-2 mb-1">
+      <div class="flex-1 min-w-0">
+        <div class="flex items-start gap-2 mb-1 flex-wrap">
           <h2 class="font-serif text-xl text-dark leading-snug group-hover:text-primary transition-colors">
             {book.title}
           </h2>
-          <span class="shrink-0 text-xs font-sans px-2 py-0.5 rounded-full bg-gray-100 text-secondary capitalize">
+          <span class="shrink-0 text-xs font-sans px-2 py-0.5 rounded-full bg-gray-100 text-secondary capitalize mt-1">
             {book.category}
           </span>
         </div>
