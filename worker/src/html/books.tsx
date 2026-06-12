@@ -65,9 +65,14 @@ function BookCard({ book }: { book: Book }) {
       </div>
 
       <div class="flex-1 flex flex-col">
-        <h2 class="font-serif text-xl text-dark leading-snug mb-1 group-hover:text-primary transition-colors">
-          {book.title}
-        </h2>
+        <div class="flex items-center gap-2 mb-1">
+          <h2 class="font-serif text-xl text-dark leading-snug group-hover:text-primary transition-colors">
+            {book.title}
+          </h2>
+          <span class="shrink-0 text-xs font-sans px-2 py-0.5 rounded-full bg-gray-100 text-secondary capitalize">
+            {book.category}
+          </span>
+        </div>
         {book.subtitle && (
           <p class="font-sans text-sm text-secondary mb-1 italic">{book.subtitle}</p>
         )}
@@ -156,9 +161,12 @@ export function BookPage({
                 <p class="font-serif text-xl text-secondary italic mb-4">{book.subtitle}</p>
               )}
 
-              <div class="flex flex-wrap gap-x-6 gap-y-1 text-sm font-sans text-secondary mb-6">
+              <div class="flex flex-wrap items-center gap-x-6 gap-y-1 text-sm font-sans text-secondary mb-6">
                 {book.editor && <span>Edited by {book.editor}</span>}
                 {book.date && <span>{fmtDate(book.date, "year")}</span>}
+                <span class="text-xs px-2 py-0.5 rounded-full bg-gray-100 text-secondary capitalize">
+                  {book.category}
+                </span>
               </div>
 
               {/* Description / body */}

@@ -445,6 +445,32 @@
           "html": "<strong>PR #1 submitted to Protocol-Institute/jamverse</strong> replacing all 14 story URLs across 7 HTML files. 12 Substack URLs (<code>protocolized.summerofprotocols.com/p/*</code>) replaced with <code>protocolized.io/p/*</code>; 2 Randy Lubin URLs (<code>randylubin.com/fiction/...</code>) replaced with the new internal placeholder pages. The <code>devlog.html</code> in jamverse was left unchanged — it contains a text-only historical reference to randylubin.com, not a navigation link. Sachin Benny (lead dev on jamverse) set as PR reviewer."
         }
       ]
+    },
+    {
+      "id": 15,
+      "sort_key": 15.0,
+      "label": "Session 15",
+      "title": "Inbox System, Book Covers, Books Category Tag",
+      "date": "2026-06-12",
+      "time_pt": "",
+      "tracks": ["operations", "ux"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Inbox drop zone for session assets:",
+          "html": "<strong>Added <code>inbox/</code> as a gitignored drop zone for files Venkat wants processed between sessions</strong> (covers, PDFs, content, etc.). CLAUDE.md session-start checklist updated: step 3 is now &ldquo;scan <code>inbox/</code> and handle anything present.&rdquo; The inbox is not committed — files are processed (uploaded to R2, etc.) and recorded in the session wrap-up, then left for manual cleanup."
+        },
+        {
+          "title": "Book cover images — 3 books:",
+          "html": "<strong>Three cover images were processed from inbox and uploaded to R2</strong> at <code>covers/{slug}.jpg</code> (served at <code>files.protocolized.io/covers/</code>): <code>ghosts-in-machines.jpg</code>, <code>the-librarians.jpg</code>, <code>terminological-twists.jpg</code>. D1 <code>books</code> table updated with <code>cover_image</code> URLs for all three. The-protocol-reader and the 4 Jamverse series books still have no cover."
+        },
+        {
+          "title": "Books category field — fiction vs nonfiction:",
+          "html": "<strong>Added a <code>category</code> column to the D1 <code>books</code> table</strong> (<code>TEXT NOT NULL DEFAULT 'fiction'</code>) via <code>ALTER TABLE</code>. <code>the-protocol-reader</code> set to <code>'nonfiction'</code>; all others default to <code>'fiction'</code>. Schema updated in <code>schema.sql</code>; TypeScript updated in <code>db.ts</code> (<code>Book</code> interface, <code>BookRow</code>, <code>parseBookRow</code>). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended — future nonfiction books just need <code>category = 'nonfiction'</code> set on insert."
+        }
+      ]
     }
   ]
 }

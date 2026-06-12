@@ -152,6 +152,7 @@ export interface Book {
   tags: string[];
   sort_order: number;
   published: boolean;
+  category: string;
 }
 
 interface BookRow {
@@ -170,6 +171,7 @@ interface BookRow {
   tags: string;
   sort_order: number;
   published: number;
+  category: string;
 }
 
 function parseBookRow(row: BookRow): Book {
@@ -189,6 +191,7 @@ function parseBookRow(row: BookRow): Book {
     tags: JSON.parse(row.tags),
     sort_order: row.sort_order,
     published: row.published === 1,
+    category: row.category ?? "fiction",
   };
 }
 

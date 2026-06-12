@@ -217,3 +217,17 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **PR #1 submitted to Protocol-Institute/jamverse** replacing all 14 story URLs across 7 HTML files. 12 Substack URLs (`protocolized.summerofprotocols.com/p/*`) replaced with `protocolized.io/p/*`; 2 Randy Lubin URLs (`randylubin.com/fiction/...`) replaced with the new internal placeholder pages. The `devlog.html` in jamverse was left unchanged — it contains a text-only historical reference to randylubin.com, not a navigation link. Sachin Benny (lead dev on jamverse) set as PR reviewer.
 
 ---
+
+## Session 15: Inbox System, Book Covers, Books Category Tag
+
+*2026-06-12*
+
+**Tracks:** operations, ux
+
+- **Added `inbox/` as a gitignored drop zone for files Venkat wants processed between sessions** (covers, PDFs, content, etc.). CLAUDE.md session-start checklist updated: step 3 is now &ldquo;scan `inbox/` and handle anything present.&rdquo; The inbox is not committed — files are processed (uploaded to R2, etc.) and recorded in the session wrap-up, then left for manual cleanup.
+
+- **Three cover images were processed from inbox and uploaded to R2** at `covers/{slug}.jpg` (served at `files.protocolized.io/covers/`): `ghosts-in-machines.jpg`, `the-librarians.jpg`, `terminological-twists.jpg`. D1 `books` table updated with `cover_image` URLs for all three. The-protocol-reader and the 4 Jamverse series books still have no cover.
+
+- **Added a `category` column to the D1 `books` table** (`TEXT NOT NULL DEFAULT 'fiction'`) via `ALTER TABLE`. `the-protocol-reader` set to `'nonfiction'`; all others default to `'fiction'`. Schema updated in `schema.sql`; TypeScript updated in `db.ts` (`Book` interface, `BookRow`, `parseBookRow`). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended — future nonfiction books just need `category = 'nonfiction'` set on insert.
+
+---

@@ -66,6 +66,7 @@ CREATE TABLE IF NOT EXISTS books (
   contributors TEXT NOT NULL DEFAULT '[]',
   tags         TEXT NOT NULL DEFAULT '[]',
   sort_order   INTEGER NOT NULL DEFAULT 0,
-  published    INTEGER NOT NULL DEFAULT 1
+  published    INTEGER NOT NULL DEFAULT 1,
+  category     TEXT NOT NULL DEFAULT 'fiction'
 );
 CREATE INDEX IF NOT EXISTS idx_books_sort ON books(sort_order ASC, date DESC);

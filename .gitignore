@@ -10,3 +10,6 @@ raw_resources/
 worker/.wrangler/
 data/substack/
 *.zip
+
+# Drop zone for session assets (covers, files, etc.)
+inbox/

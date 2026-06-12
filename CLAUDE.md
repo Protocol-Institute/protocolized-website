@@ -163,12 +163,13 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
    ```bash
    git log --oneline --grep="sync" -10
    ```
-3. If Hono Worker work is ongoing, check `worker/PLAN.md` and `worker/wrangler.toml` for current implementation state (esp. whether `database_id` has been filled in yet).
-4. For any wrangler/CF ops, export the API token from the org key store:
+3. **Scan `inbox/`** — Venkat drops files here between sessions (covers, assets, content). List contents and handle anything present before starting other work. The inbox is gitignored; files should be processed (uploaded to R2, etc.) and noted in the session wrap-up.
+4. If Hono Worker work is ongoing, check `worker/PLAN.md` and `worker/wrangler.toml` for current implementation state (esp. whether `database_id` has been filled in yet).
+5. For any wrangler/CF ops, export the API token from the org key store:
    ```sh
    export CLOUDFLARE_API_TOKEN=$(grep CLOUDFLARE_API_TOKEN ../../.env.keys | cut -d= -f2)
    ```
-5. Summarize to Venkat: sync activity, active items from `status-vgr.md`, and Worker migration progress.
+6. Summarize to Venkat: inbox contents + action taken, sync activity, active items from `status-vgr.md`, and Worker migration progress.
 
 ---
 
