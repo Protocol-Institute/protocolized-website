@@ -141,14 +141,23 @@ export function BookPage({
               </div>
 
               {(book.url || book.file) && (
-                <a
-                  href={book.file ?? book.url ?? "#"}
-                  target={book.url && !book.file ? "_blank" : undefined}
-                  rel={book.url && !book.file ? "noopener noreferrer" : undefined}
-                  class="btn-primary w-full text-center block"
-                >
-                  {book.file ? "Download (PDF)" : "Get the book →"}
-                </a>
+                <div class="flex flex-col gap-2">
+                  {book.file && (
+                    <a href={book.file} download class="btn-primary w-full text-center block">
+                      {book.file.endsWith(".epub") ? "Download ePub" : "Download PDF"}
+                    </a>
+                  )}
+                  {book.url && (
+                    <a
+                      href={book.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="btn-secondary w-full text-center block"
+                    >
+                      Get the book →
+                    </a>
+                  )}
+                </div>
               )}
             </div>
 
