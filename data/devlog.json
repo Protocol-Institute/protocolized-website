@@ -447,6 +447,36 @@
       ]
     },
     {
+      "id": 16,
+      "sort_key": 16.0,
+      "label": "Session 16",
+      "title": "ePub Downloads, Book Thumbnails, Inbox Policy",
+      "date": "2026-06-12",
+      "time_pt": "",
+      "tracks": ["operations", "ux"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "ePub downloads for 4 books:",
+          "html": "<strong>Four books now have downloadable ePubs served from R2 at <code>files.protocolized.io/epubs/{slug}.epub</code>:</strong> <em>Ghosts in Machines</em>, <em>The Librarians</em>, <em>Terminological Twists</em>, and <em>The Protocol Reader</em>. Files uploaded via <code>wrangler r2 object put --remote</code> with <code>content-type: application/epub+zip</code>. D1 <code>books.file</code> field set for all four. The Substack collections placeholder URL (<code>protocolized.summerofprotocols.com/p/collections</code>) and the SoP URL on Protocol Reader were nulled out — book pages will only link to locally served files or real retail buy links, never to Substack. The <code>url</code> field is reserved for future retail links (e.g. Amazon, Bookshop.org)."
+        },
+        {
+          "title": "Book detail page — dual CTA buttons:",
+          "html": "<strong>The single CTA on book detail pages was replaced with two independent buttons.</strong> Previously the logic collapsed <code>file</code> and <code>url</code> into a single link (file took priority). Now: if <code>book.file</code> is set, a primary &ldquo;Download ePub&rdquo; / &ldquo;Download PDF&rdquo; button is shown (label auto-detected from extension; <code>download</code> attribute forces browser download rather than inline open). If <code>book.url</code> is set, a secondary &ldquo;Get the book &rarr;&rdquo; button is shown as an external link. Each appears independently, so books with only a file, only a URL, or both are all handled correctly without extra logic."
+        },
+        {
+          "title": "Books index — thumbnail card layout:",
+          "html": "<strong>The /books index cards were redesigned from tall portrait cards to compact horizontal thumbnail cards.</strong> Previously each card was <code>flex flex-col</code> with an <code>aspect-[2/3]</code> image container — on a 3-column grid, the cover dominated the card at ~450px tall. Now each card is a horizontal row: a small <code>w-20 h-28</code> (sm: <code>w-24 h-36</code>) cover thumbnail on the left, title/subtitle/blurb text on the right. Grid reduced from <code>lg:grid-cols-3</code> to max <code>sm:grid-cols-2</code>. Detail pages retain the original <code>lg:w-64</code> large cover."
+        },
+        {
+          "title": "Inbox processing policy:",
+          "html": "<strong>Established and documented a formal inbox processing policy in CLAUDE.md.</strong> Rule: after handling any file from <code>inbox/</code>, move it to <code>inbox/.processed/</code> immediately — never leave processed files in the inbox root, never delete from <code>.processed/</code> (it is a local-only record; the directory is gitignored). Files with no clear action are left in inbox and flagged in the session summary. The policy was triggered by processed cover images from Session 15 being left in the inbox root."
+        }
+      ]
+    },
+    {
       "id": 15,
       "sort_key": 15.0,
       "label": "Session 15",

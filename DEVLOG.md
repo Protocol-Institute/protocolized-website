@@ -231,3 +231,19 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **Added a `category` column to the D1 `books` table** (`TEXT NOT NULL DEFAULT 'fiction'`) via `ALTER TABLE`. `the-protocol-reader` set to `'nonfiction'`; all others default to `'fiction'`. Schema updated in `schema.sql`; TypeScript updated in `db.ts` (`Book` interface, `BookRow`, `parseBookRow`). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended — future nonfiction books just need `category = 'nonfiction'` set on insert.
 
 ---
+
+## Session 16: ePub Downloads, Book Thumbnails, Inbox Policy
+
+*2026-06-12*
+
+**Tracks:** operations, ux
+
+- **Four books now have downloadable ePubs served from R2 at `files.protocolized.io/epubs/{slug}.epub`:** *Ghosts in Machines*, *The Librarians*, *Terminological Twists*, and *The Protocol Reader*. Files uploaded via `wrangler r2 object put --remote` with `content-type: application/epub+zip`. D1 `books.file` field set for all four. The Substack collections placeholder URL (`protocolized.summerofprotocols.com/p/collections`) and the SoP URL on Protocol Reader were nulled out — book pages will only link to locally served files or real retail buy links, never to Substack. The `url` field is reserved for future retail links (e.g. Amazon, Bookshop.org).
+
+- **The single CTA on book detail pages was replaced with two independent buttons.** Previously the logic collapsed `file` and `url` into a single link (file took priority). Now: if `book.file` is set, a primary &ldquo;Download ePub&rdquo; / &ldquo;Download PDF&rdquo; button is shown (label auto-detected from extension; `download` attribute forces browser download rather than inline open). If `book.url` is set, a secondary &ldquo;Get the book &rarr;&rdquo; button is shown as an external link. Each appears independently, so books with only a file, only a URL, or both are all handled correctly without extra logic.
+
+- **The /books index cards were redesigned from tall portrait cards to compact horizontal thumbnail cards.** Previously each card was `flex flex-col` with an `aspect-[2/3]` image container — on a 3-column grid, the cover dominated the card at ~450px tall. Now each card is a horizontal row: a small `w-20 h-28` (sm: `w-24 h-36`) cover thumbnail on the left, title/subtitle/blurb text on the right. Grid reduced from `lg:grid-cols-3` to max `sm:grid-cols-2`. Detail pages retain the original `lg:w-64` large cover.
+
+- **Established and documented a formal inbox processing policy in CLAUDE.md.** Rule: after handling any file from `inbox/`, move it to `inbox/.processed/` immediately — never leave processed files in the inbox root, never delete from `.processed/` (it is a local-only record; the directory is gitignored). Files with no clear action are left in inbox and flagged in the session summary. The policy was triggered by processed cover images from Session 15 being left in the inbox root.
+
+---

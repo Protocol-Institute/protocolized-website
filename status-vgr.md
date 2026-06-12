@@ -7,9 +7,8 @@
 
 ### Books
 - Add content + cover images for Bridges (slug seeded, `published = 0`)
-- Add cover images for all 4 books (currently placeholder)
-- Add cover images for 4 new series books (Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles)
-- Add print/EPUB links when available (`file` = R2 PDF, `url` = external)
+- Add cover images for 4 Jamverse series books (Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles)
+- Add buy links (`url`) for books when available (Substack URLs removed; only local epubs + real retail links should appear)
 
 ### Jamverse / Series
 - Jamverse PR #1 (update story links to protocolized.io) awaiting Sachin Benny review/merge
@@ -57,6 +56,7 @@ Add resource entries for the following SoP content not yet in the library.
 
 ## Done
 <!-- completed items, reverse chronological -->
+- **2026-06-12** — Session 16. ePub downloads for 4 books: ghosts-in-machines, the-librarians, terminological-twists, the-protocol-reader — all uploaded to R2 (`epubs/*.epub`), D1 `file` field set, Substack placeholder URLs nulled on all books. Protocol Reader cover image uploaded (R2 `covers/the-protocol-reader.jpg`). Books index redesigned: cards now horizontal with small thumbnail (w-20/w-24) instead of tall aspect-[2/3] portrait; grid reduced to 2-col. Book detail CTA split into two buttons: "Download ePub"/"Download PDF" (primary, with `download` attr) and "Get the book →" (secondary, external) shown independently. Inbox processing policy documented in CLAUDE.md: always move to `inbox/.processed/` on completion.
 - **2026-06-12** — Session 15. Inbox system: added `inbox/` drop zone (gitignored), CLAUDE.md updated to scan it at session start. Processed 3 book covers from inbox: ghosts-in-machines, the-librarians, terminological-twists uploaded to R2 (`covers/*.jpg`), D1 `cover_image` updated on all 3. Added `category` column to D1 `books` table (ALTER TABLE, default `'fiction'`); `the-protocol-reader` set to `'nonfiction'`. Schema.sql, db.ts (Book interface + BookRow + parseBookRow), and books.tsx (badge on card + detail page) all updated. Worker deployed.
 - **2026-06-10** — Session 14. Hono migration audit: restored lexicon page (was 404-looping), fixed sitemap (now includes /books, /p/:slug × 120, /resources/protocol-lexicon), added /api/lexicon.json redirect. Series navigation for 4 Jamverse story cycles: Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles — 4 new books in D1, series_slug/series_position on posts, SeriesNav component top+bottom of post pages, breadcrumb updated. Placeholder pages for un-mirrored Stockton ch.2+3 (is_placeholder column, "coming soon" display, sync script fixed to upsert preserving series data). PR #1 submitted to jamverse repo pointing all 14 story links to protocolized.io mirrors; Sachin Benny as reviewer.
 - **2026-06-09** — Session 13. Domain cutover complete: protocolized.io now served by Hono Worker (deleted conflicting GitHub Pages A records, added custom domain in CF dashboard). Carousel fixed (was querying resources type=article; now queries posts table). Backfilled 3 missing posts (Jun 1/3/9) to D1+R2 via Substack API. Sync pipeline overhauled: deploy.yml replaced GH Pages workflow with Worker deploy; sync-substack.py now dual-writes Markdown + D1+R2 after each new post; CLOUDFLARE_API_TOKEN added as GH Actions secret. Removed add-new-posts.py (one-time script). Books section launched: /books index + /books/:slug detail pages; D1 books table; 4 books seeded (Protocol Reader + 3 fiction collections with linked ToCs; Bridges stub unpublished). Books added to nav and footer.
