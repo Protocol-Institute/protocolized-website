@@ -273,3 +273,17 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **Fixed three wrong URLs that were consistent across the codebase:** (1) Protocol Institute link was `protocolsociety.org` in About page and footer — corrected to `protocol-institute.org` everywhere. (2) YouTube handle was `@protocolized` throughout — corrected to `@protocol-institute`. (3) Discord invite was stale — updated to `Z3fgsW8D4s` in all files (base.tsx, home.tsx, static-pages.tsx, index.tsx).
 
 ---
+
+## Session 18: Nav cleanup, resource metadata audit, banner generation
+
+*2026-06-14*
+
+**Tracks:** ux, operations
+
+- Replaced the About nav link with YouTube (external, opens new tab). About page collapsed to a single paragraph with two inline links (Protocol Institute homepage + About page). Homepage lost three sections: Featured Resources (redundant with carousel), Protocolized Magazine CTA, and social-links strip. Quick Start Pages section renamed from “Where do you want to start?”. Footer replaced entirely with a single slim row: copyright left, `Protocol Institute | llms.txt | RSS feed` right. All changes live in `base.tsx`, `home.tsx`, `static-pages.tsx`, and `index.tsx`.
+
+- Full pass through all 288 resource Markdown files. Found three classes of error: (1) 22 files with cover-page copyright boilerplate as description (“Printed in the United States of America…”) — replaced with substantive per-paper descriptions. (2) 4 case files (Fire Protocols, E2EE/ActivityPub, Plurality in Practice, Shoreline Adaptations) with garbled no-space PDF extraction artefacts — descriptions reconstructed from the embedded CONCEPT/TARGET text. (3) Two resources with wrong titles/authors: Steiert (“Summer of Protocols Research: Steiert” → “Protocols in (Emergency) Time”, author Olivia Steiert), Lang (“Summer of Protocols Research: Lang” → “Standards Make the World”), and “The Unreasonable Sufficiency of Protocols” (author corrected to Rao, Beiko, Stark, Van Epps, Aue, Ryan). Duplicate `steiert-1` entry deleted from Markdown and D1. All fixes applied to D1 via batch SQL. Script `scripts/fix-resource-descriptions.py` handles the Markdown side.
+
+- New script `scripts/generate-banners.py` creates 1200×600 JPEG composites for PDF resources. Layout: teal left panel (390px, #0F6E56) with the existing `covers/{slug}.jpg` thumbnail centred on it + Gaussian drop shadow; off-white right panel with resource type badge (Calibri 13pt), title (Georgia 40–28pt auto-sized, word-wrapped), and italic authors (Georgia 18pt) vertically centred as a block. Year and Protocolized wordmark pinned to bottom. Generated 71 banners, uploaded to R2 `banners/{slug}.jpg`, D1 `thumbnail` updated. Resource detail page (`resource.tsx`) now renders the banner at aspect-[2/1] above the Download CTA. The same thumbnail flows into the carousel for archive spotlight items. Books and magazine posts do not yet have banners — tracked as next-session work.
+
+---
