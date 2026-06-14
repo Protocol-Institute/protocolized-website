@@ -127,6 +127,17 @@ export function ResourcePage({
             )}
           </div>
 
+          {resource.thumbnail && (
+            <div class="mb-8 rounded-xl overflow-hidden aspect-[2/1] bg-gray-100">
+              <img
+                src={resource.thumbnail}
+                alt={resource.title}
+                class="w-full h-full object-cover"
+                loading="eager"
+              />
+            </div>
+          )}
+
           {primaryAction && (
             <div class="mb-8">
               <a
