@@ -1,10 +1,10 @@
 ---
-title: "Summer of Protocols Research: Lang"
+title: "Standards Make the World"
 type: working-paper
 authors:
   - name: "David Lang"
 date: 2023-12-13
-description: "A Summer of Protocols 2023 research paper by David Lang exploring protocol systems in the context of standards, measurement, and collaborative making."
+description: "David Lang explores how standards function as protocols — examining the role of measurement, specification, and shared convention in making the material world legible, buildable, and interoperable."
 tags:
   - protocols
   - standards
