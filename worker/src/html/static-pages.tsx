@@ -100,7 +100,7 @@ export function AboutPage({ currentPath }: { currentPath: string }) {
               <p>
                 Protocolized is part of{" "}
                 <a
-                  href="https://protocolsociety.org"
+                  href="https://protocol-institute.org"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="text-primary hover:text-[#085041] transition-colors"
@@ -114,7 +114,7 @@ export function AboutPage({ currentPath }: { currentPath: string }) {
             </div>
             <div class="mt-6 flex flex-wrap gap-4">
               <a
-                href="https://protocolsociety.org"
+                href="https://protocol-institute.org"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary"
@@ -146,7 +146,7 @@ export function AboutPage({ currentPath }: { currentPath: string }) {
             </p>
             <div class="flex flex-wrap gap-4">
               <a
-                href="https://discord.gg/Aj5FbGsNYV"
+                href="https://discord.gg/Z3fgsW8D4s"
                 target="_blank"
                 rel="noopener noreferrer"
                 class="btn-primary"
@@ -168,14 +168,14 @@ export function CommunityPage({ currentPath }: { currentPath: string }) {
   const script = mobileMenuScript();
   return (
     <Base
-      title="Community"
-      description="Join the Protocolized community on Discord, YouTube, and beyond."
+      title="Discord"
+      description="Join the Protocol Institute community on Discord."
       currentPath={currentPath}
       bodyScript={script}
     >
       <div class="py-16 px-6 lg:px-8">
         <div class="max-w-prose mx-auto">
-          <h1 class="font-serif text-5xl text-dark mb-4">Community</h1>
+          <h1 class="font-serif text-5xl text-dark mb-4">Discord</h1>
           <p class="font-body text-xl text-secondary mb-12 leading-relaxed">
             The work on protocols happens in public, in conversation. Join us.
           </p>
@@ -194,53 +194,12 @@ export function CommunityPage({ currentPath }: { currentPath: string }) {
                   sharing new finds, coordinating research, and talking about protocol theory
                   in practice.
                 </p>
-                <a href="https://discord.gg/Aj5FbGsNYV" target="_blank" rel="noopener noreferrer" class="btn-primary">
+                <a href="https://discord.gg/Z3fgsW8D4s" target="_blank" rel="noopener noreferrer" class="btn-primary">
                   Join the Discord →
                 </a>
               </div>
             </div>
           </section>
-
-          <section class="card p-8 mb-6" aria-labelledby="youtube-heading">
-            <div class="flex items-start gap-5">
-              <div class="shrink-0 w-12 h-12 bg-red-50 rounded-xl flex items-center justify-center">
-                <svg class="w-6 h-6 text-red-600" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-              </div>
-              <div class="flex-1">
-                <h2 id="youtube-heading" class="font-serif text-2xl text-dark mb-2">YouTube</h2>
-                <p class="font-body text-secondary leading-relaxed mb-5">
-                  Talks, walkthroughs, discussions, and recorded events are on the
-                  Protocolized YouTube channel.
-                </p>
-                <a href="https://www.youtube.com/@protocolized" target="_blank" rel="noopener noreferrer" class="btn-primary">
-                  Visit YouTube channel →
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section class="card p-8 mb-6 bg-surface" aria-labelledby="events-heading">
-            <h2 id="events-heading" class="font-serif text-2xl text-dark mb-2">Events</h2>
-            <p class="font-body text-secondary leading-relaxed mb-4">
-              Workshops, reading groups, and meetups are announced on the Discord server.
-              Join Discord to stay in the loop on upcoming gatherings.
-            </p>
-            <p class="font-body text-secondary leading-relaxed">
-              Events are kept small and focused. The goal is real conversation, not broadcast.
-            </p>
-          </section>
-
-          <div class="mt-10 pt-10 border-t border-gray-100">
-            <p class="font-sans text-secondary text-sm">
-              For written updates and longer-form thinking, subscribe to the{" "}
-              <a href="/magazine" class="text-primary hover:text-[#085041] transition-colors">
-                magazine
-              </a>
-              .
-            </p>
-          </div>
         </div>
       </div>
     </Base>

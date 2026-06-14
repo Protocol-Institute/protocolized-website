@@ -6,7 +6,7 @@ const NAV_LINKS = [
   { href: "/books", label: "Books" },
   { href: "/magazine", label: "Magazine" },
   { href: "/about", label: "About" },
-  { href: "/community", label: "Community" },
+  { href: "/community", label: "Discord" },
 ];
 
 function isActive(href: string, currentPath: string): boolean {
@@ -114,12 +114,16 @@ function Nav({ currentPath }: { currentPath: string }) {
           class="flex items-center justify-between h-16"
           aria-label="Main navigation"
         >
-          <a href="/" class="flex items-center" aria-label="Protocolized — Home">
+          <a href="/" class="flex items-center gap-3" aria-label="Protocolized — Home">
             <img
               src="/protocolized_mark.png"
               class="h-10 w-auto"
               alt="Protocolized logo"
             />
+            <div class="flex flex-col">
+              <span class="font-serif text-xl text-dark leading-tight">Protocolized</span>
+              <span class="font-serif text-xs text-secondary italic leading-tight">The Protocol Institute media hub</span>
+            </div>
           </a>
 
           <ul class="hidden md:flex items-center gap-1" role="list">
@@ -228,7 +232,7 @@ function Footer() {
                 { href: "/books", label: "Books" },
                 { href: "/magazine", label: "Magazine" },
                 { href: "/about", label: "About" },
-                { href: "/community", label: "Community" },
+                { href: "/community", label: "Discord" },
               ].map(({ href, label }) => (
                 <li>
                   <a
@@ -249,7 +253,7 @@ function Footer() {
             <ul class="space-y-2" role="list">
               <li>
                 <a
-                  href="https://protocolsociety.org"
+                  href="https://protocol-institute.org"
                   class="text-sm font-sans text-secondary hover:text-primary transition-colors"
                   target="_blank"
                   rel="noopener noreferrer"
@@ -293,7 +297,7 @@ function Footer() {
           </p>
           <div class="flex items-center gap-4">
             <a
-              href="https://discord.gg/Aj5FbGsNYV"
+              href="https://discord.gg/Z3fgsW8D4s"
               class="text-xs font-sans text-secondary hover:text-primary transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -302,7 +306,7 @@ function Footer() {
               Discord
             </a>
             <a
-              href="https://www.youtube.com/@protocolized"
+              href="https://www.youtube.com/@protocol-institute"
               class="text-xs font-sans text-secondary hover:text-primary transition-colors"
               target="_blank"
               rel="noopener noreferrer"

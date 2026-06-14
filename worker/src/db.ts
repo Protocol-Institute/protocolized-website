@@ -82,6 +82,19 @@ export async function getFeaturedResources(
   return result.results.map(parseRow);
 }
 
+export async function getRandomArchiveResources(
+  db: D1Database,
+  limit = 2
+): Promise<Resource[]> {
+  const result = await db
+    .prepare(
+      "SELECT * FROM resources WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL ORDER BY RANDOM() LIMIT ?"
+    )
+    .bind(limit)
+    .all<ResourceRow>();
+  return result.results.map(parseRow);
+}
+
 export async function getLatestArticles(
   db: D1Database,
   limit = 5
@@ -193,6 +206,16 @@ function parseBookRow(row: BookRow): Book {
     published: row.published === 1,
     category: row.category ?? "fiction",
   };
+}
+
+export async function getRandomBooks(db: D1Database, limit = 1): Promise<Book[]> {
+  const result = await db
+    .prepare(
+      "SELECT * FROM books WHERE published = 1 AND cover_image IS NOT NULL ORDER BY RANDOM() LIMIT ?"
+    )
+    .bind(limit)
+    .all<BookRow>();
+  return result.results.map(parseBookRow);
 }
 
 export async function getAllBooks(db: D1Database): Promise<Book[]> {

@@ -1,6 +1,86 @@
 import { Base } from "./base";
 import { TypeBadge, fmtDate, mobileMenuScript } from "./static-pages";
-import type { Resource, Post } from "../db";
+import type { Resource, Post, Book } from "../db";
+import type { YouTubeVideo } from "../youtube";
+
+type CarouselSource = "magazine" | "youtube" | "archive" | "book";
+
+interface CarouselItem {
+  title: string;
+  url: string;
+  image?: string;
+  caption: string;
+  description?: string;
+  date?: string;
+  external?: boolean;
+  source: CarouselSource;
+}
+
+const SOURCE_BADGE: Record<CarouselSource, string> = {
+  magazine: "bg-primary-light text-primary",
+  youtube:  "bg-red-50 text-red-600",
+  archive:  "bg-[#FAECE7] text-[#D85A30]",
+  book:     "bg-gray-100 text-dark",
+};
+
+function buildCarouselItems(
+  posts: Post[],
+  ytVideos: YouTubeVideo[],
+  archiveResources: Resource[],
+  books: Book[],
+): CarouselItem[] {
+  const magazine: CarouselItem[] = posts.map((p) => ({
+    title: p.title,
+    url: `/p/${p.slug}`,
+    image: p.cover_image,
+    caption: "Latest from magazine",
+    description: p.subtitle ?? p.summary,
+    date: p.date,
+    source: "magazine" as const,
+  }));
+
+  const youtube: CarouselItem[] = ytVideos.map((v) => ({
+    title: v.title,
+    url: v.url,
+    image: v.thumbnail,
+    caption: "Latest from YouTube channel",
+    description: v.description,
+    date: v.published,
+    external: true,
+    source: "youtube" as const,
+  }));
+
+  const archive: CarouselItem[] = archiveResources.map((r) => ({
+    title: r.title,
+    url: `/resources/${r.slug}`,
+    image: r.thumbnail,
+    caption: "Resource Archive spotlight",
+    description: r.description,
+    date: r.date,
+    source: "archive" as const,
+  }));
+
+  const bookItems: CarouselItem[] = books.map((b) => ({
+    title: b.title,
+    url: `/books/${b.slug}`,
+    image: b.cover_image,
+    caption: "Book spotlight",
+    description: b.description,
+    date: b.date,
+    source: "book" as const,
+  }));
+
+  // Round-robin interleave: M, Y, A, B, M, Y, A, ...
+  const sources = [magazine, youtube, archive, bookItems];
+  const items: CarouselItem[] = [];
+  const maxLen = Math.max(...sources.map((s) => s.length));
+  for (let i = 0; i < maxLen; i++) {
+    for (const src of sources) {
+      if (i < src.length) items.push(src[i]);
+    }
+  }
+  return items;
+}
 
 const AUDIENCE_CARDS = [
   {
@@ -33,11 +113,18 @@ export function HomePage({
   currentPath,
   featuredResources,
   latestPosts,
+  archiveResources,
+  carouselBooks,
+  ytVideos,
 }: {
   currentPath: string;
   featuredResources: Resource[];
   latestPosts: Post[];
+  archiveResources: Resource[];
+  carouselBooks: Book[];
+  ytVideos: YouTubeVideo[];
 }) {
+  const carouselItems = buildCarouselItems(latestPosts, ytVideos, archiveResources, carouselBooks);
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -46,13 +133,13 @@ export function HomePage({
       "A sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute.",
     url: "https://protocolized.io",
     sameAs: [
-      "https://discord.gg/Aj5FbGsNYV",
-      "https://www.youtube.com/@protocolized",
+      "https://discord.gg/Z3fgsW8D4s",
+      "https://www.youtube.com/@protocol-institute",
       "https://protocolized.summerofprotocols.com",
     ],
   };
 
-  const carouselScript = latestPosts.length > 0 ? `
+  const carouselScript = carouselItems.length > 0 ? `
     (function() {
       var track = document.getElementById('carousel-track');
       var dots = document.querySelectorAll('.carousel-dot');
@@ -112,78 +199,76 @@ export function HomePage({
     >
       <section class="py-20 md:py-28 px-6 lg:px-8">
         <div class="max-w-wide mx-auto">
-          <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16">
-            <div class="lg:w-5/12 shrink-0">
-              <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-dark mb-4 leading-none tracking-tight">
+          <div class="flex flex-col lg:flex-row lg:items-center gap-12 lg:gap-16 min-w-0">
+            <div class="lg:w-5/12 shrink-0 min-w-0">
+              <h1 class="font-serif text-5xl md:text-6xl lg:text-7xl text-dark mb-6 leading-none tracking-tight">
                 Protocolized
               </h1>
-              <p class="font-serif text-2xl md:text-3xl text-primary mb-6 italic">
-                Accelerating Order.
+              <p class="font-body text-lg text-secondary leading-relaxed max-w-lg">
+                Protocolized is the media hub for the{" "}
+                <a href="https://protocol-institute.org" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-[#085041] transition-colors">Protocol Institute</a>.
+                {" "}Explore our{" "}
+                <a href="/resources" class="text-primary hover:text-[#085041] transition-colors">research archive</a>,
+                {" "}our{" "}
+                <a href="/magazine" class="text-primary hover:text-[#085041] transition-colors">magazine</a>
+                {" "}(also available on{" "}
+                <a href="https://protocolized.summerofprotocols.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-[#085041] transition-colors">Substack</a>),{" "}
+                <a href="https://www.youtube.com/@protocol-institute" target="_blank" rel="noopener noreferrer" class="text-primary hover:text-[#085041] transition-colors">YouTube channel</a>
+                {" "}and{" "}
+                <a href="/books" class="text-primary hover:text-[#085041] transition-colors">book collection</a>.
               </p>
-              <p class="font-body text-lg text-secondary mb-8 leading-relaxed max-w-lg">
-                A sci-fi and thinkpiece magazine and research library on protocols —
-                from the Summer of Protocols program, published by the Protocol Institute.
-              </p>
-              <div class="flex flex-wrap gap-4">
-                <a href="/resources" class="btn-primary text-base px-6 py-3">
-                  Explore resources
-                </a>
-                <a href="/community" class="btn-secondary text-base px-6 py-3">
-                  Join the community
-                </a>
-              </div>
             </div>
 
-            {latestPosts.length > 0 && (
-              <div class="lg:w-7/12">
-                <div class="flex items-center justify-between mb-4">
-                  <p class="font-serif text-lg text-dark">Latest from the magazine</p>
-                  <a
-                    href="/magazine"
-                    class="text-xs font-sans text-primary hover:text-[#085041] transition-colors shrink-0"
-                  >
-                    View all →
-                  </a>
-                </div>
+            {carouselItems.length > 0 && (
+              <div class="flex-1 min-w-0">
                 <div class="relative overflow-hidden rounded-xl" id="article-carousel">
                   <div
                     class="flex transition-transform duration-500 ease-in-out"
                     id="carousel-track"
                   >
-                    {latestPosts.map((post, i) => (
+                    {carouselItems.map((item, i) => (
                       <article class="w-full shrink-0" data-slide={i}>
-                        <a href={`/p/${post.slug}`} class="block group">
-                          <div class="aspect-[2/1] bg-gray-100 rounded-xl overflow-hidden mb-4">
-                            {post.cover_image ? (
+                        <a
+                          href={item.url}
+                          class="block group"
+                          {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                        >
+                          <div class="aspect-[2/1] bg-gray-100 rounded-xl overflow-hidden mb-4 relative">
+                            {item.image ? (
                               <img
-                                src={post.cover_image}
-                                alt={post.title}
+                                src={item.image}
+                                alt={item.title}
                                 class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300"
                                 loading={i === 0 ? "eager" : "lazy"}
                               />
                             ) : (
                               <div class="w-full h-full flex items-center justify-center bg-primary-light">
-                                <span class="font-serif text-2xl text-primary/40">
-                                  Protocolized
-                                </span>
+                                <span class="font-serif text-2xl text-primary/40">Protocolized</span>
                               </div>
                             )}
+                            <span class={`absolute top-3 left-3 text-xs font-sans font-medium px-2 py-1 rounded-full ${SOURCE_BADGE[item.source]}`}>
+                              {item.caption}
+                            </span>
                           </div>
                           <div class="flex items-start gap-3">
                             <div class="flex-1 min-w-0">
                               <h3 class="font-serif text-lg md:text-xl text-dark leading-snug mb-1 group-hover:text-primary transition-colors">
-                                {post.title}
+                                {item.title}
                               </h3>
-                              <p class="text-sm font-body text-secondary leading-relaxed line-clamp-2">
-                                {post.subtitle ?? post.summary ?? ""}
-                              </p>
+                              {item.description && (
+                                <p class="text-sm font-body text-secondary leading-relaxed line-clamp-2">
+                                  {item.description}
+                                </p>
+                              )}
                             </div>
-                            <time
-                              datetime={post.date}
-                              class="text-xs font-sans text-secondary whitespace-nowrap shrink-0 pt-1"
-                            >
-                              {fmtDate(post.date, "short")}
-                            </time>
+                            {item.date && (
+                              <time
+                                datetime={item.date}
+                                class="text-xs font-sans text-secondary whitespace-nowrap shrink-0 pt-1"
+                              >
+                                {fmtDate(item.date, "short")}
+                              </time>
+                            )}
                           </div>
                         </a>
                       </article>
@@ -193,7 +278,7 @@ export function HomePage({
                   <button
                     id="carousel-prev"
                     class="absolute left-2 top-[25%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors shadow-sm"
-                    aria-label="Previous article"
+                    aria-label="Previous slide"
                   >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -202,7 +287,7 @@ export function HomePage({
                   <button
                     id="carousel-next"
                     class="absolute right-2 top-[25%] -translate-y-1/2 w-8 h-8 rounded-full bg-white/90 border border-gray-200 flex items-center justify-center text-secondary hover:text-primary hover:border-primary transition-colors shadow-sm"
-                    aria-label="Next article"
+                    aria-label="Next slide"
                   >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -210,7 +295,7 @@ export function HomePage({
                   </button>
                 </div>
                 <div class="flex justify-center gap-2 mt-4">
-                  {latestPosts.map((_, i) => (
+                  {carouselItems.map((_, i) => (
                     <button
                       class={`carousel-dot w-2 h-2 rounded-full transition-colors ${i === 0 ? "bg-primary" : "bg-gray-300"}`}
                       data-index={i}
@@ -340,7 +425,7 @@ export function HomePage({
         <div class="max-w-wide mx-auto">
           <div class="flex flex-wrap items-center justify-center gap-8 text-sm font-sans text-secondary">
             <a
-              href="https://discord.gg/Aj5FbGsNYV"
+              href="https://discord.gg/Z3fgsW8D4s"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-2 hover:text-primary transition-colors"
@@ -352,7 +437,7 @@ export function HomePage({
               Discord
             </a>
             <a
-              href="https://www.youtube.com/@protocolized"
+              href="https://www.youtube.com/@protocol-institute"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-2 hover:text-primary transition-colors"

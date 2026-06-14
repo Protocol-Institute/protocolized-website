@@ -247,3 +247,29 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **Established and documented a formal inbox processing policy in CLAUDE.md.** Rule: after handling any file from `inbox/`, move it to `inbox/.processed/` immediately — never leave processed files in the inbox root, never delete from `.processed/` (it is a local-only record; the directory is gitignored). Files with no clear action are left in inbox and flagged in the session summary. The policy was triggered by processed cover images from Session 15 being left in the inbox root.
 
 ---
+
+## Session 17: Masthead, mixed carousel, PDF covers, branding cleanup
+
+*2026-06-14*
+
+**Tracks:** ux, framework, operations
+
+- **Added the site name and tagline to the nav bar in `base.tsx`**, making it appear on every page. The logo link now shows the Protocolized mark image + &ldquo;Protocolized&rdquo; in Instrument Serif (`text-xl`) + &ldquo;The Protocol Institute media hub&rdquo; in a smaller italic serif below. This is the single canonical masthead — no per-page duplication.
+
+- **Replaced the magazine-only carousel with a 4-source round-robin**: latest 3 magazine posts, latest 2 YouTube videos, 2 random archive PDFs, 1 random book. Sources are interleaved (M→Y→A→B→M→Y→A→M) so all types always appear. Each slide has a source badge overlaid on the image: teal for magazine, red for YouTube, coral for archive, grey for book. Captions: &ldquo;Latest from magazine&rdquo;, &ldquo;Latest from YouTube channel&rdquo;, &ldquo;Resource Archive spotlight&rdquo;, &ldquo;Book spotlight&rdquo;. Archive and book slides are randomly sampled on each page load. Unified `CarouselItem` type in `home.tsx`; `buildCarouselItems()` handles interleaving.
+
+- **New `worker/src/youtube.ts` fetches the Protocol Institute YouTube channel RSS feed** (`channel_id=UCcNZ6wTbeeAJ-O_OIhs2j3A`, i.e. `@protocol-institute`) at Worker request time. Uses `cf: { cacheTtl: 3600, cacheEverything: true }` to edge-cache the RSS for 1 hour — no API key required, no D1 writes. Video thumbnails come from `i.ytimg.com/vi/{id}/hqdefault.jpg` (free, no auth). The parser uses regex splits on `&lt;entry&gt;` tags; no DOM parser needed in Workers.
+
+- **New script `scripts/generate-pdf-covers.py` renders page 1 of each PDF resource as a JPEG** using PyMuPDF (fitz). For each resource with `file LIKE '%.pdf'`: downloads from `files.protocolized.io`, renders at 900px wide, uploads to R2 at `covers/{slug}.jpg`, updates D1 `thumbnail` field. All 72 PDFs processed in one run (0 failures). Thumbnails now live at `files.protocolized.io/covers/{slug}.jpg`. The script auto-loads `CLOUDFLARE_API_TOKEN` from `../admin/.env.keys` if not in env; skips already-thumbnailed resources by default; supports `--all` and `--slug` flags.
+
+- **Added `getRandomArchiveResources(db, limit)` and `getRandomBooks(db, limit)` to `db.ts`**. Archive query: `WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL ORDER BY RANDOM()`. Books query: `WHERE published = 1 AND cover_image IS NOT NULL ORDER BY RANDOM()`. D1 supports `RANDOM()` natively; no application-side shuffle needed.
+
+- **Fixed carousel column clipping at intermediate viewport widths.** Root cause: `lg:w-5/12 + lg:w-7/12 = 100%` but the `gap-16` (64px) between columns was additive, pushing the carousel past the container edge. Fix: carousel column changed from `lg:w-7/12` to `flex-1 min-w-0`; `min-w-0` added to both the flex container and the left column. The carousel now correctly takes the remaining space after the left column and gap.
+
+- **Simplified the hero left column**: removed &ldquo;Accelerating Order.&rdquo; subheadline, replaced body copy with inline-linked media hub description (&ldquo;Protocolized is the media hub for the Protocol Institute. Explore our research archive, our magazine (also available on Substack), YouTube channel and book collection.&rdquo;), removed both CTA buttons. All five link targets wired: Protocol Institute (external), /resources, /magazine, Substack (external), /books.
+
+- **Community page stripped down to Discord only.** Nav and footer label changed from &ldquo;Community&rdquo; to &ldquo;Discord&rdquo; (slug `/community` unchanged). YouTube section, Events section, and footer note removed. Page title/h1 updated to &ldquo;Discord&rdquo;. Discord invite URL updated sitewide to `discord.gg/Z3fgsW8D4s` (was `Aj5FbGsNYV`).
+
+- **Fixed three wrong URLs that were consistent across the codebase:** (1) Protocol Institute link was `protocolsociety.org` in About page and footer — corrected to `protocol-institute.org` everywhere. (2) YouTube handle was `@protocolized` throughout — corrected to `@protocol-institute`. (3) Discord invite was stale — updated to `Z3fgsW8D4s` in all files (base.tsx, home.tsx, static-pages.tsx, index.tsx).
+
+---

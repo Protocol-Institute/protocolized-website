@@ -501,6 +501,56 @@
           "html": "<strong>Added a <code>category</code> column to the D1 <code>books</code> table</strong> (<code>TEXT NOT NULL DEFAULT 'fiction'</code>) via <code>ALTER TABLE</code>. <code>the-protocol-reader</code> set to <code>'nonfiction'</code>; all others default to <code>'fiction'</code>. Schema updated in <code>schema.sql</code>; TypeScript updated in <code>db.ts</code> (<code>Book</code> interface, <code>BookRow</code>, <code>parseBookRow</code>). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended — future nonfiction books just need <code>category = 'nonfiction'</code> set on insert."
         }
       ]
+    },
+    {
+      "id": 17,
+      "sort_key": 17.0,
+      "label": "Session 17",
+      "title": "Masthead, mixed carousel, PDF covers, branding cleanup",
+      "date": "2026-06-14",
+      "time_pt": "",
+      "tracks": ["ux", "framework", "operations"],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Masthead wordmark + tagline (single-source):",
+          "html": "<strong>Added the site name and tagline to the nav bar in <code>base.tsx</code></strong>, making it appear on every page. The logo link now shows the Protocolized mark image + &ldquo;Protocolized&rdquo; in Instrument Serif (<code>text-xl</code>) + &ldquo;The Protocol Institute media hub&rdquo; in a smaller italic serif below. This is the single canonical masthead — no per-page duplication."
+        },
+        {
+          "title": "Mixed media carousel — 4 sources:",
+          "html": "<strong>Replaced the magazine-only carousel with a 4-source round-robin</strong>: latest 3 magazine posts, latest 2 YouTube videos, 2 random archive PDFs, 1 random book. Sources are interleaved (M→Y→A→B→M→Y→A→M) so all types always appear. Each slide has a source badge overlaid on the image: teal for magazine, red for YouTube, coral for archive, grey for book. Captions: &ldquo;Latest from magazine&rdquo;, &ldquo;Latest from YouTube channel&rdquo;, &ldquo;Resource Archive spotlight&rdquo;, &ldquo;Book spotlight&rdquo;. Archive and book slides are randomly sampled on each page load. Unified <code>CarouselItem</code> type in <code>home.tsx</code>; <code>buildCarouselItems()</code> handles interleaving."
+        },
+        {
+          "title": "YouTube RSS integration:",
+          "html": "<strong>New <code>worker/src/youtube.ts</code> fetches the Protocol Institute YouTube channel RSS feed</strong> (<code>channel_id=UCcNZ6wTbeeAJ-O_OIhs2j3A</code>, i.e. <code>@protocol-institute</code>) at Worker request time. Uses <code>cf: { cacheTtl: 3600, cacheEverything: true }</code> to edge-cache the RSS for 1 hour — no API key required, no D1 writes. Video thumbnails come from <code>i.ytimg.com/vi/{id}/hqdefault.jpg</code> (free, no auth). The parser uses regex splits on <code>&lt;entry&gt;</code> tags; no DOM parser needed in Workers."
+        },
+        {
+          "title": "PDF cover image generation — 72 resources:",
+          "html": "<strong>New script <code>scripts/generate-pdf-covers.py</code> renders page 1 of each PDF resource as a JPEG</strong> using PyMuPDF (fitz). For each resource with <code>file LIKE '%.pdf'</code>: downloads from <code>files.protocolized.io</code>, renders at 900px wide, uploads to R2 at <code>covers/{slug}.jpg</code>, updates D1 <code>thumbnail</code> field. All 72 PDFs processed in one run (0 failures). Thumbnails now live at <code>files.protocolized.io/covers/{slug}.jpg</code>. The script auto-loads <code>CLOUDFLARE_API_TOKEN</code> from <code>../admin/.env.keys</code> if not in env; skips already-thumbnailed resources by default; supports <code>--all</code> and <code>--slug</code> flags."
+        },
+        {
+          "title": "New D1 query helpers:",
+          "html": "<strong>Added <code>getRandomArchiveResources(db, limit)</code> and <code>getRandomBooks(db, limit)</code> to <code>db.ts</code></strong>. Archive query: <code>WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL ORDER BY RANDOM()</code>. Books query: <code>WHERE published = 1 AND cover_image IS NOT NULL ORDER BY RANDOM()</code>. D1 supports <code>RANDOM()</code> natively; no application-side shuffle needed."
+        },
+        {
+          "title": "Carousel overflow fix:",
+          "html": "<strong>Fixed carousel column clipping at intermediate viewport widths.</strong> Root cause: <code>lg:w-5/12 + lg:w-7/12 = 100%</code> but the <code>gap-16</code> (64px) between columns was additive, pushing the carousel past the container edge. Fix: carousel column changed from <code>lg:w-7/12</code> to <code>flex-1 min-w-0</code>; <code>min-w-0</code> added to both the flex container and the left column. The carousel now correctly takes the remaining space after the left column and gap."
+        },
+        {
+          "title": "Landing page hero rewrite:",
+          "html": "<strong>Simplified the hero left column</strong>: removed &ldquo;Accelerating Order.&rdquo; subheadline, replaced body copy with inline-linked media hub description (&ldquo;Protocolized is the media hub for the Protocol Institute. Explore our research archive, our magazine (also available on Substack), YouTube channel and book collection.&rdquo;), removed both CTA buttons. All five link targets wired: Protocol Institute (external), /resources, /magazine, Substack (external), /books."
+        },
+        {
+          "title": "Community page → Discord:",
+          "html": "<strong>Community page stripped down to Discord only.</strong> Nav and footer label changed from &ldquo;Community&rdquo; to &ldquo;Discord&rdquo; (slug <code>/community</code> unchanged). YouTube section, Events section, and footer note removed. Page title/h1 updated to &ldquo;Discord&rdquo;. Discord invite URL updated sitewide to <code>discord.gg/Z3fgsW8D4s</code> (was <code>Aj5FbGsNYV</code>)."
+        },
+        {
+          "title": "URL audit and corrections:",
+          "html": "<strong>Fixed three wrong URLs that were consistent across the codebase:</strong> (1) Protocol Institute link was <code>protocolsociety.org</code> in About page and footer — corrected to <code>protocol-institute.org</code> everywhere. (2) YouTube handle was <code>@protocolized</code> throughout — corrected to <code>@protocol-institute</code>. (3) Discord invite was stale — updated to <code>Z3fgsW8D4s</code> in all files (base.tsx, home.tsx, static-pages.tsx, index.tsx)."
+        }
+      ]
     }
   ]
 }

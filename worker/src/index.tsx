@@ -13,7 +13,10 @@ import {
   getAllBooks,
   getBook,
   getSeriesContext,
+  getRandomArchiveResources,
+  getRandomBooks,
 } from "./db";
+import { getLatestYouTubeVideos } from "./youtube";
 import { HomePage } from "./html/home";
 import { ResourcesPage } from "./html/resources";
 import { ResourcePage } from "./html/resource";
@@ -30,15 +33,21 @@ interface Env {
 const app = new Hono<{ Bindings: Env }>();
 
 app.get("/", async (c) => {
-  const [featured, posts] = await Promise.all([
+  const [featured, posts, archiveResources, books, ytVideos] = await Promise.all([
     getFeaturedResources(c.env.DB),
-    getLatestPosts(c.env.DB, 5),
+    getLatestPosts(c.env.DB, 3),
+    getRandomArchiveResources(c.env.DB, 2),
+    getRandomBooks(c.env.DB, 1),
+    getLatestYouTubeVideos(2),
   ]);
   return c.html(
     <HomePage
       currentPath="/"
       featuredResources={featured}
       latestPosts={posts}
+      archiveResources={archiveResources}
+      carouselBooks={books}
+      ytVideos={ytVideos}
     />
   );
 });
@@ -207,7 +216,7 @@ ${lines}
 
 ## Community
 
-- Discord: https://discord.gg/Aj5FbGsNYV
+- Discord: https://discord.gg/Z3fgsW8D4s
 - YouTube: https://www.youtube.com/@protocolized
 - Magazine: https://protocolized.summerofprotocols.com
 
