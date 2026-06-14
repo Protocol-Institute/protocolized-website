@@ -5,7 +5,7 @@ authors:
   - name: "Nathalia Scherer"
   - name: "Jiordi Rosales"
 date: 2024-09-30
-description: "CONCEPT Afteracenturyoffiresuppressionandheatingatmosphericconditions,Californiahaschangedfroma fire-ecologytoafire-climate;ourabilitytoworkwithfireisreshapinghowwecometoknowtheworld."
+description: "After a century of fire suppression and heating atmospheric conditions, California has changed from a fire-ecology to a fire-climate. A case file exploring how our renewed ability to work with fire is reshaping environmental knowledge and protocol."
 tags:
   - protocols
   - climate

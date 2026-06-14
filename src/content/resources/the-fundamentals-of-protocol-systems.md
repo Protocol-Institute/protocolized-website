@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Angela Walch"
 date: 2023-12-13
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «protocol archetypes, exploded technical diagram»"
+description: "Angela Walch provides a foundational analysis of how protocol systems are structured, maintained, and governed — with particular attention to power dynamics, accountability gaps, and the fiction of protocol neutrality."
 tags:
   - protocols
   - foundations

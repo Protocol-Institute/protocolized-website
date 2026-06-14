@@ -5,7 +5,7 @@ const NAV_LINKS = [
   { href: "/resources", label: "Resources" },
   { href: "/books", label: "Books" },
   { href: "/magazine", label: "Magazine" },
-  { href: "/about", label: "About" },
+  { href: "https://www.youtube.com/@protocol-institute", label: "YouTube", external: true },
   { href: "/community", label: "Discord" },
 ];
 
@@ -127,7 +127,7 @@ function Nav({ currentPath }: { currentPath: string }) {
           </a>
 
           <ul class="hidden md:flex items-center gap-1" role="list">
-            {NAV_LINKS.map(({ href, label }) => (
+            {NAV_LINKS.map(({ href, label, external }) => (
               <li>
                 <a
                   href={href}
@@ -137,6 +137,8 @@ function Nav({ currentPath }: { currentPath: string }) {
                       : "px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors text-secondary hover:text-dark hover:bg-gray-100"
                   }
                   aria-current={isActive(href, currentPath) ? "page" : undefined}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
                 >
                   {label}
                 </a>
@@ -186,7 +188,7 @@ function Nav({ currentPath }: { currentPath: string }) {
 
         <div id="mobile-menu" class="hidden md:hidden pb-4">
           <ul class="flex flex-col gap-1" role="list">
-            {NAV_LINKS.map(({ href, label }) => (
+            {NAV_LINKS.map(({ href, label, external }) => (
               <li>
                 <a
                   href={href}
@@ -196,6 +198,8 @@ function Nav({ currentPath }: { currentPath: string }) {
                       : "block px-3 py-2 rounded-md text-sm font-sans font-medium transition-colors text-secondary hover:text-dark hover:bg-gray-100"
                   }
                   aria-current={isActive(href, currentPath) ? "page" : undefined}
+                  target={external ? "_blank" : undefined}
+                  rel={external ? "noopener noreferrer" : undefined}
                 >
                   {label}
                 </a>
@@ -212,118 +216,33 @@ function Footer() {
   const year = new Date().getFullYear();
   return (
     <footer class="bg-white border-t border-gray-200 mt-auto">
-      <div class="max-w-wide mx-auto px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <p class="font-serif text-lg text-dark mb-2">Protocolized</p>
-            <p class="text-sm text-secondary font-sans leading-relaxed">
-              Accelerating Order. A sci-fi and thinkpiece magazine and research
-              library on protocols.
-            </p>
-          </div>
-
-          <div>
-            <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-3">
-              Pages
-            </p>
-            <ul class="space-y-2" role="list">
-              {[
-                { href: "/resources", label: "Resources" },
-                { href: "/books", label: "Books" },
-                { href: "/magazine", label: "Magazine" },
-                { href: "/about", label: "About" },
-                { href: "/community", label: "Discord" },
-              ].map(({ href, label }) => (
-                <li>
-                  <a
-                    href={href}
-                    class="text-sm font-sans text-secondary hover:text-primary transition-colors"
-                  >
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div>
-            <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-3">
-              Links
-            </p>
-            <ul class="space-y-2" role="list">
-              <li>
-                <a
-                  href="https://protocol-institute.org"
-                  class="text-sm font-sans text-secondary hover:text-primary transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Protocol Institute ↗
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://summerofprotocols.com"
-                  class="text-sm font-sans text-secondary hover:text-primary transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Archive (SoP) ↗
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/llms.txt"
-                  class="text-sm font-sans text-secondary hover:text-primary transition-colors"
-                >
-                  llms.txt
-                </a>
-              </li>
-              <li>
-                <a
-                  href="/rss.xml"
-                  class="text-sm font-sans text-secondary hover:text-primary transition-colors"
-                >
-                  RSS feed
-                </a>
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="pt-8 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p class="text-xs font-sans text-secondary">
-            © {year} Protocolized / Protocol Institute
-          </p>
-          <div class="flex items-center gap-4">
-            <a
-              href="https://discord.gg/Z3fgsW8D4s"
-              class="text-xs font-sans text-secondary hover:text-primary transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Join Discord"
-            >
-              Discord
-            </a>
-            <a
-              href="https://www.youtube.com/@protocol-institute"
-              class="text-xs font-sans text-secondary hover:text-primary transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="YouTube channel"
-            >
-              YouTube
-            </a>
-            <a
-              href="https://protocolized.summerofprotocols.com"
-              class="text-xs font-sans text-secondary hover:text-primary transition-colors"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Magazine on Substack"
-            >
-              Magazine
-            </a>
-          </div>
+      <div class="max-w-wide mx-auto px-6 lg:px-8 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p class="text-xs font-sans text-secondary">
+          © {year} Protocolized / Protocol Institute
+        </p>
+        <div class="flex items-center gap-3 text-xs font-sans text-secondary">
+          <a
+            href="https://protocol-institute.org"
+            class="hover:text-primary transition-colors"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Protocol Institute
+          </a>
+          <span aria-hidden="true">|</span>
+          <a href="/llms.txt" class="hover:text-primary transition-colors">
+            llms.txt
+          </a>
+          <span aria-hidden="true">|</span>
+          <a
+            href="/rss.xml"
+            class="flex items-center gap-1 hover:text-primary transition-colors"
+          >
+            <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19.01 7.38 20 6.18 20C4.98 20 4 19.01 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z" />
+            </svg>
+            RSS feed
+          </a>
         </div>
       </div>
     </footer>

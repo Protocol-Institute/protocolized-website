@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Dorian Taylor"
 date: 2023-12-13
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «sphere made of infinite links, internet, exploded technical diagram»"
+description: "Dorian Taylor examines how the web's foundational protocols might be retrofitted to address contemporary challenges — exploring the tension between backward compatibility and the need for meaningful reform of internet infrastructure."
 tags:
   - protocols
   - infrastructure

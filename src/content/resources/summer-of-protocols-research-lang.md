@@ -4,7 +4,7 @@ type: working-paper
 authors:
   - name: "David Lang"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: December 2023 Cover illustration by Midjourney :: prompt engineering by Josh Davis «standards and measurements, nautical, use orange, white background»"
+description: "A Summer of Protocols 2023 research paper by David Lang exploring protocol systems in the context of standards, measurement, and collaborative making."
 tags:
   - protocols
   - standards

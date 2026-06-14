@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Shuya Gong"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis «sunset, soft, round, exploded technical diagram»"
+description: "Shuya Gong examines exit rights and protocol design — exploring how individuals and communities can exercise meaningful exit from coordination systems, and what protocols must look like to enable genuine choice and voice."
 tags:
   - protocols
   - governance

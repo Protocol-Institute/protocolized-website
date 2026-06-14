@@ -2,9 +2,11 @@
 title: "The Unreasonable Sufficiency of Protocols"
 type: paper
 authors:
-  - name: "Summer of Protocols"
+  - name: "Josh Stark"
+  - name: "Trent Van Epps"
+  - name: "Bastian Aue"
 date: 2023-12-13
-description: "Josh Stark, Trent Van Epps, and Bastian Aue Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis"
+description: "Josh Stark, Trent Van Epps, and Bastian Aue argue that protocols are a surprisingly sufficient foundation for coordination at scale — making the case that apparent protocol simplicity belies transformative power across social, technical, and institutional domains."
 tags:
   - protocols
   - theory

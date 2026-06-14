@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Nadia Asparouhova"
 date: 2023-12-13
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «warning symbol, protocols, exploded technical diagram»"
+description: "Nadia Asparouhova examines the dark potential of protocols — how coordination systems can be captured, weaponized, or designed in ways that cause harm, and what makes certain protocols dangerous."
 tags:
   - protocols
   - governance

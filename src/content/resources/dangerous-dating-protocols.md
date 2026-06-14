@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Shreeda Segan"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis «dating funnel, exploded technical diagram»"
+description: "Shreeda Segan explores romantic and social matching through the lens of protocol — how dating apps, courtship rituals, and social scripts function as coordination protocols with unintended consequences for connection and community."
 tags:
   - protocols
   - culture

@@ -1,10 +1,10 @@
 ---
-title: "Summer of Protocols Research: Steiert"
+title: "Protocols in (Emergency) Time"
 type: working-paper
 authors:
-  - name: "Summer of Protocols"
+  - name: "Olivia Steiert"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: December 2023 Cover illustration by Midjourney :: prompt engineering by Josh Davis «an exploded diagram of a spiral made of changing protocols»"
+description: "Olivia Steiert explores how emergency conditions — from natural disasters to public health crises — reshape and reveal the underlying protocols that govern response, coordination, and collective care under pressure."
 tags:
   - protocols
   - summer-of-protocols

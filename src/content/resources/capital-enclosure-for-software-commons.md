@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Trent Van Epps"
 date: 2024-03-27
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «large circles with other circles encroaching, exploded technical diagram»"
+description: "Trent Van Epps examines how capital and enclosure dynamics shape software commons, drawing on the histories of Linux and Ethereum to analyze tensions between open protocol ecosystems and commercial capture."
 tags:
   - protocols
   - economics

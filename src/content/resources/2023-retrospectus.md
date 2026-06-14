@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: December 2023 Introduction | 5 New Time Machines | 13 Aaron Z Lewis, Kei Kreutler, Alice Noujaim,"
+description: "The Summer of Protocols 2023 retrospective anthology — a collected volume of research papers, essays, and creative works from the inaugural year of the program."
 tags:
   - protocols
   - summer-of-protocols

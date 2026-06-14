@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Josh Stark"
 date: 2024-04-17
-description: "Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis «cubes, atoms, blocks, exploded technical diagram»"
+description: "Josh Stark compares three fundamental coordination mechanisms — physical materials, legal institutions, and blockchains — as distinct protocol systems with different guarantees, failure modes, and affordances."
 tags:
   - protocols
   - blockchain

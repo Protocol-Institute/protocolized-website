@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Janna Tay"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis «abstract labyrinth, phenomenology, exploded technical diagram»"
+description: "A phenomenological examination of protocols by Janna Tay — exploring how the rules and standards that govern coordination shape lived experience, perception, and the texture of everyday life."
 tags:
   - protocols
   - theory

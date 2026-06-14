@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Rithikha Rajamohan"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: February 2024 Cover illustration by Midjourney :: prompt engineering by Josh Davis «series of overlapping circles, ecosystem protocols controlled by a"
+description: "Rithikha Rajamohan's field dispatches from the Pacific Northwest explore regional governance and ecological protocols — examining how place, community, and environment shape the protocols people create to live together."
 tags:
   - protocols
   - community

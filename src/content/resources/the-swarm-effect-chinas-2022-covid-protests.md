@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Anonymous"
 date: 2023-12-13
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «government vs rebellion, push vs pull, exploded technical diagram»"
+description: "An anonymous analysis of China's 2022 Covid protests through the lens of swarm coordination — examining how leaderless, protocol-driven collective action enabled one of the country's largest waves of public dissent."
 tags:
   - protocols
   - coordination

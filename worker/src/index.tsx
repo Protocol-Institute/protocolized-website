@@ -3,7 +3,6 @@ import { marked } from "marked";
 import {
   getAllResources,
   getResource,
-  getFeaturedResources,
   getLatestArticles,
   getRelatedResources,
   getAnthologies,
@@ -33,8 +32,7 @@ interface Env {
 const app = new Hono<{ Bindings: Env }>();
 
 app.get("/", async (c) => {
-  const [featured, posts, archiveResources, books, ytVideos] = await Promise.all([
-    getFeaturedResources(c.env.DB),
+  const [posts, archiveResources, books, ytVideos] = await Promise.all([
     getLatestPosts(c.env.DB, 3),
     getRandomArchiveResources(c.env.DB, 2),
     getRandomBooks(c.env.DB, 1),
@@ -43,7 +41,6 @@ app.get("/", async (c) => {
   return c.html(
     <HomePage
       currentPath="/"
-      featuredResources={featured}
       latestPosts={posts}
       archiveResources={archiveResources}
       carouselBooks={books}

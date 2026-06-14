@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Sarah Friend"
 date: 2024-05-22
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «abstract composition where solid geometric forms are gradually being"
+description: "Sarah Friend investigates the protocols of dying — how end-of-life is structured by medical, legal, social, and cultural coordination systems, and what a 'good death' might require from the protocols that govern it."
 tags:
   - protocols
   - community

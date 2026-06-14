@@ -6,158 +6,43 @@ export function AboutPage({ currentPath }: { currentPath: string }) {
     "@type": "AboutPage",
     name: "About — Protocolized",
     description:
-      "Learn about Protocolized, its mission, history, team, and relationship to Protocol Institute.",
+      "Protocolized.io is the media hub for the Protocol Institute, which grew out of the Summer of Protocols program.",
     url: "https://protocolized.io/about",
   };
-
-  const script = `
-    const btn = document.getElementById('mobile-menu-btn');
-    const menu = document.getElementById('mobile-menu');
-    const menuIcon = document.getElementById('menu-icon');
-    const closeIcon = document.getElementById('close-icon');
-    btn?.addEventListener('click', () => {
-      const isOpen = !menu?.classList.contains('hidden');
-      menu?.classList.toggle('hidden');
-      menuIcon?.classList.toggle('hidden');
-      closeIcon?.classList.toggle('hidden');
-      btn?.setAttribute('aria-expanded', String(!isOpen));
-    });
-  `;
 
   return (
     <Base
       title="About"
-      description="Learn about Protocolized, its mission, history, team, and relationship to Protocol Institute."
+      description="Protocolized.io is the media hub for the Protocol Institute, which grew out of the Summer of Protocols program."
       jsonLd={jsonLd}
       currentPath={currentPath}
-      bodyScript={script}
+      bodyScript={mobileMenuScript()}
     >
       <div class="py-16 px-6 lg:px-8">
         <div class="max-w-prose mx-auto">
           <h1 class="font-serif text-5xl text-dark mb-8">About</h1>
-
-          <section class="mb-12" aria-labelledby="mission-heading">
-            <h2 id="mission-heading" class="font-serif text-2xl text-dark mb-4">
-              Mission
-            </h2>
-            <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
-              <p>
-                Protocolized is a sci-fi and thinkpiece magazine and research
-                library on protocols — the rules, standards, and agreements that
-                structure coordination at every scale.
-              </p>
-              <p>
-                The magazine publishes stories, articles, and columns exploring
-                protocols through fiction and critical thinking. The research
-                library hosts papers, talks, templates, and more from the Summer
-                of Protocols program.
-              </p>
-            </div>
-          </section>
-
-          <section class="mb-12" aria-labelledby="history-heading">
-            <h2 id="history-heading" class="font-serif text-2xl text-dark mb-4">
-              History
-            </h2>
-            <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
-              <p>
-                Protocolized evolved from the{" "}
-                <a
-                  href="https://web.archive.org/web/20260421142108/https://summerofprotocols.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-primary hover:text-[#085041] transition-colors"
-                >
-                  Summer of Protocols
-                </a>{" "}
-                program, a research initiative that produced foundational work on
-                protocol theory and practice. The archive of that program —
-                including papers, presentations, and research outputs — remains
-                available at{" "}
-                <a
-                  href="https://summerofprotocols.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-primary hover:text-[#085041] transition-colors"
-                >
-                  summerofprotocols.com
-                </a>
-                .
-              </p>
-              <p>
-                Protocolized is the ongoing home for this work: a magazine, a
-                growing research library, and a community for everyone working on
-                and with protocols.
-              </p>
-            </div>
-          </section>
-
-          <section class="mb-12" aria-labelledby="ps-heading">
-            <h2 id="ps-heading" class="font-serif text-2xl text-dark mb-4">
+          <p class="font-body text-lg text-secondary leading-relaxed">
+            Protocolized.io is the media hub for the{" "}
+            <a
+              href="https://protocol-institute.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-[#085041] transition-colors"
+            >
               Protocol Institute
-            </h2>
-            <div class="space-y-4 font-body text-lg text-secondary leading-relaxed">
-              <p>
-                Protocolized is part of{" "}
-                <a
-                  href="https://protocol-institute.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="text-primary hover:text-[#085041] transition-colors"
-                >
-                  Protocol Institute
-                </a>
-                , the parent organization. Protocol Institute is dedicated to
-                advancing the study and practice of protocols across fields.
-                Protocolized is its public-facing magazine and research library.
-              </p>
-            </div>
-            <div class="mt-6 flex flex-wrap gap-4">
-              <a
-                href="https://protocol-institute.org"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-primary"
-              >
-                Protocol Institute →
-              </a>
-              <a
-                href="https://summerofprotocols.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-secondary"
-              >
-                SoP Archive →
-              </a>
-            </div>
-          </section>
-
-          <section
-            class="bg-primary-light rounded-xl p-8"
-            aria-labelledby="join-heading"
-          >
-            <h2 id="join-heading" class="font-serif text-2xl text-dark mb-3">
-              Get involved
-            </h2>
-            <p class="font-sans text-secondary mb-6 leading-relaxed">
-              The best way to stay current and participate is through our Discord
-              and magazine. If you have a resource to contribute or want to
-              collaborate, reach out via Discord.
-            </p>
-            <div class="flex flex-wrap gap-4">
-              <a
-                href="https://discord.gg/Z3fgsW8D4s"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="btn-primary"
-              >
-                Join Discord
-              </a>
-              <a href="/magazine" class="btn-secondary">
-                Subscribe to magazine
-              </a>
-            </div>
-          </section>
+            </a>
+            , which grew out of the Summer of Protocols program (2023–25). For
+            more information please see the{" "}
+            <a
+              href="https://protocol-institute.org/about"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-primary hover:text-[#085041] transition-colors"
+            >
+              Protocol Institute About page
+            </a>
+            .
+          </p>
         </div>
       </div>
     </Base>

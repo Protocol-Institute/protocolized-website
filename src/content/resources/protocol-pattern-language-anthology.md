@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Drew Austin"
 date: 2023-12-13
-description: "Printed in the United States of America Printing history: December 2023 Cover illustration by Midjourney :: prompt engineering by Josh Davis «exploded technical diagram of a city block, outlines, technical document,"
+description: "Drew Austin applies the pattern language concept to protocol design — collecting recurring structural patterns, anti-patterns, and design templates for building effective coordination systems across urban and digital spaces."
 tags:
   - protocols
   - design

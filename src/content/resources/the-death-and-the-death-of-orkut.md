@@ -4,7 +4,7 @@ type: paper
 authors:
   - name: "Alice Noujaim"
 date: 2023-12-13
-description: "Printed in the United States of America Cover illustration by Midjourney :: prompt engineering by Josh Davis «digital footprints fading into the distance, exploded technical diagram»"
+description: "Alice Noujaim analyzes Orkut's rise and fall as a case study in social network protocol death — examining what happens when coordination platforms lose critical mass, and what digital communities leave behind when they collapse."
 tags:
   - protocols
   - community
