@@ -258,7 +258,7 @@ def make_markdown_from_d1(row: dict) -> str:
         "authors:",
         f"  - name: {yaml_str(author)}",
         f"date: {date}",
-        f"description: {yaml_str(summary) if summary else '\"A post from the Protocolized magazine.\"'}",
+        f"description: {yaml_str(summary) if summary else yaml_str('A post from the Protocolized magazine.')}",
         "tags:",
     ] + [f"  - {t}" for t in tags] + [
         "audience:",
