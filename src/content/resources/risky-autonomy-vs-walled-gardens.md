@@ -2,12 +2,13 @@
 title: "Risky Autonomy vs Walled Gardens"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sarah Friend"
 date: 2025-04-15
-description: "In this issue: Artist, researcher, and software developer Sarah Friend (SoP23) explores a tension central to the grey areas of high stakes software. Also – join us tomorrow for a guest talk with EigenLayer CEO, Sreeram Kannan, and read on for an u..."
+description: "Sarah Friend explores the tension between autonomous systems and controlled environments in high-stakes software through personal narrative and philosophical reflection. The issue also features a guest talk with EigenLayer CEO Sreeram Kannan and announces an extension for the terminological twists contest."
 tags:
   - article
+  - editorial
+  - interview
   - protocols
 audience:
   - researcher

@@ -2,11 +2,11 @@
 title: "Perception Must Preserve"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Spencer Nitkey"
 date: 2025-11-25
-description: "I never saw a drug dealer on the corner of Second and Poplar until I was looking for one. Sure, there’d been a taped off construction zone – one that, frankly, I was getting pretty sick of having to walk around – but never a dealer. Everything els..."
+description: "In a near-future city where augmented reality overlays allow people to customize their visual perception, a protagonist discovers that the artificial perfection of their curated reality—engineered by the Zoothesia Protocols—has left them emotionally numb and disconnected from authentic experience. The story explores the psychological cost of perfect perception, suggesting that beauty and meaning require the friction of unfiltered reality, including danger and discomfort."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

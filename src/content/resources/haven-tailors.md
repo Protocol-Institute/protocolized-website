@@ -2,12 +2,14 @@
 title: "Haven Tailors"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-02-21
-description: "In this issue: The story of Haven Reach and its citizens, its schemes and, of course, its marvelous tailors. Followed by a note on AI+Protocols fiction workshops."
+description: "Haven Tailors is a speculative fiction story set in Haven Reach, a city where tailors serve as gatekeepers who adjust citizens' clothing and monitor their personal data through case numbers, revealing a system where physical alterations encode conformity and surveillance. The narrative explores how protocol-driven systems of governance operate through mundane transactions, using the metaphor of tailoring to examine belonging, control, and the anxiety of fitting into prescribed social structures."
 tags:
   - AI
+  - fiction
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - practitioner

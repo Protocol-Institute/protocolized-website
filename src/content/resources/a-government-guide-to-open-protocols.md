@@ -2,14 +2,14 @@
 title: "A Government Guide to Open Protocols"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Kelly Roegies"
 date: 2026-03-19
-description: "Public sector teams must go beyond the in-house or off-the-shelf dichotomy to take advantage of open protocols, which offer a unique way to manage both software costs and geopolitical exposure"
+description: "Public sector institutions can escape the false choice between proprietary vendor dependency and expensive in-house development by adopting open protocols, which distribute control across multiple actors and allow governments to understand, participate in, and adapt their digital infrastructure. European governments are increasingly implementing open protocols for messaging, digital ID, and cross-border services as a way to achieve digital sovereignty while reducing both software costs and geopolitical exposure."
 tags:
   - article
-  - protocols
   - governance
+  - protocols
+  - technology
 audience:
   - researcher
   - practitioner

@@ -2,13 +2,16 @@
 title: "A Sea of Distributed Ai"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sam Chua"
 date: 2025-07-02
-description: "In this issue: take a peek at the worldbuilding behind AI-generated film South Beast Asia and uncover its strange rules. We hope you’ll find inspiration for our current sci-fi contest, Ghosts in Machines! Also – join us in one hour, at 10am US Pac..."
+description: "This issue features worldbuilding analysis of the AI-generated film South Beast Asia, examining ten core traits designed to explore distributed AI systems through a Southeast Asian-inspired lens developed at the Khlongs & Subaks workshop. The piece unpacks how fictional 'strange rules' address questions of AI distribution while the issue also hosts a guest talk with AI Snake Oil author Arvind Sarayanan."
 tags:
-  - article
   - AI
+  - article
+  - fiction
+  - interview
+  - protocols
+  - technology
 audience:
   - researcher
   - practitioner

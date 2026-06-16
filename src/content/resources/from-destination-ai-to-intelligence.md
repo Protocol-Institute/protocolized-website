@@ -3,12 +3,14 @@ title: "From Destination Ai to Intelligence"
 type: article
 authors:
   - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
 date: 2026-02-02
-description: "Between approximately 2000 and 2010, the internet evolved from what used to be called the destination web (a largely forgotten name for “Web 1.0”) to what we now call social media. We went from maintaining “home pages” and “visiting” destination w..."
+description: "This editorial introduces Obliquities, a new column examining the shift from destination web to social media as a fundamental transformation in how intelligence is produced and distributed through protocol infrastructure. The piece proposes the concept of a 'social kernel' to understand how RSS, the Facebook newsfeed, and algorithmic feeds restructured both user behavior and the underlying protocols that now mediate information consumption."
 tags:
-  - column
   - AI
+  - column
+  - editorial
+  - obliquities
+  - protocols
 audience:
   - researcher
   - practitioner

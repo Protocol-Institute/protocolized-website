@@ -2,13 +2,14 @@
 title: "Black Resin Mirrors and the Adequacy"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2026-01-28
-description: "I’m wearing a Casio F-91W right now. It cost me about $14 CAD and has brought me immeasurable joy. My aussiedoodle uses it as a part-time chew toy. It’s frozen down to -40º on an expedition and cooked at over 200º in a sauna. It looks even better ..."
+description: "The Casio F-91W, a $14 plastic watch worn by everyone from Barack Obama to Osama bin Laden, exemplifies a design philosophy of \"unreasonable adequacy\"—meeting basic needs through durability, reliability, and ubiquity rather than sophistication. Its emergence as both a cultural icon and an object of security concern reveals how humble consumer gadgets become entangled with geopolitics, popular culture, and surveillance."
 tags:
   - article
+  - protocol-watching
   - protocols
+  - research
 audience:
   - researcher
   - practitioner

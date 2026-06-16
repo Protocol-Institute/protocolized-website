@@ -1,14 +1,15 @@
 ---
 title: "The 40 Hour Work Week"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Étienne Fortier-Dubois"
 date: 2025-05-14
-description: "In this issue: The second place story from Terminological Twists explores a shifting new world. Also: Tune in to streamlined version of a recent corporate talk on protocol thinking at 10am, meet another SoP25 teaching fellow, and pique your curios..."
+description: "This editorial issue presents a collection of protocol studies content including a second-place fiction submission from Terminological Twists, a streamlined corporate talk on protocol thinking, and coverage of SoP25 teaching fellows and emerging technology topics. The opening narrative frames the issue through a protagonist's experience of excessive travel and hyperconnected notifications across global destinations."
 tags:
-  - story
+  - editorial
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

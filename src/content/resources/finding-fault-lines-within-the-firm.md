@@ -2,12 +2,13 @@
 title: "Finding Fault Lines Within the Firm"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "rafa"
 date: 2026-01-11
-description: "Rafa Fernández is the host of the Protocols for Business SIG, which meets every two weeks on Discord to discuss protocols in business settings, and you’re welcome to join the next session. Link to join at the end of the article."
+description: "AI tools create windows into hidden business protocols by disrupting normal operations, revealing tensions between production and authority that standard organizational descriptions obscure. Rafa Fernández explores what happens when formal policies fail to explain recurring breakdowns or unexpected successes, suggesting that observing these fault lines requires looking beyond tooling and execution to deeper protocol structures."
 tags:
   - article
+  - organizations
+  - protocol-watching
   - protocols
 audience:
   - researcher

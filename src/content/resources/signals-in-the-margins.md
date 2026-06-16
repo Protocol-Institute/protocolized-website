@@ -1,14 +1,15 @@
 ---
 title: "Signals in the Margins"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-10-04
-description: "In this issue: Sachin Benny’s new story describes how a complex international treaty makes it possible to operate a single luxury train from Lisbon to Singapore. Out of sight of its delighted passengers, curious practices arnd economies develop ar..."
+description: "Sachin Benny's story follows the UET-1, a luxury train running from Lisbon to Singapore that operates through a complex international treaty, enabling hidden economies and curious practices to develop unseen by passengers until a suspicious device uncovers them. The narrative explores how bureaucratic complexity and contradictory international agreements create spaces where unconventional activities can flourish beneath the surface of official scrutiny."
 tags:
-  - story
+  - fiction
+  - protocol-watching
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

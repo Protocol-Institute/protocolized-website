@@ -3,11 +3,12 @@ title: "Das Protokoll"
 type: article
 authors:
   - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
 date: 2025-08-02
-description: "In this issue: we had o3 translate and summarize the recent German-language book Das Protokoll. The book provides a fresh glimpse of how protocols have evolved and proliferated over time. While this summary will surely miss details and nuance of t..."
+description: "This issue features an AI-translated and hand-edited summary of the German book Das Protokoll, tracing how protocols evolved from palace etiquette under Louis XIV to modern internet code. The piece argues that protocol fundamentally solves the problem of access and gatekeeping: as rulers could no longer maintain direct contact with growing populations, strict ceremonial protocols regulated which impressions and people reached the sovereign."
 tags:
   - article
+  - editorial
+  - memory
   - protocols
 audience:
   - researcher

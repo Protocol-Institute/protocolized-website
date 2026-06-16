@@ -1,15 +1,14 @@
 ---
 title: "The Overloaded Train"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2026-05-22
-description: "In this, our first crossover between two protocol fiction universes, Sachin Benny's Unified Eurasian Train Line passes through Spencer Nitkey's Zoothesia"
+description: "In a crossover between two protocol fiction universes, a passenger named Fu Kenan experiences progressive invisibility during a westbound journey on Sachin Benny's Unified Eurasian Train Line as it passes through Spencer Nitkey's Zoothesia. The narrative explores how the train's refined systems create a meditative passage through multiple territories, with sensory manipulations designed to make the journey nearly imperceptible to passengers."
 tags:
-  - protocols
   - AI
   - fiction
+  - protocols
 audience:
   - researcher
   - practitioner

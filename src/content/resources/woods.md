@@ -2,11 +2,11 @@
 title: "Woods"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-06-27
-description: "In this issue: the second installment of The Librarians inspired by our futures workshop at Edge City Esmeralda. Also, guest talk recordings, tips for our sci-fi contest, and highlights from Discord."
+description: "The second installment of The Librarians, a protocol-fiction narrative set in a future where automated systems monitor forests through networked drones and surveillance, follows protagonist Zhang as he navigates both the technological infrastructure of his world and an impending council meeting laden with personal dread. The story explores how individuals become desensitized to pervasive monitoring and control systems embedded in everyday life."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

@@ -2,14 +2,14 @@
 title: "Protocol Fiction Aesthetics"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "James Langdon"
 date: 2025-11-14
-description: "In this issue: We debut a new art direction for Protocolized and open access to two image generation models developed for the magazine by artist Darius Ou of hyperpress and Protocolized editor James Langdon, in collaboration with TITLES. A new, pu..."
+description: "Protocolized debuts a new visual art direction for issue #71, releasing two custom image generation models developed by artist Darius Ou and editor James Langdon in collaboration with TITLES. The shift moves away from Midjourney-generated imagery influenced by 1950s pulp sci-fi toward a more conceptually grounded aesthetic inspired by John W. Campbell's editorial approach in Astounding Stories."
 tags:
   - article
-  - protocol
   - fiction
+  - protocol
+  - protocols
 audience:
   - researcher
   - practitioner

@@ -1,14 +1,15 @@
 ---
 title: "The Second Glossolalia"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-12-09
-description: "The city was still when I woke up, hours before the place would gradually come to life. The weather was gray, and people’s minds matched it. It had been like this for decades now – a long, slow exhalation that never quite ended."
+description: "A meditation on a post-industrial city hollowed out by economic decline, where the replacement of manufacturing with speculative digital work leaves residents producing 'vapor' in innovation quarters while the physical infrastructure of past productivity becomes merely aesthetic monuments. The piece explores the psychological toll of living in a place stripped of momentum and purpose, where economic abstraction has replaced tangible material production."
 tags:
-  - story
+  - editorial
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

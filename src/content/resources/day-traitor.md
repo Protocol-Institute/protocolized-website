@@ -2,12 +2,13 @@
 title: "Day Traitor"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Spencer Nitkey"
 date: 2026-01-02
-description: "Edward Thon didn’t like it when people called him Eddie. He didn’t like it when overlay settings obscured the real weather from him, even if it was gloomy. He didn’t like ceviche or really any seafood, but only ever said ceviche because he worried..."
+description: "Edward Thon, a market-obsessed protagonist in the Zoothesia universe, navigates a world where financial success serves as his primary metric for self-worth and winning, while grappling with insecurity about his place in relationships and society. In this chapter, the protagonist's character is established through his particular dislikes and desires, setting up tensions between his need for monetary validation and his deeper existential anxieties about trust and belonging."
 tags:
   - AI
+  - fiction
+  - protocols
 audience:
   - researcher
   - practitioner

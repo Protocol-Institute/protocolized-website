@@ -1,12 +1,12 @@
 ---
 title: "The Double Key"
-type: fiction
+type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "James Langdon"
 date: 2025-08-09
-description: "In this issue: we summarize an essay, How To Do Words With Things, by French philosopher and anthropologist Bruno Latour. The original is presented as a fictionalized encounter that a future archaeologist has with an arcane object: the Berliner Do..."
+description: "This issue summarizes Bruno Latour's essay on the Berliner Doppelschlüssel, a real double-key used in 20th-century Berlin apartments that enforces a specific protocol: lock the door at night, leave it unlocked during the day. The double-key demonstrates how material objects can encode and delegate social rules, settling disputes between building owners and tenants through physical design rather than explicit agreement."
 tags:
+  - protocol-watching
   - protocols
 audience:
   - researcher

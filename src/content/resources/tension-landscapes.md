@@ -2,13 +2,13 @@
 title: "Tension Landscapes"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2025-05-23
-description: "In this issue: A review of a popular political science paper that used tensions as a core part of its predictive mathematical model, plus notes on spannungsfelds and intellectual sparring. Also, join the meetup in San Francisco this Sunday, May 25..."
+description: "This issue explores tensions—conceptualized as the intersection of engineering trade-offs and social conflicts—as a fundamental analytical tool for understanding protocol design, using large language models as a concrete case study where technical adjustments and social policies attempt to address the same underlying problems. The piece argues that tensions create spannungsfelds (fields of tension) that are increasingly entangled across technical and social domains, illustrated through how companies and institutions respond to LLM disruption through both engineering tweaks and policy interventions."
 tags:
   - article
   - protocols
+  - technology
 audience:
   - researcher
   - practitioner

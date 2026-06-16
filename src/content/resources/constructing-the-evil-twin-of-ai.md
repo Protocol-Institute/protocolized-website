@@ -2,13 +2,15 @@
 title: "Constructing the Evil Twin of Ai"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
 date: 2025-10-15
-description: "In this issue: Latest happenings in our Special Interest Group in Formal Protocol Theory; report on the Protocol Foundations Workshop; the Tan Paper project; meditation on protocols as the evil twins of AI; and two new writing bounties."
+description: "This issue reports on SIGFPT's latest activities, including discussions on process calculi and the upcoming exploration of motion languages from robotics as a framework for understanding protocols. The editorial reflects on protocols as fundamentally different from AI systems—the \"evil twin\" relationship—while announcing new initiatives like the Tan Paper project and writing bounties."
 tags:
-  - article
   - AI
+  - article
+  - editorial
+  - organizations
+  - protocols
 audience:
   - researcher
   - practitioner

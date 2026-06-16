@@ -2,13 +2,14 @@
 title: "What Is Formal Protocol Theory"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
 date: 2025-08-20
-description: "For the past three months or so, a group of us have been meeting every other Friday for an hour (10 AM PT, 5PM UTC), on the Summer of Protocols Discord, to talk about how to build rigorous foundations under the currently gooey subject matter of pr..."
+description: "Venkatesh Rao introduces SIGFPT (Special Interest Group in Formal Protocol Theory), a working group meeting biweekly to develop rigorous mathematical and logical foundations for protocol studies. The group aims to formalize protocol analysis—moving from intuitive understanding of everyday protocols like handshakes to formal descriptions that mathematicians and logicians can rigorously examine."
 tags:
   - article
+  - editorial
   - protocol
+  - protocols
   - theory
 audience:
   - researcher

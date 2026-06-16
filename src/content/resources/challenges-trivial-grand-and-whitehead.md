@@ -2,11 +2,12 @@
 title: "Challenges: Trivial, Grand, and Whitehead"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
 date: 2026-06-09
-description: "Introducing the Protocol Institute Challenges program"
+description: "Venkatesh Rao introduces the Protocol Institute Challenges program, designed to catalyze fresh research efforts around protocol science problems by moving beyond repackaged thinking and cosmetic applications. The program aims to develop practitioners who think natively in protocols rather than superficially applying protocol concepts to existing problems."
 tags:
+  - obliquities
+  - organizations
   - protocols
 audience:
   - researcher

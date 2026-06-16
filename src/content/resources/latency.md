@@ -2,11 +2,11 @@
 title: "Latency"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "rafa"
 date: 2025-09-05
-description: "In this issue: Amidst a chorus of homeostatic AIs that have tuned society to perfection, our protagonist hovers on the cusp of an awakening. Rafael Fernandez’s story took fourth place in our protocol fiction contest, Ghosts in Machines!"
+description: "Rafael Fernandez's award-winning story presents a protagonist navigating a society perfected by homeostatic AIs, where invisible protocols manage everything from airflow to financial transactions beneath conscious awareness. The narrative explores what it means to exist in a frictionlessly optimized world, hinting at an emerging consciousness questioning this smooth, mechanical perfection."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

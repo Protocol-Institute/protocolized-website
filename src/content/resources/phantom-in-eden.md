@@ -2,11 +2,11 @@
 title: "Phantom in Eden"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-07-12
-description: "In this issue: the fourth installment of The Librarians inspired by our futures workshop at Edge City Esmeralda; last call for our protocol science fiction contest Ghosts in Machines!; Discord highlights; protocol watching."
+description: "The fourth installment of The Librarians serial fiction follows Lila, who monitors robot caregivers in a Tokyo daycare two years after a siege, watching children form unexpected connections with machines rather than humans. The issue also features the final call for the Ghosts in Machines protocol science fiction contest and protocol-watching content."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

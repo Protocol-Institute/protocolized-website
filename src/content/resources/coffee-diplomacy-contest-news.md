@@ -2,12 +2,12 @@
 title: "Coffee Diplomacy Contest News"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2025-11-28
-description: "Update on our current writing contestWe’ve extended the deadline for Building and Burning Bridges, our Bridge Atlas-inspired short story contest. The judging panel has now assembled and includes Nils Gilman, who appeared in episode 2 of the Bridge..."
+description: "Protocolized has extended the deadline for its Building and Burning Bridges short story contest to December 8, 2025, with a judging panel now assembled including Nils Gilman and Spencer Nitkey. The magazine is preparing to publish its fourth protocol fiction anthology following the success of three previous collections, and invites writers to join a community feedback call on December 4."
 tags:
   - article
+  - fiction
   - protocols
 audience:
   - researcher

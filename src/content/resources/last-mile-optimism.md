@@ -2,11 +2,12 @@
 title: "Last Mile Optimism"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Marie-Hélène Lebeault"
 date: 2026-03-10
-description: "Protocolized readers and post-scarcity redistributors – Princeton researcher Julia Ying is looking to interview people with experience and expertise in decentralized protocols. Interested? Details and sign up here."
+description: "A story about Lacey and her mentor Denis exploiting a loophole in the city's last-mile delivery protocol, where unclaimed packages become legally claimable after a set time, framing theft as protocol compliance. The narrative explores the tension between rule-following and moral doubt as characters operate within the letter of the law while subverting its intended purpose."
 tags:
+  - fiction
+  - protocol-watching
   - protocols
 audience:
   - researcher

@@ -3,11 +3,11 @@ title: "Sop Fall Forecast"
 type: article
 authors:
   - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
 date: 2025-09-02
-description: "In this issue: get ready for a burst of activity this fall, all around the world – we have calls for participation in a Proto-College in Kuala Lumpur, a forecasting workshop on Europe’s AI stack in Berlin, and a protocol studies meet-up in Buenos ..."
+description: "This fall forecast announces multiple protocol studies events and opportunities, including the Seapunk Proto-College in Kuala Lumpur (September 15-20) focused on protocols and reimaginable seas, an AI Futurama workshop in Berlin (October 9-10) exploring Europe's adoption of emerging AI technologies, and a protocol studies meet-up in Buenos Aires. The issue also wraps up the Ghosts in Machines series and shares a curated SoP Discord link-list."
 tags:
   - article
+  - editorial
   - protocols
 audience:
   - researcher

@@ -2,11 +2,11 @@
 title: "The Entropic Gate Part Ii"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "TΞRM1NΞX"
 date: 2025-04-04
-description: "In this issue: Jonah enters the mysterious corridors of Lower Tethys. A guerrilla movement would need to be too chaotic, too unpredictable, to be forecast by an echo of the Pax. What is it like to be a bacteria, trying to flee its own cells? Also ..."
+description: "In this continuation of The Entropic Gate, Jonah navigates the hidden undercity of Lower Tethys while confronting the difference between his methodical, data-driven resistance and Kaida's chaotic physical rebellion against an all-knowing optimization regime. The narrative explores how true unpredictability—messy, irrational, and inefficient—might be the only way to evade a system designed to forecast all possible futures."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

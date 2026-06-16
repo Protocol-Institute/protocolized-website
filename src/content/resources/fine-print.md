@@ -1,14 +1,14 @@
 ---
 title: "Fine Print"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Griffin"
 date: 2025-05-28
-description: "In this issue: A shortlist story from the Terminological Twists challenge, comprising vignettes from a 500-year period of pencilled peril. Also, a snapshot of this week’s in-person event, and next week’s guest talk."
+description: "This issue features a shortlist story from the Terminological Twists challenge set 500 years in a future where a massive corporate agreement grants a Corporation ownership of natural resources and digital data, following a character named Mara who avoided signing and now exists as an undocumented outcast scavenging abandoned zones. The piece is accompanied by coverage of Protocolized's in-person event and an upcoming guest talk."
 tags:
-  - story
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

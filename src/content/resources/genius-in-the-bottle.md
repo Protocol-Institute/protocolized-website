@@ -1,14 +1,15 @@
 ---
 title: "Genius in the Bottle"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Claire Pichelin aka Hypathie"
 date: 2025-09-20
-description: "In this issue: A motley team of scientists hurtle through space on an impromptu research trip. Unsanctioned, over-budget, and off-course, they’ll muster a protocol for every eventuality. Claire Pichelin’s story was top-ten in our protocol fiction ..."
+description: "In this protocol-fiction story, a team of scientists finds themselves unexpectedly aboard the Prometheus-7 space probe heading to Alpha Centauri and must improvise protocols to handle unforeseen crises during their unsanctioned mission. The narrative explores how ad-hoc problem-solving and improvised procedures emerge when a research mission goes catastrophically off-plan."
 tags:
-  - story
+  - fiction
+  - protocol-watching
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

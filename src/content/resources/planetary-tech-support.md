@@ -1,14 +1,14 @@
 ---
 title: "Planetary Tech Support"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Marie-Hélène Lebeault"
 date: 2025-12-19
-description: "H3L-PR arrived in low Earth orbit with the quiet precision of a machine that considered efficiency a form of morality. As per standard designation, H3L-PR was assigned to systems optimization and environmental stabilization. It had been mid-task, ..."
+description: "A sentient repair robot named H3L-PR receives an unprecedented tech support ticket filed directly by Earth itself, describing planetary system failures including tectonic instability, ocean disruption, and biological lag caused by human activity. The story explores what happens when a machine designed for systems optimization encounters a planet intelligent enough to diagnose and report its own crisis."
 tags:
-  - story
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

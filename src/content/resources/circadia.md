@@ -1,14 +1,15 @@
 ---
 title: "Circadia"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Afeez"
 date: 2025-07-23
-description: "In this issue: Sometimes we set the rhythms. Other times, the rhythms set us. What happens in a world whose inhabitants sleep perfectly? Also – join us in an hour (10am PDT, July 23) for a guest talk on poetry, protocols, and infinite games with R..."
+description: "Circadia explores a world where sleep is perfectly regulated by wearable technology that monitors and controls dreams, following protagonist Kemi as she experiences an anomalous recurring dream that breaks the system's design—a dream that shouldn't be remembered but is, suggesting something unexpected in the protocol. The issue also announces a guest talk on poetry, protocols, and infinite games with Robert Peake."
 tags:
-  - story
+  - fiction
   - protocols
+  - story
+  - technology
 audience:
   - researcher
   - practitioner

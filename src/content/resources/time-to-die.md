@@ -1,14 +1,14 @@
 ---
 title: "Time to Die"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Ralph Witherell"
 date: 2025-05-22
-description: "In this issue: A story from a futuristic hospice in Neo-Kyoto, where palliative care has advanced significantly, thanks to personalized care chips, protocolization, and new technologies. Plus – a meetup in San Francisco on May 25, two Edge Esmeral..."
+description: "This issue features a speculative fiction story set in a 2093 Neo-Kyoto hospice where Dr. Anya Sharma uses personalized care chips and advanced protocols to provide dignified end-of-life care to patients. The issue also announces a San Francisco meetup on May 25, giveaway tickets, and coverage of emerging hard tech developments."
 tags:
-  - story
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

@@ -2,11 +2,11 @@
 title: "Would You Stop Following Me If I"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Spencer Nitkey"
 date: 2025-12-03
-description: "Sylvo always wanted to play this game when we were dating. He called it “If I was,” and I absolutely loathed it. “Ki,”, he’d ask, “would you love me if I was [insert inane suggestion here]?” I think the genesis of the game was some old meme about ..."
+description: "In this second chapter of the Zoothesia Series, Ki navigates unwanted attention from a former lover by adopting \"foulmaxing\"—a technique to obscure her appearance through overlays. The narrative explores how digital presentation tools and social protocols can be weaponized for personal autonomy, drawing parallels to an old relationship game about conditional love."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

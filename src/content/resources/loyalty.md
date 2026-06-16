@@ -3,10 +3,11 @@ title: "Loyalty"
 type: fiction
 authors:
   - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
 date: 2025-08-23
-description: "In this issue: In a climate-stressed future, a stubborn grandmother resists evacuation from an extreme weather zone. But her equally stubborn daughter is determined to preserve her legacy. See what plays out in Zach Hyman’s story, third-place in o..."
+description: "In Zach Hyman's climate fiction story, a grandmother refuses evacuation from an extreme weather zone while her daughter attempts to preserve her legacy using personified memory technology. The narrative explores intergenerational conflict and resistance to protocol compliance in a climate-stressed future where weather systems have become unpredictable following the collapse of the Atlantic Meridional Overturning Circulation."
 tags:
+  - fiction
+  - protocol-watching
   - protocols
 audience:
   - researcher

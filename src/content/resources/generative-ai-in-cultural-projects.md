@@ -2,13 +2,15 @@
 title: "Generative Ai in Cultural Projects"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Nicolás Madoery"
 date: 2025-10-25
-description: "In this issue: Nicolás Madoery, participant in SoP24 and director of FUTURX, maps tensions between emerging technology and culture, then charts a way forward from a protocol lens. Summer of Protocols and FUTURX will host a meetup in Buenos Aires o..."
+description: "Generative AI's accessibility has disrupted cultural and creative industries whose primary product is meaning, creating urgent tensions between technology adoption and creative labor that demand protocol-based solutions. Nicolás Madoery maps these sociotechnical tensions and proposes moving forward through a protocol lens, while announcing a Buenos Aires meetup and new essay bounties."
 tags:
-  - article
   - AI
+  - article
+  - editorial
+  - protocols
+  - technology
 audience:
   - researcher
   - practitioner

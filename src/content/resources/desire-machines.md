@@ -2,11 +2,11 @@
 title: "Desire Machines"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2026-02-15
-description: "The last-minute tumult of departure reigned on the steamer from Bristol to Buenos Aires. Porters hurried up the gangway with trunks and crates, telegraph boys zigzagged between families pressing farewell letters into their hands, and the deck ligh..."
+description: "A second-place story from the Bridges contest depicts a 19-year-old passenger boarding a steamer who encounters the famous cricketer Lakshman Sorabji Marker, setting up a narrative about gambling, fandom, and mechanical obsession. The tale uses the machinery of cricket and chance as a metaphorical mirror for humanity's deepest desires and the structures that govern them."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

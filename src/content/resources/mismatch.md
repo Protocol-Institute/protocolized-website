@@ -1,14 +1,14 @@
 ---
 title: "Mismatch"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "WriterRamprasath"
 date: 2025-10-18
-description: "In this issue: With an appliance that creates perfect copies of an individual in parallel realities, users could experiment with every possible parameter to optimize their personal relationships. What if I was more generous with my partner? Or mor..."
+description: "In this speculative fiction debut, a character uses an appliance that creates perfect copies of themselves across parallel realities to experiment with different versions of their personality—more generous, affectionate, forgiving, honest—in an attempt to optimize their struggling three-year relationship with their fiancé Karim. The story explores whether self-optimization through parallel experimentation can resolve fundamental incompatibilities and communication breakdowns in intimate relationships."
 tags:
-  - story
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

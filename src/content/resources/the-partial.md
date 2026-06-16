@@ -1,14 +1,15 @@
 ---
 title: "The Partial"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Marie-Hélène Lebeault"
 date: 2025-11-09
-description: "In this issue: Lawyers frequently use the conduct of a “reasonable person” as a benchmark for assessing the behavior of others. How mathematical can that definition get?  Also – just over three weeks left to enter the Building and Burning Bridges ..."
+description: "This issue explores the legal concept of the 'reasonable person' standard and its potential mathematical formalization, while launching a creative contest for readers. The opening excerpt introduces a speculative narrative set in Halverton Smart City, where an AI system called a 'Partial' monitors and optimizes a resident's behaviors, raising questions about personalization, autonomy, and algorithmic governance."
 tags:
-  - story
+  - editorial
+  - fiction
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

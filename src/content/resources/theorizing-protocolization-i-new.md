@@ -2,13 +2,15 @@
 title: "Theorizing Protocolization I New"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
+  - name: "Patrick Nast"
 date: 2026-01-08
-description: "In this essay, we want to introduce you to a profoundly important planetary phenomenon that you probably intuitively recognize, but have likely never paused to think about: Protocolization. Besides naming the phenomenon, we want to offer you a set..."
+description: "This essay introduces protocolization as a planetary phenomenon where progress occurs through invisibility and the expansion of computational systems, establishing qualitative frameworks before Part II develops formal theoretical apparatus. The authors present this work from the Special Interest Group in Formal Protocol Theory (SIGFPT) as an invitation to collectively theorize how protocols structure contemporary life at planetary scale."
 tags:
   - article
+  - editorial
   - protocol
+  - protocols
 audience:
   - researcher
   - practitioner

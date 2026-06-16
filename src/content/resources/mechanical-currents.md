@@ -2,13 +2,14 @@
 title: "Mechanical Currents"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2025-09-09
-description: "In this issue: A monthly update from our Special Interest Group on Protocols for Business (SIGP4B). How are businesses adopting AI and what are current outlooks for productivity, QA, and task estimation?"
+description: "This issue explores AI adoption in businesses through the lens of protocol studies, examining how protocols constrain and coordinate infrastructure while AI systems generate and transform knowledge at massive scale. The Special Interest Group on Protocols for Business investigates the tensions between AI diffusion (700+ million weekly users of OpenAI tools) and organizational security, focusing on how employees use LLMs with sensitive business data."
 tags:
   - article
+  - organizations
   - protocols
+  - technology
 audience:
   - researcher
   - practitioner

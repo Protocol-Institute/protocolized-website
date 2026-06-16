@@ -2,12 +2,14 @@
 title: "Lessons From the Librarians"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2025-07-30
-description: "In this issue: we reflect on the conclusion of our first protocol fiction serial The Librarians, and we are live for a Guest Talk with Charity Majors in one hour at 10am Pacific Daylight Time. Stay tuned for Ghosts in Machines! contest updates."
+description: "Protocolized reflects on the conclusion of its protocol fiction serial The Librarians, which emerged from six teams' work at the Summer of Protocols Knowledge Futurama workshop at Edge Esmeralda 2025, where participants designed 1,000-year library preservation systems across technological and social dimensions. The series distills six principles for protocol futures derived from this collaborative exploration of knowledge artifacts, preservation technology stacks, and the social contexts required for long-term cultural survival."
 tags:
   - article
+  - editorial
+  - fiction
+  - organizations
   - protocols
 audience:
   - researcher

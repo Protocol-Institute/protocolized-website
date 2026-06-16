@@ -3,10 +3,11 @@ title: "We Shape Our Tools and Thereafter"
 type: fiction
 authors:
   - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
 date: 2025-09-13
-description: "In this issue: With the communication problems of human relationships optimally resolved, how do we feel about our pacifying domesticity? Tongzhou Yu’s story tied for fifth place in our protocol fiction contest, Ghosts in Machines!"
+description: "In this editorial issue, Protocolized introduces Tongzhou Yu's protocol fiction story about a couple whose relationship is mediated by communication protocols, exploring what domesticity feels like when conflict resolution systems optimize away human friction. The opening depicts a mundane argument over soy sauce that escalates into questions about whether perfectly coordinated communication actually enhances or diminishes intimate partnership."
 tags:
+  - editorial
+  - fiction
   - protocols
 audience:
   - researcher

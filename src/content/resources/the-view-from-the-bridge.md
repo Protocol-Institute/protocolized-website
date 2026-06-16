@@ -2,12 +2,12 @@
 title: "The View From the Bridge"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
 date: 2025-10-22
-description: "In this issue: Introducing Bridge Atlas, the overarching theme for our Fall program, announcing our third protocol fiction contest titled Building and Burning Bridges; previewing a special Bridge Atlas salon series hosted by Christine Kim; and ope..."
+description: "Issue #64 introduces Bridge Atlas as Protocolized's overarching Fall theme, exploring how narrow geographic and conceptual bridges—using the Khyber Pass as a concrete example—concentrate and shape planetary history and flows of power, trade, and ideas. The issue announces a third protocol fiction contest on bridge building and burning, a special salon series, and a workshop at Devconnect Buenos Aires."
 tags:
   - article
+  - editorial
   - protocols
 audience:
   - researcher

@@ -2,13 +2,13 @@
 title: "Maintaining Everything That Matters"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Matthew McDowell-Sweet"
 date: 2026-06-03
-description: "Matthew McDowell-Sweet and Mike Travers discuss Stewart Brand’s recently-published book ‘Maintenance: Of Everything’"
+description: "Matthew McDowell-Sweet and Mike Travers discuss Stewart Brand's book 'Maintenance: Of Everything,' exploring how systems are kept going and evolve over time. The conversation connects Brand's legacy of systems thinking from the Whole Earth Catalog to contemporary questions about maintaining complex systems at scale."
 tags:
-  - protocols
   - AI
+  - interview
+  - protocols
 audience:
   - researcher
   - practitioner

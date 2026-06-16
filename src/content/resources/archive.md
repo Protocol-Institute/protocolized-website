@@ -2,12 +2,14 @@
 title: "Archive"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-06-20
-description: "In this issue: the first title in The Librarians. Each story is based on a real team’s documentation from a long-term scenario planning workshop that Summer of Protocols hosted at Edge City. Also – a workshop template, next week’s guest talk slate..."
+description: "In this issue's debut of The Librarians series, Sachin presents fictional narratives based on real documentation from Summer of Protocols' long-term scenario planning workshops, beginning with 'The Crystal Reading Ceremony,' set in a futuristic underground archive where knowledge is stored on quartz discs. The story explores how institutional memory and archival practices might evolve in a post-AI world through the rituals and tensions surrounding the curation of pre-AI human knowledge."
 tags:
   - archive
+  - fiction
+  - memory
+  - protocols
 audience:
   - researcher
   - practitioner

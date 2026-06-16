@@ -1,14 +1,15 @@
 ---
 title: "To Share and Remember"
-type: article
+type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Katharine Tyndall"
 date: 2025-03-21
-description: "In this issue: An evocative tale of ritual and memory unfolds as Verity undergoes an ancient activation to reclaim the memory of her species’ origins. Amid cosmic rites and intimate bonds, she confronts the weight of a predestined purpose, balanci..."
+description: "In this fictional piece, Verity undergoes an ancient activation ritual to reclaim her species' forgotten origins, communing with ancestral memory through ritualized frequencies and ceremonial practices in the underground warrens of her world. The narrative explores how personal sacrifice and the transmission of ancestral knowledge shape individual purpose and collective future."
 tags:
-  - story
+  - fiction
+  - memory
   - protocols
+  - story
 audience:
   - researcher
   - practitioner

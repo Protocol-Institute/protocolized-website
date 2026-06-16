@@ -2,12 +2,14 @@
 title: "The Last Archive"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sachin Benny"
 date: 2025-07-26
-description: "In this issue: An excellent memory has its downsides… enjoy the sixth and final story that emerged from the Summer of Protocols hybrid wargame-worldbuilding workshop earlier this year. Also, Protocol Symposium applications close in 3 weeks. Maximi..."
+description: "Brother Lexicon, an archivist at the Ministry of Predictive Symbolism in 2667, faces the return of the WikiRael-9 comet—a celestial archive born from accidental preservation that became sacred scripture—presenting new challenges for how humanity preserves and transmits knowledge across centuries. This final installment of the Summer of Protocols workshop series explores the paradoxes of memory, institutional archives, and the unintended consequences of archival systems."
 tags:
   - archive
+  - fiction
+  - memory
+  - protocols
 audience:
   - researcher
   - practitioner

@@ -2,13 +2,15 @@
 title: "Dirt Simple"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "PAtwater"
 date: 2025-05-02
-description: "In this issue: A case study at the Crescenta Valley Water District that examines the problems – and opportunities – of the public sector’s invisible mazes of protocols. Also: community highlights, some recommended reads, SoP25 spotlight, and upcom..."
+description: "Issue #17 features a case study of the Crescenta Valley Water District examining how public sector protocols create invisible operational mazes with both challenges and reform opportunities. The issue also curates community discussions on alignment protocols, emerging AI standards (MCP, MLOS, ACP), and preparations for Protocol Worlds at Edge Esmeralda."
 tags:
   - article
+  - editorial
+  - protocol-watching
   - protocols
+  - research
 audience:
   - researcher
   - practitioner

@@ -2,11 +2,11 @@
 title: "Noise Ordinance"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Spencer Nitkey"
 date: 2025-05-16
-description: "In this issue: The first place story of the Terminological Twists protocol fiction contest! Plus, Argument Engineering for Dummies, a meetup in Los Angeles, another SoP25 spotlight, a new webpage for the teaching fellows, and highlights from Discord."
+description: "A protocol fiction story exploring a dystopian neighborhood governed by strict noise ordinances, where the protagonist struggles with enforced silence and isolation despite achieving their dream of homeownership. The narrative examines how protocols designed to create order paradoxically create loneliness and emotional distance between inhabitants."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

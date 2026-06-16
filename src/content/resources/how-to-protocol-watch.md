@@ -2,13 +2,14 @@
 title: "How to Protocol Watch"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Timber Stinson-Schroff"
 date: 2025-12-31
-description: "The story of Charles Darwin’s finches would sound strange if Darwin was, himself, a finch."
+description: "Protocol watching is presented as an accessible intellectual practice inspired by Bronisław Malinowski's ethnographic methodology of observing everyday social systems rather than theorizing from academic distance. The piece argues that you can adopt this 'miniature hobby' today by applying Malinowski's innovations in people-watching—his insistence on getting 'off the verandah' into lived experience—to understand contemporary protocols without requiring elaborate resources or exotic expeditions."
 tags:
   - article
   - protocol
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - practitioner

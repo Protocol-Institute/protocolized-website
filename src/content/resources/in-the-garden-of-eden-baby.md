@@ -2,11 +2,11 @@
 title: "In the Garden of Eden Baby"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Sisyphus"
 date: 2025-08-27
-description: "In this issue: With humanity’s last gasp imminent, all that remains to amuse the filthy rich is pitting their superintelligent AIs against each another in a fight for Earth’s most desirable and esoteric indulgences. Myth of Sisyphus’s story takes ..."
+description: "In a distant future where only sextillionaires remain on Earth, the ultra-wealthy amuse themselves by pitting superintelligent AIs against each other in competitions for rare luxuries, revealing the existential emptiness beneath infinite material abundance. The story follows Darius as he contemplates his perfectly curated possessions—including a Dickens desk with impeccable provenance—only to find that ownership of the world's finest things has become utterly meaningless."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

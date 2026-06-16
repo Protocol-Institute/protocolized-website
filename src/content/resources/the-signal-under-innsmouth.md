@@ -2,11 +2,12 @@
 title: "The Signal Under Innsmouth"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Venkatesh Rao"
 date: 2025-04-11
-description: "In this issue: An homage to Lovecraft’s classic, The Shadow Over Innsmouth. Also – last call to enter a $6000 sci-fi writing contest, protocol-Bechdel tests, video of a chat with program alum Nadia Asparouhova on her new Antimemetics book."
+description: "This issue presents a Lovecraftian fiction piece about investigating an off-grid coastal community called Innsmouth through encrypted digital fragments and archival research, exploring themes of anomalous signals and failed utopias. The issue also features an interview with Nadia Asparouhova about her Antimemetics book, announces a $6000 sci-fi writing contest deadline, and includes protocol-Bechdel test analysis."
 tags:
+  - fiction
+  - interview
   - protocols
 audience:
   - researcher

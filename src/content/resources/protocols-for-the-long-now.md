@@ -2,11 +2,12 @@
 title: "Protocols for the Long Now"
 type: article
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Denise Hearn"
+  - name: "Timber Stinson-Schroff"
 date: 2026-05-05
-description: "The Protocol Institute collaborates with the Long Now Foundation on three participatory, cross-disciplinary labs – applications are due June 5!"
+description: "The Protocol Institute launches its first official collaboration with the Long Now Foundation through three participatory cross-disciplinary labs exploring how protocols enable civilizational durability, asking which protocols allow civilization to grow while managing tensions and how information technologies integrate after disruption. Applications are due June 5, with the initiative framed as an open-ended investigation rather than an attempt at historical prediction or a prescriptive checklist."
 tags:
+  - organizations
   - protocols
 audience:
   - researcher

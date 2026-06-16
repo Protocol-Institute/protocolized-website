@@ -2,11 +2,11 @@
 title: "Missing Not at Random"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Spencer Nitkey"
 date: 2026-01-14
-description: "I am choosing to write my research report on my older brother, Io, because he’s different from most people, he makes me curious (curiosity is the best recipe for a good research project, right?), and because my dad cries and my mom gets very, very..."
+description: "In Chapter 5 of the Zoothesia Series, a narrator investigates their older brother Io through the lens of a research project, exploring what makes him unique in a world governed by the Zoothesia Protocols—systems designed to protect people by visualizing and managing information about them. The chapter interrogates how protocols that claim to protect everyone paradoxically render certain individuals invisible or anomalous, setting up a penultimate narrative convergence where overloaded information systems begin to break down."
 tags:
+  - fiction
   - protocols
 audience:
   - researcher

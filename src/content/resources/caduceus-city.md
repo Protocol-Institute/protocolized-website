@@ -2,11 +2,12 @@
 title: "Caduceus City"
 type: fiction
 authors:
-  - name: "Protocolized"
-    url: "https://protocolized.summerofprotocols.com"
+  - name: "Randy Lubin"
 date: 2026-02-28
-description: "Late-morning on November 5th, a dispatch ping sent me to the Advanced Research Lab to investigate the death of a Dr. Ori Demmel. It was only my second month working for the Caduceus City Police Department and my previous time had been spent invest..."
+description: "A homicide detective investigating a Nobel Laureate's death at a sprawling biotech campus discovers that Caduceus City's meticulously protocolized systems and public-facing transparency mask internal corruption and workplace abuse. The narrative explores how protocol compliance and institutional polish can obscure darker institutional practices."
 tags:
+  - fiction
+  - protocol-watching
   - protocols
 audience:
   - researcher
