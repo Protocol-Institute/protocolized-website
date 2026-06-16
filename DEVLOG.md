@@ -287,3 +287,27 @@ A build log for protocolized.io — how the magazine and resource library site w
 - New script `scripts/generate-banners.py` creates 1200×600 JPEG composites for PDF resources. Layout: teal left panel (390px, #0F6E56) with the existing `covers/{slug}.jpg` thumbnail centred on it + Gaussian drop shadow; off-white right panel with resource type badge (Calibri 13pt), title (Georgia 40–28pt auto-sized, word-wrapped), and italic authors (Georgia 18pt) vertically centred as a block. Year and Protocolized wordmark pinned to bottom. Generated 71 banners, uploaded to R2 `banners/{slug}.jpg`, D1 `thumbnail` updated. Resource detail page (`resource.tsx`) now renders the banner at aspect-[2/1] above the Download CTA. The same thumbnail flows into the carousel for archive spotlight items. Books and magazine posts do not yet have banners — tracked as next-session work.
 
 ---
+
+## Session 19: c3po pipeline, full resource enrichment, ProtocolKit, living-document type
+
+*2026-06-15*
+
+**Tracks:** content-sync, framework, operations
+
+- Wrote `c3po/plans/resource-pipeline.md` formalising the architecture: c3po owns fetching, enrichment (Haiku summaries, categories, speakers), and Pinecone indexing; protocolized-website is a downstream client that reads from c3po's `sources/*/enriched_meta.json` handoff files and writes resource Markdown + D1. Updated c3po CLAUDE.md with the rule. Three sync scripts now implement the pattern: `sync-youtube-resources.py`, `sync-pdf-resources.py`, `sync-substack-resources.py`.
+
+- Built `scripts/sync-youtube-resources.py`. Reads c3po `enriched_meta.json` (Haiku summaries, speakers, categories, key_concepts), fetches real upload dates via yt-dlp batch (cached in `scripts/.yt-date-cache.json`), uploads YouTube thumbnails to R2 `covers/yt-{id}.jpg`. Updated 88 existing resources and created 3 new ones. Replaced boilerplate descriptions with concrete 2-sentence summaries; speakers become `authors`; series + categories + key_concepts become searchable tags. D1 synced to 294 resources.
+
+- Built `scripts/sync-pdf-resources.py`. Surgical update (not full rewrite): replaces description with c3po Haiku summary, merges c3po categories into existing domain-specific tags (preserving `blockchain`, `climate`, etc. that aren't in c3po's vocab). Many descriptions were OCR garbage or single-line boilerplate — now properly authored. 2 unmatched PDFs flagged: 57-KIM (ProtocolKit compiled collection) and durable-ai-adoption (added separately as living-document resource).
+
+- Built `scripts/sync-substack-resources.py`. Policy: the resource library is the full PI content catalogue — Articles, Fictions, Obliquities, and editorial all belong. Joined c3po `enriched_meta.json` + `api_metadata.json` (date, section, bylines) to update 114 existing resource files: real author names replacing the old 'Protocolized' placeholder from the RSS sync script, type corrected to `fiction` for Fictions-section posts, c3po summaries as descriptions, merged tags. Created 15 new stubs: 4 real missing posts (backfilled to D1 in Session 12 but never Markdown-created), 10 older export slugs (date `1970-01-01` sentinel for cleanup), 1 from D1 fallback (centaur-fiction-with-stanley-chan, not yet enriched in c3po). D1 synced to 310 resources.
+
+- Built `scripts/generate-book-banners.py` — same 1200×600 teal two-panel composite as PDF resource banners but using `cover_image` URL rather than PDF render. Added `banner` column to D1 books table; generated 4 book banners (Protocol Reader, Terminological Twists, The Librarians, Ghosts in Machines). Carousel updated to use `b.banner ?? b.cover_image`. Magazine posts in carousel now show bottom gradient overlay + author name + section label in CSS — no R2 work, applies to all future posts automatically.
+
+- Added ProtocolKit as a book (nonfiction, sort_order=0, alongside Protocol Reader). Binder image fetched from summerofprotocols.com/kit, converted PNG→JPG, uploaded to R2 `covers/protocol-kit.jpg`. Banner generated. D1 body field contains the limited edition note + link to Protocol Reader. `url` set to the Google Form request link (not the SoP page, which will redirect back here). Added `cta_label` column to D1 books — ProtocolKit shows 'Request the Kit →'; all other books fall back to 'Get the book →'. This pattern generalises to future books needing custom CTAs.
+
+- Added `living-document` to the type enum (config.ts), badge system (teal-green #E8F5F0/#1A5C42, static-pages.tsx + resources.tsx), and banner label map. Captures versioned resources that exist as maintained live documents with optional PDF archival snapshots — distinct from static papers. First use: *Durable AI Adoption* (SIGP4B guide, v0.5 May 2026), served live at `ai.protocolized.dev` with R2 PDF as archival snapshot.
+
+- Cross-referenced the 94 YouTube video resources in the library against c3po's enriched_meta (91 videos). Found 6 in the library with no c3po entry — all pre-programme or ungrouped channel videos (Atoms/Institutions/Blockchains, Punk/Folk/Myth, Lightning Network, SCP Narrative Protocol, Office Hours 0, Town Hall 2023). Documented with ingest instructions at `c3po/sources/youtube/missing-videos.md`.
+
+---

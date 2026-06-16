@@ -68,7 +68,7 @@ npm run deploy        # build CSS + wrangler deploy (requires CLOUDFLARE_API_TOK
 wrangler d1 create protocolized-resources          # one-time: create DB, capture ID
 wrangler d1 execute protocolized-resources --file=schema.sql --remote
 # then from repo root:
-python3 scripts/migrate-to-d1.py --remote          # import all 288 resources
+python3 scripts/migrate-to-d1.py --remote          # import all resources (310 as of Session 19)
 ```
 
 ## Project structure
@@ -78,7 +78,7 @@ src/
 ├── components/        # Astro components (Nav, Footer, ResourceCard, BadgeType, etc.)
 ├── content/
 │   ├── config.ts      # Zod schema for the resources collection
-│   └── resources/     # 288 Markdown resource files
+│   └── resources/     # 310 Markdown resource files (Session 19)
 ├── layouts/
 │   ├── Base.astro     # HTML shell (fonts, JSON-LD, nav/footer)
 │   └── Resource.astro # Resource detail page layout
@@ -109,9 +109,17 @@ worker/                # Hono CF Worker (in-progress replacement for Astro)
 └── package.json
 data/
 └── devlog.json         # Session devlog (rendered at /devlog by scripts/devlog_render.py)
+scripts/
+├── generate-banners.py          # 1200×600 banner composites for PDF resources → R2 banners/{slug}.jpg
+├── generate-book-banners.py     # Same layout for books → R2 banners/books/{slug}.jpg
+├── generate-pdf-covers.py       # PDF page-1 renders → R2 covers/{slug}.jpg
+├── sync-youtube-resources.py    # Pull c3po YouTube enriched_meta → resource Markdown + R2 thumbnails
+├── sync-pdf-resources.py        # Pull c3po PDF enriched_meta → update resource descriptions + tags
+├── sync-substack-resources.py   # Pull c3po Substack enriched_meta → resource Markdown (all post types)
+└── migrate-to-d1.py             # Sync all resource Markdown → D1 resources table
 .github/workflows/
-├── deploy.yml          # Build & deploy Astro to CF Pages on push to main
-└── sync-substack.yml   # Daily cron to sync new Substack posts
+├── deploy.yml          # Build & deploy Worker on push to main
+└── sync-substack.yml   # Daily cron to sync new Substack posts (posts table + Markdown)
 ```
 
 ## Design tokens
@@ -137,7 +145,7 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 | Field         | Type                | Required | Notes                                                             |
 |---------------|---------------------|----------|-------------------------------------------------------------------|
 | `title`       | string              | yes      |                                                                   |
-| `type`        | enum                | yes      | paper, working-paper, framework, workshop-template, game, dataset, interview, presentation, code, image, prompt-template, talk, lecture, article, fiction |
+| `type`        | enum                | yes      | paper, working-paper, framework, workshop-template, game, dataset, interview, presentation, code, image, prompt-template, talk, lecture, article, fiction, living-document |
 | `authors`     | array of {name, url?} | yes    |                                                                   |
 | `date`        | date                | yes      | YYYY-MM-DD                                                        |
 | `description` | string              | yes      |                                                                   |
@@ -147,6 +155,20 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 | `file`        | string              | no       | Path to a downloadable file (e.g. PDF)                            |
 | `url`         | string              | no       | External link                                                     |
 | `thumbnail`   | string              | no       | Image URL                                                         |
+
+## Resource enrichment pipeline (c3po → protocolized-website)
+
+**c3po is the canonical enrichment source.** New content should be ingested through c3po first. Three sync scripts pull enriched metadata back into the resource library:
+
+| Content type | c3po source | sync script |
+|---|---|---|
+| YouTube videos | `c3po/sources/youtube/enriched_meta.json` | `scripts/sync-youtube-resources.py` |
+| PDFs | `c3po/sources/pdfs/enriched_meta.json` | `scripts/sync-pdf-resources.py` |
+| Substack posts | `c3po/sources/substack/enriched_meta.json` | `scripts/sync-substack-resources.py` |
+
+After any sync script: run `python3 scripts/migrate-to-d1.py --remote`. See `c3po/plans/resource-pipeline.md` for the full architecture.
+
+**D1 books table columns** (as of Session 19): slug, title, subtitle, editor, date, description, body, cover_image, url, file, toc, contributors, tags, sort_order, published, category, banner, cta_label.
 
 ## Conventions
 
