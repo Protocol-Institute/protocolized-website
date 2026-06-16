@@ -304,6 +304,7 @@ export function TypeBadge({ type }: { type: string }) {
     lecture: { bg: "#E8F0FB", text: "#1A3A6B", label: "Lecture" },
     article: { bg: "#F5F0E8", text: "#5C4A1E", label: "Article" },
     fiction: { bg: "#F0E8F5", text: "#4A1E5C", label: "Fiction" },
+    "living-document": { bg: "#E8F5F0", text: "#1A5C42", label: "Living Document" },
   };
   const cfg = badges[type] ?? { bg: "#F1EFE8", text: "#444441", label: type };
   return (

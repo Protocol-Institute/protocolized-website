@@ -100,6 +100,7 @@ def badge_label(resource_type: str) -> str:
         "prompt-template": "Prompt Template", "image": "Image",
         "talk": "Talk", "lecture": "Lecture",
         "article": "Article", "fiction": "Fiction",
+        "living-document": "Living Document",
     }
     return labels.get(resource_type, resource_type.replace("-", " ").title())
 

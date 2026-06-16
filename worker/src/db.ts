@@ -167,6 +167,7 @@ export interface Book {
   published: boolean;
   category: string;
   banner?: string;
+  cta_label?: string;
 }
 
 interface BookRow {
@@ -187,6 +188,7 @@ interface BookRow {
   published: number;
   category: string;
   banner: string | null;
+  cta_label: string | null;
 }
 
 function parseBookRow(row: BookRow): Book {
@@ -208,6 +210,7 @@ function parseBookRow(row: BookRow): Book {
     published: row.published === 1,
     category: row.category ?? "fiction",
     banner: row.banner ?? undefined,
+    cta_label: row.cta_label ?? undefined,
   };
 }
 

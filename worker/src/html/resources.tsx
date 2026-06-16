@@ -18,6 +18,7 @@ const TYPE_LABELS: Record<string, string> = {
   lecture: "Lecture",
   article: "Article",
   fiction: "Fiction",
+  "living-document": "Living Document",
 };
 
 const VIDEO_TYPES = new Set(["talk", "lecture", "presentation"]);

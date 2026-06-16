@@ -154,7 +154,7 @@ export function BookPage({
                       rel="noopener noreferrer"
                       class="btn-secondary w-full text-center block"
                     >
-                      Get the book →
+                      {book.cta_label ?? "Get the book →"}
                     </a>
                   )}
                 </div>

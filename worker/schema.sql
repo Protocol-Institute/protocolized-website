@@ -68,6 +68,7 @@ CREATE TABLE IF NOT EXISTS books (
   sort_order   INTEGER NOT NULL DEFAULT 0,
   published    INTEGER NOT NULL DEFAULT 1,
   category     TEXT NOT NULL DEFAULT 'fiction',
-  banner       TEXT
+  banner       TEXT,
+  cta_label    TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_books_sort ON books(sort_order ASC, date DESC);
