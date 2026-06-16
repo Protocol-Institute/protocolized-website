@@ -4,11 +4,12 @@ type: paper
 authors:
   - name: "Rithikha Rajamohan"
 date: 2023-12-13
-description: "Rithikha Rajamohan's field dispatches from the Pacific Northwest explore regional governance and ecological protocols — examining how place, community, and environment shape the protocols people create to live together."
+description: "This paper uses Cascadia as a speculative case study to explore how bioregional governance frameworks might organize communities around ecological rather than political boundaries, with bears and watershed patterns replacing state/provincial lines. Rajamohan examines how protocol-based systems could coordinate resource management and social infrastructure across overlapping ecoregions facing polycrisis challenges like climate instability and housing crises."
 tags:
-  - protocols
   - community
+  - fiction
   - governance
+  - protocols
 audience:
   - researcher
   - academic

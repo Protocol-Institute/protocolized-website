@@ -5,11 +5,13 @@ authors:
   - name: "Evan Prodromou"
   - name: "Tom Coates"
 date: 2024-09-30
-description: "Every protocol deserves a second chance. ActivityPub (2018) is the distributed social network protocol, developed before end-to-end encryption (E2EE) was standard practice. A case file exploring how to bring E2EE to ActivityPub."
+description: "This case file documents an effort to integrate end-to-end encryption into ActivityPub, the distributed social network protocol, by mapping Messaging Layer Security (MLS RFC9420) onto the existing standard as an extension. The central tension is balancing security robustness with implementability simplicity, requiring the authors to examine user interfaces across messaging platforms and architectural variations before recommending a design approach for E2EE in federated social networks."
 tags:
-  - protocols
-  - standards
+  - fiction
   - infrastructure
+  - protocols
+  - research
+  - standards
   - trust
 audience:
   - researcher

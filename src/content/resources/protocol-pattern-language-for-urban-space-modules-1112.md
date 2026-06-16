@@ -4,12 +4,14 @@ type: paper
 authors:
   - name: "Drew Austin"
 date: 2024-01-01
-description: "Modules 11 and 12 of Drew Austin's Protocol Pattern Language for Urban Space series, the concluding volumes of this spatial protocol catalogue."
+description: "This paper presents Pattern 11 on Loitering Protocols, arguing that informal and improvisational uses of marginal urban spaces—though often discouraged or prohibited—serve essential functions by meeting unanticipated community needs while increasing space utility at minimal cost. Austin proposes that space stewards should develop explicit 'loitering protocols' that legitimize and encourage these unplanned uses rather than restrict them."
 tags:
-  - protocols
-  - design
   - community
+  - design
+  - fiction
+  - governance
   - infrastructure
+  - protocols
 audience:
   - researcher
   - academic

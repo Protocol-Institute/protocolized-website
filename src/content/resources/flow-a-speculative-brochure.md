@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Rafael Fernández"
 date: 2024-01-01
-description: "A_UID: 613702f8-4c99-11ee-be56-0242ac120002 Act Together Tap into the knowledge, resources, and skills of your entire team. Flow learns from you and your"
+description: "Flow is a speculative design fiction presented as a corporate onboarding brochure for an AI-powered team collaboration platform that promises to synthesize communication, manage information flow, and enable collective intelligence through contextually aware algorithms. Fernández uses the brochure format to critique contemporary workplace technologies and the rhetoric of seamless productivity, examining how such systems claim to reduce noise while potentially increasing surveillance and control."
 tags:
-  - protocols
-  - fiction
   - culture
+  - fiction
+  - protocols
 audience:
   - researcher
   - academic

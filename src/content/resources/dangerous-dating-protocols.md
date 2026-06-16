@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Shreeda Segan"
 date: 2023-12-13
-description: "Shreeda Segan explores romantic and social matching through the lens of protocol — how dating apps, courtship rituals, and social scripts function as coordination protocols with unintended consequences for connection and community."
+description: "This paper explores the parallels between dating protocols and game-theoretic strategies, using the framework of exploration versus exploitation to examine how strangers from different cultural and ideological backgrounds can navigate interaction and connection. Segan argues that successful dating requires protocol-like systems that balance the risk of trying new approaches against the safety of proven strategies."
 tags:
-  - protocols
   - culture
   - fiction
+  - protocols
 audience:
   - researcher
   - academic

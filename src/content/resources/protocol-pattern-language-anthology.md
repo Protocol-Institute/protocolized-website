@@ -4,10 +4,11 @@ type: paper
 authors:
   - name: "Drew Austin"
 date: 2023-12-13
-description: "Drew Austin applies the pattern language concept to protocol design — collecting recurring structural patterns, anti-patterns, and design templates for building effective coordination systems across urban and digital spaces."
+description: "This anthology explores how protocols function as distributed coordination mechanisms that generate emergent patterns rather than hierarchical structures, using real-world examples like traffic jams to illustrate how protocols operate across interconnected layers of infrastructure, behavior, and rules. The work argues that understanding protocols requires examining the complex interactions between human actors, physical systems, and institutional constraints rather than treating protocols as top-down designs."
 tags:
-  - protocols
   - design
+  - protocols
+  - research
   - summer-of-protocols
 audience:
   - researcher

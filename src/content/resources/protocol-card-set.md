@@ -4,10 +4,11 @@ type: game
 authors:
   - name: "Shuya Gong"
 date: 2024-03-28
-description: "A Summer of Protocols publication: Protocol Card Set."
+description: "A card game that makes visible the invisible protocols structuring digital systems and social interactions. Players engage with protocol mechanics through gameplay to develop literacy around how rules, standards, and agreements govern technological and social life."
 tags:
-  - protocols
   - game
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

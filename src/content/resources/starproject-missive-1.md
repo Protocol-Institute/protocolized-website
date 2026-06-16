@@ -4,10 +4,10 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2024-01-01
-description: "I SBN-13: 978-1-962872-56-00 print P rinted in the United States of America Printing history: February 2024"
+description: "This is the opening material and licensing information for Summer of Protocols' first missive, establishing copyright frameworks and publication details for contributions to the Ethereum Foundation. The document sets forth dual licensing terms under CC BY-NC 4.0 through 2026, transitioning to CC BY 4.0 thereafter, and serves as the masthead for a retrospective newsletter publication."
 tags:
-  - protocols
   - fiction
+  - protocols
 audience:
   - researcher
   - academic

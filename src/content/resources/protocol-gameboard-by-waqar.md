@@ -4,10 +4,12 @@ type: game
 authors:
   - name: "Summer of Protocols"
 date: 2024-01-01
-description: "ytrap-locotorp/hcraeser/moc.slocotorpforemmus"
+description: "Protocol Gameboard is a parlor game designed to explore different social roles and archetypes (Outsider, Sage, Heretic, Drifter, Clinger, Maintainer) through interactive gameplay mechanics. The game transforms abstract protocol concepts into embodied social dynamics, allowing players to experience how different participants navigate shared systems and rule structures."
 tags:
-  - protocols
+  - fiction
   - game
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

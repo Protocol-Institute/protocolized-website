@@ -4,9 +4,10 @@ type: paper
 authors:
   - name: "David Lang"
 date: 2023-12-13
-description: "David Lang's contribution to the Summer of Protocols 2023 anthology, exploring how standards underpin modern civilization and protocol infrastructure."
+description: "David Lang's anthology explores how standards shape the physical and digital world, using concrete examples of open-source hardware development to demonstrate that standards-setting, contrary to popular belief, is a dynamic and innovative process rather than a purely technical or bureaucratic endeavor. The work documents how iterative design, community collaboration, and openness can improve standards even when progress is slower than purely software-based development."
 tags:
   - protocols
+  - research
   - standards
   - summer-of-protocols
 audience:

@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2024-01-01
-description: "The second missive from the Starproject, a Summer of Protocols initiative exploring speculative futures through the lens of protocol design and science fiction."
+description: "This document is a retrospective newsletter from Summer of Protocols, published in March 2024 as part of a collaborative project with the Ethereum Foundation exploring protocol design and community engagement. The piece serves as a documented record of the Summer of Protocols initiative, establishing licensing frameworks and archival information for contributions to the protocol research discourse."
 tags:
-  - protocols
-  - fiction
   - community
+  - fiction
+  - protocols
 audience:
   - researcher
   - academic

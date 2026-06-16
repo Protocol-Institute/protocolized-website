@@ -4,11 +4,12 @@ type: paper
 authors:
   - name: "Chenoe Hart"
 date: 2024-01-31
-description: "Appendices 3 and 4 to Chenoe Hart's Addressable Space, providing supplementary materials on the protocols of digital and physical addressability."
+description: "This appendix examines how address systems can obscure or clarify physical space, using One Riverside Park's dual-entrance configuration as a case study where a single building facade contains multiple addresses serving different housing types. Hart argues that improved address representation standards and online mapping conventions could better inform the public about increasingly complex building configurations."
 tags:
-  - protocols
   - culture
   - infrastructure
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

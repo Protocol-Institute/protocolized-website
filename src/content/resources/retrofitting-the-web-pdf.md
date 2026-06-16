@@ -4,11 +4,13 @@ type: paper
 authors:
   - name: "Dorian Taylor"
 date: 2023-12-13
-description: "Dorian Taylor examines how the web's foundational protocols might be retrofitted to address contemporary challenges — exploring the tension between backward compatibility and the need for meaningful reform of internet infrastructure."
+description: "Dorian Taylor argues that designing for comprehension—enabling people to understand how systems work and communicate about them effectively—is essential to retrofitting the Web as infrastructure. The paper contends that literacy in complex systems is a learnable skill, positioning design for clarity and model-building as critical to improving digital communication."
 tags:
-  - protocols
-  - infrastructure
   - design
+  - infrastructure
+  - protocols
+  - research
+  - technology
 audience:
   - researcher
   - academic

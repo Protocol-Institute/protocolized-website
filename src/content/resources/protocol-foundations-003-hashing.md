@@ -5,12 +5,14 @@ authors:
   - name: "Mario Havel"
   - name: "Tim Beiko"
 date: 2024-01-01
-description: "The third issue in the Protocol Foundations series, exploring hashing as a fundamental component of digital protocols and its role in modern computing systems."
+description: "This paper explains cryptographic hashing as a fundamental building block of digital infrastructure, defining hash functions as one-way operations that deterministically map arbitrary-sized inputs to fixed-sized outputs while revealing no information about the input. The authors emphasize key properties including collision resistance and the practical irreversibility of hashing, distinguishing it from encryption."
 tags:
-  - protocols
   - blockchain
   - infrastructure
+  - protocols
+  - research
   - standards
+  - technology
 audience:
   - researcher
   - academic

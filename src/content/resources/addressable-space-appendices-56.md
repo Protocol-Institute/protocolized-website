@@ -4,11 +4,12 @@ type: paper
 authors:
   - name: "Chenoe Hart"
 date: 2024-01-31
-description: "Appendices 5 and 6 to Chenoe Hart's Addressable Space, continuing the exploration of addressability protocols in digital and physical space."
+description: "Hart proposes an addressability-based framework for housing that distinguishes between static addresses (stable, memorable identifiers) and dynamic addresses (reflecting actual spatial boundaries and resident locations). The framework enables flexible living arrangements by reconceptualizing how physical and digital infrastructure can accommodate shifting household compositions and residential boundaries through adaptive protocols like flexible doorways."
 tags:
-  - protocols
   - culture
+  - governance
   - infrastructure
+  - protocols
 audience:
   - researcher
   - academic

@@ -4,10 +4,11 @@ type: paper
 authors:
   - name: "Angela Walch"
 date: 2023-12-13
-description: "Angela Walch provides a foundational analysis of how protocol systems are structured, maintained, and governed — with particular attention to power dynamics, accountability gaps, and the fiction of protocol neutrality."
+description: "Angela Walch argues that protocol systems exhibit bistable perception—they can be understood either as cohesive wholes with defined boundaries or as temporary assemblages of component parts—and proposes a humanized framework for studying protocols by examining the experiences of individuals embedded within them."
 tags:
-  - protocols
   - foundations
+  - protocols
+  - research
   - theory
 audience:
   - researcher

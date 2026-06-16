@@ -4,11 +4,12 @@ type: working-paper
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2023-12-13
-description: "An analysis of the selection pressures that shape protocol adoption and propagation, examining the efficiency-thoroughness trade-off (ETTO) that governs protocol success and failure."
+description: "Stinson-Schroff identifies six distinct selection pressures that determine which protocols propagate through populations: efficiency-safety trade-offs, power asymmetries, differential agency constraints, bandwidth limitations, and network topology factors. These pressures create a Darwinian landscape where protocols succeed not through optimality but through alignment with actor capabilities, incentive structures, and the cognitive and physical constraints of the systems in which they operate."
 tags:
-  - protocols
-  - theory
   - foundations
+  - protocols
+  - research
+  - theory
 audience:
   - researcher
   - academic

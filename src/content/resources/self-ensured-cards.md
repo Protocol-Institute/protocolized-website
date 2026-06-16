@@ -5,10 +5,11 @@ authors:
   - name: "Timber Stinson-Schroff"
   - name: "Shuya Gong"
 date: 2024-01-01
-description: "A Summer of Protocols publication: Self-Ensured Cards."
+description: "Self-Ensured Cards is a card game that explores how protocols can be embedded in physical game mechanics to create self-enforcing systems. The game demonstrates how distributed players can maintain protocol integrity without centralized oversight through the design of cards and gameplay rules themselves."
 tags:
-  - protocols
+  - fiction
   - game
+  - protocols
 audience:
   - researcher
   - academic

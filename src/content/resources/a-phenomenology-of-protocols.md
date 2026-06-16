@@ -4,11 +4,12 @@ type: paper
 authors:
   - name: "Janna Tay"
 date: 2023-12-13
-description: "A phenomenological examination of protocols by Janna Tay — exploring how the rules and standards that govern coordination shape lived experience, perception, and the texture of everyday life."
+description: "Tay develops a phenomenological approach to understanding protocols as human-built systems, arguing that current protocols fail to nurture human flourishing because they were designed without centering human capacity for self-making, character cultivation, and wisdom. She contends that truly human-centered protocols must be reconstructed to be hospitable to human development rather than extractive of human attention and agency."
 tags:
+  - fiction
+  - foundations
   - protocols
   - theory
-  - foundations
 audience:
   - researcher
   - academic

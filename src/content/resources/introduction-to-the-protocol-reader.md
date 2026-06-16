@@ -4,10 +4,10 @@ type: paper
 authors:
   - name: "Venkatesh Rao"
 date: 2024-12-01
-description: "Int he Fall of 2022, the word protocol was suddenly everywhere. The proximal cause was obvious: fueled, in part, by the highly visible and fractious change of ownership at Twitter, large"
+description: "This introduction situates the emergence of protocol-based social technologies as a response to Twitter's 2022 ownership change, distinguishing between users seeking alternative platforms and those exploring fundamentally different technological paradigms like the Fediverse, ActivityPub, Bluesky/ATProto, and Farcaster. Rao frames the resulting confusion around what 'protocol' means as the entry point for understanding a significant shift toward decentralized, protocol-oriented alternatives to traditional platform models."
 tags:
-  - protocols
   - foundations
+  - protocols
 audience:
   - researcher
   - academic

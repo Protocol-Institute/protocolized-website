@@ -4,10 +4,11 @@ type: paper
 authors:
   - name: "Laura Sinisterra"
 date: 2023-12-13
-description: "A Summer of Protocols research publication exploring virtual structures."
+description: "This paper examines how protocols function as virtual structures that organize digital interactions and social coordination without physical manifestation. Sinisterra argues that understanding protocols as structural systems reveals their role in shaping both technological infrastructure and human behavior patterns."
 tags:
-  - protocols
   - design
+  - protocols
+  - research
 audience:
   - researcher
   - academic

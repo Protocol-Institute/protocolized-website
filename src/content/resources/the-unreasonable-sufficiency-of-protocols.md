@@ -9,11 +9,12 @@ authors:
   - name: "Bastian Aue"
   - name: "Danny Ryan"
 date: 2023-12-13
-description: "Venkatesh Rao, Tim Beiko, Josh Stark, Trent Van Epps, Bastian Aue, and Danny Ryan argue that protocols are a surprisingly sufficient foundation for coordination at scale — making the case that apparent protocol simplicity belies transformative power across social, technical, and institutional domains."
+description: "This foundational paper argues that protocols—codified sets of behaviors adopted by sufficient participants—offer a surprisingly effective mechanism for solving complex coordination problems across human and artificial systems. The authors establish that protocols can reliably produce good-enough outcomes for all participants, positioning them as a practical solution to problems traditionally viewed as intractable."
 tags:
-  - protocols
-  - theory
   - foundations
+  - protocols
+  - research
+  - theory
 audience:
   - researcher
   - academic

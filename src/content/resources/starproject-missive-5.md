@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2024-01-01
-description: "The fifth and final missive from the Starproject, concluding this speculative protocol fiction series."
+description: "This is the fifth missive from the Summer of Protocols initiative, a community-driven project exploring protocols through fictional and theoretical narratives. The document represents contributions licensed under the Ethereum Foundation with a transition to open licensing after 2026."
 tags:
-  - protocols
-  - fiction
   - community
+  - fiction
+  - protocols
 audience:
   - researcher
   - academic

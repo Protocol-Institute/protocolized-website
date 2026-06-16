@@ -5,11 +5,12 @@ authors:
   - name: "Kara Kittel"
   - name: "Toby Shorin"
 date: 2023-12-13
-description: "A preprint exploring forms of knowledge that resist protocolization, examining what falls outside the bounds of protocol systems and why some knowledge remains unformalized."
+description: "This paper by Kara Kittel and Toby Shorin examines how knowledge production occurs outside formal institutional frameworks, contrasting the democratization of scientific discourse through digital platforms with traditional academic gatekeeping. The authors explore how amateur scientific dialogues and unstructured knowledge creation can generate comparable influence and attention to institutionally-organized research in the context of evolving scientific epistemology."
 tags:
-  - protocols
-  - theory
   - foundations
+  - protocols
+  - research
+  - theory
 audience:
   - researcher
   - academic

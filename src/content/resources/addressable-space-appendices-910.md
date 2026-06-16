@@ -4,11 +4,12 @@ type: paper
 authors:
   - name: "Chenoe Hart"
 date: 2024-01-31
-description: "Appendices 9 and 10 to Chenoe Hart's Addressable Space research."
+description: "This paper examines how elevator protocols decouple the relationship between physical distance and experiential time, creating non-linear travel patterns where the same destination can take radically different durations depending on system variables like passenger demand and stops. Hart uses the elevator as a case study in how automatic systems generate unpredictability and variability in human experience despite consistent physical inputs."
 tags:
-  - protocols
   - culture
   - infrastructure
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

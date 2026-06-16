@@ -4,10 +4,10 @@ type: paper
 authors:
   - name: "Nadia Asparouhova"
 date: 2023-12-13
-description: "Nadia Asparouhova examines the dark potential of protocols — how coordination systems can be captured, weaponized, or designed in ways that cause harm, and what makes certain protocols dangerous."
+description: "Asparouhova examines how protocols, while often celebrated as liberating alternatives to centralized platforms, function as mechanisms of control that constrain user freedom and choice in practice. The paper argues that protocols are not inherently emancipatory but rather represent a fundamental trade-off between managing complexity and maintaining autonomy."
 tags:
-  - protocols
   - governance
+  - protocols
   - theory
 audience:
   - researcher

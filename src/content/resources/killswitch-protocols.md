@@ -4,10 +4,10 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2023-12-13
-description: "aka Eric Alston, Seth Killian, and Garrette David Industrial man—a sentient reciprocating engine having a fluctuating output, coupled to an iron wheel revolving with uniform velocity. And then we wonder why this"
+description: "This paper examines 'killswitch protocols'—the frameworks and decision-making processes that govern the deliberate termination of digital systems, virtual environments, and online communities when they reach end-of-life. The authors argue that as analog and digital lives become increasingly intertwined, understanding protocols for engineered system death becomes crucial for communities that depend on these environments and the individuals who control their infrastructure."
 tags:
-  - protocols
   - governance
+  - protocols
 audience:
   - researcher
   - academic

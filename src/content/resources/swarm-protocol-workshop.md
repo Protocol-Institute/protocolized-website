@@ -4,11 +4,13 @@ type: workshop-template
 authors:
   - name: "Rafael Fernández"
 date: 2024-01-01
-description: "A Summer of Protocols publication: Swarm Protocol Workshop."
+description: "This workshop template provides a structured framework for designing and implementing swarm protocols that enable distributed coordination among multiple agents or participants. The resource offers practical templates and methodologies for facilitating collaborative protocol development sessions focused on decentralized decision-making and emergent behavior."
 tags:
-  - protocols
   - coordination
   - design
+  - organizations
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

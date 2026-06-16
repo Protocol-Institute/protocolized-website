@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Chenoe Hart"
 date: 2024-01-31
-description: "Chenoe Hart explores how protocols create addressable, navigable space — examining the relationship between spatial organization, naming systems, and the infrastructure that makes locations findable and reachable."
+description: "Hart examines how buildings are constructed through both physical materials and informational systems, analyzing how addressable space—the conceptual organization of physical environments—shapes infrastructure and accessibility. Using One Burrard Place as a case study, the paper explores how hidden floors and zoning regulations demonstrate that buildings are fundamentally protocols for organizing and controlling access to space."
 tags:
-  - protocols
   - culture
   - infrastructure
+  - protocols
 audience:
   - researcher
   - academic

@@ -4,12 +4,13 @@ type: paper
 authors:
   - name: "Josh Stark"
 date: 2024-04-17
-description: "Josh Stark compares three fundamental coordination mechanisms — physical materials, legal institutions, and blockchains — as distinct protocol systems with different guarantees, failure modes, and affordances."
+description: "Stark argues that atoms, institutions, and blockchains share a common property of 'hardness'—fixed, immutable points across time that enable coordination and make the future more predictable at scale. The paper traces how this concept of hardness has evolved from physical matter through social institutions to cryptographic protocols, positioning blockchain technology as a new substrate for creating the durable coordination points necessary for civilization."
 tags:
-  - protocols
   - blockchain
-  - governance
   - foundations
+  - governance
+  - protocols
+  - technology
 audience:
   - researcher
   - academic

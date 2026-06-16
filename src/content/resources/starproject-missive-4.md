@@ -4,11 +4,11 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2024-01-01
-description: "The fourth missive from the Starproject, exploring protocol-mediated futures and speculative design."
+description: "This is the fourth missive from the Summer of Protocols initiative, a collaborative project examining protocols through fiction, theory, and community engagement. The document serves as a retrospective newsletter documenting contributions and developments within the Summer of Protocols community during 2024."
 tags:
-  - protocols
-  - fiction
   - community
+  - fiction
+  - protocols
 audience:
   - researcher
   - academic

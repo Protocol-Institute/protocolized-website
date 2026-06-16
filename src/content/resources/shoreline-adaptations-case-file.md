@@ -5,12 +5,14 @@ authors:
   - name: "Celeste LeCompte"
   - name: "Danielle Butler"
 date: 2024-09-30
-description: "In a world defined by rising sea levels, can we learn to live better in wetter cities? A case file on sea level rise adaptation and how communities and engineering agencies are developing new protocols for urban water management."
+description: "This case file examines protocols for shoreline adaptation in cities facing sea level rise, challenging the engineering-led approach that relies on hardened infrastructure while disconnecting communities from coastlines. The authors propose alternative protocols rooted in activism and adaptive community engagement that enable vibrant, resilient waterfront futures rather than merely protecting existing capital investments."
 tags:
-  - protocols
-  - infrastructure
-  - community
   - climate
+  - community
+  - governance
+  - infrastructure
+  - protocols
+  - research
 audience:
   - researcher
   - academic

@@ -4,10 +4,11 @@ type: paper
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2023-10-25
-description: "Timber Stinson-Schroff explores safety as a protocol domain — examining how coordination systems govern risk, precaution, and harm prevention across technical, industrial, and social contexts."
+description: "Safe New World examines how coal mining safety improved by 97% between 1900 and 2017 through technological advances and regulatory changes, using this case study to argue that protocol design must anticipate both predictable and unpredictable externalities when implementing new systems. Stinson-Schroff explores how historical safety protocols reveal tensions between solving immediate harms and managing unforeseen consequences, with implications for designing safe systems in contemporary technological contexts."
 tags:
-  - protocols
   - culture
+  - protocol-watching
+  - protocols
 audience:
   - researcher
   - academic

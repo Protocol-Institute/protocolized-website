@@ -4,10 +4,11 @@ type: paper
 authors:
   - name: "Kei Kreutler"
 date: 2023-12-13
-description: "Kei Kreutler investigates artificial memory systems and the protocols that orient knowledge across vast scales — exploring how human and computational memory might be structured to navigate infinite information landscapes."
+description: "Kreutler traces the historical concept of artificial memory from classical rhetoric through contemporary digital systems, arguing that computing has fundamentally transformed how intention and knowledge are recorded and preserved. The paper examines how artificial memory systems create permanent traces of human activity that exceed natural memory's capacity, revising Agrippa's ancient concerns about memory's fragility in the age of technological mediation."
 tags:
-  - protocols
   - memory
+  - protocols
+  - technology
   - theory
 audience:
   - researcher

@@ -4,12 +4,13 @@ type: paper
 authors:
   - name: "Drew Austin"
 date: 2023-12-13
-description: "Modules 5 and 6 of Drew Austin's Protocol Pattern Language for Urban Space series, cataloguing spatial protocols that shape how people navigate and use cities."
+description: "This paper presents a protocol pattern language for urban governance, specifically proposing a 'Bureaucratic Recipes' system—an open-source repository that documents repeatable solutions for navigating local government interactions and institutional processes. The pattern addresses the opacity and complexity of urban bureaucratic systems by creating a crowdsourced, publicly-funded platform where residents can access and contribute knowledge about successfully resolving city-level administrative problems."
 tags:
-  - protocols
-  - design
   - community
+  - design
+  - governance
   - infrastructure
+  - protocols
 audience:
   - researcher
   - academic

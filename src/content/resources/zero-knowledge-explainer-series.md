@@ -4,11 +4,13 @@ type: paper
 authors:
   - name: "Summer of Protocols"
 date: 2025-04-18
-description: "is a domain of cryptography, similar to ice guesses correctly, the probability she has encryption which we covered in the first simply gotten lucky on each chance"
+description: "This explainer introduces zero-knowledge proofs as a cryptographic domain that enables proving knowledge of data without fully revealing it, using the analogy of a dimmer switch to illustrate how ZK protocols control information visibility. The piece demonstrates the concept through the Alice-and-Bob probability example, showing how repeated correct guesses establish proof of knowledge while keeping the underlying information hidden from the verifier."
 tags:
-  - protocols
   - blockchain
   - infrastructure
+  - protocols
+  - research
+  - technology
 audience:
   - researcher
   - academic

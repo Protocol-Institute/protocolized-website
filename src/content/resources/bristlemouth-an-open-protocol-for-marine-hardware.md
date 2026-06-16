@@ -4,11 +4,12 @@ type: framework
 authors:
   - name: "David Lang"
 date: 2023-12-13
-description: "An underwater connector based on an open standard for plug-and-play hardware interfaces for marine applications, enabling modular underwater robots and systems."
+description: "Bristlemouth is an open-source underwater connector standard featuring waterproof, wet-mateable contacts sealed to 300 meters depth, enabling modular plug-and-play hardware interfaces for marine robotics applications. The protocol allows autonomous underwater vehicles and other marine instruments to be rapidly reconfigured by swapping standardized hardware modules based on mission requirements."
 tags:
-  - protocols
   - infrastructure
+  - protocols
   - standards
+  - technology
   - tools
 audience:
   - researcher

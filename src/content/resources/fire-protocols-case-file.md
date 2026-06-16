@@ -5,11 +5,13 @@ authors:
   - name: "Nathalia Scherer"
   - name: "Jiordi Rosales"
 date: 2024-09-30
-description: "After a century of fire suppression and heating atmospheric conditions, California has changed from a fire-ecology to a fire-climate. A case file exploring how our renewed ability to work with fire is reshaping environmental knowledge and protocol."
+description: "Fire Protocols reframes fire from a destructive force to be suppressed into an essential ecological tool by developing community-based protocols for fire knowledge transmission and large-scale coordinated action across social, political, and ecological systems in Sonoma County. The framework positions attention as an autopoietic space that allows communities to regenerate and maintain fire knowledge while resolving tensions between geopolitical top-down structures and cultural knowledge systems."
 tags:
-  - protocols
   - climate
   - community
+  - governance
+  - memory
+  - protocols
 audience:
   - researcher
   - academic
