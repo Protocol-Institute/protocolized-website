@@ -1,18 +1,24 @@
 ---
-title: "Bridge Atlas - Episode 2: Paradigms"
+title: "Bridge Atlas - Episode 2: Paradigms | Nils Gilman and Josh Stark"
 type: interview
 authors:
   - name: "Nils Gilman"
   - name: "Josh Stark"
-date: 2025-11-05
-description: "A presentation exploring bridge atlas - episode 2: paradigms | nils gilman and josh stark."
+date: 2025-10-31
+description: "Nils Gilman and Josh Stark introduce the concepts of 'hardness' and 'planetary thinking' as frameworks for understanding Ethereum and protocol design. Gilman, a historian trained in globalization theory, traces how planetary thinking evolved from modernization and globalization discourse, while the discussion positions these concepts as critical lenses for analyzing technological and governance systems."
 tags:
-  - protocols
   - bridge-atlas
+  - globalization-theory
+  - governance
+  - governance-frameworks
+  - hardness
+  - planetary-thinking
+  - protocol-design
+  - protocols
 audience:
   - researcher
   - practitioner
-  - academic
 featured: false
 url: "https://www.youtube.com/watch?v=GUxwGds2uJU"
+thumbnail: "https://files.protocolized.io/covers/yt-GUxwGds2uJU.jpg"
 ---

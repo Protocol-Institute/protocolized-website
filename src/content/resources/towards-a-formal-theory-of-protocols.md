@@ -2,16 +2,22 @@
 title: "Towards a Formal Theory of Protocols"
 type: talk
 authors:
-  - name: "Venkatesh Rao"
-date: 2025-06-11
-description: "A presentation exploring towards a formal theory of protocols."
+  - name: "Benitesh Raalo"
+date: 2025-06-12
+description: "Benitesh Raalo kicks off the Protocol Institute's Technical Foundations track, announcing a new special interest group dedicated to formal modeling of protocols. Raalo positions this work as establishing mathematical and theoretical foundations for protocol studies analogous to how economics formalized markets or control theory formalized manufacturing, with plans for a six-month study group featuring bi-weekly co-working sessions and collaborative paper reading."
 tags:
+  - formal-models-of-protocols
+  - organizations
+  - protocol-theory-formalization
   - protocols
-  - theory
-  - foundations
+  - special-interest-groups
+  - study-group-methodology
+  - technical-foundations
+  - town-hall
 audience:
   - researcher
-  - academic
+  - practitioner
 featured: false
 url: "https://www.youtube.com/watch?v=RVFoRVBvW7E"
+thumbnail: "https://files.protocolized.io/covers/yt-RVFoRVBvW7E.jpg"
 ---
