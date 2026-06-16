@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS posts (
   cover_image_original TEXT,
   body_r2_key          TEXT,
   summary              TEXT,
-  enriched_categories  TEXT NOT NULL DEFAULT '[]',
   substack_categories  TEXT NOT NULL DEFAULT '[]',
   section_id           INTEGER,
   reaction_count       INTEGER DEFAULT 0,
