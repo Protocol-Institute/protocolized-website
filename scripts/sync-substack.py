@@ -202,7 +202,7 @@ def sync_post_to_d1(slug):
     sql = f"""INSERT INTO posts (
   slug, title, subtitle, date, section, primary_author, authors,
   cover_image, cover_image_original, body_r2_key,
-  summary, enriched_categories, substack_categories,
+  summary, substack_categories,
   reaction_count, previous_slug, next_slug,
   substack_url, image_count, mirrored_at, synced_at
 ) VALUES (
@@ -212,7 +212,7 @@ def sync_post_to_d1(slug):
   {_sq(primary)}, {_sq(json.dumps(authors))},
   {_sq(cover_r2)}, {_sq(cover_original)}, {_sq(body_r2_key)},
   {_sq(data.get('description'))},
-  {_sq(json.dumps([]))}, {_sq(json.dumps(tags))},
+  {_sq(json.dumps(tags))},
   {int(data.get('reactions', {}).get('❤') or 0)},
   {_sq(prev_slug)}, {_sq(next_slug)},
   {_sq(f"{SUBSTACK_BASE}/p/{slug}")},
@@ -223,7 +223,6 @@ def sync_post_to_d1(slug):
   primary_author = excluded.primary_author, authors = excluded.authors,
   cover_image = excluded.cover_image, cover_image_original = excluded.cover_image_original,
   body_r2_key = excluded.body_r2_key, summary = excluded.summary,
-  enriched_categories = excluded.enriched_categories,
   substack_categories = excluded.substack_categories,
   reaction_count = excluded.reaction_count,
   previous_slug = excluded.previous_slug, next_slug = excluded.next_slug,
