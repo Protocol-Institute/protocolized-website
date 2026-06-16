@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-C3PO_ROOT = REPO_ROOT.parent / "c3po"
+C3PO_ROOT = Path(os.environ.get("C3PO_ROOT", str(REPO_ROOT.parent / "c3po")))
 ENRICHED_META  = C3PO_ROOT / "sources" / "substack" / "enriched_meta.json"
 API_META       = C3PO_ROOT / "sources" / "substack" / "api_metadata.json"
 RESOURCES_DIR  = REPO_ROOT / "src" / "content" / "resources"

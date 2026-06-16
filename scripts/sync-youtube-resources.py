@@ -31,7 +31,8 @@ from pathlib import Path
 import requests
 
 REPO_ROOT = Path(__file__).parent.parent
-C3PO_META = REPO_ROOT.parent / "c3po" / "sources" / "youtube" / "enriched_meta.json"
+C3PO_ROOT = Path(os.environ.get("C3PO_ROOT", str(REPO_ROOT.parent / "c3po")))
+C3PO_META = C3PO_ROOT / "sources" / "youtube" / "enriched_meta.json"
 RESOURCES_DIR = REPO_ROOT / "src" / "content" / "resources"
 DATE_CACHE_PATH = Path(__file__).parent / ".yt-date-cache.json"
 WRANGLER = REPO_ROOT / "worker" / "node_modules" / ".bin" / "wrangler"

@@ -24,12 +24,14 @@ Usage:
 
 import argparse
 import json
+import os
 import re
 import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
-C3PO_META = REPO_ROOT.parent / "c3po" / "sources" / "pdfs" / "enriched_meta.json"
+C3PO_ROOT = Path(os.environ.get("C3PO_ROOT", str(REPO_ROOT.parent / "c3po")))
+C3PO_META = C3PO_ROOT / "sources" / "pdfs" / "enriched_meta.json"
 RESOURCES_DIR = REPO_ROOT / "src" / "content" / "resources"
 
 # Map c3po category vocab → resource tag vocab (same as YouTube sync)
