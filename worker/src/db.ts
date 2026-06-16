@@ -166,6 +166,7 @@ export interface Book {
   sort_order: number;
   published: boolean;
   category: string;
+  banner?: string;
 }
 
 interface BookRow {
@@ -185,6 +186,7 @@ interface BookRow {
   sort_order: number;
   published: number;
   category: string;
+  banner: string | null;
 }
 
 function parseBookRow(row: BookRow): Book {
@@ -205,6 +207,7 @@ function parseBookRow(row: BookRow): Book {
     sort_order: row.sort_order,
     published: row.published === 1,
     category: row.category ?? "fiction",
+    banner: row.banner ?? undefined,
   };
 }
 

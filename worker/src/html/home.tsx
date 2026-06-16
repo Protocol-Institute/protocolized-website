@@ -14,6 +14,8 @@ interface CarouselItem {
   date?: string;
   external?: boolean;
   source: CarouselSource;
+  author?: string;
+  section?: string;
 }
 
 const SOURCE_BADGE: Record<CarouselSource, string> = {
@@ -37,6 +39,8 @@ function buildCarouselItems(
     description: p.subtitle ?? p.summary,
     date: p.date,
     source: "magazine" as const,
+    author: p.primary_author,
+    section: p.section,
   }));
 
   const youtube: CarouselItem[] = ytVideos.map((v) => ({
@@ -63,7 +67,7 @@ function buildCarouselItems(
   const bookItems: CarouselItem[] = books.map((b) => ({
     title: b.title,
     url: `/books/${b.slug}`,
-    image: b.cover_image,
+    image: b.banner ?? b.cover_image,
     caption: "Book spotlight",
     description: b.description,
     date: b.date,
@@ -248,6 +252,19 @@ export function HomePage({
                             <span class={`absolute top-3 left-3 text-xs font-sans font-medium px-2 py-1 rounded-full ${SOURCE_BADGE[item.source]}`}>
                               {item.caption}
                             </span>
+                            {item.source === "magazine" && item.image && (item.author || item.section) && (
+                              <>
+                                <div class="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-black/65 to-transparent pointer-events-none" />
+                                <div class="absolute bottom-3 left-3 right-3 flex items-end justify-between pointer-events-none">
+                                  {item.author && (
+                                    <span class="text-white/90 text-xs font-sans truncate">{item.author}</span>
+                                  )}
+                                  {item.section && item.section !== "Protocolized" && (
+                                    <span class="text-white/70 text-xs font-sans shrink-0 ml-2">{item.section}</span>
+                                  )}
+                                </div>
+                              </>
+                            )}
                           </div>
                           <div class="flex items-start gap-3">
                             <div class="flex-1 min-w-0">
