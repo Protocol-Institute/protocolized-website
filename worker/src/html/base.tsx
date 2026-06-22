@@ -18,7 +18,7 @@ interface BaseProps {
   title: string;
   description?: string;
   canonicalURL?: string;
-  jsonLd?: object;
+  jsonLd?: object | object[];
   ogImage?: string;
   currentPath: string;
   children?: Child;
@@ -48,15 +48,17 @@ export function Base({
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
 
+        <meta property="og:site_name" content="Protocolized" />
         <meta property="og:type" content="website" />
         <meta property="og:title" content={siteTitle} />
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         {ogImage && <meta property="og:image" content={ogImage} />}
 
-        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:card" content={ogImage ? "summary_large_image" : "summary"} />
         <meta name="twitter:title" content={siteTitle} />
         <meta name="twitter:description" content={description} />
+        {ogImage && <meta name="twitter:image" content={ogImage} />}
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link

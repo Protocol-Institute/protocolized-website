@@ -92,24 +92,48 @@ export function PostPage({
   const isPlaceholder = !!post.is_placeholder;
   const substackSubscribeUrl = "https://protocolized.summerofprotocols.com";
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: post.title,
-    ...(post.subtitle ? { description: post.subtitle } : {}),
-    datePublished: post.date,
-    author: {
-      "@type": "Person",
-      name: post.primary_author,
+  const isSeries = !!seriesCtx;
+  const breadcrumbItems = isSeries
+    ? [
+        { "@type": "ListItem", position: 1, name: "Home",    item: "https://protocolized.io" },
+        { "@type": "ListItem", position: 2, name: "Books",   item: "https://protocolized.io/books" },
+        { "@type": "ListItem", position: 3, name: seriesCtx!.seriesTitle, item: `https://protocolized.io/books/${seriesCtx!.seriesSlug}` },
+        { "@type": "ListItem", position: 4, name: post.title },
+      ]
+    : [
+        { "@type": "ListItem", position: 1, name: "Home",     item: "https://protocolized.io" },
+        { "@type": "ListItem", position: 2, name: "Magazine", item: "https://protocolized.io/magazine" },
+        { "@type": "ListItem", position: 3, name: post.title },
+      ];
+
+  const metaDescription = post.subtitle ?? post.summary ?? `${post.title} — published on Protocolized, the Protocol Institute magazine.`;
+
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: post.title,
+      description: metaDescription,
+      datePublished: post.date,
+      author: {
+        "@type": "Person",
+        name: post.primary_author,
+      },
+      publisher: {
+        "@type": "Organization",
+        name: "Protocolized",
+        url: "https://protocolized.io",
+      },
+      url: `https://protocolized.io/p/${post.slug}`,
+      ...(post.cover_image ? { image: post.cover_image } : {}),
+      isPartOf: { "@type": "PublicationIssue", isPartOf: { "@type": "Periodical", name: "Protocolized" } },
     },
-    publisher: {
-      "@type": "Organization",
-      name: "Protocolized",
-      url: "https://protocolized.io",
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: breadcrumbItems,
     },
-    url: `https://protocolized.io/p/${post.slug}`,
-    ...(post.cover_image ? { image: post.cover_image } : {}),
-  };
+  ];
 
   const script = mobileMenuScript();
 
@@ -140,7 +164,7 @@ export function PostPage({
   return (
     <Base
       title={post.title}
-      description={post.subtitle ?? post.summary ?? ""}
+      description={metaDescription}
       canonicalURL={`https://protocolized.io/p/${post.slug}`}
       jsonLd={jsonLd}
       ogImage={post.cover_image}

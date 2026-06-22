@@ -4,7 +4,8 @@ import type { Resource } from "../db";
 
 const TYPE_LABELS: Record<string, string> = {
   paper: "Paper",
-  "working-paper": "Working Paper",
+  handout: "Handout",
+  "special-feature": "Special Feature",
   framework: "Framework",
   "workshop-template": "Workshop Template",
   game: "Game",

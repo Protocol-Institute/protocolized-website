@@ -145,7 +145,7 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 | Field         | Type                | Required | Notes                                                             |
 |---------------|---------------------|----------|-------------------------------------------------------------------|
 | `title`       | string              | yes      |                                                                   |
-| `type`        | enum                | yes      | paper, working-paper, framework, workshop-template, game, dataset, interview, presentation, code, image, prompt-template, talk, lecture, article, fiction, living-document |
+| `type`        | enum                | yes      | paper, handout, special-feature, framework, workshop-template, game, dataset, interview, presentation, code, image, prompt-template, talk, lecture, article, fiction, living-document |
 | `authors`     | array of {name, url?} | yes    |                                                                   |
 | `date`        | date                | yes      | YYYY-MM-DD                                                        |
 | `description` | string              | yes      |                                                                   |

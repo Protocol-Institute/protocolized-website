@@ -23,6 +23,7 @@ import { PostPage } from "./html/post";
 import { BooksPage, BookPage } from "./html/books";
 import { LexiconPage } from "./html/lexicon";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
+import { NewNatureFeaturePage } from "./html/feature-new-nature";
 
 interface Env {
   DB: D1Database;
@@ -123,6 +124,13 @@ app.get("/books/:slug", async (c) => {
     />
   );
 });
+
+app.get("/features/new-nature", (c) =>
+  c.html(<NewNatureFeaturePage currentPath="/features/new-nature" />)
+);
+app.get("/features/new-nature/", (c) =>
+  c.redirect("/features/new-nature", 301)
+);
 
 app.get("/anthologies", async (c) => {
   const anthologies = await getAnthologies(c.env.DB);
@@ -279,25 +287,61 @@ app.get("/sitemap.xml", async (c) => {
     getAllBooks(c.env.DB),
     getLatestPosts(c.env.DB, 10000),
   ]);
-  const staticPaths = [
-    "/", "/about", "/community", "/magazine", "/anthologies",
-    "/resources", "/resources/protocol-lexicon", "/books",
-  ];
-  const resourcePaths = resources.map((r) => `/resources/${r.slug}`);
-  const bookPaths = books.map((b) => `/books/${b.slug}`);
-  const postPaths = posts.map((p) => `/p/${p.slug}`);
-  const allPaths = [...staticPaths, ...resourcePaths, ...bookPaths, ...postPaths];
 
-  const urls = allPaths
-    .map(
-      (p) =>
-        `  <url><loc>https://protocolized.io${p}</loc></url>`
-    )
-    .join("\n");
+  const today = new Date().toISOString().slice(0, 10);
+
+  function url(loc: string, opts: { lastmod?: string; changefreq?: string; priority?: string } = {}) {
+    return [
+      `  <url>`,
+      `    <loc>https://protocolized.io${loc}</loc>`,
+      opts.lastmod   ? `    <lastmod>${opts.lastmod}</lastmod>` : null,
+      opts.changefreq ? `    <changefreq>${opts.changefreq}</changefreq>` : null,
+      opts.priority  ? `    <priority>${opts.priority}</priority>` : null,
+      `  </url>`,
+    ].filter(Boolean).join("\n");
+  }
+
+  const staticUrls = [
+    url("/",                        { lastmod: today, changefreq: "daily",   priority: "1.0" }),
+    url("/resources",               { lastmod: today, changefreq: "daily",   priority: "0.9" }),
+    url("/magazine",                { lastmod: today, changefreq: "daily",   priority: "0.8" }),
+    url("/books",                   { lastmod: today, changefreq: "weekly",  priority: "0.7" }),
+    url("/resources/protocol-lexicon", { lastmod: today, changefreq: "weekly", priority: "0.7" }),
+    url("/features/new-nature",     { lastmod: "2026-06-17", changefreq: "monthly", priority: "0.8" }),
+    url("/about",                   { changefreq: "monthly", priority: "0.5" }),
+    url("/community",               { changefreq: "monthly", priority: "0.5" }),
+    url("/anthologies",             { changefreq: "monthly", priority: "0.6" }),
+  ];
+
+  const postUrls = posts.map((p) =>
+    url(`/p/${p.slug}`, {
+      lastmod: p.date,
+      changefreq: "monthly",
+      priority: "0.8",
+    })
+  );
+
+  const resourceUrls = resources.map((r) =>
+    url(`/resources/${r.slug}`, {
+      lastmod: r.date,
+      changefreq: "monthly",
+      priority: "0.6",
+    })
+  );
+
+  const bookUrls = books.map((b) =>
+    url(`/books/${b.slug}`, {
+      lastmod: b.date,
+      changefreq: "monthly",
+      priority: "0.7",
+    })
+  );
+
+  const allUrls = [...staticUrls, ...postUrls, ...resourceUrls, ...bookUrls].join("\n");
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${urls}
+${allUrls}
 </urlset>`;
 
   return new Response(xml, {

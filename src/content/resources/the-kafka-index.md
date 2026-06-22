@@ -1,6 +1,6 @@
 ---
 title: "The Kafka Index"
-type: paper
+type: handout
 authors:
   - name: "Nadia Asparouhova"
 date: 2023-12-13

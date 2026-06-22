@@ -1,6 +1,6 @@
 ---
 title: "Protocol Selection Pressures"
-type: working-paper
+type: handout
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2023-12-13

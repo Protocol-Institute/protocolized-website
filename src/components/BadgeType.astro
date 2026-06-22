@@ -7,7 +7,7 @@ const { type } = Astro.props;
 
 const badgeConfig: Record<string, { bg: string; text: string; label: string }> = {
   "paper": { bg: "#EEEDFE", text: "#3C3489", label: "Paper" },
-  "working-paper": { bg: "#EEEDFE", text: "#3C3489", label: "Working Paper" },
+  "handout": { bg: "#FEF3E2", text: "#7A4A00", label: "Handout" },
   "framework": { bg: "#E1F5EE", text: "#085041", label: "Framework" },
   "workshop-template": { bg: "#FAECE7", text: "#712B13", label: "Workshop Template" },
   "game": { bg: "#FBEAF0", text: "#72243E", label: "Game" },
@@ -21,6 +21,8 @@ const badgeConfig: Record<string, { bg: string; text: string; label: string }> =
   "lecture": { bg: "#E8F0FB", text: "#1A3A6B", label: "Lecture" },
   "article": { bg: "#F5F0E8", text: "#5C4A1E", label: "Article" },
   "fiction": { bg: "#F0E8F5", text: "#4A1E5C", label: "Fiction" },
+  "living-document": { bg: "#E8F5F0", text: "#1A5C42", label: "Living Document" },
+  "special-feature": { bg: "#0F6E56", text: "#ffffff", label: "Special Feature" },
 };
 
 const config = badgeConfig[type] ?? { bg: "#F1EFE8", text: "#444441", label: type };

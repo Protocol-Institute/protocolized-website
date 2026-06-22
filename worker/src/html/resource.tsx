@@ -4,7 +4,8 @@ import type { Resource } from "../db";
 
 const SCHEMA_TYPE: Record<string, string> = {
   paper: "ScholarlyArticle",
-  "working-paper": "ScholarlyArticle",
+  handout: "CreativeWork",
+  "special-feature": "Article",
   framework: "CreativeWork",
   "workshop-template": "CreativeWork",
   game: "CreativeWork",

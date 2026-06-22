@@ -1,6 +1,6 @@
 ---
 title: "Standards Make the World"
-type: working-paper
+type: paper
 authors:
   - name: "David Lang"
 date: 2023-12-13

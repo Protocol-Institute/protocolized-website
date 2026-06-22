@@ -6,7 +6,8 @@ const resources = defineCollection({
     title: z.string(),
     type: z.enum([
       "paper",
-      "working-paper",
+      "handout",
+      "special-feature",
       "framework",
       "workshop-template",
       "game",

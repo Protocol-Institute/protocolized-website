@@ -1,6 +1,6 @@
 ---
 title: "Protocols in (Emergency) Time"
-type: working-paper
+type: paper
 authors:
   - name: "Olivia Steiert"
 date: 2023-12-13

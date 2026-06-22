@@ -128,19 +128,35 @@ export function HomePage({
 }) {
   const carouselItems = buildCarouselItems(latestPosts, ytVideos, archiveResources, carouselBooks);
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Protocolized",
-    description:
-      "A sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute.",
-    url: "https://protocolized.io",
-    sameAs: [
-      "https://discord.gg/Z3fgsW8D4s",
-      "https://www.youtube.com/@protocol-institute",
-      "https://protocolized.summerofprotocols.com",
-    ],
-  };
+  const jsonLd = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: "Protocolized",
+      url: "https://protocolized.io",
+      description:
+        "A sci-fi and thinkpiece magazine and research library on protocols, published by the Protocol Institute.",
+      potentialAction: {
+        "@type": "SearchAction",
+        target: {
+          "@type": "EntryPoint",
+          urlTemplate: "https://protocolized.io/resources?q={search_term_string}",
+        },
+        "query-input": "required name=search_term_string",
+      },
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Protocol Institute",
+      url: "https://protocol-institute.org",
+      sameAs: [
+        "https://discord.gg/Z3fgsW8D4s",
+        "https://www.youtube.com/@protocol-institute",
+        "https://protocolized.summerofprotocols.com",
+      ],
+    },
+  ];
 
   const carouselScript = carouselItems.length > 0 ? `
     (function() {

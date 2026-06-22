@@ -311,3 +311,19 @@ A build log for protocolized.io — how the magazine and resource library site w
 - Cross-referenced the 94 YouTube video resources in the library against c3po's enriched_meta (91 videos). Found 6 in the library with no c3po entry — all pre-programme or ungrouped channel videos (Atoms/Institutions/Blockchains, Punk/Folk/Myth, Lightning Network, SCP Narrative Protocol, Office Hours 0, Town Hall 2023). Documented with ingest instructions at `c3po/sources/youtube/missing-videos.md`.
 
 ---
+
+## Session 20: New Nature Special Feature + Type Cleanup + SEO Overhaul
+
+*2026-06-22*
+
+**Tracks:** content-sync, framework, operations
+
+- Removed `working-paper` from the resource type enum entirely (all 3 items reclassified). Added two new types: `handout` (amber badge, #FEF3E2/#7A4A00) for short reference documents not deserving full paper status; `special-feature` (teal filled badge, #0F6E56/white) for long-form hosted content published on this site rather than Substack. Reclassifications: Lang "Standards Make the World" + Steiert "Protocols in Emergency Time" → paper; Schroff 2-pager + Kafka Index (Nadia) + Protocol Watching Handout → handout. Fixed missing `living-document` badge in Astro fallback (BadgeType.astro). All badge configs updated in both Worker (static-pages.tsx, resources.tsx, resource.tsx) and Astro (BadgeType.astro, Resource.astro, index.astro). D1 updated via direct SQL for reclassified items.
+
+- First entry in a new content category: special features are long-form essays hosted directly on protocolized.io, not mirrored from Substack. Built `worker/src/html/feature-new-nature.tsx` — a self-contained Worker page with the site shell, a teal feature header with inline "Special Feature" badge, Lora body text, a teal-styled formula box, Evil Twins comparison table, slide image carousel (22 slides, vanilla JS), lazy-loaded images, and a Related Resources footer linking to the PDF, YouTube, and a related article. All assets uploaded to R2 under `features/new-nature/` (7 whiteboard/photo images + 22 slide PNGs + slides.pdf at `features/new-nature-slides.pdf`). Route added at `/features/new-nature` in index.tsx. Two resource entries: `new-nature-essay` (type: special-feature, featured: true) linking to the page; `new-nature-slides` (type: handout) linking to the PDF. Slides PDF + essay pointer dropped in c3po `data/pdfs/` for future embedding ingestion. D1 now has 313 resources.
+
+- Base component previously hardcoded `twitter:card=summary` and emitted no `twitter:image`. Now conditionally switches to `summary_large_image` and emits `twitter:image` when `ogImage` is set — applies sitewide to any page that passes an image. Feature page uses `slide-14.png` ("So... What is New Nature?" concept map) as its OG/Twitter card image.
+
+- **Critical fix:** robots.txt pointed to `/sitemap-index.xml` (old Astro default, 404 on Worker) — corrected to `/sitemap.xml`. Google's crawler was likely failing to discover the sitemap entirely. **Sitemap enriched:** bare `&lt;loc&gt;` entries replaced with full entries including `&lt;lastmod&gt;` (actual resource/post dates from D1), `&lt;changefreq&gt;`, and `&lt;priority&gt;`. Homepage at 1.0, posts + special features at 0.8, resources at 0.6. `/features/new-nature` added to sitemap. **Structured data:** WebSite + SearchAction JSON-LD on homepage (enables Google sitelinks search box); BreadcrumbList JSON-LD on post pages alongside Article schema — series-aware (Home > Books > Series > Title vs. Home > Magazine > Title). **Meta:** added `og:site_name` sitewide; post meta descriptions guaranteed non-empty (fallback: "Title — published on Protocolized"). Base component type updated to accept `object | object[]` JSON-LD.
+
+---

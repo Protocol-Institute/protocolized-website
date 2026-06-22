@@ -290,7 +290,8 @@ export function AnthologiesPage({
 export function TypeBadge({ type }: { type: string }) {
   const badges: Record<string, { bg: string; text: string; label: string }> = {
     paper: { bg: "#EEEDFE", text: "#3C3489", label: "Paper" },
-    "working-paper": { bg: "#EEEDFE", text: "#3C3489", label: "Working Paper" },
+    handout: { bg: "#FEF3E2", text: "#7A4A00", label: "Handout" },
+    "special-feature": { bg: "#0F6E56", text: "#ffffff", label: "Special Feature" },
     framework: { bg: "#E1F5EE", text: "#085041", label: "Framework" },
     "workshop-template": { bg: "#FAECE7", text: "#712B13", label: "Workshop Template" },
     game: { bg: "#FBEAF0", text: "#72243E", label: "Game" },

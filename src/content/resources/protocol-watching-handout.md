@@ -1,6 +1,6 @@
 ---
 title: "Protocol Watching Handout"
-type: workshop-template
+type: handout
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2024-01-01
