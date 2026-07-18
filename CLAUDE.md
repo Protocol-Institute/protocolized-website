@@ -116,6 +116,7 @@ scripts/
 ├── sync-youtube-resources.py    # Pull c3po YouTube enriched_meta → resource Markdown + R2 thumbnails
 ├── sync-pdf-resources.py        # Pull c3po PDF enriched_meta → update resource descriptions + tags
 ├── sync-substack-resources.py   # Pull c3po Substack enriched_meta → resource Markdown (all post types)
+├── update-series-toc.py         # Add a post as the next chapter in a series book (books.toc + posts.series_slug/position)
 └── migrate-to-d1.py             # Sync all resource Markdown → D1 resources table
 .github/workflows/
 ├── deploy.yml          # Build & deploy Worker on push to main
