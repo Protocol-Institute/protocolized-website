@@ -1,11 +1,11 @@
 {
   "project": "protocolized-website",
-  "display_name": "Protocolized Website \u2014 Build Log",
-  "description": "A build log for protocolized.io \u2014 how the magazine and resource library site was built, what infrastructure decisions were made, and where things stand. Written for contributors curious about the process and for future maintainers.",
+  "display_name": "Protocolized Website — Build Log",
+  "description": "A build log for protocolized.io — how the magazine and resource library site was built, what infrastructure decisions were made, and where things stand. Written for contributors curious about the process and for future maintainers.",
   "tracks": {
-    "content-sync": "Substack sync pipeline \u2014 GitHub Actions cron, RSS, CSV, Markdown generation",
+    "content-sync": "Substack sync pipeline — GitHub Actions cron, RSS, CSV, Markdown generation",
     "cloudflare-migration": "Moving from GitHub Pages to Cloudflare Pages; wrangler config, Workers, service bindings",
-    "framework": "Astro hybrid vs Hono/HTMX vs SvelteKit \u2014 framework evaluation and decision gate",
+    "framework": "Astro hybrid vs Hono/HTMX vs SvelteKit — framework evaluation and decision gate",
     "c3po-integration": "C3PO service binding stubs, semantic search integration, chat widget",
     "ux": "Visual design, logo, carousel, filters, rebrand, typography",
     "operations": "Session rituals, expense tracking, devlog system, org admin infrastructure"
@@ -28,11 +28,11 @@
       "items": [
         {
           "title": "Starting point:",
-          "html": "<strong>Starting point:</strong> The site began as a static Astro 5 site (<code>output: \"static\"</code>, Tailwind CSS) \u2014 a magazine and resource library for Protocolized, the Protocol Institute's Substack publication. The goal was a site that mirrored Substack content and served as a permanent home for PDFs and research resources, independent of Substack's platform."
+          "html": "<strong>Starting point:</strong> The site began as a static Astro 5 site (<code>output: \"static\"</code>, Tailwind CSS) — a magazine and resource library for Protocolized, the Protocol Institute's Substack publication. The goal was a site that mirrored Substack content and served as a permanent home for PDFs and research resources, independent of Substack's platform."
         },
         {
           "title": "Resource library (273 entries):",
-          "html": "<strong>Resource library (273 entries):</strong> Initial population from raw source data \u2014 273 resource records written as Astro Content Collections Markdown files in <code>src/content/resources/</code>. Each file has frontmatter: title, author, date, tags, type, url/doi, and (for PDFs) a local path in <code>public/resources/</code>. The library covers protocol theory, fiction, governance, technology, and organizational studies."
+          "html": "<strong>Resource library (273 entries):</strong> Initial population from raw source data — 273 resource records written as Astro Content Collections Markdown files in <code>src/content/resources/</code>. Each file has frontmatter: title, author, date, tags, type, url/doi, and (for PDFs) a local path in <code>public/resources/</code>. The library covers protocol theory, fiction, governance, technology, and organizational studies."
         },
         {
           "title": "Article date fix:",
@@ -40,14 +40,14 @@
         },
         {
           "title": "Domain update:",
-          "html": "<strong>Domain update:</strong> Site description and all internal references updated from <code>protocollized.substack.com</code> / Protocol Society to <code>protocolized.io</code> / Protocol Institute \u2014 the org had recently rebranded. The Substack publication itself remained at <code>protocolized.substack.com</code>; the .io domain is the independent site."
+          "html": "<strong>Domain update:</strong> Site description and all internal references updated from <code>protocollized.substack.com</code> / Protocol Society to <code>protocolized.io</code> / Protocol Institute — the org had recently rebranded. The Substack publication itself remained at <code>protocolized.substack.com</code>; the .io domain is the independent site."
         }
       ]
     },
     {
       "id": 2,
       "sort_key": 2.0,
-      "label": "Sessions 2\u20133",
+      "label": "Sessions 2–3",
       "title": "Rebrand, Logo Iterations, and GitHub Pages Deploy",
       "date": "2026-04-03",
       "time_pt": "",
@@ -60,8 +60,8 @@
       "deployed": false,
       "items": [
         {
-          "title": "Protocol Society \u2192 Protocol Institute rebrand (2026-04-03):",
-          "html": "<strong>Protocol Society \u2192 Protocol Institute rebrand (2026-04-03):</strong> Full rename across the site \u2014 nav, footer, page titles, metadata. Added a media type filter to the resource library (story / article / column / all) keyed off the Substack section the post belongs to: <em>Fictions</em> \u2192 story, <em>Articles</em> \u2192 article, <em>Obliquities</em> \u2192 column. Added a carousel of recent Substack posts with OG images beside the hero \u2014 pulled from the existing Substack sync data."
+          "title": "Protocol Society → Protocol Institute rebrand (2026-04-03):",
+          "html": "<strong>Protocol Society → Protocol Institute rebrand (2026-04-03):</strong> Full rename across the site — nav, footer, page titles, metadata. Added a media type filter to the resource library (story / article / column / all) keyed off the Substack section the post belongs to: <em>Fictions</em> → story, <em>Articles</em> → article, <em>Obliquities</em> → column. Added a carousel of recent Substack posts with OG images beside the hero — pulled from the existing Substack sync data."
         },
         {
           "title": "Carousel positioning:",
@@ -69,27 +69,27 @@
         },
         {
           "title": "Substack section tags (2026-04-08):",
-          "html": "<strong>Substack section tags (2026-04-08):</strong> Added <code>story</code>, <code>article</code>, and <code>column</code> tags to post metadata derived from Substack's section_id field (<em>Fictions</em>, <em>Articles</em>, <em>Obliquities</em>). Removed <code>video</code> type from the taxonomy \u2014 Protocolized has no video posts. The section-derived tags feed the resource library media filter."
+          "html": "<strong>Substack section tags (2026-04-08):</strong> Added <code>story</code>, <code>article</code>, and <code>column</code> tags to post metadata derived from Substack's section_id field (<em>Fictions</em>, <em>Articles</em>, <em>Obliquities</em>). Removed <code>video</code> type from the taxonomy — Protocolized has no video posts. The section-derived tags feed the resource library media filter."
         },
         {
           "title": "GitHub Pages deploy (2026-04-08):",
-          "html": "<strong>GitHub Pages deploy (2026-04-08):</strong> Added <code>.github/workflows/deploy.yml</code> \u2014 builds the Astro site on push to <code>main</code> and deploys to GitHub Pages using <code>actions/deploy-pages@v4</code>. The deploy triggered a <code>gh-pages</code> branch; a follow-up \"Trigger GitHub Pages deploy\" commit forced an initial build. This was always a stopgap \u2014 the site will move to Cloudflare Pages once the migration branch is ready."
+          "html": "<strong>GitHub Pages deploy (2026-04-08):</strong> Added <code>.github/workflows/deploy.yml</code> — builds the Astro site on push to <code>main</code> and deploys to GitHub Pages using <code>actions/deploy-pages@v4</code>. The deploy triggered a <code>gh-pages</code> branch; a follow-up \"Trigger GitHub Pages deploy\" commit forced an initial build. This was always a stopgap — the site will move to Cloudflare Pages once the migration branch is ready."
         },
         {
-          "title": "Logo iteration \u2014 animated P mark (2026-04-08):",
-          "html": "<strong>Logo iteration \u2014 animated P mark (2026-04-08):</strong> First animated logo: a simple <em>P</em> mark with a CSS draw-on animation (stroke-dashoffset SVG animation, 0.8s ease-out). Favicon updated to match. This replaced a static text wordmark."
+          "title": "Logo iteration — animated P mark (2026-04-08):",
+          "html": "<strong>Logo iteration — animated P mark (2026-04-08):</strong> First animated logo: a simple <em>P</em> mark with a CSS draw-on animation (stroke-dashoffset SVG animation, 0.8s ease-out). Favicon updated to match. This replaced a static text wordmark."
         },
         {
-          "title": "Logo iteration \u2014 protocolized mark (2026-04-21):",
-          "html": "<strong>Logo iteration \u2014 protocolized mark (2026-04-21):</strong> Replaced the animated P mark with the new <em>protocolized mark</em> \u2014 the full branded SVG asset developed separately. Nav logo and favicon both updated. A follow-up commit (2026-04-22) updated the favicon specifically to the new mark after the nav update missed it."
+          "title": "Logo iteration — protocolized mark (2026-04-21):",
+          "html": "<strong>Logo iteration — protocolized mark (2026-04-21):</strong> Replaced the animated P mark with the new <em>protocolized mark</em> — the full branded SVG asset developed separately. Nav logo and favicon both updated. A follow-up commit (2026-04-22) updated the favicon specifically to the new mark after the nav update missed it."
         },
         {
           "title": "Anthologies page:",
-          "html": "<strong>Anthologies page:</strong> Added <code>src/pages/anthologies.astro</code> \u2014 a curated view of the fiction collections (Terminological Twists, Ghosts in Machines, Building and Burning Bridges, The Librarians). This pre-dates the C3PO collection card vectors; the page is hand-authored from known collection membership. It will eventually be driven by C3PO metadata."
+          "html": "<strong>Anthologies page:</strong> Added <code>src/pages/anthologies.astro</code> — a curated view of the fiction collections (Terminological Twists, Ghosts in Machines, Building and Burning Bridges, The Librarians). This pre-dates the C3PO collection card vectors; the page is hand-authored from known collection membership. It will eventually be driven by C3PO metadata."
         },
         {
           "title": "Summer of Protocols archive link:",
-          "html": "<strong>Summer of Protocols archive link:</strong> Footer updated to link to the SoP archive \u2014 the predecessor program (2023\u20132024) that the Protocol Institute grew out of. The link makes the historical lineage visible to new visitors."
+          "html": "<strong>Summer of Protocols archive link:</strong> Footer updated to link to the SoP archive — the predecessor program (2023–2024) that the Protocol Institute grew out of. The link makes the historical lineage visible to new visitors."
         }
       ]
     },
@@ -111,31 +111,31 @@
       "items": [
         {
           "title": "Contributor onboarding docs (2026-05-12):",
-          "html": "<strong>Contributor onboarding docs (2026-05-12):</strong> Added <code>CLAUDE.md</code> and <code>README.md</code>. <code>README.md</code> is public-facing (GitHub visitors). <code>CLAUDE.md</code> is LLM-facing \u2014 Astro commands, deploy workflow, the sync script, key management policy reference. A separate <code>claude-vgr.md</code> tracks VGR-specific context (fork policy, PR workflow, personal account vs. org account distinction) that does not belong in the org-visible CLAUDE.md."
+          "html": "<strong>Contributor onboarding docs (2026-05-12):</strong> Added <code>CLAUDE.md</code> and <code>README.md</code>. <code>README.md</code> is public-facing (GitHub visitors). <code>CLAUDE.md</code> is LLM-facing — Astro commands, deploy workflow, the sync script, key management policy reference. A separate <code>claude-vgr.md</code> tracks VGR-specific context (fork policy, PR workflow, personal account vs. org account distinction) that does not belong in the org-visible CLAUDE.md."
         },
         {
           "title": "Cloudflare Pages migration branch (2026-05-14):",
           "html": "<strong>Cloudflare Pages migration branch (<code>feat/cloudflare-migration</code>, 2026-05-14):</strong> Added <code>wrangler.toml</code> (Astro static build config, <code>pages_build_output_dir = \"dist\"</code>), <code>.github/workflows/deploy.yml</code> updated to use <code>cloudflare/pages-action@v1</code> instead of GitHub Pages, and <code>MIGRATION.md</code>. Key blocker: Timber needs to transfer the <code>protocolized.io</code> nameservers to Cloudflare DNS before CF Pages can serve the domain. The GitHub Pages deploy remains active until that transfer completes."
         },
         {
-          "title": "Personal \u2192 PI account migration path:",
-          "html": "<strong>Personal \u2192 PI account migration path:</strong> <code>MIGRATION.md</code> documents that the CF Pages project will initially be created under VGR's personal CF account. Once a Protocol Institute org account exists, both the Pages project and the DNS zone transfer to the org account. Same pattern as protocol-institute.org."
+          "title": "Personal → PI account migration path:",
+          "html": "<strong>Personal → PI account migration path:</strong> <code>MIGRATION.md</code> documents that the CF Pages project will initially be created under VGR's personal CF account. Once a Protocol Institute org account exists, both the Pages project and the DNS zone transfer to the org account. Same pattern as protocol-institute.org."
         },
         {
           "title": "C3PO service binding stub:",
-          "html": "<strong>C3PO service binding stub:</strong> <code>wrangler.toml</code> includes a stub service binding for C3PO (<code>[[services]] binding = \"C3PO\" service = \"c3po\"</code>) and an R2 bucket binding (<code>[[r2_buckets]] binding = \"RESOURCES\" bucket_name = \"protocolized-resources\"</code>). Neither is active yet \u2014 the stubs document the planned integration architecture. The C3PO binding allows the site Worker to call C3PO without cross-origin requests."
+          "html": "<strong>C3PO service binding stub:</strong> <code>wrangler.toml</code> includes a stub service binding for C3PO (<code>[[services]] binding = \"C3PO\" service = \"c3po\"</code>) and an R2 bucket binding (<code>[[r2_buckets]] binding = \"RESOURCES\" bucket_name = \"protocolized-resources\"</code>). Neither is active yet — the stubs document the planned integration architecture. The C3PO binding allows the site Worker to call C3PO without cross-origin requests."
         },
         {
           "title": "Feature roadmap (2026-05-14):",
-          "html": "<strong>Feature roadmap (2026-05-14):</strong> <code>ROADMAP.md</code> \u2014 seven-phase plan: Phase 0 (CF migration), Phase 1 (framework decision gate), Phase 2 (live Substack mirroring via CF Workers Cron Trigger + D1, Events calendar), Phase 3 (IPFS resource migration \u2014 Pinata + R2), Phase 4 (C3PO embed + semantic search), Phase 5 (MCP server), Phase 6 (SIWE + content gating \u2014 three access tiers: public / member / patron), Phase 7 (Stripe + ETH donations + patron membership)."
+          "html": "<strong>Feature roadmap (2026-05-14):</strong> <code>ROADMAP.md</code> — seven-phase plan: Phase 0 (CF migration), Phase 1 (framework decision gate), Phase 2 (live Substack mirroring via CF Workers Cron Trigger + D1, Events calendar), Phase 3 (IPFS resource migration — Pinata + R2), Phase 4 (C3PO embed + semantic search), Phase 5 (MCP server), Phase 6 (SIWE + content gating — three access tiers: public / member / patron), Phase 7 (Stripe + ETH donations + patron membership)."
         },
         {
           "title": "Framework decision gate (2026-05-14):",
-          "html": "<strong>Framework decision gate (2026-05-14):</strong> Phase 1 was designated a <em>decision gate</em> rather than a feature sprint \u2014 the choice of framework determines how Phases 2\u20137 are implemented, and committing to the wrong one creates painful mid-build technical debt. Three options analyzed: <strong>Option A</strong> \u2014 Astro hybrid mode (<code>output: \"hybrid\"</code> + <code>@astrojs/cloudflare</code> adapter): lowest migration cost, preserves 280 Markdown resource files and existing components, but static-first mental model may strain as dynamic features grow. <strong>Option B</strong> \u2014 bespoke CF Workers (Hono + HTMX): maximum CF-native control, streaming is first-class, no build step, but requires full content-layer migration to D1 and is a less familiar stack. <strong>Option C</strong> \u2014 SvelteKit + CF adapter: best DX for a dynamic-first site, mature CF adapter, but full component rewrite required. Decision is pending; the roadmap recommendation is: <em>if content continuity is the priority \u2192 Option A; if clean architecture for dynamic features is the priority \u2192 Option B or C.</em>"
+          "html": "<strong>Framework decision gate (2026-05-14):</strong> Phase 1 was designated a <em>decision gate</em> rather than a feature sprint — the choice of framework determines how Phases 2–7 are implemented, and committing to the wrong one creates painful mid-build technical debt. Three options analyzed: <strong>Option A</strong> — Astro hybrid mode (<code>output: \"hybrid\"</code> + <code>@astrojs/cloudflare</code> adapter): lowest migration cost, preserves 280 Markdown resource files and existing components, but static-first mental model may strain as dynamic features grow. <strong>Option B</strong> — bespoke CF Workers (Hono + HTMX): maximum CF-native control, streaming is first-class, no build step, but requires full content-layer migration to D1 and is a less familiar stack. <strong>Option C</strong> — SvelteKit + CF adapter: best DX for a dynamic-first site, mature CF adapter, but full component rewrite required. Decision is pending; the roadmap recommendation is: <em>if content continuity is the priority → Option A; if clean architecture for dynamic features is the priority → Option B or C.</em>"
         },
         {
           "title": "Open questions logged:",
-          "html": "<strong>Open questions logged in ROADMAP.md:</strong> Framework choice (Option A/B/C) \u2014 needed before Phase 2. Whether to migrate existing 280 Markdown resource files to D1 or keep Markdown for historical posts and add D1 only for new content. Pinata vs Filebase for IPFS pinning. Dynamic.xyz vs Privy for SIWE wallet widget (coordinate with .org to use the same provider). Whether PI membership data should live in a unified D1 database shared between .org and .io. Whether to issue a membership NFT or token for Phase 6b token gating."
+          "html": "<strong>Open questions logged in ROADMAP.md:</strong> Framework choice (Option A/B/C) — needed before Phase 2. Whether to migrate existing 280 Markdown resource files to D1 or keep Markdown for historical posts and add D1 only for new content. Pinata vs Filebase for IPFS pinning. Dynamic.xyz vs Privy for SIWE wallet widget (coordinate with .org to use the same provider). Whether PI membership data should live in a unified D1 database shared between .org and .io. Whether to issue a membership NFT or token for Phase 6b token gating."
         }
       ]
     },
@@ -145,7 +145,7 @@
       "label": "Session 5",
       "title": "Devlog System, Session Rituals, and Org Admin Infrastructure",
       "date": "2026-05-14",
-      "time_pt": "14:30\u201318:56 PT",
+      "time_pt": "14:30–18:56 PT",
       "tracks": [
         "operations"
       ],
@@ -155,15 +155,15 @@
       "items": [
         {
           "title": "Devlog system:",
-          "html": "<strong>Devlog system:</strong> Added <code>data/devlog.json</code> (source of truth), <code>devlog_session.py</code> (writes ISO timestamp to <code>/tmp/protocolized_devlog_session_start.txt</code>), and <code>devlog_render.py</code> (renders <code>DEVLOG.md</code> from JSON). Backfilled Sessions 1\u20134 from git history and status log. Consistent with the C3PO and protocol-institute.org devlog pattern."
+          "html": "<strong>Devlog system:</strong> Added <code>data/devlog.json</code> (source of truth), <code>devlog_session.py</code> (writes ISO timestamp to <code>/tmp/protocolized_devlog_session_start.txt</code>), and <code>devlog_render.py</code> (renders <code>DEVLOG.md</code> from JSON). Backfilled Sessions 1–4 from git history and status log. Consistent with the C3PO and protocol-institute.org devlog pattern."
         },
         {
           "title": "Session rituals:",
-          "html": "<strong>Session rituals (added to CLAUDE.md):</strong> Startup: timestamp \u2192 <code>track.py status</code> \u2192 read status-vgr.md \u2192 check Substack sync activity (git log --grep=sync) \u2192 check CF branch divergence \u2192 check framework decision state \u2192 summarize. Wrap-up: devlog entry + devlog_render.py \u2192 status-vgr.md \u2192 CLAUDE.md updates \u2192 <code>npm run build</code> (if code changed) \u2192 git commit/push \u2192 <code>track.py end</code> \u2192 fill log-{id}.json \u2192 expenses render \u2192 Claude memory."
+          "html": "<strong>Session rituals (added to CLAUDE.md):</strong> Startup: timestamp → <code>track.py status</code> → read status-vgr.md → check Substack sync activity (git log --grep=sync) → check CF branch divergence → check framework decision state → summarize. Wrap-up: devlog entry + devlog_render.py → status-vgr.md → CLAUDE.md updates → <code>npm run build</code> (if code changed) → git commit/push → <code>track.py end</code> → fill log-{id}.json → expenses render → Claude memory."
         },
         {
           "title": "PI admin repo reference:",
-          "html": "<strong>PI admin repo reference:</strong> CLAUDE.md updated with a PI key/security policy banner pointing to <code>../admin/keys.md</code> and <code>../admin/security.md</code>. The <code>## Keys</code> section notes that no keys are currently in use; when CF Workers are added, all PI keys go through <code>../.env.keys</code> and <code>../admin/keys.md</code> \u2014 not <code>Code/.env.keys</code>. The admin repo (<code>Protocol-Institute/admin</code>, private) is the single source of truth for PI contributor expenses, key ownership, and security policy."
+          "html": "<strong>PI admin repo reference:</strong> CLAUDE.md updated with a PI key/security policy banner pointing to <code>../admin/keys.md</code> and <code>../admin/security.md</code>. The <code>## Keys</code> section notes that no keys are currently in use; when CF Workers are added, all PI keys go through <code>../.env.keys</code> and <code>../admin/keys.md</code> — not <code>Code/.env.keys</code>. The admin repo (<code>Protocol-Institute/admin</code>, private) is the single source of truth for PI contributor expenses, key ownership, and security policy."
         }
       ]
     },
@@ -184,7 +184,7 @@
       "items": [
         {
           "title": "C3PO link box (2026-05-19):",
-          "html": "<strong>C3PO link box (2026-05-19):</strong> Added a beta-labeled link box to the top of the resources page sidebar (<code>src/pages/resources/index.astro</code>). Teal/coral styling; links to the deployed C3PO worker with a <code>?ref=protocolized-resources</code> query param for traffic-source tracking. Opens in a new tab. This is a surface entry point \u2014 the full service binding integration is planned for Phase 4."
+          "html": "<strong>C3PO link box (2026-05-19):</strong> Added a beta-labeled link box to the top of the resources page sidebar (<code>src/pages/resources/index.astro</code>). Teal/coral styling; links to the deployed C3PO worker with a <code>?ref=protocolized-resources</code> query param for traffic-source tracking. Opens in a new tab. This is a surface entry point — the full service binding integration is planned for Phase 4."
         },
         {
           "title": "Protocol Lexicon page (2026-05-20):",
@@ -214,27 +214,27 @@
       "items": [
         {
           "title": "CF Pages migration (Phase 0 complete):",
-          "html": "<strong>CF Pages migration \u2014 Phase 0 complete (2026-05-30):</strong> protocolized.io now serves from Cloudflare Pages under the PI org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). CF Pages project name: <code>protocolized-website</code>. Custom domains <code>protocolized.io</code> and <code>www.protocolized.io</code> active. GitHub Pages remains live as a dead-end fallback until manually disabled in repo settings."
+          "html": "<strong>CF Pages migration — Phase 0 complete (2026-05-30):</strong> protocolized.io now serves from Cloudflare Pages under the PI org account (<code>7e8c7969b2464d23795c555bc6a32af8</code>). CF Pages project name: <code>protocolized-website</code>. Custom domains <code>protocolized.io</code> and <code>www.protocolized.io</code> active. GitHub Pages remains live as a dead-end fallback until manually disabled in repo settings."
         },
         {
           "title": "R2 PDF migration:",
-          "html": "<strong>R2 PDF migration:</strong> All 82 PDFs and 4 EPUBs (353 MB) migrated from <code>public/resources/</code> to the R2 bucket <code>protocolized-resources</code>, served at <code>https://files.protocolized.io</code> via a custom R2 domain. 76 resource Markdown frontmatter <code>file:</code> fields rewritten from <code>/resources/filename.pdf</code> to <code>https://files.protocolized.io/filename.pdf</code>. Key incident: wrangler 4.x silently routes R2 writes to local miniflare storage when a <code>wrangler.toml</code> is present in CWD \u2014 all initial uploads went to <code>.wrangler/state/v3/</code> instead of CF. Fixed by re-uploading from <code>/tmp/</code> with <code>--remote</code> flag. Rule added to CLAUDE.md: always use <code>--remote</code> for <code>wrangler r2 object</code> and <code>wrangler d1 execute</code> commands."
+          "html": "<strong>R2 PDF migration:</strong> All 82 PDFs and 4 EPUBs (353 MB) migrated from <code>public/resources/</code> to the R2 bucket <code>protocolized-resources</code>, served at <code>https://files.protocolized.io</code> via a custom R2 domain. 76 resource Markdown frontmatter <code>file:</code> fields rewritten from <code>/resources/filename.pdf</code> to <code>https://files.protocolized.io/filename.pdf</code>. Key incident: wrangler 4.x silently routes R2 writes to local miniflare storage when a <code>wrangler.toml</code> is present in CWD — all initial uploads went to <code>.wrangler/state/v3/</code> instead of CF. Fixed by re-uploading from <code>/tmp/</code> with <code>--remote</code> flag. Rule added to CLAUDE.md: always use <code>--remote</code> for <code>wrangler r2 object</code> and <code>wrangler d1 execute</code> commands."
         },
         {
           "title": "Git history purge:",
-          "html": "<strong>Git history purge:</strong> PDFs removed from the git tree with <code>git rm --cached</code>, then fully expunged from all commit history using <code>git-filter-repo --path public/resources/ --invert-paths</code>. Repo size: 353 MB \u2192 ~1 MB. Remote re-added after filter-repo removed it (expected behavior); force-pushed clean history."
+          "html": "<strong>Git history purge:</strong> PDFs removed from the git tree with <code>git rm --cached</code>, then fully expunged from all commit history using <code>git-filter-repo --path public/resources/ --invert-paths</code>. Repo size: 353 MB → ~1 MB. Remote re-added after filter-repo removed it (expected behavior); force-pushed clean history."
         },
         {
-          "title": "Framework decision \u2014 Hono + HTMX (Phase 1 complete):",
-          "html": "<strong>Framework decision \u2014 Hono + HTMX (Phase 1 complete):</strong> After reviewing the three options (Astro hybrid, Hono Workers, SvelteKit), chose <strong>Option B: Hono + HTMX on CF Workers</strong>. Rationale: the site's future feature set (streaming C3PO, semantic search, ETH auth, content gating) makes it fundamentally a dynamic web app, not a static magazine. Hono is CF-native, streaming is first-class, and a single coherent architecture avoids accumulating hybrid-mode complexity. ROADMAP.md Phases 0 and 1 marked complete; Phase 8 (Print Ops + ProtocolKit) added as a parallel track."
+          "title": "Framework decision — Hono + HTMX (Phase 1 complete):",
+          "html": "<strong>Framework decision — Hono + HTMX (Phase 1 complete):</strong> After reviewing the three options (Astro hybrid, Hono Workers, SvelteKit), chose <strong>Option B: Hono + HTMX on CF Workers</strong>. Rationale: the site's future feature set (streaming C3PO, semantic search, ETH auth, content gating) makes it fundamentally a dynamic web app, not a static magazine. Hono is CF-native, streaming is first-class, and a single coherent architecture avoids accumulating hybrid-mode complexity. ROADMAP.md Phases 0 and 1 marked complete; Phase 8 (Print Ops + ProtocolKit) added as a parallel track."
         },
         {
           "title": "SoP content gap analysis:",
-          "html": "<strong>SoP content gap analysis:</strong> Cross-checked 53 SoP research items against 287 protocolized.io resource files. Found 21 items missing from the library: 4 research essays, 5 Bridge Atlas podcast episodes (ep 2\u20135 + ep 1 already in library), 17 creative \"pill\" micro-works (fiction, video, game, generative art). Added to the <code>status-vgr.md</code> Upcoming backlog. Separately identified 7 items belonging on protocol-institute.org (SoP program history, alumni directory, corporate workshops, CC+ license, Symposium 2025 archive, Teaching Fellows list, Regional Pilots); written to <code>../website/sop-migration.md</code>."
+          "html": "<strong>SoP content gap analysis:</strong> Cross-checked 53 SoP research items against 287 protocolized.io resource files. Found 21 items missing from the library: 4 research essays, 5 Bridge Atlas podcast episodes (ep 2–5 + ep 1 already in library), 17 creative \"pill\" micro-works (fiction, video, game, generative art). Added to the <code>status-vgr.md</code> Upcoming backlog. Separately identified 7 items belonging on protocol-institute.org (SoP program history, alumni directory, corporate workshops, CC+ license, Symposium 2025 archive, Teaching Fellows list, Regional Pilots); written to <code>../website/sop-migration.md</code>."
         },
         {
           "title": "Hono migration plan:",
-          "html": "<strong>Hono migration plan (<code>worker/PLAN.md</code>):</strong> Full plan for replacing the Astro site with a CF Worker. D1 schema (single <code>resources</code> table), Hono JSX routes for all current pages, CSS strategy (copy Astro-compiled Tailwind output), content migration script (287 Markdown \u2192 D1), sync script dual-write strategy (Markdown + D1 during transition), and timeline targeting domain cutover before Monday 2026-06-02 8am UTC (next Substack cron run). Fallback: Astro CF Pages stays live; rollback = move custom domain back in CF dashboard."
+          "html": "<strong>Hono migration plan (<code>worker/PLAN.md</code>):</strong> Full plan for replacing the Astro site with a CF Worker. D1 schema (single <code>resources</code> table), Hono JSX routes for all current pages, CSS strategy (copy Astro-compiled Tailwind output), content migration script (287 Markdown → D1), sync script dual-write strategy (Markdown + D1 during transition), and timeline targeting domain cutover before Monday 2026-06-02 8am UTC (next Substack cron run). Fallback: Astro CF Pages stays live; rollback = move custom domain back in CF dashboard."
         }
       ]
     },
@@ -267,7 +267,7 @@
       "id": 8,
       "sort_key": 8.0,
       "label": "Session 9",
-      "title": "Hono Worker \u2014 Full Scaffold",
+      "title": "Hono Worker — Full Scaffold",
       "date": "2026-05-31",
       "time_pt": "",
       "tracks": [
@@ -284,7 +284,7 @@
         },
         {
           "title": "Hono JSX templates:",
-          "html": "<strong>Hono JSX templates:</strong> Five TSX component files implement the full UI in Hono JSX: <code>base.tsx</code> (HTML shell with sticky nav + footer, mobile menu), <code>home.tsx</code> (article carousel, audience pathway cards, featured resource grid, CTA strip), <code>resources.tsx</code> (full filter sidebar \u2014 type pills, media toggle, audience checkboxes, sort select \u2014 plus vanilla-JS client filter with URL-state sync), <code>resource.tsx</code> (detail page with breadcrumb, metadata bar, markdown body via <code>marked</code>, related resources), <code>static-pages.tsx</code> (about/community/magazine/anthologies). Design parity with Astro site: same Tailwind tokens, badge colors, component classes."
+          "html": "<strong>Hono JSX templates:</strong> Five TSX component files implement the full UI in Hono JSX: <code>base.tsx</code> (HTML shell with sticky nav + footer, mobile menu), <code>home.tsx</code> (article carousel, audience pathway cards, featured resource grid, CTA strip), <code>resources.tsx</code> (full filter sidebar — type pills, media toggle, audience checkboxes, sort select — plus vanilla-JS client filter with URL-state sync), <code>resource.tsx</code> (detail page with breadcrumb, metadata bar, markdown body via <code>marked</code>, related resources), <code>static-pages.tsx</code> (about/community/magazine/anthologies). Design parity with Astro site: same Tailwind tokens, badge colors, component classes."
         },
         {
           "title": "Migration script:",
@@ -296,7 +296,7 @@
         },
         {
           "title": "Remaining before cutover:",
-          "html": "<strong>Remaining before domain cutover:</strong> (1) Copy static assets to <code>worker/public/</code> (logo, robots.txt, lexicon HTML/JSON). (2) Create D1 database and fill in <code>database_id</code> in wrangler.toml. (3) Run migration. (4) Local test with <code>wrangler dev</code>. (5) <code>wrangler deploy</code>. (6) Move <code>protocolized.io</code> custom domain from CF Pages \u2192 Worker in CF dashboard."
+          "html": "<strong>Remaining before domain cutover:</strong> (1) Copy static assets to <code>worker/public/</code> (logo, robots.txt, lexicon HTML/JSON). (2) Create D1 database and fill in <code>database_id</code> in wrangler.toml. (3) Run migration. (4) Local test with <code>wrangler dev</code>. (5) <code>wrangler deploy</code>. (6) Move <code>protocolized.io</code> custom domain from CF Pages → Worker in CF dashboard."
         }
       ]
     },
@@ -304,9 +304,9 @@
       "id": 9,
       "sort_key": 9.0,
       "label": "Session 10",
-      "title": "Phase 1 Complete \u2014 Worker Deployed",
+      "title": "Phase 1 Complete — Worker Deployed",
       "date": "2026-06-01",
-      "time_pt": "9:30\u201310:20am",
+      "time_pt": "9:30–10:20am",
       "tracks": [
         "cloudflare-migration",
         "content-sync"
@@ -321,15 +321,15 @@
         },
         {
           "title": "Worker deployed:",
-          "html": "<strong>Hono Worker deployed to Cloudflare:</strong> <code>protocolized-website.team-7e8.workers.dev</code> \u2014 all routes tested (200s across <code>/</code>, <code>/resources</code>, <code>/resources/:slug</code>, <code>/magazine</code>, <code>/about</code>, <code>/community</code>, <code>/anthologies</code>, <code>/rss.xml</code>, <code>/llms.txt</code>, <code>/api/resources.json</code>; 404 on unknown slugs). Two pre-deploy fixes: renamed <code>index.ts</code> \u2192 <code>index.tsx</code> (JSX requires .tsx extension for tsc) and added <code>skipLibCheck: true</code> (Hono JSX DOM event types conflict with <code>@cloudflare/workers-types</code>). Static assets copied to <code>worker/public/</code>. Pending manual step: move <code>protocolized.io</code> custom domain from CF Pages \u2192 Worker in CF dashboard."
+          "html": "<strong>Hono Worker deployed to Cloudflare:</strong> <code>protocolized-website.team-7e8.workers.dev</code> — all routes tested (200s across <code>/</code>, <code>/resources</code>, <code>/resources/:slug</code>, <code>/magazine</code>, <code>/about</code>, <code>/community</code>, <code>/anthologies</code>, <code>/rss.xml</code>, <code>/llms.txt</code>, <code>/api/resources.json</code>; 404 on unknown slugs). Two pre-deploy fixes: renamed <code>index.ts</code> → <code>index.tsx</code> (JSX requires .tsx extension for tsc) and added <code>skipLibCheck: true</code> (Hono JSX DOM event types conflict with <code>@cloudflare/workers-types</code>). Static assets copied to <code>worker/public/</code>. Pending manual step: move <code>protocolized.io</code> custom domain from CF Pages → Worker in CF dashboard."
         },
         {
           "title": "Thumbnail backfill:",
-          "html": "<strong>Substack cover images backfilled into D1:</strong> Discovered the Astro home page fetched OG images from Substack at build time \u2014 the Worker had no thumbnails in D1, so the home page showed none. Fix: <code>scripts/backfill-thumbnails.py</code> fetches <code>cover_image</code> for all 117 Substack posts via the paginated <code>/api/v1/posts</code> endpoint and writes to <code>resources.thumbnail</code> in D1. Single-batch SQL execution. Images now showing on the Worker home page. These are still substackcdn.com/S3 URLs; Phase 2 will mirror them to R2."
+          "html": "<strong>Substack cover images backfilled into D1:</strong> Discovered the Astro home page fetched OG images from Substack at build time — the Worker had no thumbnails in D1, so the home page showed none. Fix: <code>scripts/backfill-thumbnails.py</code> fetches <code>cover_image</code> for all 117 Substack posts via the paginated <code>/api/v1/posts</code> endpoint and writes to <code>resources.thumbnail</code> in D1. Single-batch SQL execution. Images now showing on the Worker home page. These are still substackcdn.com/S3 URLs; Phase 2 will mirror them to R2."
         },
         {
           "title": "Substack mirror plan (Phase 2):",
-          "html": "<strong>Phase 2 plan finalised:</strong> Compared c3po\u2019s Substack API access (paginated list fetch, <code>updated_at</code> change detection, Haiku enrichment, Pinecone output) with protocolized-website needs (D1 + R2 output). Decision: independent sync script with borrowed change-detection pattern, no cross-repo coupling. Backfill uses c3po\u2019s existing <code>api_metadata.json</code> and <code>enriched_meta.json</code> as input (no re-fetching metadata). Fresh Substack export (138 posts, 2026-06-01) unzipped to <code>data/substack/</code>. Every post page will show a prominent \u201cRead on Substack\u201d link. Full plan in <code>plans/phase2-substack-mirror.md</code>."
+          "html": "<strong>Phase 2 plan finalised:</strong> Compared c3po’s Substack API access (paginated list fetch, <code>updated_at</code> change detection, Haiku enrichment, Pinecone output) with protocolized-website needs (D1 + R2 output). Decision: independent sync script with borrowed change-detection pattern, no cross-repo coupling. Backfill uses c3po’s existing <code>api_metadata.json</code> and <code>enriched_meta.json</code> as input (no re-fetching metadata). Fresh Substack export (138 posts, 2026-06-01) unzipped to <code>data/substack/</code>. Every post page will show a prominent “Read on Substack” link. Full plan in <code>plans/phase2-substack-mirror.md</code>."
         }
       ]
     },
@@ -337,7 +337,7 @@
       "id": 10,
       "sort_key": 10.0,
       "label": "Session 11",
-      "title": "Status Check \u2014 Domain Cutover Deferred",
+      "title": "Status Check — Domain Cutover Deferred",
       "date": "2026-06-01",
       "time_pt": "",
       "tracks": [
@@ -357,7 +357,7 @@
       "id": 11,
       "sort_key": 11.0,
       "label": "Session 12",
-      "title": "Phase 2 Complete \u2014 Posts Mirrored, Substack Links Internalized",
+      "title": "Phase 2 Complete — Posts Mirrored, Substack Links Internalized",
       "date": "2026-06-01",
       "time_pt": "",
       "tracks": [
@@ -370,7 +370,7 @@
       "items": [
         {
           "title": "Substack post mirror (Phase 2):",
-          "html": "<strong>117 Substack posts fully mirrored to D1 + R2:</strong> <code>scripts/mirror-substack.py</code> reads c3po's <code>api_metadata.json</code> and export HTML files, mirrors images to R2, uploads body HTML to <code>posts/{slug}/body.html</code> in R2, and writes metadata to D1. Body HTML stored in R2 rather than D1 due to D1's 100KB SQL statement limit \u2014 D1 stores a <code>body_r2_key</code> pointer instead. State tracked in <code>data/mirror_state.json</code> for resumable runs. Two posts without export files (<code>irrigation-by-protocol-when-vineyards</code>, <code>the-overloaded-train</code>) fetched from the Substack API. Fix script (<code>fix-missing-body-r2.py</code>) patched 115 posts that had D1 rows without <code>body_r2_key</code> from earlier failed runs."
+          "html": "<strong>117 Substack posts fully mirrored to D1 + R2:</strong> <code>scripts/mirror-substack.py</code> reads c3po's <code>api_metadata.json</code> and export HTML files, mirrors images to R2, uploads body HTML to <code>posts/{slug}/body.html</code> in R2, and writes metadata to D1. Body HTML stored in R2 rather than D1 due to D1's 100KB SQL statement limit — D1 stores a <code>body_r2_key</code> pointer instead. State tracked in <code>data/mirror_state.json</code> for resumable runs. Two posts without export files (<code>irrigation-by-protocol-when-vineyards</code>, <code>the-overloaded-train</code>) fetched from the Substack API. Fix script (<code>fix-missing-body-r2.py</code>) patched 115 posts that had D1 rows without <code>body_r2_key</code> from earlier failed runs."
         },
         {
           "title": "New Worker routes:",
@@ -381,8 +381,8 @@
           "html": "<strong>All Substack clickthroughs eliminated:</strong> Added <code>substackToInternalUrl()</code> helper in <code>static-pages.tsx</code> that detects <code>protocolized.summerofprotocols.com/p/{slug}</code> URLs and rewrites them to internal <code>/p/{slug}</code> routes. Applied throughout: homepage carousel cards, resource index cards, and resource detail page primary action all resolve to <code>/p/:slug</code> instead of opening Substack. Article resource cards now link directly to the post page, bypassing the resource detail page. &ldquo;View on Substack&rdquo; demoted to a small inline link in the post byline (author &middot; date &middot; View on Substack &uarr;)."
         },
         {
-          "title": "Bug fix \u2014 JSON parse on partial SELECTs:",
-          "html": "<strong>Fixed Worker crash on <code>/magazine</code> and <code>/p/:slug</code>:</strong> <code>getLatestPosts()</code> and <code>getAdjacentPosts()</code> use partial column SELECTs (no <code>enriched_categories</code>, <code>substack_categories</code>, or <code>authors</code>), but <code>parsePostRow()</code> called <code>JSON.parse()</code> on those columns unconditionally \u2014 causing <code>SyntaxError: &quot;undefined&quot; is not valid JSON</code>. Fixed by guarding all JSON parses with null checks and fallback empty arrays."
+          "title": "Bug fix — JSON parse on partial SELECTs:",
+          "html": "<strong>Fixed Worker crash on <code>/magazine</code> and <code>/p/:slug</code>:</strong> <code>getLatestPosts()</code> and <code>getAdjacentPosts()</code> use partial column SELECTs (no <code>enriched_categories</code>, <code>substack_categories</code>, or <code>authors</code>), but <code>parsePostRow()</code> called <code>JSON.parse()</code> on those columns unconditionally — causing <code>SyntaxError: &quot;undefined&quot; is not valid JSON</code>. Fixed by guarding all JSON parses with null checks and fallback empty arrays."
         }
       ]
     },
@@ -404,19 +404,19 @@
       "items": [
         {
           "title": "Domain cutover to Worker:",
-          "html": "<strong><code>protocolized.io</code> now served by the Hono Worker.</strong> The site had been on GitHub Pages (4 A records at 185.199.x.x) with Cloudflare proxying in front \u2014 the CF Pages project existed but was not receiving traffic. To cut over: deleted the 4 GitHub Pages A records in the CF DNS tab, then added <code>protocolized.io</code> and <code>www.protocolized.io</code> as custom domains on the Worker in the CF dashboard. CF Pages project remains as an instant rollback (30-second domain flip), but the Astro static build no longer serves live traffic."
+          "html": "<strong><code>protocolized.io</code> now served by the Hono Worker.</strong> The site had been on GitHub Pages (4 A records at 185.199.x.x) with Cloudflare proxying in front — the CF Pages project existed but was not receiving traffic. To cut over: deleted the 4 GitHub Pages A records in the CF DNS tab, then added <code>protocolized.io</code> and <code>www.protocolized.io</code> as custom domains on the Worker in the CF dashboard. CF Pages project remains as an instant rollback (30-second domain flip), but the Astro static build no longer serves live traffic."
         },
         {
-          "title": "Carousel fix \u2014 wrong D1 table:",
-          "html": "<strong>Homepage carousel was querying the wrong table.</strong> <code>getLatestArticles()</code> queried <code>resources WHERE type = 'article'</code> \u2014 those are research library entries, not magazine posts. The carousel was either empty or showing stale library articles. Fix: home route now calls <code>getLatestPosts()</code> against the <code>posts</code> table; <code>home.tsx</code> updated to accept <code>Post[]</code> instead of <code>Resource[]</code> and render <code>cover_image</code>/<code>subtitle</code> fields."
+          "title": "Carousel fix — wrong D1 table:",
+          "html": "<strong>Homepage carousel was querying the wrong table.</strong> <code>getLatestArticles()</code> queried <code>resources WHERE type = 'article'</code> — those are research library entries, not magazine posts. The carousel was either empty or showing stale library articles. Fix: home route now calls <code>getLatestPosts()</code> against the <code>posts</code> table; <code>home.tsx</code> updated to accept <code>Post[]</code> instead of <code>Resource[]</code> and render <code>cover_image</code>/<code>subtitle</code> fields."
         },
         {
           "title": "Sync pipeline overhaul:",
-          "html": "<strong>Three changes make the sync pipeline end-to-end:</strong> (1) <code>deploy.yml</code> replaced the old GitHub Pages workflow with a Worker deploy (<code>npm run deploy</code> from <code>worker/</code>). (2) <code>sync-substack.py</code> now dual-writes: after creating a Markdown file for each new post, it calls the Substack API to fetch body HTML and cover image, mirrors both to R2, and writes metadata to D1 \u2014 gated on <code>CLOUDFLARE_API_TOKEN</code> being present so local runs still work. (3) <code>CLOUDFLARE_API_TOKEN</code> added as a GitHub Actions secret via <code>gh secret set</code>. Three posts that had accumulated since the last D1 write (Jun 1, 3, 9) were backfilled manually via a one-time <code>add-new-posts.py</code> script (since deleted)."
+          "html": "<strong>Three changes make the sync pipeline end-to-end:</strong> (1) <code>deploy.yml</code> replaced the old GitHub Pages workflow with a Worker deploy (<code>npm run deploy</code> from <code>worker/</code>). (2) <code>sync-substack.py</code> now dual-writes: after creating a Markdown file for each new post, it calls the Substack API to fetch body HTML and cover image, mirrors both to R2, and writes metadata to D1 — gated on <code>CLOUDFLARE_API_TOKEN</code> being present so local runs still work. (3) <code>CLOUDFLARE_API_TOKEN</code> added as a GitHub Actions secret via <code>gh secret set</code>. Three posts that had accumulated since the last D1 write (Jun 1, 3, 9) were backfilled manually via a one-time <code>add-new-posts.py</code> script (since deleted)."
         },
         {
           "title": "Books section:",
-          "html": "<strong>New <code>/books</code> section with index and detail pages.</strong> D1 <code>books</code> table: <code>slug</code>, <code>title</code>, <code>subtitle</code>, <code>editor</code>, <code>date</code>, <code>description</code>, <code>body</code> (markdown), <code>cover_image</code>, <code>url</code>, <code>file</code> (R2 PDF), <code>toc</code> (JSON array of <code>{title, author?, url?}</code>), <code>contributors</code> (JSON), <code>tags</code> (for related-resources query), <code>sort_order</code>, <code>published</code>. Index page: 2\u20133 col grid with 2:3 cover placeholder, clipped description. Detail page: cover + meta left, body/ToC/contributors/related resources right; download button when <code>file</code> or <code>url</code> present. ToC entries link to internal <code>/p/:slug</code> routes where stories are already mirrored. Four books seeded: <em>The Protocol Reader</em> (published), <em>Terminological Twists</em>, <em>The Librarians</em>, <em>Ghosts in Machines</em> (all published with full ToC and contributors); <em>Bridges</em> stub unpublished. Books added to nav and footer."
+          "html": "<strong>New <code>/books</code> section with index and detail pages.</strong> D1 <code>books</code> table: <code>slug</code>, <code>title</code>, <code>subtitle</code>, <code>editor</code>, <code>date</code>, <code>description</code>, <code>body</code> (markdown), <code>cover_image</code>, <code>url</code>, <code>file</code> (R2 PDF), <code>toc</code> (JSON array of <code>{title, author?, url?}</code>), <code>contributors</code> (JSON), <code>tags</code> (for related-resources query), <code>sort_order</code>, <code>published</code>. Index page: 2–3 col grid with 2:3 cover placeholder, clipped description. Detail page: cover + meta left, body/ToC/contributors/related resources right; download button when <code>file</code> or <code>url</code> present. ToC entries link to internal <code>/p/:slug</code> routes where stories are already mirrored. Four books seeded: <em>The Protocol Reader</em> (published), <em>Terminological Twists</em>, <em>The Librarians</em>, <em>Ghosts in Machines</em> (all published with full ToC and contributors); <em>Bridges</em> stub unpublished. Books added to nav and footer."
         }
       ]
     },
@@ -437,20 +437,20 @@
       "deployed": true,
       "items": [
         {
-          "title": "Hono migration audit \u2014 three gaps closed:",
-          "html": "<strong>Three features missing from the Hono Worker were identified and restored:</strong> (1) <strong>Protocol Lexicon page</strong> (<code>/resources/protocol-lexicon</code>) was 404-looping \u2014 the Worker scaffold had a comment saying it would be served as a static asset, but no static HTML was ever created and the route redirected to itself. Fixed by creating <code>worker/src/html/lexicon.tsx</code>: Hono JSX component that server-renders all 566 term cards from <code>worker/public/lexicon.json</code> (imported at build time via <code>resolveJsonModule: true</code>), with a spotlight card that fetches <code>/lexicon.json</code> client-side and DOM-based search. A trailing-slash redirect was also needed (<code>/resources/protocol-lexicon/</code> \u2192 canonical). (2) <strong>Sitemap</strong> was frozen at scaffold time and missing 120+ URLs: all <code>/p/:slug</code> posts, <code>/books</code> and <code>/books/:slug</code>, and <code>/resources/protocol-lexicon</code>. Sitemap route now queries D1 for all three tables in parallel and emits 421 URLs. (3) <strong><code>/api/lexicon.json</code></strong> path had moved to <code>/lexicon.json</code> during migration \u2014 added a 301 redirect for backward compatibility."
+          "title": "Hono migration audit — three gaps closed:",
+          "html": "<strong>Three features missing from the Hono Worker were identified and restored:</strong> (1) <strong>Protocol Lexicon page</strong> (<code>/resources/protocol-lexicon</code>) was 404-looping — the Worker scaffold had a comment saying it would be served as a static asset, but no static HTML was ever created and the route redirected to itself. Fixed by creating <code>worker/src/html/lexicon.tsx</code>: Hono JSX component that server-renders all 566 term cards from <code>worker/public/lexicon.json</code> (imported at build time via <code>resolveJsonModule: true</code>), with a spotlight card that fetches <code>/lexicon.json</code> client-side and DOM-based search. A trailing-slash redirect was also needed (<code>/resources/protocol-lexicon/</code> → canonical). (2) <strong>Sitemap</strong> was frozen at scaffold time and missing 120+ URLs: all <code>/p/:slug</code> posts, <code>/books</code> and <code>/books/:slug</code>, and <code>/resources/protocol-lexicon</code>. Sitemap route now queries D1 for all three tables in parallel and emits 421 URLs. (3) <strong><code>/api/lexicon.json</code></strong> path had moved to <code>/lexicon.json</code> during migration — added a 301 redirect for backward compatibility."
         },
         {
           "title": "Series navigation for Jamverse story cycles:",
-          "html": "<strong>Series reading navigation scaffolded for four story cycles that form the Jamverse extended universe at jamverse.protocolized.io.</strong> Architecture: two new columns on the <code>posts</code> D1 table (<code>series_slug TEXT</code>, <code>series_position INTEGER</code>) with a covering index. Each story cycle is registered as a book in the <code>books</code> table (4 new entries: Trainverse / Sachin Benny, Legends &amp; Ledgers / Elizabeth Maher, Zoothesia / Spencer Nitkey, Stockton Chronicles / Randy Lubin). A new <code>getSeriesContext()</code> DB helper runs 3 parallel D1 queries \u2014 book title+TOC, prev post, next post by position \u2014 and falls back to the book TOC for stories not in D1 (e.g. external Randy Lubin stories). Post pages with <code>series_slug</code> set receive a compact <code>SeriesNav</code> component rendered at both top and bottom: <code>&lt;&lt; prev | \u2191 Series Title (Part N of M) | next &gt;&gt;</code>. Breadcrumb updates to <code>Home \u203a Books \u203a {Series} \u203a {Title}</code> for series posts. 12 posts tagged with series data via D1 UPDATE."
+          "html": "<strong>Series reading navigation scaffolded for four story cycles that form the Jamverse extended universe at jamverse.protocolized.io.</strong> Architecture: two new columns on the <code>posts</code> D1 table (<code>series_slug TEXT</code>, <code>series_position INTEGER</code>) with a covering index. Each story cycle is registered as a book in the <code>books</code> table (4 new entries: Trainverse / Sachin Benny, Legends &amp; Ledgers / Elizabeth Maher, Zoothesia / Spencer Nitkey, Stockton Chronicles / Randy Lubin). A new <code>getSeriesContext()</code> DB helper runs 3 parallel D1 queries — book title+TOC, prev post, next post by position — and falls back to the book TOC for stories not in D1 (e.g. external Randy Lubin stories). Post pages with <code>series_slug</code> set receive a compact <code>SeriesNav</code> component rendered at both top and bottom: <code>&lt;&lt; prev | ↑ Series Title (Part N of M) | next &gt;&gt;</code>. Breadcrumb updates to <code>Home › Books › {Series} › {Title}</code> for series posts. 12 posts tagged with series data via D1 UPDATE."
         },
         {
           "title": "Placeholder pages for un-mirrored Stockton Chronicles stories:",
-          "html": "<strong>The Caucus and Joan Henry vs the Algorithm are published on Randy Lubin's site, not yet on the Protocolized Substack.</strong> Rather than breaking the series reading experience with external redirects, two internal placeholder pages were created (<code>/p/the-caucus</code>, <code>/p/joan-henry-vs-the-algorithm</code>) with full series navigation and a styled &ldquo;Coming soon to Protocolized&rdquo; card linking out to randylubin.com. A new <code>is_placeholder INTEGER DEFAULT 0</code> column on posts controls three behaviors: (1) placeholder posts are excluded from the magazine feed and sitemap; (2) <code>post.tsx</code> shows the coming-soon card instead of body content; (3) <code>sync-substack.py</code> changed from <code>INSERT OR REPLACE</code> (delete+insert, wiped all columns) to <code>INSERT ... ON CONFLICT(slug) DO UPDATE SET</code> listing only content fields \u2014 this preserves <code>series_slug</code>, <code>series_position</code>, and resets <code>is_placeholder = 0</code> when the real Substack post arrives. No manual steps needed when those stories eventually publish."
+          "html": "<strong>The Caucus and Joan Henry vs the Algorithm are published on Randy Lubin's site, not yet on the Protocolized Substack.</strong> Rather than breaking the series reading experience with external redirects, two internal placeholder pages were created (<code>/p/the-caucus</code>, <code>/p/joan-henry-vs-the-algorithm</code>) with full series navigation and a styled &ldquo;Coming soon to Protocolized&rdquo; card linking out to randylubin.com. A new <code>is_placeholder INTEGER DEFAULT 0</code> column on posts controls three behaviors: (1) placeholder posts are excluded from the magazine feed and sitemap; (2) <code>post.tsx</code> shows the coming-soon card instead of body content; (3) <code>sync-substack.py</code> changed from <code>INSERT OR REPLACE</code> (delete+insert, wiped all columns) to <code>INSERT ... ON CONFLICT(slug) DO UPDATE SET</code> listing only content fields — this preserves <code>series_slug</code>, <code>series_position</code>, and resets <code>is_placeholder = 0</code> when the real Substack post arrives. No manual steps needed when those stories eventually publish."
         },
         {
-          "title": "Jamverse PR \u2014 story links updated to protocolized.io:",
-          "html": "<strong>PR #1 submitted to Protocol-Institute/jamverse</strong> replacing all 14 story URLs across 7 HTML files. 12 Substack URLs (<code>protocolized.summerofprotocols.com/p/*</code>) replaced with <code>protocolized.io/p/*</code>; 2 Randy Lubin URLs (<code>randylubin.com/fiction/...</code>) replaced with the new internal placeholder pages. The <code>devlog.html</code> in jamverse was left unchanged \u2014 it contains a text-only historical reference to randylubin.com, not a navigation link. Sachin Benny (lead dev on jamverse) set as PR reviewer."
+          "title": "Jamverse PR — story links updated to protocolized.io:",
+          "html": "<strong>PR #1 submitted to Protocol-Institute/jamverse</strong> replacing all 14 story URLs across 7 HTML files. 12 Substack URLs (<code>protocolized.summerofprotocols.com/p/*</code>) replaced with <code>protocolized.io/p/*</code>; 2 Randy Lubin URLs (<code>randylubin.com/fiction/...</code>) replaced with the new internal placeholder pages. The <code>devlog.html</code> in jamverse was left unchanged — it contains a text-only historical reference to randylubin.com, not a navigation link. Sachin Benny (lead dev on jamverse) set as PR reviewer."
         }
       ]
     },
@@ -471,19 +471,19 @@
       "items": [
         {
           "title": "ePub downloads for 4 books:",
-          "html": "<strong>Four books now have downloadable ePubs served from R2 at <code>files.protocolized.io/epubs/{slug}.epub</code>:</strong> <em>Ghosts in Machines</em>, <em>The Librarians</em>, <em>Terminological Twists</em>, and <em>The Protocol Reader</em>. Files uploaded via <code>wrangler r2 object put --remote</code> with <code>content-type: application/epub+zip</code>. D1 <code>books.file</code> field set for all four. The Substack collections placeholder URL (<code>protocolized.summerofprotocols.com/p/collections</code>) and the SoP URL on Protocol Reader were nulled out \u2014 book pages will only link to locally served files or real retail buy links, never to Substack. The <code>url</code> field is reserved for future retail links (e.g. Amazon, Bookshop.org)."
+          "html": "<strong>Four books now have downloadable ePubs served from R2 at <code>files.protocolized.io/epubs/{slug}.epub</code>:</strong> <em>Ghosts in Machines</em>, <em>The Librarians</em>, <em>Terminological Twists</em>, and <em>The Protocol Reader</em>. Files uploaded via <code>wrangler r2 object put --remote</code> with <code>content-type: application/epub+zip</code>. D1 <code>books.file</code> field set for all four. The Substack collections placeholder URL (<code>protocolized.summerofprotocols.com/p/collections</code>) and the SoP URL on Protocol Reader were nulled out — book pages will only link to locally served files or real retail buy links, never to Substack. The <code>url</code> field is reserved for future retail links (e.g. Amazon, Bookshop.org)."
         },
         {
-          "title": "Book detail page \u2014 dual CTA buttons:",
+          "title": "Book detail page — dual CTA buttons:",
           "html": "<strong>The single CTA on book detail pages was replaced with two independent buttons.</strong> Previously the logic collapsed <code>file</code> and <code>url</code> into a single link (file took priority). Now: if <code>book.file</code> is set, a primary &ldquo;Download ePub&rdquo; / &ldquo;Download PDF&rdquo; button is shown (label auto-detected from extension; <code>download</code> attribute forces browser download rather than inline open). If <code>book.url</code> is set, a secondary &ldquo;Get the book &rarr;&rdquo; button is shown as an external link. Each appears independently, so books with only a file, only a URL, or both are all handled correctly without extra logic."
         },
         {
-          "title": "Books index \u2014 thumbnail card layout:",
-          "html": "<strong>The /books index cards were redesigned from tall portrait cards to compact horizontal thumbnail cards.</strong> Previously each card was <code>flex flex-col</code> with an <code>aspect-[2/3]</code> image container \u2014 on a 3-column grid, the cover dominated the card at ~450px tall. Now each card is a horizontal row: a small <code>w-20 h-28</code> (sm: <code>w-24 h-36</code>) cover thumbnail on the left, title/subtitle/blurb text on the right. Grid reduced from <code>lg:grid-cols-3</code> to max <code>sm:grid-cols-2</code>. Detail pages retain the original <code>lg:w-64</code> large cover."
+          "title": "Books index — thumbnail card layout:",
+          "html": "<strong>The /books index cards were redesigned from tall portrait cards to compact horizontal thumbnail cards.</strong> Previously each card was <code>flex flex-col</code> with an <code>aspect-[2/3]</code> image container — on a 3-column grid, the cover dominated the card at ~450px tall. Now each card is a horizontal row: a small <code>w-20 h-28</code> (sm: <code>w-24 h-36</code>) cover thumbnail on the left, title/subtitle/blurb text on the right. Grid reduced from <code>lg:grid-cols-3</code> to max <code>sm:grid-cols-2</code>. Detail pages retain the original <code>lg:w-64</code> large cover."
         },
         {
           "title": "Inbox processing policy:",
-          "html": "<strong>Established and documented a formal inbox processing policy in CLAUDE.md.</strong> Rule: after handling any file from <code>inbox/</code>, move it to <code>inbox/.processed/</code> immediately \u2014 never leave processed files in the inbox root, never delete from <code>.processed/</code> (it is a local-only record; the directory is gitignored). Files with no clear action are left in inbox and flagged in the session summary. The policy was triggered by processed cover images from Session 15 being left in the inbox root."
+          "html": "<strong>Established and documented a formal inbox processing policy in CLAUDE.md.</strong> Rule: after handling any file from <code>inbox/</code>, move it to <code>inbox/.processed/</code> immediately — never leave processed files in the inbox root, never delete from <code>.processed/</code> (it is a local-only record; the directory is gitignored). Files with no clear action are left in inbox and flagged in the session summary. The policy was triggered by processed cover images from Session 15 being left in the inbox root."
         }
       ]
     },
@@ -504,15 +504,15 @@
       "items": [
         {
           "title": "Inbox drop zone for session assets:",
-          "html": "<strong>Added <code>inbox/</code> as a gitignored drop zone for files Venkat wants processed between sessions</strong> (covers, PDFs, content, etc.). CLAUDE.md session-start checklist updated: step 3 is now &ldquo;scan <code>inbox/</code> and handle anything present.&rdquo; The inbox is not committed \u2014 files are processed (uploaded to R2, etc.) and recorded in the session wrap-up, then left for manual cleanup."
+          "html": "<strong>Added <code>inbox/</code> as a gitignored drop zone for files Venkat wants processed between sessions</strong> (covers, PDFs, content, etc.). CLAUDE.md session-start checklist updated: step 3 is now &ldquo;scan <code>inbox/</code> and handle anything present.&rdquo; The inbox is not committed — files are processed (uploaded to R2, etc.) and recorded in the session wrap-up, then left for manual cleanup."
         },
         {
-          "title": "Book cover images \u2014 3 books:",
+          "title": "Book cover images — 3 books:",
           "html": "<strong>Three cover images were processed from inbox and uploaded to R2</strong> at <code>covers/{slug}.jpg</code> (served at <code>files.protocolized.io/covers/</code>): <code>ghosts-in-machines.jpg</code>, <code>the-librarians.jpg</code>, <code>terminological-twists.jpg</code>. D1 <code>books</code> table updated with <code>cover_image</code> URLs for all three. The-protocol-reader and the 4 Jamverse series books still have no cover."
         },
         {
-          "title": "Books category field \u2014 fiction vs nonfiction:",
-          "html": "<strong>Added a <code>category</code> column to the D1 <code>books</code> table</strong> (<code>TEXT NOT NULL DEFAULT 'fiction'</code>) via <code>ALTER TABLE</code>. <code>the-protocol-reader</code> set to <code>'nonfiction'</code>; all others default to <code>'fiction'</code>. Schema updated in <code>schema.sql</code>; TypeScript updated in <code>db.ts</code> (<code>Book</code> interface, <code>BookRow</code>, <code>parseBookRow</code>). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended \u2014 future nonfiction books just need <code>category = 'nonfiction'</code> set on insert."
+          "title": "Books category field — fiction vs nonfiction:",
+          "html": "<strong>Added a <code>category</code> column to the D1 <code>books</code> table</strong> (<code>TEXT NOT NULL DEFAULT 'fiction'</code>) via <code>ALTER TABLE</code>. <code>the-protocol-reader</code> set to <code>'nonfiction'</code>; all others default to <code>'fiction'</code>. Schema updated in <code>schema.sql</code>; TypeScript updated in <code>db.ts</code> (<code>Book</code> interface, <code>BookRow</code>, <code>parseBookRow</code>). UI: a small pill badge appears next to the title on the books index card and in the metadata row on the book detail page. The field is open-ended — future nonfiction books just need <code>category = 'nonfiction'</code> set on insert."
         }
       ]
     },
@@ -534,18 +534,18 @@
       "items": [
         {
           "title": "Masthead wordmark + tagline (single-source):",
-          "html": "<strong>Added the site name and tagline to the nav bar in <code>base.tsx</code></strong>, making it appear on every page. The logo link now shows the Protocolized mark image + &ldquo;Protocolized&rdquo; in Instrument Serif (<code>text-xl</code>) + &ldquo;The Protocol Institute media hub&rdquo; in a smaller italic serif below. This is the single canonical masthead \u2014 no per-page duplication."
+          "html": "<strong>Added the site name and tagline to the nav bar in <code>base.tsx</code></strong>, making it appear on every page. The logo link now shows the Protocolized mark image + &ldquo;Protocolized&rdquo; in Instrument Serif (<code>text-xl</code>) + &ldquo;The Protocol Institute media hub&rdquo; in a smaller italic serif below. This is the single canonical masthead — no per-page duplication."
         },
         {
-          "title": "Mixed media carousel \u2014 4 sources:",
-          "html": "<strong>Replaced the magazine-only carousel with a 4-source round-robin</strong>: latest 3 magazine posts, latest 2 YouTube videos, 2 random archive PDFs, 1 random book. Sources are interleaved (M\u2192Y\u2192A\u2192B\u2192M\u2192Y\u2192A\u2192M) so all types always appear. Each slide has a source badge overlaid on the image: teal for magazine, red for YouTube, coral for archive, grey for book. Captions: &ldquo;Latest from magazine&rdquo;, &ldquo;Latest from YouTube channel&rdquo;, &ldquo;Resource Archive spotlight&rdquo;, &ldquo;Book spotlight&rdquo;. Archive and book slides are randomly sampled on each page load. Unified <code>CarouselItem</code> type in <code>home.tsx</code>; <code>buildCarouselItems()</code> handles interleaving."
+          "title": "Mixed media carousel — 4 sources:",
+          "html": "<strong>Replaced the magazine-only carousel with a 4-source round-robin</strong>: latest 3 magazine posts, latest 2 YouTube videos, 2 random archive PDFs, 1 random book. Sources are interleaved (M→Y→A→B→M→Y→A→M) so all types always appear. Each slide has a source badge overlaid on the image: teal for magazine, red for YouTube, coral for archive, grey for book. Captions: &ldquo;Latest from magazine&rdquo;, &ldquo;Latest from YouTube channel&rdquo;, &ldquo;Resource Archive spotlight&rdquo;, &ldquo;Book spotlight&rdquo;. Archive and book slides are randomly sampled on each page load. Unified <code>CarouselItem</code> type in <code>home.tsx</code>; <code>buildCarouselItems()</code> handles interleaving."
         },
         {
           "title": "YouTube RSS integration:",
-          "html": "<strong>New <code>worker/src/youtube.ts</code> fetches the Protocol Institute YouTube channel RSS feed</strong> (<code>channel_id=UCcNZ6wTbeeAJ-O_OIhs2j3A</code>, i.e. <code>@protocol-institute</code>) at Worker request time. Uses <code>cf: { cacheTtl: 3600, cacheEverything: true }</code> to edge-cache the RSS for 1 hour \u2014 no API key required, no D1 writes. Video thumbnails come from <code>i.ytimg.com/vi/{id}/hqdefault.jpg</code> (free, no auth). The parser uses regex splits on <code>&lt;entry&gt;</code> tags; no DOM parser needed in Workers."
+          "html": "<strong>New <code>worker/src/youtube.ts</code> fetches the Protocol Institute YouTube channel RSS feed</strong> (<code>channel_id=UCcNZ6wTbeeAJ-O_OIhs2j3A</code>, i.e. <code>@protocol-institute</code>) at Worker request time. Uses <code>cf: { cacheTtl: 3600, cacheEverything: true }</code> to edge-cache the RSS for 1 hour — no API key required, no D1 writes. Video thumbnails come from <code>i.ytimg.com/vi/{id}/hqdefault.jpg</code> (free, no auth). The parser uses regex splits on <code>&lt;entry&gt;</code> tags; no DOM parser needed in Workers."
         },
         {
-          "title": "PDF cover image generation \u2014 72 resources:",
+          "title": "PDF cover image generation — 72 resources:",
           "html": "<strong>New script <code>scripts/generate-pdf-covers.py</code> renders page 1 of each PDF resource as a JPEG</strong> using PyMuPDF (fitz). For each resource with <code>file LIKE '%.pdf'</code>: downloads from <code>files.protocolized.io</code>, renders at 900px wide, uploads to R2 at <code>covers/{slug}.jpg</code>, updates D1 <code>thumbnail</code> field. All 72 PDFs processed in one run (0 failures). Thumbnails now live at <code>files.protocolized.io/covers/{slug}.jpg</code>. The script auto-loads <code>CLOUDFLARE_API_TOKEN</code> from <code>../admin/.env.keys</code> if not in env; skips already-thumbnailed resources by default; supports <code>--all</code> and <code>--slug</code> flags."
         },
         {
@@ -561,12 +561,12 @@
           "html": "<strong>Simplified the hero left column</strong>: removed &ldquo;Accelerating Order.&rdquo; subheadline, replaced body copy with inline-linked media hub description (&ldquo;Protocolized is the media hub for the Protocol Institute. Explore our research archive, our magazine (also available on Substack), YouTube channel and book collection.&rdquo;), removed both CTA buttons. All five link targets wired: Protocol Institute (external), /resources, /magazine, Substack (external), /books."
         },
         {
-          "title": "Community page \u2192 Discord:",
+          "title": "Community page → Discord:",
           "html": "<strong>Community page stripped down to Discord only.</strong> Nav and footer label changed from &ldquo;Community&rdquo; to &ldquo;Discord&rdquo; (slug <code>/community</code> unchanged). YouTube section, Events section, and footer note removed. Page title/h1 updated to &ldquo;Discord&rdquo;. Discord invite URL updated sitewide to <code>discord.gg/Z3fgsW8D4s</code> (was <code>Aj5FbGsNYV</code>)."
         },
         {
           "title": "URL audit and corrections:",
-          "html": "<strong>Fixed three wrong URLs that were consistent across the codebase:</strong> (1) Protocol Institute link was <code>protocolsociety.org</code> in About page and footer \u2014 corrected to <code>protocol-institute.org</code> everywhere. (2) YouTube handle was <code>@protocolized</code> throughout \u2014 corrected to <code>@protocol-institute</code>. (3) Discord invite was stale \u2014 updated to <code>Z3fgsW8D4s</code> in all files (base.tsx, home.tsx, static-pages.tsx, index.tsx)."
+          "html": "<strong>Fixed three wrong URLs that were consistent across the codebase:</strong> (1) Protocol Institute link was <code>protocolsociety.org</code> in About page and footer — corrected to <code>protocol-institute.org</code> everywhere. (2) YouTube handle was <code>@protocolized</code> throughout — corrected to <code>@protocol-institute</code>. (3) Discord invite was stale — updated to <code>Z3fgsW8D4s</code> in all files (base.tsx, home.tsx, static-pages.tsx, index.tsx)."
         }
       ]
     },
@@ -587,15 +587,15 @@
       "items": [
         {
           "title": "Nav & footer overhaul:",
-          "html": "Replaced the About nav link with YouTube (external, opens new tab). About page collapsed to a single paragraph with two inline links (Protocol Institute homepage + About page). Homepage lost three sections: Featured Resources (redundant with carousel), Protocolized Magazine CTA, and social-links strip. Quick Start Pages section renamed from \u201cWhere do you want to start?\u201d. Footer replaced entirely with a single slim row: copyright left, <code>Protocol Institute | llms.txt | RSS feed</code> right. All changes live in <code>base.tsx</code>, <code>home.tsx</code>, <code>static-pages.tsx</code>, and <code>index.tsx</code>."
+          "html": "Replaced the About nav link with YouTube (external, opens new tab). About page collapsed to a single paragraph with two inline links (Protocol Institute homepage + About page). Homepage lost three sections: Featured Resources (redundant with carousel), Protocolized Magazine CTA, and social-links strip. Quick Start Pages section renamed from “Where do you want to start?”. Footer replaced entirely with a single slim row: copyright left, <code>Protocol Institute | llms.txt | RSS feed</code> right. All changes live in <code>base.tsx</code>, <code>home.tsx</code>, <code>static-pages.tsx</code>, and <code>index.tsx</code>."
         },
         {
           "title": "Resource metadata audit (26 files fixed):",
-          "html": "Full pass through all 288 resource Markdown files. Found three classes of error: (1) 22 files with cover-page copyright boilerplate as description (\u201cPrinted in the United States of America\u2026\u201d) \u2014 replaced with substantive per-paper descriptions. (2) 4 case files (Fire Protocols, E2EE/ActivityPub, Plurality in Practice, Shoreline Adaptations) with garbled no-space PDF extraction artefacts \u2014 descriptions reconstructed from the embedded CONCEPT/TARGET text. (3) Two resources with wrong titles/authors: Steiert (\u201cSummer of Protocols Research: Steiert\u201d \u2192 \u201cProtocols in (Emergency) Time\u201d, author Olivia Steiert), Lang (\u201cSummer of Protocols Research: Lang\u201d \u2192 \u201cStandards Make the World\u201d), and \u201cThe Unreasonable Sufficiency of Protocols\u201d (author corrected to Rao, Beiko, Stark, Van Epps, Aue, Ryan). Duplicate <code>steiert-1</code> entry deleted from Markdown and D1. All fixes applied to D1 via batch SQL. Script <code>scripts/fix-resource-descriptions.py</code> handles the Markdown side."
+          "html": "Full pass through all 288 resource Markdown files. Found three classes of error: (1) 22 files with cover-page copyright boilerplate as description (“Printed in the United States of America…”) — replaced with substantive per-paper descriptions. (2) 4 case files (Fire Protocols, E2EE/ActivityPub, Plurality in Practice, Shoreline Adaptations) with garbled no-space PDF extraction artefacts — descriptions reconstructed from the embedded CONCEPT/TARGET text. (3) Two resources with wrong titles/authors: Steiert (“Summer of Protocols Research: Steiert” → “Protocols in (Emergency) Time”, author Olivia Steiert), Lang (“Summer of Protocols Research: Lang” → “Standards Make the World”), and “The Unreasonable Sufficiency of Protocols” (author corrected to Rao, Beiko, Stark, Van Epps, Aue, Ryan). Duplicate <code>steiert-1</code> entry deleted from Markdown and D1. All fixes applied to D1 via batch SQL. Script <code>scripts/fix-resource-descriptions.py</code> handles the Markdown side."
         },
         {
           "title": "Book-card banner generation pipeline:",
-          "html": "New script <code>scripts/generate-banners.py</code> creates 1200\u00d7600 JPEG composites for PDF resources. Layout: teal left panel (390px, #0F6E56) with the existing <code>covers/{slug}.jpg</code> thumbnail centred on it + Gaussian drop shadow; off-white right panel with resource type badge (Calibri 13pt), title (Georgia 40\u201328pt auto-sized, word-wrapped), and italic authors (Georgia 18pt) vertically centred as a block. Year and Protocolized wordmark pinned to bottom. Generated 71 banners, uploaded to R2 <code>banners/{slug}.jpg</code>, D1 <code>thumbnail</code> updated. Resource detail page (<code>resource.tsx</code>) now renders the banner at aspect-[2/1] above the Download CTA. The same thumbnail flows into the carousel for archive spotlight items. Books and magazine posts do not yet have banners \u2014 tracked as next-session work."
+          "html": "New script <code>scripts/generate-banners.py</code> creates 1200×600 JPEG composites for PDF resources. Layout: teal left panel (390px, #0F6E56) with the existing <code>covers/{slug}.jpg</code> thumbnail centred on it + Gaussian drop shadow; off-white right panel with resource type badge (Calibri 13pt), title (Georgia 40–28pt auto-sized, word-wrapped), and italic authors (Georgia 18pt) vertically centred as a block. Year and Protocolized wordmark pinned to bottom. Generated 71 banners, uploaded to R2 <code>banners/{slug}.jpg</code>, D1 <code>thumbnail</code> updated. Resource detail page (<code>resource.tsx</code>) now renders the banner at aspect-[2/1] above the Download CTA. The same thumbnail flows into the carousel for archive spotlight items. Books and magazine posts do not yet have banners — tracked as next-session work."
         }
       ]
     },
@@ -625,27 +625,27 @@
         },
         {
           "title": "PDF resource enrichment (70 PDFs):",
-          "html": "Built <code>scripts/sync-pdf-resources.py</code>. Surgical update (not full rewrite): replaces description with c3po Haiku summary, merges c3po categories into existing domain-specific tags (preserving <code>blockchain</code>, <code>climate</code>, etc. that aren't in c3po's vocab). Many descriptions were OCR garbage or single-line boilerplate \u2014 now properly authored. 2 unmatched PDFs flagged: 57-KIM (ProtocolKit compiled collection) and durable-ai-adoption (added separately as living-document resource)."
+          "html": "Built <code>scripts/sync-pdf-resources.py</code>. Surgical update (not full rewrite): replaces description with c3po Haiku summary, merges c3po categories into existing domain-specific tags (preserving <code>blockchain</code>, <code>climate</code>, etc. that aren't in c3po's vocab). Many descriptions were OCR garbage or single-line boilerplate — now properly authored. 2 unmatched PDFs flagged: 57-KIM (ProtocolKit compiled collection) and durable-ai-adoption (added separately as living-document resource)."
         },
         {
           "title": "Substack full sync (135 posts, all types):",
-          "html": "Built <code>scripts/sync-substack-resources.py</code>. Policy: the resource library is the full PI content catalogue \u2014 Articles, Fictions, Obliquities, and editorial all belong. Joined c3po <code>enriched_meta.json</code> + <code>api_metadata.json</code> (date, section, bylines) to update 114 existing resource files: real author names replacing the old 'Protocolized' placeholder from the RSS sync script, type corrected to <code>fiction</code> for Fictions-section posts, c3po summaries as descriptions, merged tags. Created 15 new stubs: 4 real missing posts (backfilled to D1 in Session 12 but never Markdown-created), 10 older export slugs (date <code>1970-01-01</code> sentinel for cleanup), 1 from D1 fallback (centaur-fiction-with-stanley-chan, not yet enriched in c3po). D1 synced to 310 resources."
+          "html": "Built <code>scripts/sync-substack-resources.py</code>. Policy: the resource library is the full PI content catalogue — Articles, Fictions, Obliquities, and editorial all belong. Joined c3po <code>enriched_meta.json</code> + <code>api_metadata.json</code> (date, section, bylines) to update 114 existing resource files: real author names replacing the old 'Protocolized' placeholder from the RSS sync script, type corrected to <code>fiction</code> for Fictions-section posts, c3po summaries as descriptions, merged tags. Created 15 new stubs: 4 real missing posts (backfilled to D1 in Session 12 but never Markdown-created), 10 older export slugs (date <code>1970-01-01</code> sentinel for cleanup), 1 from D1 fallback (centaur-fiction-with-stanley-chan, not yet enriched in c3po). D1 synced to 310 resources."
         },
         {
           "title": "Book banners + carousel post overlay:",
-          "html": "Built <code>scripts/generate-book-banners.py</code> \u2014 same 1200\u00d7600 teal two-panel composite as PDF resource banners but using <code>cover_image</code> URL rather than PDF render. Added <code>banner</code> column to D1 books table; generated 4 book banners (Protocol Reader, Terminological Twists, The Librarians, Ghosts in Machines). Carousel updated to use <code>b.banner ?? b.cover_image</code>. Magazine posts in carousel now show bottom gradient overlay + author name + section label in CSS \u2014 no R2 work, applies to all future posts automatically."
+          "html": "Built <code>scripts/generate-book-banners.py</code> — same 1200×600 teal two-panel composite as PDF resource banners but using <code>cover_image</code> URL rather than PDF render. Added <code>banner</code> column to D1 books table; generated 4 book banners (Protocol Reader, Terminological Twists, The Librarians, Ghosts in Machines). Carousel updated to use <code>b.banner ?? b.cover_image</code>. Magazine posts in carousel now show bottom gradient overlay + author name + section label in CSS — no R2 work, applies to all future posts automatically."
         },
         {
           "title": "ProtocolKit book entry:",
-          "html": "Added ProtocolKit as a book (nonfiction, sort_order=0, alongside Protocol Reader). Binder image fetched from summerofprotocols.com/kit, converted PNG\u2192JPG, uploaded to R2 <code>covers/protocol-kit.jpg</code>. Banner generated. D1 body field contains the limited edition note + link to Protocol Reader. <code>url</code> set to the Google Form request link (not the SoP page, which will redirect back here). Added <code>cta_label</code> column to D1 books \u2014 ProtocolKit shows 'Request the Kit \u2192'; all other books fall back to 'Get the book \u2192'. This pattern generalises to future books needing custom CTAs."
+          "html": "Added ProtocolKit as a book (nonfiction, sort_order=0, alongside Protocol Reader). Binder image fetched from summerofprotocols.com/kit, converted PNG→JPG, uploaded to R2 <code>covers/protocol-kit.jpg</code>. Banner generated. D1 body field contains the limited edition note + link to Protocol Reader. <code>url</code> set to the Google Form request link (not the SoP page, which will redirect back here). Added <code>cta_label</code> column to D1 books — ProtocolKit shows 'Request the Kit →'; all other books fall back to 'Get the book →'. This pattern generalises to future books needing custom CTAs."
         },
         {
           "title": "living-document resource type:",
-          "html": "Added <code>living-document</code> to the type enum (config.ts), badge system (teal-green #E8F5F0/#1A5C42, static-pages.tsx + resources.tsx), and banner label map. Captures versioned resources that exist as maintained live documents with optional PDF archival snapshots \u2014 distinct from static papers. First use: <em>Durable AI Adoption</em> (SIGP4B guide, v0.5 May 2026), served live at <code>ai.protocolized.dev</code> with R2 PDF as archival snapshot."
+          "html": "Added <code>living-document</code> to the type enum (config.ts), badge system (teal-green #E8F5F0/#1A5C42, static-pages.tsx + resources.tsx), and banner label map. Captures versioned resources that exist as maintained live documents with optional PDF archival snapshots — distinct from static papers. First use: <em>Durable AI Adoption</em> (SIGP4B guide, v0.5 May 2026), served live at <code>ai.protocolized.dev</code> with R2 PDF as archival snapshot."
         },
         {
           "title": "6 missing YouTube videos documented:",
-          "html": "Cross-referenced the 94 YouTube video resources in the library against c3po's enriched_meta (91 videos). Found 6 in the library with no c3po entry \u2014 all pre-programme or ungrouped channel videos (Atoms/Institutions/Blockchains, Punk/Folk/Myth, Lightning Network, SCP Narrative Protocol, Office Hours 0, Town Hall 2023). Documented with ingest instructions at <code>c3po/sources/youtube/missing-videos.md</code>."
+          "html": "Cross-referenced the 94 YouTube video resources in the library against c3po's enriched_meta (91 videos). Found 6 in the library with no c3po entry — all pre-programme or ungrouped channel videos (Atoms/Institutions/Blockchains, Punk/Folk/Myth, Lightning Network, SCP Narrative Protocol, Office Hours 0, Town Hall 2023). Documented with ingest instructions at <code>c3po/sources/youtube/missing-videos.md</code>."
         }
       ]
     },
@@ -666,20 +666,49 @@
       "deployed": true,
       "items": [
         {
-          "title": "Type system cleanup \u2014 handout + special-feature:",
-          "html": "<p>Removed <code>working-paper</code> from the resource type enum entirely (all 3 items reclassified). Added two new types: <code>handout</code> (amber badge, #FEF3E2/#7A4A00) for short reference documents not deserving full paper status; <code>special-feature</code> (teal filled badge, #0F6E56/white) for long-form hosted content published on this site rather than Substack. Reclassifications: Lang \"Standards Make the World\" + Steiert \"Protocols in Emergency Time\" \u2192 paper; Schroff 2-pager + Kafka Index (Nadia) + Protocol Watching Handout \u2192 handout. Fixed missing <code>living-document</code> badge in Astro fallback (BadgeType.astro). All badge configs updated in both Worker (static-pages.tsx, resources.tsx, resource.tsx) and Astro (BadgeType.astro, Resource.astro, index.astro). D1 updated via direct SQL for reclassified items.</p>"
+          "title": "Type system cleanup — handout + special-feature:",
+          "html": "<p>Removed <code>working-paper</code> from the resource type enum entirely (all 3 items reclassified). Added two new types: <code>handout</code> (amber badge, #FEF3E2/#7A4A00) for short reference documents not deserving full paper status; <code>special-feature</code> (teal filled badge, #0F6E56/white) for long-form hosted content published on this site rather than Substack. Reclassifications: Lang \"Standards Make the World\" + Steiert \"Protocols in Emergency Time\" → paper; Schroff 2-pager + Kafka Index (Nadia) + Protocol Watching Handout → handout. Fixed missing <code>living-document</code> badge in Astro fallback (BadgeType.astro). All badge configs updated in both Worker (static-pages.tsx, resources.tsx, resource.tsx) and Astro (BadgeType.astro, Resource.astro, index.astro). D1 updated via direct SQL for reclassified items.</p>"
         },
         {
-          "title": "New Nature special feature \u2014 /features/new-nature:",
-          "html": "<p>First entry in a new content category: special features are long-form essays hosted directly on protocolized.io, not mirrored from Substack. Built <code>worker/src/html/feature-new-nature.tsx</code> \u2014 a self-contained Worker page with the site shell, a teal feature header with inline \"Special Feature\" badge, Lora body text, a teal-styled formula box, Evil Twins comparison table, slide image carousel (22 slides, vanilla JS), lazy-loaded images, and a Related Resources footer linking to the PDF, YouTube, and a related article. All assets uploaded to R2 under <code>features/new-nature/</code> (7 whiteboard/photo images + 22 slide PNGs + slides.pdf at <code>features/new-nature-slides.pdf</code>). Route added at <code>/features/new-nature</code> in index.tsx. Two resource entries: <code>new-nature-essay</code> (type: special-feature, featured: true) linking to the page; <code>new-nature-slides</code> (type: handout) linking to the PDF. Slides PDF + essay pointer dropped in c3po <code>data/pdfs/</code> for future embedding ingestion. D1 now has 313 resources.</p>"
+          "title": "New Nature special feature — /features/new-nature:",
+          "html": "<p>First entry in a new content category: special features are long-form essays hosted directly on protocolized.io, not mirrored from Substack. Built <code>worker/src/html/feature-new-nature.tsx</code> — a self-contained Worker page with the site shell, a teal feature header with inline \"Special Feature\" badge, Lora body text, a teal-styled formula box, Evil Twins comparison table, slide image carousel (22 slides, vanilla JS), lazy-loaded images, and a Related Resources footer linking to the PDF, YouTube, and a related article. All assets uploaded to R2 under <code>features/new-nature/</code> (7 whiteboard/photo images + 22 slide PNGs + slides.pdf at <code>features/new-nature-slides.pdf</code>). Route added at <code>/features/new-nature</code> in index.tsx. Two resource entries: <code>new-nature-essay</code> (type: special-feature, featured: true) linking to the page; <code>new-nature-slides</code> (type: handout) linking to the PDF. Slides PDF + essay pointer dropped in c3po <code>data/pdfs/</code> for future embedding ingestion. D1 now has 313 resources.</p>"
         },
         {
-          "title": "Social card \u2014 Base component og:image + twitter:image:",
-          "html": "<p>Base component previously hardcoded <code>twitter:card=summary</code> and emitted no <code>twitter:image</code>. Now conditionally switches to <code>summary_large_image</code> and emits <code>twitter:image</code> when <code>ogImage</code> is set \u2014 applies sitewide to any page that passes an image. Feature page uses <code>slide-14.png</code> (\"So... What is New Nature?\" concept map) as its OG/Twitter card image.</p>"
+          "title": "Social card — Base component og:image + twitter:image:",
+          "html": "<p>Base component previously hardcoded <code>twitter:card=summary</code> and emitted no <code>twitter:image</code>. Now conditionally switches to <code>summary_large_image</code> and emits <code>twitter:image</code> when <code>ogImage</code> is set — applies sitewide to any page that passes an image. Feature page uses <code>slide-14.png</code> (\"So... What is New Nature?\" concept map) as its OG/Twitter card image.</p>"
         },
         {
-          "title": "SEO overhaul \u2014 8 fixes deployed:",
-          "html": "<p><strong>Critical fix:</strong> robots.txt pointed to <code>/sitemap-index.xml</code> (old Astro default, 404 on Worker) \u2014 corrected to <code>/sitemap.xml</code>. Google's crawler was likely failing to discover the sitemap entirely. <strong>Sitemap enriched:</strong> bare <code>&lt;loc&gt;</code> entries replaced with full entries including <code>&lt;lastmod&gt;</code> (actual resource/post dates from D1), <code>&lt;changefreq&gt;</code>, and <code>&lt;priority&gt;</code>. Homepage at 1.0, posts + special features at 0.8, resources at 0.6. <code>/features/new-nature</code> added to sitemap. <strong>Structured data:</strong> WebSite + SearchAction JSON-LD on homepage (enables Google sitelinks search box); BreadcrumbList JSON-LD on post pages alongside Article schema \u2014 series-aware (Home > Books > Series > Title vs. Home > Magazine > Title). <strong>Meta:</strong> added <code>og:site_name</code> sitewide; post meta descriptions guaranteed non-empty (fallback: \"Title \u2014 published on Protocolized\"). Base component type updated to accept <code>object | object[]</code> JSON-LD.</p>"
+          "title": "SEO overhaul — 8 fixes deployed:",
+          "html": "<p><strong>Critical fix:</strong> robots.txt pointed to <code>/sitemap-index.xml</code> (old Astro default, 404 on Worker) — corrected to <code>/sitemap.xml</code>. Google's crawler was likely failing to discover the sitemap entirely. <strong>Sitemap enriched:</strong> bare <code>&lt;loc&gt;</code> entries replaced with full entries including <code>&lt;lastmod&gt;</code> (actual resource/post dates from D1), <code>&lt;changefreq&gt;</code>, and <code>&lt;priority&gt;</code>. Homepage at 1.0, posts + special features at 0.8, resources at 0.6. <code>/features/new-nature</code> added to sitemap. <strong>Structured data:</strong> WebSite + SearchAction JSON-LD on homepage (enables Google sitelinks search box); BreadcrumbList JSON-LD on post pages alongside Article schema — series-aware (Home > Books > Series > Title vs. Home > Magazine > Title). <strong>Meta:</strong> added <code>og:site_name</code> sitewide; post meta descriptions guaranteed non-empty (fallback: \"Title — published on Protocolized\"). Base component type updated to accept <code>object | object[]</code> JSON-LD.</p>"
+        }
+      ]
+    },
+    {
+      "id": 21,
+      "sort_key": 21.0,
+      "label": "Session 21",
+      "title": "Series Nav Fix (Legends & Ledgers Ch. 3) + Reusable Series-TOC Script",
+      "date": "2026-07-18",
+      "time_pt": "",
+      "tracks": [
+        "content-sync",
+        "operations"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Housekeeping — committed pending New Nature edit:",
+          "html": "<p>A working-tree change to <code>worker/src/html/feature-new-nature.tsx</code> removing the \"Money Matters\" section (funding/budget paragraph, slide-27 and slide-28 figures, support-page link) had been sitting uncommitted since Session 20. Reviewed the diff, confirmed it was an intentional content edit rather than accidental loss, and committed it. No functional change to the Worker beyond the essay body content.</p>"
+        },
+        {
+          "title": "Legends & Ledgers series nav — root cause and fix:",
+          "html": "<p>Elizabeth Maher's third Legends &amp; Ledgers story, \"The Big Man,\" published on Substack 2026-06-12 and was already mirrored into the <code>posts</code> table and live at <code>/p/the-big-man</code> — but it never got series navigation. Root cause: the original series wiring (Session 14) tagged posts with <code>series_slug</code>/<code>series_position</code> via one-off <code>wrangler d1 execute</code> commands run directly against production, with no script or migration file to re-run for later chapters. Any story published after that initial pass would silently lack series nav unless someone remembered to hand-write another UPDATE. Confirmed via direct D1 query that only <code>all-you-can-do-here-is-leave</code> (position 1) and <code>troll</code> (position 2) carried the series tag; <code>the-big-man</code> had both fields <code>NULL</code>. Fixed by setting <code>series_slug='legends-and-ledgers'</code>, <code>series_position=3</code> on the post, and appending the corresponding entry to <code>books.legends-and-ledgers.toc</code> (the JSON array <code>getSeriesContext</code> reads for both <code>totalParts</code> and TOC-fallback prev/next links — see <code>worker/src/db.ts</code>). Verified live: the post now renders \"Part 3 of 3\" with working prev/next links in both directions.</p>"
+        },
+        {
+          "title": "New script — scripts/update-series-toc.py:",
+          "html": "<p>Since the series-wiring step has now bitten twice (undocumented at seed time, then silently skipped for a later chapter), wrote a script that makes it a repeatable, reviewable operation instead of hand-written SQL. Given <code>--book</code> and <code>--post</code> slugs, it reads the current <code>books.toc</code> and the post's row via <code>wrangler d1 execute --json</code>, infers title/author/position when not passed explicitly (author defaults to the last existing TOC entry's author; position defaults to <code>len(toc)+1</code>), and applies both the TOC append and the post's series fields in a single SQL file via wrangler. Refuses to run if the post already carries a <code>series_slug</code>, so it can't double-add a chapter. This is the pattern to reach for whenever a new chapter goes into any of the 4 Jamverse series (Trainverse, Legends &amp; Ledgers, Zoothesia, Stockton Chronicles) going forward — no more direct production UPDATEs for this.</p>"
         }
       ]
     }
