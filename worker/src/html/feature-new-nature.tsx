@@ -481,16 +481,6 @@ export function NewNatureFeaturePage({ currentPath }: { currentPath: string }) {
           <img src={`${R2}/slides/slide-26.png`} alt="Putting it all together — org diagram" loading="lazy" />
         </figure>
 
-        <hr />
-        <h2 id="money-matters">Money Matters</h2>
-        <figure>
-          <img src={`${R2}/slides/slide-27.png`} alt="Money Matters — What will this cost?" loading="lazy" />
-        </figure>
-        <p>The Protocol Institute has operated on roughly $3M over three years in the Summer of Protocols phase. As we incorporate as an independent Canadian nonprofit, our target for the next twelve months is $500K–$1.5M — covering everything from keeping the lights on to a full healthy operating budget. Funding comes from a mix of publishing and consulting revenue, funded research partnerships, and institutional and individual grants. If you&apos;d like to support the work, see our <a href="https://protocol-institute.org/support.html">support page</a>.</p>
-        <figure class="medium">
-          <img src={`${R2}/slides/slide-28.png`} alt="In closing — 3 calls to action" loading="lazy" />
-        </figure>
-
         {/* Related resources */}
         <div class="essay-related">
           <h2>Related Resources</h2>
