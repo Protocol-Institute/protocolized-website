@@ -1,11 +1,13 @@
 ---
 title: "Floyd Haggerty’s Wild West Extravaganza Spectacular!"
-type: article
+type: fiction
 authors:
-  - name: "Thing Party"
+  - name: "Elizabeth Maher"
 date: 2026-07-27
-description: "Or, Choreography and the Equine Genius, by Sundown, Principal Equine"
+description: "A horse named Sundown reflects on his nine seasons in Floyd Haggerty's traveling show, revealing that the visible theatrical performances mask an underlying system of control and movement—a labyrinth that is itself merely decoration for the true structure, the train. Through the horse's voice, the narrative explores how protocol and invisible design shape captivity more fundamentally than any visible rules or performances."
 tags:
+  - fiction
+  - protocol-watching
   - protocols
 audience:
   - researcher
