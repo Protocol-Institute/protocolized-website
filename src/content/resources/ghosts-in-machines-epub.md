@@ -1,6 +1,6 @@
 ---
 title: "Ghosts in Machines"
-type: paper
+type: fiction
 authors:
   - name: "Protocolized"
 date: 2025-01-01

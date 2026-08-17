@@ -1,6 +1,6 @@
 ---
 title: "Jamverse Live"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
 date: 2026-07-16

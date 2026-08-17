@@ -15,3 +15,9 @@ bucket_name = "protocolized-resources"
 
 [assets]
 directory = "./public"
+
+[vars]
+# Flip to "true" once the fiction publication (working name "Monstrous Times")
+# has a real destination and fiction_redirects is populated. See the fiction
+# split plan for the cutover runbook. Unset/false = today's behavior, unchanged.
+FICTION_SEGREGATION_ACTIVE = "false"

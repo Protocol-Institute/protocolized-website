@@ -1,5 +1,6 @@
 node_modules/
 dist/
+__pycache__/
 .astro/
 .DS_Store
 raw_resources/
@@ -8,8 +9,10 @@ raw_resources/
 .env.local
 .wrangler/
 worker/.wrangler/
+worker/.dev.vars
 data/substack/
 *.zip
+exports/
 
 # Drop zone for session assets (covers, files, etc.)
 inbox/

@@ -27,6 +27,19 @@ it should be added before the redirect goes live.
 
 Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md`.
 
+## Fiction/Nonfiction Split (in progress)
+
+This site + its original Substack are forking into two publications: a **nonfiction publication** (this site, keeps the domain/name/original Substack) and a **new fiction publication** (working name "Monstrous Times," own domain TBD — do not hardcode it anywhere). The existing Jamverse project (jamverse.protocolized.io, separate repo `Protocol-Institute/jamverse`) will become a subdomain of the new pub, not the pub itself.
+
+**Status (2026-08-17):** Phases 0–3 of the segregation plan are implemented — nothing is visibly different on the live site yet (fiction stays live until the new pub has a real destination). What's in place:
+- `worker/src/fiction.ts` / `scripts/fiction_classification.py` — single source of truth for "is this fiction" (`posts.section === 'Fictions'`, `resources.type === 'fiction'`, `books.category === 'fiction'`).
+- Every fiction-touching route/query in the Worker (`/`, `/magazine`, `/books`, `/resources`, `/sitemap.xml`, `/rss.xml`, `/llms.txt`, `/api/resources.json`, `/anthologies`, plus `/p/:slug`, `/resources/:slug`, `/books/:slug` direct access) is dark-shipped behind `FICTION_SEGREGATION_ACTIVE` in `worker/wrangler.toml` (currently `"false"`).
+- D1 table `fiction_redirects` (slug → destination URL, empty until cutover) is the redirect source of truth for `/p/:slug`, `/resources/:slug`, `/books/:slug` once the flag flips — deliberately decoupled from the content tables so redirects keep working after those rows are eventually deleted.
+- `scripts/sync-substack.py` and `scripts/sync-substack-resources.py` print a loud warning (not a hard fail) if they ever encounter a `Fictions`-section post — see "Things to watch out for" below.
+- `scripts/export-fiction-bundle.py` produces a portable handoff bundle (D1 rows + R2 assets) for the new fiction pub to bootstrap from.
+
+**Not yet done (Phase 4, future runbook):** flipping the flag, populating `fiction_redirects` with real destination URLs, deleting fiction rows from D1, and removing fiction Markdown from `src/content/resources/`. Do this only once Monstrous Times' domain (and Jamverse's subdomain destination) actually exist. Full runbook: see the fiction split plan referenced in devlog.
+
 ---
 
 ## Stack
@@ -292,3 +305,4 @@ Omitting `--remote` silently succeeds but writes to `.wrangler/state/v3/` instea
 - The `.claude/` directory is gitignored — it contains local Claude Code settings and should not be committed.
 - The `raw_resources/` directory is gitignored — it contains source data used during the initial import.
 - Resource slugs are derived from filenames. Renaming a resource file changes its URL.
+- **Post-fork, new fiction content should not be posted to the original Substack.** `sync-substack.py` and `sync-substack-resources.py` will print a loud `WARNING` if they encounter a `Fictions`-section post — investigate before merging that run's changes rather than assuming it's expected. See "Fiction/Nonfiction Split" above.

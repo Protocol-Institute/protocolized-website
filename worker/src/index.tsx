@@ -14,6 +14,7 @@ import {
   getSeriesContext,
   getRandomArchiveResources,
   getRandomBooks,
+  getFictionRedirect,
 } from "./db";
 import { getLatestYouTubeVideos } from "./youtube";
 import { HomePage } from "./html/home";
@@ -28,15 +29,24 @@ import { NewNatureFeaturePage } from "./html/feature-new-nature";
 interface Env {
   DB: D1Database;
   FILES: R2Bucket;
+  FICTION_SEGREGATION_ACTIVE?: string;
 }
 
 const app = new Hono<{ Bindings: Env }>();
 
+// Single check every fiction-touching route uses. See worker/src/fiction.ts
+// and the fiction split plan for the full rationale — flag is "false" in
+// production until the fiction publication has a real destination.
+function fictionExcluded(c: { env: Env }): boolean {
+  return c.env.FICTION_SEGREGATION_ACTIVE === "true";
+}
+
 app.get("/", async (c) => {
+  const exclude = fictionExcluded(c);
   const [posts, archiveResources, books, ytVideos] = await Promise.all([
-    getLatestPosts(c.env.DB, 3),
-    getRandomArchiveResources(c.env.DB, 2),
-    getRandomBooks(c.env.DB, 1),
+    getLatestPosts(c.env.DB, 3, exclude),
+    getRandomArchiveResources(c.env.DB, 2, exclude),
+    getRandomBooks(c.env.DB, 1, exclude),
     getLatestYouTubeVideos(2),
   ]);
   return c.html(
@@ -59,12 +69,19 @@ app.get("/community", (c) =>
 );
 
 app.get("/magazine", async (c) => {
-  const posts = await getLatestPosts(c.env.DB, 100);
+  const posts = await getLatestPosts(c.env.DB, 100, fictionExcluded(c));
   return c.html(<MagazinePage currentPath="/magazine" posts={posts} />);
 });
 
 app.get("/p/:slug", async (c) => {
   const slug = c.req.param("slug");
+  const exclude = fictionExcluded(c);
+
+  if (exclude) {
+    const redirect = await getFictionRedirect(c.env.DB, slug);
+    if (redirect) return c.redirect(redirect.redirect_url, 301);
+  }
+
   const post = await getPost(c.env.DB, slug);
   if (!post) {
     return c.redirect(
@@ -73,7 +90,7 @@ app.get("/p/:slug", async (c) => {
     );
   }
   const [{ prev, next }, bodyObj, seriesCtx] = await Promise.all([
-    getAdjacentPosts(c.env.DB, post),
+    getAdjacentPosts(c.env.DB, post, exclude),
     post.body_r2_key ? c.env.FILES.get(post.body_r2_key) : Promise.resolve(null),
     post.series_slug && post.series_position != null
       ? getSeriesContext(c.env.DB, post.series_slug, post.series_position)
@@ -97,18 +114,25 @@ app.get("/p/:slug/", (c) =>
 );
 
 app.get("/books", async (c) => {
-  const books = await getAllBooks(c.env.DB);
+  const books = await getAllBooks(c.env.DB, fictionExcluded(c));
   return c.html(<BooksPage currentPath="/books" books={books} />);
 });
 
 app.get("/books/:slug", async (c) => {
   const slug = c.req.param("slug");
+  const exclude = fictionExcluded(c);
+
+  if (exclude) {
+    const redirect = await getFictionRedirect(c.env.DB, slug);
+    if (redirect) return c.redirect(redirect.redirect_url, 301);
+  }
+
   const book = await getBook(c.env.DB, slug);
   if (!book) return c.html(notFound(), 404);
 
   const [related, bodyHtml] = await Promise.all([
     book.tags.length > 0
-      ? getRelatedResources(c.env.DB, slug, book.tags)
+      ? getRelatedResources(c.env.DB, slug, book.tags, exclude)
       : Promise.resolve([]),
     book.body
       ? Promise.resolve(marked.parse(book.body) as string)
@@ -133,14 +157,22 @@ app.get("/features/new-nature/", (c) =>
 );
 
 app.get("/anthologies", async (c) => {
-  const anthologies = await getAnthologies(c.env.DB);
+  const exclude = fictionExcluded(c);
+  if (exclude) {
+    // Entirely fiction-branded page (see static-pages.tsx) -- once fiction
+    // has moved out, there's no content left here. Redirect to a configured
+    // destination if one's been set for this page, else fall back to /resources.
+    const redirect = await getFictionRedirect(c.env.DB, "anthologies");
+    return c.redirect(redirect?.redirect_url ?? "/resources", 301);
+  }
+  const anthologies = await getAnthologies(c.env.DB, exclude);
   return c.html(
     <AnthologiesPage currentPath="/anthologies" anthologies={anthologies} />
   );
 });
 
 app.get("/resources", async (c) => {
-  const resources = await getAllResources(c.env.DB);
+  const resources = await getAllResources(c.env.DB, fictionExcluded(c));
   return c.html(
     <ResourcesPage currentPath="/resources" resources={resources} />
   );
@@ -155,6 +187,12 @@ app.get("/resources/protocol-lexicon/", (c) =>
 
 app.get("/resources/:slug", async (c) => {
   const slug = c.req.param("slug");
+  const exclude = fictionExcluded(c);
+
+  if (exclude) {
+    const redirect = await getFictionRedirect(c.env.DB, slug);
+    if (redirect) return c.redirect(redirect.redirect_url, 301);
+  }
 
   const resource = await getResource(c.env.DB, slug);
   if (!resource) {
@@ -162,7 +200,7 @@ app.get("/resources/:slug", async (c) => {
   }
 
   const [related, bodyHtml] = await Promise.all([
-    getRelatedResources(c.env.DB, slug, resource.tags),
+    getRelatedResources(c.env.DB, slug, resource.tags, exclude),
     resource.body
       ? Promise.resolve(marked.parse(resource.body) as string)
       : Promise.resolve(""),
@@ -181,7 +219,7 @@ app.get("/resources/:slug", async (c) => {
 app.get("/api/lexicon.json", (c) => c.redirect("/lexicon.json", 301));
 
 app.get("/api/resources.json", async (c) => {
-  const resources = await getAllResources(c.env.DB);
+  const resources = await getAllResources(c.env.DB, fictionExcluded(c));
   const data = resources.map((r) => ({
     slug: r.slug,
     title: r.title,
@@ -200,10 +238,15 @@ app.get("/api/resources.json", async (c) => {
 });
 
 app.get("/llms.txt", async (c) => {
-  const resources = await getAllResources(c.env.DB);
+  const exclude = fictionExcluded(c);
+  const resources = await getAllResources(c.env.DB, exclude);
   const lines = resources
     .map((r) => `- [${r.title}](/resources/${r.slug})`)
     .join("\n");
+
+  const aboutLine = exclude
+    ? "The magazine publishes articles and columns exploring protocols through critical thinking. The research library hosts papers, talks, templates, and more from the Summer of Protocols program."
+    : "The magazine publishes stories, articles, and columns exploring protocols through fiction and critical thinking. The research library hosts papers, talks, templates, and more from the Summer of Protocols program.";
 
   const content = `# Protocolized
 
@@ -213,7 +256,7 @@ app.get("/llms.txt", async (c) => {
 
 Protocolized is part of Protocol Institute, a parent organization dedicated to advancing the study and practice of protocols across fields.
 
-The magazine publishes stories, articles, and columns exploring protocols through fiction and critical thinking. The research library hosts papers, talks, templates, and more from the Summer of Protocols program.
+${aboutLine}
 
 ## Resources
 
@@ -243,7 +286,7 @@ ${lines}
 });
 
 app.get("/rss.xml", async (c) => {
-  const resources = await getAllResources(c.env.DB);
+  const resources = await getAllResources(c.env.DB, fictionExcluded(c));
   const items = resources
     .map((r) => {
       const pubDate = new Date(r.date + "T00:00:00Z").toUTCString();
@@ -282,10 +325,11 @@ app.get("/rss.xml", async (c) => {
 });
 
 app.get("/sitemap.xml", async (c) => {
+  const exclude = fictionExcluded(c);
   const [resources, books, posts] = await Promise.all([
-    getAllResources(c.env.DB),
-    getAllBooks(c.env.DB),
-    getLatestPosts(c.env.DB, 10000),
+    getAllResources(c.env.DB, exclude),
+    getAllBooks(c.env.DB, exclude),
+    getLatestPosts(c.env.DB, 10000, exclude),
   ]);
 
   const today = new Date().toISOString().slice(0, 10);
@@ -310,7 +354,9 @@ app.get("/sitemap.xml", async (c) => {
     url("/features/new-nature",     { lastmod: "2026-06-17", changefreq: "monthly", priority: "0.8" }),
     url("/about",                   { changefreq: "monthly", priority: "0.5" }),
     url("/community",               { changefreq: "monthly", priority: "0.5" }),
-    url("/anthologies",             { changefreq: "monthly", priority: "0.6" }),
+    // /anthologies is entirely fiction-branded -- once fiction is excluded it
+    // just redirects, so drop it from the sitemap too.
+    ...(exclude ? [] : [url("/anthologies", { changefreq: "monthly", priority: "0.6" })]),
   ];
 
   const postUrls = posts.map((p) =>

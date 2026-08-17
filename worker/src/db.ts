@@ -1,3 +1,9 @@
+import {
+  FICTION_POST_SECTIONS,
+  FICTION_RESOURCE_TYPE,
+  FICTION_BOOK_CATEGORY,
+} from "./fiction";
+
 export interface Author {
   name: string;
   url?: string;
@@ -53,10 +59,17 @@ function parseRow(row: ResourceRow): Resource {
   };
 }
 
-export async function getAllResources(db: D1Database): Promise<Resource[]> {
-  const result = await db
-    .prepare("SELECT * FROM resources ORDER BY date DESC")
-    .all<ResourceRow>();
+export async function getAllResources(
+  db: D1Database,
+  excludeFiction = false
+): Promise<Resource[]> {
+  const sql = excludeFiction
+    ? "SELECT * FROM resources WHERE type != ? ORDER BY date DESC"
+    : "SELECT * FROM resources ORDER BY date DESC";
+  const stmt = excludeFiction
+    ? db.prepare(sql).bind(FICTION_RESOURCE_TYPE)
+    : db.prepare(sql);
+  const result = await stmt.all<ResourceRow>();
   return result.results.map(parseRow);
 }
 
@@ -84,14 +97,16 @@ export async function getFeaturedResources(
 
 export async function getRandomArchiveResources(
   db: D1Database,
-  limit = 2
+  limit = 2,
+  excludeFiction = false
 ): Promise<Resource[]> {
-  const result = await db
-    .prepare(
-      "SELECT * FROM resources WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL ORDER BY RANDOM() LIMIT ?"
-    )
-    .bind(limit)
-    .all<ResourceRow>();
+  const sql = excludeFiction
+    ? "SELECT * FROM resources WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL AND type != ? ORDER BY RANDOM() LIMIT ?"
+    : "SELECT * FROM resources WHERE file LIKE '%.pdf' AND thumbnail IS NOT NULL ORDER BY RANDOM() LIMIT ?";
+  const stmt = excludeFiction
+    ? db.prepare(sql).bind(FICTION_RESOURCE_TYPE, limit)
+    : db.prepare(sql).bind(limit);
+  const result = await stmt.all<ResourceRow>();
   return result.results.map(parseRow);
 }
 
@@ -111,14 +126,18 @@ export async function getLatestArticles(
 export async function getRelatedResources(
   db: D1Database,
   slug: string,
-  tags: string[]
+  tags: string[],
+  excludeFiction = false
 ): Promise<Resource[]> {
   if (tags.length === 0) return [];
   const result = await db
     .prepare("SELECT * FROM resources WHERE slug != ? ORDER BY date DESC")
     .bind(slug)
     .all<ResourceRow>();
-  const parsed = result.results.map(parseRow);
+  let parsed = result.results.map(parseRow);
+  if (excludeFiction) {
+    parsed = parsed.filter((r) => r.type !== FICTION_RESOURCE_TYPE);
+  }
   return parsed
     .filter((r) => r.tags.some((t) => tags.includes(t)))
     .sort((a, b) => {
@@ -129,11 +148,37 @@ export async function getRelatedResources(
     .slice(0, 3);
 }
 
-export async function getAnthologies(db: D1Database): Promise<Resource[]> {
+// The anthologies page is entirely fiction-branded (see static-pages.tsx) --
+// when fiction is excluded there's nothing left to show, so this just
+// returns []. The route itself redirects the whole page once the flag flips.
+export async function getAnthologies(
+  db: D1Database,
+  excludeFiction = false
+): Promise<Resource[]> {
+  if (excludeFiction) return [];
   const result = await db
     .prepare("SELECT * FROM resources WHERE tags LIKE '%anthology%' ORDER BY date DESC")
     .all<ResourceRow>();
   return result.results.map(parseRow).filter((r) => r.tags.includes("anthology"));
+}
+
+// ── Fiction redirects ────────────────────────────────────────────────────
+
+export interface FictionRedirect {
+  slug: string;
+  kind: "post" | "resource" | "book";
+  redirect_url: string;
+}
+
+export async function getFictionRedirect(
+  db: D1Database,
+  slug: string
+): Promise<FictionRedirect | null> {
+  const row = await db
+    .prepare("SELECT * FROM fiction_redirects WHERE slug = ?")
+    .bind(slug)
+    .first<FictionRedirect>();
+  return row ?? null;
 }
 
 // ── Books ─────────────────────────────────────────────────────────────────
@@ -214,20 +259,32 @@ function parseBookRow(row: BookRow): Book {
   };
 }
 
-export async function getRandomBooks(db: D1Database, limit = 1): Promise<Book[]> {
-  const result = await db
-    .prepare(
-      "SELECT * FROM books WHERE published = 1 AND cover_image IS NOT NULL ORDER BY RANDOM() LIMIT ?"
-    )
-    .bind(limit)
-    .all<BookRow>();
+export async function getRandomBooks(
+  db: D1Database,
+  limit = 1,
+  excludeFiction = false
+): Promise<Book[]> {
+  const sql = excludeFiction
+    ? "SELECT * FROM books WHERE published = 1 AND cover_image IS NOT NULL AND category != ? ORDER BY RANDOM() LIMIT ?"
+    : "SELECT * FROM books WHERE published = 1 AND cover_image IS NOT NULL ORDER BY RANDOM() LIMIT ?";
+  const stmt = excludeFiction
+    ? db.prepare(sql).bind(FICTION_BOOK_CATEGORY, limit)
+    : db.prepare(sql).bind(limit);
+  const result = await stmt.all<BookRow>();
   return result.results.map(parseBookRow);
 }
 
-export async function getAllBooks(db: D1Database): Promise<Book[]> {
-  const result = await db
-    .prepare("SELECT * FROM books WHERE published = 1 ORDER BY sort_order ASC, date DESC")
-    .all<BookRow>();
+export async function getAllBooks(
+  db: D1Database,
+  excludeFiction = false
+): Promise<Book[]> {
+  const sql = excludeFiction
+    ? "SELECT * FROM books WHERE published = 1 AND category != ? ORDER BY sort_order ASC, date DESC"
+    : "SELECT * FROM books WHERE published = 1 ORDER BY sort_order ASC, date DESC";
+  const stmt = excludeFiction
+    ? db.prepare(sql).bind(FICTION_BOOK_CATEGORY)
+    : db.prepare(sql);
+  const result = await stmt.all<BookRow>();
   return result.results.map(parseBookRow);
 }
 
@@ -323,37 +380,46 @@ export async function getPost(db: D1Database, slug: string): Promise<Post | null
   return row ? parsePostRow(row) : null;
 }
 
-export async function getLatestPosts(db: D1Database, limit = 50): Promise<Post[]> {
-  const result = await db
-    .prepare(
-      "SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts WHERE is_placeholder IS NULL OR is_placeholder = 0 ORDER BY date DESC LIMIT ?"
-    )
-    .bind(limit)
-    .all<PostRow>();
+export async function getLatestPosts(
+  db: D1Database,
+  limit = 50,
+  excludeFiction = false
+): Promise<Post[]> {
+  const fictionClause = excludeFiction
+    ? ` AND section NOT IN (${Array.from(FICTION_POST_SECTIONS).map(() => "?").join(",")})`
+    : "";
+  const sql = `SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts WHERE (is_placeholder IS NULL OR is_placeholder = 0)${fictionClause} ORDER BY date DESC LIMIT ?`;
+  const stmt = excludeFiction
+    ? db.prepare(sql).bind(...Array.from(FICTION_POST_SECTIONS), limit)
+    : db.prepare(sql).bind(limit);
+  const result = await stmt.all<PostRow>();
   return result.results.map(parsePostRow);
 }
 
 export async function getAdjacentPosts(
   db: D1Database,
-  post: Post
+  post: Post,
+  excludeFiction = false
 ): Promise<{ prev: Post | null; next: Post | null }> {
   const [prevRow, nextRow] = await Promise.all([
     post.previous_slug
       ? db
-          .prepare("SELECT slug, title, date FROM posts WHERE slug = ?")
+          .prepare("SELECT slug, title, date, section FROM posts WHERE slug = ?")
           .bind(post.previous_slug)
           .first<PostRow>()
       : null,
     post.next_slug
       ? db
-          .prepare("SELECT slug, title, date FROM posts WHERE slug = ?")
+          .prepare("SELECT slug, title, date, section FROM posts WHERE slug = ?")
           .bind(post.next_slug)
           .first<PostRow>()
       : null,
   ]);
+  const prev = prevRow ? parsePostRow(prevRow) : null;
+  const next = nextRow ? parsePostRow(nextRow) : null;
   return {
-    prev: prevRow ? parsePostRow(prevRow) : null,
-    next: nextRow ? parsePostRow(nextRow) : null,
+    prev: excludeFiction && prev && FICTION_POST_SECTIONS.has(prev.section) ? null : prev,
+    next: excludeFiction && next && FICTION_POST_SECTIONS.has(next.section) ? null : next,
   };
 }
 

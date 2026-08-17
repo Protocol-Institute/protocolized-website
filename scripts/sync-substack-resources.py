@@ -30,6 +30,9 @@ import subprocess
 import sys
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).parent))
+from fiction_classification import is_fiction_post_section
+
 REPO_ROOT = Path(__file__).parent.parent
 C3PO_ROOT = Path(os.environ.get("C3PO_ROOT", str(REPO_ROOT.parent / "c3po")))
 ENRICHED_META  = C3PO_ROOT / "sources" / "substack" / "enriched_meta.json"
@@ -77,7 +80,17 @@ def slugify(s: str) -> str:
     return re.sub(r"-+", "-", s).strip("-")[:80]
 
 
+_warned_fiction_sections: set[str] = set()
+
+
 def map_type(section: str) -> str:
+    if is_fiction_post_section(section) and section not in _warned_fiction_sections:
+        _warned_fiction_sections.add(section)
+        print(
+            f"  !!! WARNING: syncing a resource in section '{section}' (fiction). "
+            f"This site is nonfiction-only post-fork -- investigate before merging "
+            f"this run's changes."
+        )
     return SECTION_TYPE.get(section, "article")
 
 

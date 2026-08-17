@@ -22,12 +22,16 @@ import mimetypes
 import os
 import re
 import subprocess
+import sys
 import tempfile
 import time
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).parent))
+from fiction_classification import is_fiction_post_section
 
 SUBSTACK_FEED_URL = "https://protocolized.summerofprotocols.com/feed"
 SUBSTACK_BASE     = "https://protocolized.summerofprotocols.com"
@@ -191,6 +195,15 @@ def sync_post_to_d1(slug):
         body_r2_key = f"posts/{slug}/body.html"
         _r2_put(body_html.encode("utf-8"), body_r2_key, "text/html; charset=utf-8")
 
+    section_name = data.get("section_name") or "Protocolized"
+    if is_fiction_post_section(section_name):
+        print(
+            f"  [d1] !!! WARNING: '{slug}' is in Substack section '{section_name}' "
+            f"(fiction). This site is nonfiction-only post-fork -- new fiction "
+            f"content should not be posted to the original Substack. Syncing "
+            f"anyway; investigate before merging this run's commit."
+        )
+
     bylines = data.get("publishedBylines") or []
     authors = [b.get("name", "Protocolized") for b in bylines]
     primary = authors[0] if authors else "Protocolized"
@@ -208,7 +221,7 @@ def sync_post_to_d1(slug):
 ) VALUES (
   {_sq(slug)}, {_sq(data['title'])}, {_sq(data.get('subtitle'))},
   {_sq((data.get('post_date') or '')[:10])},
-  {_sq(data.get('section_name') or 'Protocolized')},
+  {_sq(section_name)},
   {_sq(primary)}, {_sq(json.dumps(authors))},
   {_sq(cover_r2)}, {_sq(cover_original)}, {_sq(body_r2_key)},
   {_sq(data.get('description'))},

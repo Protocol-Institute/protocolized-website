@@ -1,6 +1,6 @@
 ---
 title: "Ghosts in Machines"
-type: article
+type: fiction
 authors:
   - name: "Protocolized"
 date: 2025-06-25

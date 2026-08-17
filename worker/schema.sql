@@ -71,3 +71,13 @@ CREATE TABLE IF NOT EXISTS books (
   cta_label    TEXT
 );
 CREATE INDEX IF NOT EXISTS idx_books_sort ON books(sort_order ASC, date DESC);
+
+-- Fiction/nonfiction split: redirect map for fiction content once it moves to
+-- its own publication. Deliberately decoupled from posts/resources/books so
+-- redirects keep working after those rows are deleted. Populated at cutover
+-- time (see fiction split plan) -- empty until then.
+CREATE TABLE IF NOT EXISTS fiction_redirects (
+  slug         TEXT PRIMARY KEY,
+  kind         TEXT NOT NULL,   -- 'post' | 'resource' | 'book'
+  redirect_url TEXT NOT NULL    -- full destination URL, set at cutover time
+);
