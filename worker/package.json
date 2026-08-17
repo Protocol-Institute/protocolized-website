@@ -9,7 +9,7 @@
     "watch:css": "npx tailwindcss -i src/styles/input.css -o public/style.css --watch"
   },
   "dependencies": {
-    "hono": "^4.7.0",
+    "hono": "^4.12.33",
     "marked": "^15.0.0"
   },
   "devDependencies": {
