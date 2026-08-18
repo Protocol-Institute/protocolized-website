@@ -1,6 +1,6 @@
 ---
 title: "Jamverse Jam"
-type: fiction
+type: article
 authors:
   - name: "Sachin Benny"
   - name: "Spencer Nitkey"

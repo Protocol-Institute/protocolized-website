@@ -1,6 +1,6 @@
 ---
 title: "Jamverse Jam Contest Closes Today"
-type: fiction
+type: article
 authors:
   - name: "Venkatesh Rao"
 date: 2026-07-31
