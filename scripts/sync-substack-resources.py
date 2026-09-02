@@ -31,7 +31,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fiction_classification import is_fiction_post_section
+from fiction_classification import is_fiction_post_section, resolve_section
 
 REPO_ROOT = Path(__file__).parent.parent
 C3PO_ROOT = Path(os.environ.get("C3PO_ROOT", str(REPO_ROOT.parent / "c3po")))
@@ -157,7 +157,8 @@ def update_tags_block(text: str, extra_tags: list[str]) -> str:
 # ── Full Markdown generation (new files) ──────────────────────────────────────
 
 def make_markdown(slug: str, enriched: dict, api: dict) -> str:
-    section = api.get("section_name", "")
+    section = resolve_section(slug, api.get("section_id"), api.get("section_name"),
+                              apply_overrides=False)
     title   = api.get("title") or slug
     date    = (api.get("post_date") or "")[:10] or SENTINEL_DATE
     subtitle = api.get("subtitle") or ""
@@ -207,7 +208,8 @@ def update_existing(path: Path, slug: str, enriched: dict, api: dict) -> tuple[s
     if summary:
         text = update_field(text, "description", yaml_str(summary))
 
-    section = api.get("section_name", "")
+    section = resolve_section(slug, api.get("section_id"), api.get("section_name"),
+                              apply_overrides=False)
     new_type = map_type(section)
     text = update_field(text, "type", new_type)
 
@@ -257,7 +259,7 @@ def make_markdown_from_d1(row: dict) -> str:
     slug    = row["slug"]
     title   = row.get("title", slug)
     date    = row.get("date", SENTINEL_DATE) or SENTINEL_DATE
-    section = row.get("section", "Protocolized")
+    section = resolve_section(slug, None, row.get("section"), apply_overrides=False)
     author  = row.get("primary_author", "Protocolized")
     summary = row.get("summary") or ""
     resource_type = map_type(section)
@@ -334,7 +336,8 @@ def main():
             if updated_text == original:
                 unchanged += 1
                 continue
-            section = api.get("section_name", "?")
+            section = resolve_section(slug, api.get("section_id"),
+                                      api.get("section_name"), apply_overrides=False)
             print(f"  [UPDATE] {slug[:60]:<60} [{section}]")
             if not args.dry_run:
                 path.write_text(updated_text, encoding="utf-8")
@@ -344,7 +347,8 @@ def main():
             # CREATE new file
             md = make_markdown(slug, enriched, api)
             path = RESOURCES_DIR / f"{slug}.md"
-            section = api.get("section_name", "unknown")
+            section = resolve_section(slug, api.get("section_id"),
+                                      api.get("section_name"), apply_overrides=False)
             date = (api.get("post_date") or "")[:10] or SENTINEL_DATE
             print(f"  [CREATE] {slug[:60]:<60} [{section}] {date}")
             if not args.dry_run:

@@ -31,7 +31,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
-from fiction_classification import is_fiction_post_section
+from fiction_classification import is_fiction_post_section, resolve_section
 
 SUBSTACK_FEED_URL = "https://protocolized.summerofprotocols.com/feed"
 SUBSTACK_BASE     = "https://protocolized.summerofprotocols.com"
@@ -195,7 +195,10 @@ def sync_post_to_d1(slug):
         body_r2_key = f"posts/{slug}/body.html"
         _r2_put(body_html.encode("utf-8"), body_r2_key, "text/html; charset=utf-8")
 
-    section_name = data.get("section_name") or "Protocolized"
+    # NB: the per-post endpoint returns section_id but not section_name.
+    section_name = resolve_section(
+        slug, data.get("section_id"), data.get("section_name")
+    )
     if is_fiction_post_section(section_name):
         print(
             f"  [d1] !!! WARNING: '{slug}' is in Substack section '{section_name}' "
