@@ -56,8 +56,10 @@ export function ResourcesPage({
 
       var params = new URLSearchParams(window.location.search);
       if (params.get('q')) state.query = params.get('q');
-      if (params.get('type')) state.types.add(params.get('type'));
-      if (params.get('audience')) state.audiences.add(params.get('audience'));
+      params.getAll('type').forEach(function(v) { if (v) state.types.add(v); });
+      params.getAll('media').forEach(function(v) { if (v) state.mediaTypes.add(v); });
+      params.getAll('audience').forEach(function(v) { if (v) state.audiences.add(v); });
+      if (params.get('sort')) state.sort = params.get('sort');
 
       var searchInput = document.getElementById('search-input');
       var sortSelect = document.getElementById('sort-select');
@@ -76,15 +78,26 @@ export function ResourcesPage({
           pill.classList.remove('text-secondary', 'border-gray-200');
         }
       });
+      mediaPills.forEach(function(pill) {
+        if (state.mediaTypes.has(pill.dataset.value)) {
+          pill.classList.add('bg-primary', 'text-white', 'border-primary');
+          pill.classList.remove('text-secondary', 'border-gray-200');
+        }
+      });
       audienceCheckboxes.forEach(function(cb) {
         if (state.audiences.has(cb.dataset.value)) cb.checked = true;
       });
+      if (sortSelect && state.sort) sortSelect.value = state.sort;
 
       function updateURL() {
+        // Repeated params (?type=paper&type=talk) so multi-select round-trips.
+        // A single selection still yields ?type=paper, so existing links keep working.
         var p = new URLSearchParams();
         if (state.query) p.set('q', state.query);
-        if (state.types.size === 1) p.set('type', [...state.types][0]);
-        if (state.audiences.size === 1) p.set('audience', [...state.audiences][0]);
+        state.types.forEach(function(v) { p.append('type', v); });
+        state.mediaTypes.forEach(function(v) { p.append('media', v); });
+        state.audiences.forEach(function(v) { p.append('audience', v); });
+        if (state.sort && state.sort !== 'newest') p.set('sort', state.sort);
         var newURL = window.location.pathname + (p.toString() ? '?' + p.toString() : '');
         window.history.replaceState({}, '', newURL);
       }
@@ -193,7 +206,8 @@ export function ResourcesPage({
         applyFilters();
       });
 
-      if (state.query || state.types.size > 0 || state.audiences.size > 0) applyFilters();
+      if (state.query || state.types.size > 0 || state.mediaTypes.size > 0
+          || state.audiences.size > 0 || state.sort !== 'newest') applyFilters();
     })();
   `;
 
