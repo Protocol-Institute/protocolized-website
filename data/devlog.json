@@ -812,6 +812,10 @@
         {
           "title": "Verification method: wrangler dev --remote against live D1.",
           "html": "Local miniflare D1 is empty, so the filter work was driven in a real browser against <code>wrangler dev --remote</code> bound to production D1. Confirmed: an 8-param URL reloads to the same 62 results with pills, checkboxes, search box and sort all restored and alphabetical ordering applied; legacy <code>?type=paper</code> still yields 56; Clear returns to a bare <code>/resources</code> at 325 resources. This is the pattern to reuse for any future client-side work on D1-backed pages."
+        },
+        {
+          "title": "Two follow-up flags recorded rather than fixed.",
+          "html": "<strong>(1) The fiction export bundle is stale.</strong> <code>exports/fiction-bundle-2026-08-17.zip</code> predates the section repair and under-counts fiction by six posts \u2014 handing it to Monstrous Times as-is would ship an incomplete archive. Phase 4 now names re-running <code>export-fiction-bundle.py</code> as required, not optional. <strong>(2) Series wiring fails silently and has now done so twice</strong> (&quot;The Big Man&quot; caught in Session 21, &quot;The Dismantling&quot; in Session 23). The post mirrors and renders normally; only the series nav and book TOC are missing, so nothing surfaces it. Logged a detection query (fiction posts with no series whose author already has one \u2014 deliberately noisy, a review prompt rather than an alarm) and an infra item proposing that <code>sync-substack.py</code> print a notice at sync time, when the decision is cheap, instead of relying on someone noticing weeks later. Left as a notice rather than a hard fail because the same authors legitimately write standalone fiction."
         }
       ]
     }

@@ -19,8 +19,16 @@
 
 ### Jamverse / Series
 - Jamverse PR #1 was already merged (confirmed Session 22) — stale "awaiting review" note removed. Still worth confirming jamverse.protocolized.io story links work end-to-end if not already checked.
-- When Stockton Chronicles ch.2+3 publish on Substack: sync auto-populates, series data already set — no extra steps needed
-- **Series wiring is not automatic.** Legends & Ledgers ch.4 ("The Dismantling") sat unwired for a week after publishing (fixed Session 23). New chapters of an existing series need `scripts/update-series-toc.py` run by hand — the Substack sync does not infer series membership. Worth checking after any new fiction post until that's automated.
+- **Series wiring is manual, and fails silently.** Legends & Ledgers ch.4 ("The Dismantling", 2026-08-26) sat unwired for a week (fixed Session 23): the post mirrored fine, but had no `series_slug`, so it was missing from the series nav and the book TOC with nothing surfacing the gap. `sync-substack.py` does not infer series membership — new chapters need `scripts/update-series-toc.py` run by hand.
+- Stockton Chronicles ch.2+3: the *placeholder* rows already carry series data, so those two specifically will populate on sync. That is **not** true of new chapters generally — the earlier "no extra steps needed" note overstated it and applied only to those pre-seeded placeholders.
+- **Check after any new fiction post.** Query for fiction posts with no series that share an author with an existing series:
+  ```sql
+  SELECT slug, primary_author, date FROM posts
+  WHERE section='Fictions' AND series_slug IS NULL
+    AND primary_author IN (SELECT DISTINCT primary_author FROM posts WHERE series_slug IS NOT NULL)
+  ORDER BY date DESC LIMIT 10;
+  ```
+  Noisy by design — these authors also write standalone fiction, so most hits are correct as-is. Treat it as a review prompt for *recent* posts, not an alarm. Judging whether a post is a chapter needs the post itself (a title/description like "the series concludes" is the real signal).
 - Note: Jamverse is slated to become a subdomain of the new fiction publication ("Monstrous Times") — see Fiction/Nonfiction Split below. Its protocolized.io story links will keep working via `fiction_redirects` once that cuts over, but Jamverse's own repo should eventually update its links to point directly at the new destination.
 
 ### Fiction/Nonfiction Split — Phase 4 (future, not yet triggered)
@@ -34,6 +42,7 @@ Phases 0–3 (classification, dark-shipped filter/redirect wiring, pipeline guar
 
 ### Infrastructure
 - Automate `migrate-to-d1.py` on push when `src/content/resources/` changes (GH Actions job)
+- **Surface unwired series chapters automatically.** The Session 23 gap (L&L ch.4 unlinked for a week) was invisible because nothing checks for it. Cheapest fix: have `sync-substack.py` print a notice when it mirrors a `Fictions` post whose `primary_author` already has a series, prompting a `update-series-toc.py` decision at sync time instead of relying on someone noticing later. Deliberately a notice, not a hard fail — the same author writing standalone fiction is normal and common.
 
 ### SoP Resource Migration (from summerofprotocols.com)
 Add resource entries for the following SoP content not yet in the library.
