@@ -365,3 +365,29 @@ A build log for protocolized.io — how the magazine and resource library site w
 - Flipping `FICTION_SEGREGATION_ACTIVE` to `"true"` in production, populating `fiction_redirects` with real destination URLs, deleting fiction rows from D1, and removing fiction Markdown from `src/content/resources/` all wait until Monstrous Times' domain (and Jamverse's subdomain destination) actually exist. Full runbook is in CLAUDE.md's new "Fiction/Nonfiction Split" section. Two items are flagged for Venkat's explicit call rather than auto-decided: the post `what-is-protocol-fiction` (left nonfiction &mdash; it's editorial about fiction, not fiction itself) and whether the ~45 tag-only "fiction" items found during the Phase 0 audit need any further cleanup.
 
 ---
+
+## Session 23: Substack Section Drift Repair + Resource Filter URL State
+
+*2026-09-02*
+
+**Tracks:** content-sync, framework, ux
+
+- The per-post Substack endpoint (`/api/v1/posts/{slug}`) returns `section_id` but **not** `section_name`. The sync did `data.get("section_name") or "Protocolized"`, so every post mirrored since the Worker-era sync began was filed under the literal default. Because &quot;Protocolized&quot; is itself a real section, the misfiling produced plausible-looking data and never surfaced. The bulk archive listing *does* carry `section_name` — which is why the original 2026-06 export and c3po's cached metadata were both correct, and why the `resources` side (fed by c3po) stayed right while the `posts` side silently drifted. That asymmetry is the whole bug.
+
+- Drift ran back to 2026-06-12 (`the-big-man`), not just the two posts noticed at session start. Six were fiction carrying `section='Protocolized'`, so `isFictionPostSection()` did not recognize them: the Phase 2 warning never fired for any of them, and at Phase 4 cutover the fiction filter would have leaked all six onto the nonfiction site. Eight more were nonfiction wearing the wrong section badge on post pages, the magazine list and the carousel. The remaining three were the deliberate Phase 0 Jamverse overrides. **Lesson for future guardrails:** a check keyed on a field is only as good as the field's ingestion path — the Phase 2 warning was correct code reading corrupt input.
+
+- Added `SUBSTACK_SECTION_BY_ID` to `scripts/fiction_classification.py`: `333103=Obliquities`, `333105=Fictions`, `333110=Articles`, `null=Protocolized`. Map derived from the live API and independently cross-validated against c3po's cached archive metadata — 134 posts, zero disagreements. Both sync scripts now call `resolve_section()`. An unrecognized `section_id` prints a warning and falls back, rather than silently defaulting: a new Substack section will announce itself instead of quietly poisoning the data again.
+
+- The three Jamverse announcement posts were moved to `Fictions` in Phase 0 as an editorial call; Substack still reports them as Protocolized/Obliquities, so the corrected sync would have reverted them on the next run. `SECTION_OVERRIDES` pins them. Critically, the override is applied *only* to post routing: the first implementation let it flow through `map_type(section)` in the resources sync, which would have retyped three announcements as `type: fiction` in the library. `resolve_section(..., apply_overrides=False)` now separates the two meanings — **which publication a post travels with** is a different question from **what kind of thing it is**, and conflating them corrupts the resource type enum. Resources dry run after the split: 0 created, 0 updated, 139 unchanged.
+
+- Fictions 64&rarr;70, Articles 48&rarr;52, Obliquities 6&rarr;10, Protocolized 18&rarr;4. The three Jamverse overrides were correctly excluded from the backfill (already at their intended value). Verified live: `/p/the-dismantling` badges *Fictions*, `the-crooked-timber-of-ai` *Obliquities*, `jamverse-jam` still *Fictions*. Zero remaining mismatches between `resources.type='fiction'` and `posts.section`. The fiction filter would now exclude 70 posts at cutover versus 64 before.
+
+- `the-caucus` and `joan-henry-vs-the-algorithm` 404 on the Substack API (unpublished or deleted) and have no `resources` row. Both already carry `section='Fictions'` from the original export, which is correct, so they were left untouched rather than guessed at.
+
+- &quot;The Dismantling&quot; (2026-08-26, Elizabeth Maher) had `series_slug = NULL` despite being the series finale. Wired via `scripts/update-series-toc.py` — the script written in Session 21 precisely so this stops being ad-hoc SQL. Live: `/p/the-dismantling` shows &quot;Part 4 of 4&quot;, `/p/the-big-man` updated 3-of-3 to 3-of-4 with a forward link.
+
+- `updateURL()` only wrote a query param when `size === 1`, so `?type=paper` worked but selecting a second filter dropped *every* param and left the naked `/resources` URL — filtered views could not be linked, shared, or restored by reload. `mediaTypes` and `sort` were never serialized at any count. Now every value is written as a repeated param and read back with `getAll()`; single-selection URLs are byte-identical, so existing links keep working. Also fixed the read side: media pills and the sort select were never restored from the URL even though type and audience were, so a shared link rehydrated only part of the filter UI. `sort` is written only when it differs from the `newest` default, keeping the common URL clean.
+
+- Local miniflare D1 is empty, so the filter work was driven in a real browser against `wrangler dev --remote` bound to production D1. Confirmed: an 8-param URL reloads to the same 62 results with pills, checkboxes, search box and sort all restored and alphabetical ordering applied; legacy `?type=paper` still yields 56; Clear returns to a bare `/resources` at 325 resources. This is the pattern to reuse for any future client-side work on D1-backed pages.
+
+---
