@@ -64,6 +64,7 @@ SKIP_CATEGORIES = {"interview", "announcement", "editorial", "guest-talks", "tow
 SERIES_AUDIENCE = {
     "researcher-salon": ["researcher", "academic"],
     "symposium-2024": ["researcher", "academic"],
+    "symposium-2026": ["researcher", "academic"],
     "protocol-school-2025": ["researcher", "academic"],
 }
 
@@ -197,6 +198,11 @@ def map_audience(series: str) -> list:
     return SERIES_AUDIENCE.get(series, ["researcher", "practitioner"])
 
 
+def iso_upload_date(data: dict) -> str | None:
+    d = str(data.get("upload_date") or "")
+    return f"{d[:4]}-{d[4:6]}-{d[6:8]}" if re.fullmatch(r"\d{8}", d) else None
+
+
 # ── Markdown generation ───────────────────────────────────────────────────────
 
 def make_markdown(video_id: str, data: dict, date: str,
@@ -307,7 +313,11 @@ def main():
 
     for video_id in all_ids:
         data = meta[video_id]
-        date = date_cache.get(video_id, "2024-01-01")
+        # The daemon runs with --no-dates, so a video new since the cache was
+        # last filled had no date and published as 2024-01-01. c3po supplies
+        # `date` where it knows a better one (a symposium recording carries the
+        # day the talk was given); otherwise fall back to the upload date.
+        date = date_cache.get(video_id) or data.get("date") or iso_upload_date(data) or "2024-01-01"
 
         # ── Thumbnail ──
         thumbnail_url: str | None = None
