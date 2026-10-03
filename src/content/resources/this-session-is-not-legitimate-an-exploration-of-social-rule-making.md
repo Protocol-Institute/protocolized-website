@@ -4,15 +4,16 @@ type: talk
 authors:
   - name: "Scott Moore"
 date: 2023-05-09
-description: "Scott Moore, co-founder of Gitcoin, explores the concept of legitimacy in protocols and social rule-making systems. Drawing on his experience with quadratic funding mechanisms and public goods funding, Moore examines what characteristics make protocols legitimate and how legitimacy functions as a central concern in protocol design."
+description: "Scott Moore (GitCoin co-founder) explores Vitalik Buterin's framework on legitimacy, walking through six sources of legitimacy—brute force/coercion, continuity, process, performance, participation, and fairness—and ranking them from weakest to strongest. He applies these lenses to case studies like PGP's path to legitimacy and EIP-1559's contentious adoption, and closes by questioning whether legitimacy itself can be formalized as a protocol, invoking Gödel's incompleteness and Asimov's robotics laws as cautionary analogies."
 tags:
+  - brute-force-vs-process-vs-participation-legitimacy
+  - eip-1559-and-pgp-as-case-studies
+  - governance
   - guest-talks
-  - legitimacy
-  - protocol-design
+  - gödel-incompleteness-and-formalizing-legitimacy
+  - legitimacy-as-protocol
   - protocols
-  - public-goods-funding
-  - quadratic-funding
-  - social-rule-making
+  - webers-three-types-of-authority
 audience:
   - researcher
   - practitioner

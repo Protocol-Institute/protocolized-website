@@ -4,15 +4,17 @@ type: talk
 authors:
   - name: "Simone Cicero"
 date: 2023-05-17
-description: "Simone Cicero addresses the polarized platforms-versus-protocols debate, arguing for a more nuanced conversation beyond the 'platforms are evil' tribal discourse. Drawing on 15+ years of experience with open-source models and platform design, Cicero explores the complex relationship between platforms and protocols rather than presenting final answers, grounding the discussion in real consulting work and organizational design practice."
+description: "Simone Cicero presents a systematic comparison of platform and protocol business models, arguing that platforms derive value from a triad of product, marketplace, and extensibility features while protocols can theoretically deliver equivalent or better value propositions but suffer from weaker defensibility and immature go-to-market organizational doctrine. He proposes that protocols may extract revenue legitimately only when they maintain stateful representations and run infrastructural functions, and discusses cases like ONDC in India where policy enforcement, not organic competition, solves the bootstrapping problem."
 tags:
+  - go-to-market-organizational-doctrine-for-protocols
+  - governance
   - guest-talks
-  - open-source-models
-  - platform-design
-  - platforms-vs-protocols-debate
-  - protocol-development
+  - innovation-cycles-and-commoditization-of-complements
+  - platforms-vs-protocols-value-proposition
   - protocols
-  - tribal-polarization
+  - research
+  - stateful-vs-networkless-protocols-and-fee-extraction
+  - vertical-unbundling-and-the-unbundling-fallacy
 audience:
   - researcher
   - practitioner

@@ -4,14 +4,17 @@ type: talk
 authors:
   - name: "Mike Masnick"
 date: 2023-08-02
-description: "Mike Masnick, founder of Techdirt and the Copia Institute, discusses his evolving thinking on the relationship between protocols and decentralization, drawing on 25 years of observing technology cycles from Web 1.0 through Web3. He presents frameworks for understanding how protocols function in decentralized systems and invites critical feedback to stress-test his current conceptual models."
+description: "Mike Masnick traces the evolution of his thinking since his 2019 'Protocols, Not Platforms' paper, engaging criticisms from Moxie Marlinspike (that protocols are too slow and prone to corporate capture) and reframing decentralization not as an absolute good but as a question of which system components should be centralized versus pushed to the edges. Using the U.S. interstate highway system as an analogy, he argues the protocol itself should function as a stable, centralized foundation while competition and innovation happen in decentralized nodes built on top of it, and discusses how Twitter's Musk acquisition and Bluesky's emergence illustrate these dynamics in practice."
 tags:
-  - decentralization
+  - centralized-protocol-decentralized-edges-framework
+  - decentralization-as-incentive-structure-rather-than-end-goal
+  - embrace-extend-extinguish-capture-risk
+  - exit-to-communityprotocol
+  - governance
   - guest-talks
-  - platforms-versus-protocols
-  - protocol-governance
   - protocols
-  - web3
+  - protocols-vs-platforms
+  - technology
 audience:
   - researcher
   - practitioner

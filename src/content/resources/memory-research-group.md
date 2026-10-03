@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Kia"
 date: 2025-06-26
-description: "Kia leads the kickoff of the Memory Research Group, a collaborative research initiative exploring how memory functions as a fundamental protocol in human and technological systems. The session introduces frameworks for understanding memory protocols—from personal note-taking systems to organizational storage models—and positions memory as a cornerstone concept in protocol studies, examining how different structures for memory organization (ordered vs. chaotic storage) shape information management and retention."
+description: "Keler (Kia) launches the Memory Research Group, a Summer of Protocols special interest group, outlining its focus on how memory concepts get conflated across neuroscience, computing, philosophy, and anthropology. She traces a lineage from Francis Yates's 'Art of Memory' and classical memory palaces through associative/taxonomic divides (Raymond Lull, Giordano Bruno) to contemporary bioelectric memory research (Michael Levin), Edwin Hutchins's distributed cognition, Buddhist models of memory as ethical construction, and Bernard Stiegler's technics-as-exteriorized-memory, arguing memory is fundamentally distributed across agents and environments rather than stored discretely."
 tags:
-  - artificial-memory
+  - art-of-memory-memory-palaces
+  - associative-vs-taxonomic-memory-systems
+  - bioelectricnon-genetic-memory-encoding
+  - distributed-cognition-hutchins
   - guest-talks-2025
-  - information-persistence
-  - memory-models
-  - memory-protocols
-  - organized-vs-chaotic-storage
+  - memory
+  - organizations
   - protocols
-  - research
+  - technical-memoryexteriorization-stiegler
 audience:
   - researcher
   - practitioner

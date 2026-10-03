@@ -4,18 +4,18 @@ type: talk
 authors:
   - name: "Cory Levenson"
 date: 2025-08-07
-description: "Cory Levenson, a climate tech consultant and engineer, discusses the current state of climate protocols with a focus on carbon removal and voluntary carbon markets. He examines data infrastructure systems, technical frameworks for protocol interoperability in carbon dioxide removal pathways, and the intersection of carbon markets with regulatory and policy frameworks."
+description: "Cory Levenson (Corey Levenson), an engineer and climate tech consultant previously with Regen Network, surveys the state of carbon dioxide removal (CDR) protocols, distinguishing 'closed system' pathways like direct air capture and biochar (easy MRV, high cost) from 'open system' pathways like enhanced rock weathering and ocean alkalinity enhancement (cheaper but harder to quantify due to attribution challenges). He details emerging data protocols—including the Carbon Data Open Protocol, Cascade's ERW Data Query, and Carbon to Sea's Ocean Alkalinity Enhancement Data Protocol—and argues the field should adopt community-governed standards bodies (like OBO Foundry or schema.org's science working group) rather than letting registries like Isometric capture scientific protocol development."
 tags:
-  - carbon-removal-protocols
-  - cdr-pathways
-  - data-infrastructure
+  - carbon-data-open-protocol
+  - data-standards-and-interoperability-schemaorg-linkml
+  - durable-cdr-and-voluntary-carbon-markets
   - governance
-  - protocol-interoperability
+  - monitoring-reporting-and-verification-mrv
+  - open-vs-closed-system-carbon-removal-pathways
   - protocols
   - research
   - technology
   - town-hall
-  - voluntary-carbon-markets
 audience:
   - researcher
   - practitioner

@@ -3,16 +3,17 @@ title: "Public Intelligence"
 type: talk
 authors:
   - name: "Kevin Kelly"
+  - name: "Venkatesh Rao"
 date: 2025-04-23
-description: "Kevin Kelly, senior maverick at Wired magazine, presents the concept of 'public intelligence'—a high-capability artificial intelligence governed as a commons, similar to the internet or public infrastructure, rather than owned by a single nation or corporation. He argues for imagining an AI commons model that distributes ownership and governance across multiple stakeholders, drawing parallels to shared public resources."
+description: "Kevin Kelly, Wired co-founder, presents his essay 'Public Intelligence,' arguing AI should be built as a commons like the internet or Wikipedia rather than owned by corporations or nations—combining public access, accountability, data (the 'omnipedia'), funding, and participation. In the Q&A moderated by Venkatesh Rao at a Bangkok town hall, Kelly argues decentralized AI will require corporate risk-taking to prove viability before being 'returned' to public commons, and identifies failure modes including fragmentation into competing sovereign national AIs and technical infeasibility of planetary-scale federated intelligence."
 tags:
-  - ai-commons
-  - commons-governance
-  - distributed-ownership
+  - architecture-of-participation
+  - federateddecentralized-mixture-of-experts-ai
   - governance
-  - infrastructure-as-commons
+  - omnipedia-public-training-data-library
   - protocols
-  - public-intelligence
+  - public-ai-commons
+  - sovereign-ai-vs-global-public-intelligence
   - technology
   - town-hall
 audience:

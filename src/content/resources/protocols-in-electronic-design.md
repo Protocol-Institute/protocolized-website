@@ -2,16 +2,18 @@
 title: "Protocols in Electronic Design"
 type: talk
 authors:
-  - name: "Vicram Sakar"
+  - name: "Vikram Shaker"
 date: 2025-06-05
-description: "Vicram Sakar, a writer and engineer with 15+ years of RF engineering experience, discusses protocols in electronic design during the Protocol Institute's summer guest talk series. The talk explores the intersection of technology, engineering, and pedagogy, with Sakar drawing on his expertise in radio frequency engineering and semiconductor technology to examine how protocols function in electronic systems."
+description: "Engineer Vikram Shaker (Qualcomm RF front-end) surveys protocols across electronic design, from hard standards like NIST's cesium-clock definition of the second and the 50-ohm coaxial impedance convention, to communication standards (USB, chiplet interconnects like UCIe and CXL), validation failures (Intel's Pentium FDIV bug and the resulting birth of formal verification), and documentation disasters (NASA's Mars Climate Orbiter unit mismatch). He frames these through Protocol Institute concepts like 'tension' versus 'trade-off' and the efficiency-thoroughness (ETO) frontier, and closes by examining unwritten cultural, ethical, and geopolitical protocols governing chip industry work."
 tags:
-  - electronic-design-protocols
-  - engineering-protocols
+  - chiplet-interconnect-protocols-ucie-cxl-bow
+  - documentation-and-tribal-protocol-failures
+  - efficiency-thoroughness-eto-frontier
+  - formal-verification-vs-brute-force-validation
+  - governance
   - protocols
-  - radio-frequency-engineering
-  - semiconductor-technology
-  - technical-pedagogy
+  - research
+  - standardization-protocols-nist-50-ohm-impedance
   - technology
   - town-hall
 audience:

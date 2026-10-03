@@ -4,15 +4,16 @@ type: lecture
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2025-11-06
-description: "Timber Stinson-Schroff presents Applied Protocol Thinking as a capstone course for Protocol School 2025, offering practical frameworks and literacies for participants to apply protocol analysis in their everyday lives. Drawing on nearly three years of research including his study of occupational health and safety protocols in coal mining, Stinson-Schroff shares methodologies for recognizing and analyzing how organizations use protocols to create value, manage uncertainty, and advance their missions."
+description: "Timber Stinson-Schroff closes Protocol School 2025 with a capstone talk on 'Applied Protocol Thinking,' arguing that protocol literacy is best built through 'protocol watching'—a low-intensity, habitual practice analogous to an endurance athlete's easy-pace training—before attempting high-stakes protocol design. He introduces frameworks like hazard-oriented protocoling (analogous to object-oriented programming), the Chesterton's Fence vs. Gordian Knot heuristic, and Erik Hollnagel's ETTO (efficiency-thoroughness trade-off) principle reframed as an ongoing tension to manage rather than solve, illustrating concepts with examples from dog-walking, library shelving carts, tree-trimming crews, and GitLab's engineering trade-offs."
 tags:
-  - literacies-and-lenses
-  - meso-level-analysis
-  - organizational-protocol-use
-  - protocol-as-verb
+  - chestertons-fence-vs-gordian-knot-heuristic
+  - etto-principle-efficiency-thoroughness-trade-off-as-managed-tension
+  - hazard-oriented-protocoling-hop-modeled-on-object-oriented-programming
+  - mesoscale-organizational-protocol-literacy
+  - organizations
   - protocol-school-2025
-  - protocol-thinking-lens
   - protocol-watching
+  - protocol-watching-as-a-practice-umarellosfield-guide
   - protocols
 audience:
   - researcher

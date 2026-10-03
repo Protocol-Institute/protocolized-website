@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Cory Levinson"
 date: 2023-05-13
-description: "Cory Levinson discusses climate protocols and carbon credit markets, examining who writes the rules governing these systems. He begins by contextualizing carbon quantification and climate market mechanisms while critiquing how the space has approached blockchain-based environmental solutions, drawing on his six years of experience in blockchain carbon credits and environmental marketplaces."
+description: "Cory Levinson traces the history of carbon markets from the Kyoto Protocol through the Paris Agreement's still-unoperationalized Article 6.4, contrasting the fragmented voluntary carbon market (Verra, Gold Standard, ACR) with compliance regimes, and recounts how Toucan's CO2 (CLA) tokenization protocol exploited Verra's retirement mechanism until Verra froze bridging in 2022. He then frames climate protocols into three layers—financial, scientific (MRV/methodologies), and semantic (ontologies/RDF)—arguing that semantic protocols using relational data models like RDF and the semantic web could let disparate scientific methodologies build on each other rather than scaling in isolation."
 tags:
-  - blockchain-environmental-solutions
-  - carbon-credit-markets
-  - carbon-quantification
-  - climate-protocols
+  - article-64-compliance-vs-voluntary-carbon-markets
+  - carbon-credit-tokenization-retirementimmobilization
   - governance
   - guest-talks
-  - paris-agreement-targets
+  - mrv-monitoring-reporting-verification
+  - permanence-additionality-and-leakage-risk-in-offsets
   - protocols
+  - research
+  - semantic-protocols-and-rdfontologies-for-ecological-data
   - technology
 audience:
   - researcher

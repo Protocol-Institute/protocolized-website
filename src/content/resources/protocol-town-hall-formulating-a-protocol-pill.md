@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Venkatesh Rao"
 date: 2024-01-18
-description: "Venkatesh Rao, Summer Protocols program lead, synthesizes research findings from the Summer of Protocols program and discusses efforts to shift the program's center of gravity from internal Discord/Telegram conversations to public forum-based discussion. The talk introduces the 'Protocol Pill' concept while addressing community engagement strategies and the publication of protocol research."
+description: "Venkatesh Rao, program lead for Summer of Protocols, synthesizes the 2023 research cohort's output and proposes 'formulating a protocol pill' — a deliberate, effectuation-driven strategy (starting from available assets rather than goals) to spread 'protocol literacy' as a cognitive shift from 'I am my protocols' to 'I have protocols,' using Robert Kegan's developmental-stages framework. He outlines the components of a 'kit' (attitude elixir, modes of agency, aesthetic sensibility, collective memory orientation, escapist comfort, local conditions) needed to grow a 'protocol scene' akin to the maker movement, referencing Josh Stark's concept of 'hardness,' Nadia Asparouhova's work on protocols as dual-use technologies, and plans to pivot 2024 research toward applications and oblique attacks on problems like AI safety and climate change."
 tags:
-  - community-engagement
-  - forum-based-discourse
+  - effectuation-mindset
   - guest-talks
-  - protocol-publication
-  - protocol-research-synthesis
+  - hardness-josh-stark
+  - i-am-vs-i-have-kegan-developmental-levels
+  - organizations
+  - protocol-kit-and-scene-building
+  - protocol-pill-nerd-sniping
   - protocols
   - research
-  - summer-of-protocols-program
 audience:
   - researcher
   - practitioner

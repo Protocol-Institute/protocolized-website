@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Geoff Manaugh"
 date: 2023-05-03
-description: "Geoff Manaugh discusses how burglars and other unauthorized users navigate and exploit urban environments, drawing parallels to how cities function as systems of protocols with gaps and exploits. Through his concept of 'Nakatomi space' (named after the building in Die Hard), Manaugh presents the city as a surface of navigable gaps and vulnerabilities rather than a centrally planned domain, offering an alternative framework to understanding urban space."
+description: "Geoff Manaugh, author of A Burglar's Guide to the City, argues that burglary is fundamentally an architectural and protocol-level phenomenon: criminals like the 'hole in the ground gang' and 'Roofman' exploit sufficiently granular knowledge of city infrastructure (storm drains, freeway on/off-ramps, fire codes, corporate franchise layouts) to identify repeatable spatial and temporal vulnerabilities. He develops the concept of 'Nakatomi Space' (named after Die Hard) as a parallel, hidden circulation system—air ducts, maintenance corridors, walls—that can be misused to move through buildings against their intended protocols, and discusses how rules meant to protect (fire code, corporate scheduling) simultaneously reveal how a system can be attacked."
 tags:
-  - city-as-surface
-  - gaps-and-exploits
+  - architectural-dark-matter
+  - fire-code-as-exploitable-protocol
   - guest-talks
   - nakatomi-space
   - protocol-watching
   - protocols
-  - unauthorized-navigation
-  - urban-protocols
+  - research
+  - seeing-like-a-burglar-inversion-of-seeing-like-a-state
+  - space-time-as-burglary-tool
 audience:
   - researcher
   - practitioner

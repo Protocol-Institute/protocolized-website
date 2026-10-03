@@ -5,16 +5,18 @@ authors:
   - name: "Nils Gilman"
   - name: "Jonathan Blake"
 date: 2024-03-21
-description: "Nils Gilman and Jonathan Blake from the Berggruin Institute discuss planetary subsidiarity and their book 'Children of a Modest Star,' exploring how protocols and institutional design can enable global coordination at the largest scales. They bring a policy and historical perspective to balance technological idealism with realistic frameworks for actual world-changing impact."
+description: "Nils Gilman and Jonathan Blake of the Berggruen Institute present their book 'Children of a Modest Star,' arguing that planetary-scale problems like climate change and pandemics—phenomena that flow across borders independent of human intention—cannot be governed by the existing nation-state system or UN multilateralism. They propose a multiscalar governance architecture based on the principle of subsidiarity, where issues like climate mitigation are handled by new planetary institutions, adaptation is handled locally through translocal networks (e.g., Los Angeles collaborating with Cape Town rather than Miami), and the nation-state becomes a mediating 'meso-level' rather than the sovereign center, aiming for 'habitability' rather than mere 'sustainability.'"
 tags:
-  - global-coordination-mechanisms
   - governance
   - guest-talks
-  - institutional-design
-  - network-states
+  - habitability-vs-sustainability
+  - multiscalar-governance-architecture
+  - organizations
+  - planetary-sapience
   - planetary-subsidiarity
-  - protocol-based-governance
   - protocols
+  - research
+  - translocal-networks
 audience:
   - researcher
   - practitioner

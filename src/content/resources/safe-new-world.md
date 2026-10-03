@@ -4,17 +4,17 @@ type: talk
 authors:
   - name: "Timber Schroff"
 date: 2023-10-26
-description: "Timber Schroff, a Summer of Protocols core researcher, presents his essay on safety protocols in the coal mining industry from 1900-2000, proposing a theory of protocol evolution based on evolutionary thinking and mutation-selection effects. His work demonstrates how studying historical safety protocols reveals that modern blockchain and digital protocols face similar challenges to those faced by 20th-century industrial systems, with coal mining fatalities decreasing by 97% over a century through evolving safety protocols."
+description: "Timber Schroff presents his Summer of Protocols research essay 'Safe New World,' analyzing a 97% decline in coal mining fatalities from 1900-2000 to build a general theory of protocol evolution driven by mutation (errors in replication, perception, and storage) and selection pressures like influence, feedback speed, and bandwidth. He argues safety protocols have largely 'solved' acute workplace harm, while health protocols addressing chronic disease (heart disease, black lung, COPD) remain the unsolved frontier, and proposes 'tinkering' with existing protocols as the optimal path for protocol innovation rather than top-down design."
 tags:
-  - coal-mining-industry
-  - historical-protocol-analysis
-  - mutation-and-selection-effects
-  - protocol-evolution
+  - dynamic-non-events
+  - mutation-vs-selection-in-protocols
+  - protocol-evolution-theory
   - protocol-watching
   - protocols
   - research
   - researcher-salon
-  - safety-protocols
+  - safety-vs-health-protocols
+  - tinkering-vs-design-vs-mutation-in-protocol-creation
 audience:
   - researcher
   - academic

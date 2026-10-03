@@ -2,20 +2,20 @@
 title: "Salon I: End-to-End Encryption in ActivityPub - 2024 Protocol Symposium"
 type: talk
 authors:
-  - name: "Evan"
-  - name: "Tom"
+  - name: "Evan Prodromou"
+  - name: "Tom Coates"
 date: 2024-10-01
-description: "Evan and Tom present their research on implementing end-to-end encryption within ActivityPub, the W3C-standardized federated social network protocol. They outline their methodology covering user stories, design research, potential architectures, UI guidelines for federated contexts, and next steps for adding cryptographic privacy to ActivityPub's push-based, JSON-based message infrastructure."
+description: "Evan Prodromou and Tom Coates present their Summer of Protocols research on integrating end-to-end encryption into ActivityPub, arguing that the fediverse's low-trust server operators and high-risk user base (LGBTQ users, activists, infosec community) make E2E encryption necessary despite the protocol's original email-like trust assumptions. They explain why they chose Messaging Layer Security (MLS) over alternatives like PGP, Signal's protocol, or OTR—citing MLS's royalty-free IETF standard status and scalability—and propose a new ActivityPub extension adding a key store and groups mechanism, while Coates details UI challenges around key management, archive restoration, and segregating encrypted from unencrypted messages."
 tags:
-  - activitypub
-  - end-to-end-encryption
-  - federated-social-networks
+  - activitypub-extension-design
+  - end-to-end-encrypted-archive-restoration
+  - messaging-layer-security-mls
   - protocols
-  - push-based-messaging
+  - public-key-encryptionkey-management-ui
   - research
+  - signal-protocol-vs-mls-tradeoffs
   - symposium-2024
   - technology
-  - w3c-standards
 audience:
   - researcher
   - academic

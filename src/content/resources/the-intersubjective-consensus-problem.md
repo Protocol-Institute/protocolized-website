@@ -3,18 +3,20 @@ title: "The Intersubjective Consensus Problem"
 type: talk
 authors:
   - name: "Sriram"
-  - name: "Benitesh Raalo"
+  - name: "Venkatesh Rao"
 date: 2025-04-17
-description: "Sriram, founder of IGEN Layer and faculty at University of Washington, discusses the intersubjective consensus problem in blockchain systems and proposes an abstract layer solution on Ethereum. The talk explores how blockchains enable self-enforcing commitments for human coordination and cooperation, and what a more protocolized world governed by such systems could look like."
+description: "Sriram, founder of EigenLayer and University of Washington faculty, explains to Venkatesh Rao how blockchains function as 'verifiable commitment' engines, tracing the evolution from Bitcoin's narrow commitments (coin ownership, fixed supply) to Ethereum's Turing-complete generalization, and then identifies a core gap: blockchains cannot natively verify off-chain facts like GPU inference results, asset prices, or election outcomes. He introduces EigenLayer's restaking model and 'intersubjective consensus' mechanism—using forking tokens and escalating staker adjudication—as a solution for settling social truths (e.g., oracle disputes, prediction market resolution) that fall between pure mathematical verifiability and purely subjective taste."
 tags:
-  - abstract-layer-architecture
-  - blockchain-coordination
+  - autonomous-verifiable-services-avs
+  - eigenlayer-restaking
+  - forking-tokens
+  - governance
   - intersubjective-consensus-problem
-  - protocolized-governance
   - protocols
-  - self-enforcing-commitments
+  - social-truth-vs-mathematicalscientific-truth
   - technology
   - town-hall
+  - verifiable-commitments
 audience:
   - researcher
   - practitioner

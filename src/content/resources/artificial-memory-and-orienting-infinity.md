@@ -4,17 +4,18 @@ type: talk
 authors:
   - name: "Kei Kreutler"
 date: 2024-02-29
-description: "Kei Kreutler explores how protocols develop and maintain memory, tracing historical memory metaphors from ancient philosophy through computation. She argues that protocols serve as mechanisms for memory management, where associative and taxonomic logic converge in computational systems to shape how information is organized and recalled."
+description: "Kei Kreutler presents her Summer of Protocols research essay 'Artificial Memory and Orienting Infinity,' tracing a history of artificial memory from the method of loci and Renaissance memory theaters (Camillo, Giulio Bruno) through Turing machines and the invention of Random Access Memory. She introduces a framework distinguishing 'latent memory' from 'living memory' and 'taxonomic' from 'associative' arrangement, arguing for a sensibility she calls 'orientation' that enables navigating partial, associative cues rather than relying on the metaphor of memory-as-data."
 tags:
   - artificial-memory
-  - associative-logic
-  - computational-memory-systems
+  - associative-vs-taxonomic-arrangement
+  - latent-vs-living-memory
   - memory
-  - protocol-memory
+  - memory-theaters-and-memory-wheels
+  - orientation
   - protocols
   - research
   - researcher-salon
-  - taxonomic-logic
+  - technology
 audience:
   - researcher
   - academic

@@ -2,20 +2,20 @@
 title: "Salon III: Shoreline Adaptations to Urban Flooding - 2024 Protocol Symposium"
 type: talk
 authors:
-  - name: "Celeste LaMPe"
+  - name: "Celeste LeCompte"
   - name: "Danielle Butler"
 date: 2024-10-01
-description: "Celeste LaMPe and Danielle Butler present their research project on shoreline adaptations to urban flooding, focusing on sea level rise as an accelerating global crisis affecting 1.4 billion people in 570 cities by 2050. They frame the problem through local New York examples while drawing on global research across Southeast Asia, East Africa, Europe, and the US, examining how urbanization exacerbates sea level rise through groundwater extraction, land subsidence, and saltwater intrusion."
+description: "Celeste LeCompte and Danielle Butler present their Protocol Symposium research project on shoreline adaptation to urban flooding, arguing that current flood-management protocols are rigid because they encode an implicit framing of risk measured in capital terms, which forecloses opportunity-based alternatives. Drawing on Nadia Asparouhova's 'dangerous protocols' and Drew Austin's 'protocols don't build pyramids,' they catalog informal interventions (sewer-tunnel concerts, canoe clubs, Clean Water Act contact-standard pressure) as ways to disrupt entrenched disconnection between cities and water, and propose a database/questionnaire tool to analyze which design features make such interventions effective at shifting culture toward managed retreat and integrated adaptation."
 tags:
+  - clean-water-act-primarysecondary-contact-standards-as-galvanizing-protocol-leverage
+  - dangerous-protocols-entrenchedinvisible-assumptions
   - governance
+  - informal-to-formal-public-engagement-spectrum
+  - managed-retreat-and-seeding-land-back-to-water
   - protocols
   - research
-  - saltwater-intrusion
-  - sea-level-rise
-  - shoreline-adaptation
+  - risk-vs-opportunity-framing-in-flood-protocols
   - symposium-2024
-  - urban-flooding
-  - urbanization-and-land-subsidence
 audience:
   - researcher
   - academic

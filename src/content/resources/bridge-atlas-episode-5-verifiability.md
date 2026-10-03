@@ -5,16 +5,17 @@ authors:
   - name: "Shreya Shankar"
   - name: "Justin Drake"
 date: 2025-11-14
-description: "Shreya Shankar and Justin Drake discuss verifiability as a lens for understanding both Ethereum systems and AI. Justin Drake focuses on the Lean Ethereum project's use of SNARKs (cryptographic proofs) to replace brute-force re-execution verification, while the episode explores how verifiability principles apply across blockchain consensus and AI system transparency."
+description: "Shreya Shankar (Berkeley PhD, creator of the DocETL declarative data-processing system) and Justin Drake (Ethereum Foundation, lean Ethereum project) compare verifiability across AI data pipelines and blockchain consensus. Drake explains SNARKs, trust-minimization, and recursive proof composition for Ethereum's deterministic and non-deterministic components, while Shankar details how DocETL handles LLM-powered query pipelines, human-AI misalignment, and eval design for unstructured data like court transcripts, with both drawing parallels between 'hints' in SNARK proving and decomposition techniques for AI reasoning verification."
 tags:
+  - ai-eval-design-and-human-ai-misalignment
   - bridge-atlas
-  - consensus-verification
-  - cryptographic-proofs
-  - lean-ethereum
+  - docetl-declarative-data-pipelines
+  - formal-verification-and-economic-penalties-for-malicious-actors
+  - governance
+  - optimistic-vs-zk-rollups-and-trust-spectrum
   - protocols
-  - snarks
+  - snarks-and-recursive-proof-composition
   - technology
-  - verifiability
 audience:
   - researcher
   - practitioner

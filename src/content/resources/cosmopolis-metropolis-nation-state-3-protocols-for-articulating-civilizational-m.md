@@ -4,15 +4,16 @@ type: talk
 authors:
   - name: "Venkatesh Rao"
 date: 2025-08-14
-description: "The speaker explores three protocols—cosmopolis, metropolis, and nation-state—for articulating civilizational memory, with a focus on reconsidering what cosmopolitanism means in a changed geopolitical landscape. Drawing on over a decade of blogging, work with the Summer of Protocols program, and AI consulting, the speaker presents a book-length investigation into how these three units function as frameworks for understanding belonging, identity, and memory beyond familiar nationalist or globalist categories."
+description: "Venkatesh Rao presents a research talk introducing 'cosmopolis' as a third geographic logic—alongside territorial (nation-state) and nodal (metropolis) logics—defined as a geography shaped by a way of life induced by major technology, arguing that cosmopolitical/behavioral logic is where civilizational memory is most robustly carried since territories and cities 'can forget' but cosmopolises 'truly remember.' He builds a framework of soil/stack/virtual-soil embodiments and effective/declarative/procedural memory types, applying it to historical cases (print culture, Islamic world, chivalry) and emerging computational cosmopolises (blockchain, AI, IoT, VR) to argue that behavioral-logic-driven 'protocols of circulation' offer a livable alternative to monolithic centralized or oozifying nodal futures."
 tags:
-  - civilizational-memory
-  - cosmopolis
-  - cosmopolitanism
-  - nation-state
-  - protocol-frameworks
+  - articulation-of-civilizational-memory-effective-declarative-procedural
+  - cosmopolis-as-geographictechnological-logic
+  - habitus-and-noosphere-as-components-of-cosmopolitical-memory
+  - memory
+  - monolithic-vs-oozifying-vs-circulatory-protocols-of-memory
   - protocols
   - research
+  - territorial-vs-nodal-vs-behavioral-logic
   - town-hall
 audience:
   - researcher

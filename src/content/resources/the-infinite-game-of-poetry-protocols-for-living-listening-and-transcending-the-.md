@@ -2,17 +2,18 @@
 title: "The Infinite Game of Poetry: Protocols for Living, Listening, and Transcending the Rules"
 type: talk
 authors:
-  - name: "Robert Peak"
+  - name: "Robert Peake"
 date: 2025-07-24
-description: "Robert Peak, an acclaimed poet and technologist, explores how poetry and poetic craft can inform protocol design and thinking. He argues that poetry, despite its inability to directly change the world, has transformative potential and offers valuable frameworks—particularly from the craft perspective—that can enrich how technologists and engineers approach protocol development and thinking about rules and systems."
+description: "Poet and technologist Robert Peake presents a framework for poetry as a form of protocol and 'protocoling,' arguing that poetry is an infinite, unwinnable game defined by Marvin Bell's dictum: 'learn the rules, break the rules, make up new rules, and break the new rules.' Drawing on Gödel's incompleteness theorem, Bertolt Brecht, and examples like William McGonagall's disastrous verse versus ChatGPT-generated poetry, Peake distinguishes first-order protocols (grammar, form) from second-order 'protocoling' (the recursive, self-breaking evolution of rules), framing poetry as a compression algorithm that uses words to transcend words."
 tags:
   - fiction
-  - infinite-games
-  - poetic-craft
-  - poetry-as-methodology
-  - protocol-design
+  - first-order-vs-second-order-protocols-protocoling
+  - marvin-bells-rule-breaking-algorithm-of-craft
+  - poetry-as-compression-algorithm-and-infinite-game
+  - poetryingpoemingpoeting-as-recursive-protocol
   - protocols
-  - rules-and-transcendence
+  - technology
+  - tension-and-quarrel-as-generative-poetic-mechanism
   - town-hall
 audience:
   - researcher

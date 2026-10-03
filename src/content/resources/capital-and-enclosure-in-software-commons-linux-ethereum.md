@@ -4,16 +4,18 @@ type: talk
 authors:
   - name: "Trent Van Epps"
 date: 2024-03-28
-description: "Trent Van Epps examines how capital structures impact software commons and public goods production, drawing on his experience with Protocol Guild—a collective funding mechanism for Ethereum contributors. He presents comparative case studies of Linux and Ethereum to analyze the dynamics of enclosure and capital in open-source software development."
+description: "Trent Van Epps, researcher at the Ethereum Foundation and steward of Protocol Guild, presents a framework distinguishing capital and commons modes of production, then applies it to case studies of Linux (and Red Hat's gradual enclosure of CentOS) and Ethereum. He argues Ethereum is unique among software commons because it contains embedded capital circuits (proof-of-stake ETH, MEV, liquid staking) and produces a single globally-bound state object, raising the question of whether this containment stabilizes or dooms the commons to capture, and proposes Protocol Guild's unaffiliated funding model as a partial countermeasure."
 tags:
-  - capital-enclosure
-  - commons-production-pipelines
+  - anti-rival-and-symbiotic-goods
+  - commons-vs-capital-modes-of-production
+  - embedded-capital-circuits-in-ethereum-l1
+  - enclosureincorporation-of-software-commons
   - governance
   - guest-talks
-  - protocol-guild
+  - organizations
+  - protocol-guild-unaffiliated-stewardship
   - protocols
-  - public-goods-funding
-  - software-commons
+  - research
 audience:
   - researcher
   - practitioner

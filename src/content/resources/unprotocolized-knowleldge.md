@@ -5,16 +5,17 @@ authors:
   - name: "Kara Kittel"
   - name: "Toby Shorin"
 date: 2024-04-25
-description: "Kara Kittel and Toby Shorin present their Summer of Protocols research project on unprotocolized knowledge, exploring how authorship, credit cultures, and coordination function in internet-native contexts. The project evolved from an initial focus on authorship to examining credit cultures and human protocols, with the researchers pursuing divergent applications—Shorin exploring care culture frameworks and Kittel developing experiential animation work."
+description: "Kara Kittel and Toby Shorin present their Summer of Protocols research 'Unprotocolized Knowledge,' tracing how their original focus on internet authorship norms evolved into a study of 'credit cultures' and ultimately a framework for how knowledge legitimacy is produced outside formal academic protocols. They map a spectrum from protocol-delimited academic knowledge to unmediated social epistemology, using case studies like the seed oil wars, Alzheimer's amyloid hypothesis stagnation, and TikTok neurodivergence research to argue for new bridging protocols between citizen science, populist paradigms, and institutional peer review."
 tags:
-  - authorship-on-the-internet
-  - care-culture
-  - coordination
+  - citizen-science-and-field-building
   - credit-cultures
-  - human-protocols
+  - populist-paradigms
+  - protocol-delimited-knowledge-vs-social-epistemology
+  - protocol-watching
+  - protocols
+  - reciprocal-sense-making
   - research
   - researcher-salon
-  - unprotocolized-knowledge
 audience:
   - researcher
   - academic

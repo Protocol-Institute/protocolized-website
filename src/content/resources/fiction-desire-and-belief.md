@@ -4,16 +4,16 @@ type: talk
 authors:
   - name: "Matt Webb"
 date: 2023-05-19
-description: "Matt Webb discusses fiction, desire, and belief in relation to protocols, exploring how narrative and imaginative frameworks shape our understanding of technical systems. Webb, a writer and consultant known for his work at BERG and his long-running blog, presents ideas on protocol fiction as a literary and conceptual practice for exploring how protocols function in society."
+description: "Matt Webb builds on his earlier essay 'Who Could Write Protocol Fiction' by arguing that protocol designers must deliberately engineer belief and desire, not just reference implementations, drawing on Gabriel Tarde's sociology (imitation and imposition as the only social forces), Dave Winer's 'Rules for Standards Makers,' and design fiction's use of charismatic material artifacts as boundary objects. He illustrates this with Stripe's 'seven lines of code' onboarding and 1950s science fiction's 'consensus cosmogony' of space exploration, then leads a workshop where participants invent protocols (anti-spam payment-gated messaging, death/grief archiving rituals, hazard-alert networks, and the Bristlemouth marine hardware standard) and brainstorm artifacts to generate belief and desire for each."
 tags:
-  - ai-systems
-  - blogging-and-writing-practice
-  - desire-and-belief
+  - belief-and-desire-gabrielle-tarde
+  - consensus-cosmogony
+  - design-fiction-and-boundary-objects
   - fiction
   - guest-talks
-  - narrative-frameworks
   - protocol-fiction
   - protocols
+  - rules-for-standards-makers-dave-winer
 audience:
   - researcher
   - practitioner

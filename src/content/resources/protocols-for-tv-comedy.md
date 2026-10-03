@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Steve Hely"
 date: 2024-03-08
-description: "Steve Hely discusses the hidden protocols and structural systems behind TV comedy writing and production. Hely explores how comedy writing, like college entrance essays and other forms of constrained writing, operates through invisible frameworks that produce seemingly organic entertainment, drawing parallels between the mechanics of TV production and the carefully engineered systems that audiences don't typically see."
+description: "Steve Hely, a TV comedy writer and novelist, maps Hollywood's unwritten protocols onto the Summer of Protocols framework, walking through the pipeline from pitching (agents/managers, the five-part pitch structure, 'burglar ways' like South Park's demo tape) to the writer's room's 'yes and' norm, table reads as laughter-audits, and call-sheet production hierarchies. He argues comedy itself often arises from characters running mismatched protocols (Curb Your Enthusiasm, The Office, Big Bang Theory), and closes with skepticism that AI can yet replicate the emotional story-stakes that make scripted comedy work."
 tags:
-  - behind-the-scenes-frameworks
-  - constrained-writing-systems
+  - burglar-ways-of-breaking-into-hollywood
+  - diplomaticsafety-protocol-framing
+  - fiction
   - guest-talks
-  - invisible-structure
-  - protocol-watching
+  - pitch-structure-protocol
+  - production-call-sheet-hierarchy
   - protocols
-  - tv-production-protocols
-  - writer-room-mechanics
+  - technology
+  - writers-room-yes-and-norm
 audience:
   - researcher
   - practitioner

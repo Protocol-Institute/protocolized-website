@@ -5,17 +5,18 @@ authors:
   - name: "Annemarie Poorterman"
   - name: "Gina Belle"
 date: 2023-06-10
-description: "Annemarie Poorterman and Gina Belle from Cora (a dual foundation and design agency) present their framework for social system transformation through protocols. They introduce Cora Space as an emergent constellation of organizations leveraging shared knowledge assets and frameworks to generate social and renewal capital while navigating the complexity inherent in systemic change."
+description: "Gina Belle and Annemarie Poorterman, from the Quora Foundation/Quora Design group, present their 'portfolio stencil' and 'dynamic portfolio management protocol' as genome-like frameworks for guiding organizations through complex social system transformation. Using a UNDP Malawi governance case study, Belle shows how mapping a problem space into positions and options, then dynamically extracting 'excites' and intelligence from a learning portfolio, helped UNDP and the Malawi government identify gaps, form new relationships, and seed a national foresight function and digital-governance initiative."
 tags:
-  - cora-space
-  - emergent-constellation
+  - dynamic-portfolio-management-protocol
+  - governance
   - guest-talks
-  - knowledge-assets
   - organizations
-  - protocol-frameworks
+  - portfolio-stencil
+  - problemlearningsolution-space-framework
   - protocols
-  - social-and-renewal-capital
-  - social-system-transformation
+  - research
+  - sense-making-and-excites
+  - social-system-transformation-as-genome
 audience:
   - researcher
   - practitioner

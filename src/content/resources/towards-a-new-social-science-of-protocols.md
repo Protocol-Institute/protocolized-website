@@ -4,16 +4,17 @@ type: lecture
 authors:
   - name: "Yige Wang"
 date: 2025-11-07
-description: "Yige Wang, a sociologist, presents a new undergraduate course she is developing on the social science of protocols, supported by the Scholarly Lab Project. The course is structured in three parts: introducing core protocol concepts and theoretical frameworks, applying protocol perspectives to micro-level phenomena in sociology and linguistics, and shifting to macro-level analysis—offering a foundational exploration of how protocol thinking can reshape social science inquiry."
+description: "Yige Wang (going by 'IU'), a sociologist, presents the design of a new undergraduate course 'Toward a Social Science of Protocol,' structured around core theoretical lenses (functionalism, conflict theory, symbolic interactionism), micro-level linguistic/pragmatic protocols like Grice's cooperative principle, and macro-level historical analysis using Norbert Elias's 'The Civilizing Process' and Chinese vs. Western civilizational protocol divergence (protocol pluralism vs. protocol monoculture). She runs live interactive experiments with the audience (cross-disciplinary paraphrasing exercise, Zoom chat protocol-spotting) to demonstrate implicit versus explicit protocols in real time."
 tags:
-  - macro-level-analysis
-  - micro-level-analysis
-  - political-sociology
-  - protocol-perspective
+  - civilizing-process-and-etiquette-as-embodied-protocol
+  - cooperative-principle-as-pragmatic-protocol
+  - functionalistconflictsymbolic-theoretical-lenses-on-protocol
+  - metrological-infrastructure-benchmarks-as-protocol
+  - protocol-polarism-vs-protocol-monoculture
   - protocol-school-2025
+  - protocol-watching
   - protocols
   - research
-  - social-science-of-protocols
 audience:
   - researcher
   - academic

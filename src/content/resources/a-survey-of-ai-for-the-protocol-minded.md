@@ -4,15 +4,17 @@ type: talk
 authors:
   - name: "Daniel Bashir"
 date: 2024-05-30
-description: "Daniel Bashir, a machine learning engineer at AWS and host of the Gradient podcast, surveys the intersection of AI and protocols across multiple levels—from funding to ML engineering to research to regulation. He aims to introduce key technologies, conversations, and debates in AI while identifying current protocols that can be understood through a protocol-mindset lens."
+description: "Daniel Bashir, ML engineer at AWS and host of The Gradient podcast, surveys how protocol thinking applies across AI—from funding and scaling laws (like DeepMind's Chinchilla compute-optimal training protocol) to benchmarks (perplexity vs. François Chollet's ARC benchmark for measuring sample-efficient generalization) to regulation (the EU AI Act's risk-tiered categorization). He argues that nearly every layer of AI development—research, engineering, deployment, and governance—can be reframed as a set of competing or evolving protocols, using examples like Sarah Hooker's 'hardware lottery' and Tolga Bolukbasi-style debates over fair/responsible AI operationalization."
 tags:
-  - ai-regulation
+  - benchmarks-as-protocols-perplexity-arc-vibe-based-evaluation
+  - chollets-formal-definition-of-intelligence-and-generalization-hierarchy
+  - eu-ai-act-risk-based-regulatory-tiers
+  - governance
   - guest-talks
-  - information-theory
-  - ml-engineering
-  - protocol-mindset-analysis
   - protocols
-  - protocols-and-ai-intersection
+  - research
+  - responsible-ai-operationalization
+  - scaling-laws-and-the-bitter-lesson
   - technology
 audience:
   - researcher

@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Christina Dunbar-Hester"
 date: 2023-06-15
-description: "Christina Dunbar-Hester, faculty in Science and Technology Studies at USC, discusses the intersection of politics and protocols through her research on technology and social systems. Drawing on her books including 'Low Power to the People' and 'Hacking Diversity,' she explores how protocols encode political values and social choices, examining the materiality of technological systems alongside their governance implications."
+description: "Christina Dunbar-Hester (USC, Science and Technology Studies) draws on her three books—Low Power to the People, Hacking Diversity, and Oil Beach—to examine protocols as 'terms of relating' that both open up new associations and enforce control, using Langdon Winner's framework that technologies encode order and politics. She traces this through 1990s-2000s pirate/low-power FM radio activism and community Wi-Fi ('cantennas'), gender exclusion and feminist server/code-of-conduct interventions in FLOSS communities, and the Port of Los Angeles/Long Beach as a site where standardized shipping protocols produce 'envirotechnical' dependencies and violence (pollution, whale strikes) hidden behind frictionless-flow imagery.</br>She closes by distinguishing protocols (which create hard material/standardized handoff points) from merely 'culturally disciplining' practices like crypto-dancing or feminist server principles, and argues analysts must attend to both material and ideational levels of protocols, their recurring maintenance needs, and how local changes do or don't scale to systemic ones."
 tags:
-  - critical-technical-practice
+  - cultural-discipline-vs-hard-coded-protocol
+  - envirotechnical-infrastructure-and-maintenance
+  - feminist-servers-and-codes-of-conduct-in-floss-communities
+  - governance
   - guest-talks
-  - materiality-of-technology
-  - protocol-encoding
+  - low-power-fm-radio-activism-and-community-wifi
+  - protocol-watching
   - protocols
-  - protocols-and-politics
-  - research
-  - science-and-technology-studies
+  - protocols-as-terms-of-relating-opening-vs-control
 audience:
   - researcher
   - practitioner

@@ -4,16 +4,18 @@ type: talk
 authors:
   - name: "JD Nolen"
 date: 2023-05-25
-description: "JD Nolen, an engineer-turned-physician and chair of pathology at Children's Mercy Hospital, argues that healthcare urgently needs structural change through protocol thinking—from informatics and clinical workflows to disease treatment frameworks—but the healthcare system is too operationally consumed to recognize or pursue this transformation."
+description: "JD Nolen, chair of pathology and lab medicine at Children's Mercy Hospital and co-chair of HL7's orders and observations working group, argues that healthcare data exchange—built on legacy standards like HL7v2, CDA, and FHIR—remains brittle and siloed despite decades of standardization efforts. He proposes genomics as the ideal 'green field' testing ground for a protocol-first Layer Two architecture, since it has clear data flows, homebrew infrastructure, and no entrenched incumbents, making it ripe for distributed, protocol-powered repositories like the GenomeX accelerator."
 tags:
-  - clinical-protocols
+  - authenticationauthorizationpermission-as-healthcare-protocols
+  - fhir-fast-healthcare-interoperability-resources
+  - genomex-genomic-repository-accelerator
   - governance
   - guest-talks
-  - healthcare-informatics
-  - hl7-standards
-  - orders-and-observations
+  - hl7v2cda-data-standards
+  - layer-two-protocol-architecture-for-healthcare
+  - organizations
   - protocols
-  - structural-systems-change
+  - technology
 audience:
   - researcher
   - practitioner

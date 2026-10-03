@@ -5,16 +5,18 @@ authors:
   - name: "Primavera De Filippi"
   - name: "Felix Beer"
 date: 2025-11-07
-description: "Primavera De Filippi and Felix Beer explore protocol art through case studies and audience analysis, examining how protocols—systems of rules created by designers but executed and modified by communities—function as artistic practice. The discussion uses role-playing games like Dungeons & Dragons as a concrete example of protocol art, analyzing how rule systems evolve across different social contexts and how they balance constraint with creative freedom."
+description: "Primavera De Filippi leads a seminar on protocol art, working through audience case studies (role-playing games, choreography, Yanis Xenakis scores, PostSecret, Pak's Merge/Censored) to test the boundaries between protocol-as-tool, protocol-as-medium, and mere mimetic/meme art. She then presents two archetypal case studies, Oli Plus and Plantoid, analyzing distributed authorship, asynchronous collaboration, DAO-based governance, the limits of copyright versus personality rights, automated royalty systems, community roles, and the temporal/evolutionary nature of protocol-based artworks."
 tags:
-  - community-adaptation
-  - constraint-and-flexibility
-  - protocol-art
+  - asynchronous-permissionless-collaboration-via-smart-contracts-and-daos
+  - autographic-vs-allographic-works-and-copyright-limits-in-protocol-art
+  - case-studies-oli-plus-ai-voice-protocol-and-plantoid-blockchain-based-generative-sculpture
+  - distributed-authorship-between-protocol-artist-and-instantiating-artist
+  - fiction
+  - governance
+  - protocol-art-vs-protocol-as-toolmedium
   - protocol-school-2025
-  - protocol-watching
   - protocols
-  - rule-systems
-  - social-protocols
+  - technology
 audience:
   - researcher
   - academic

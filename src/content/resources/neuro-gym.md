@@ -4,16 +4,16 @@ type: talk
 authors:
   - name: "Ian Cheng"
 date: 2023-05-18
-description: "Ian Cheng is introduced as a leading contemporary artist exploring new media and generative worlds through game engines and NFTs. The speaker illustrates Cheng's influence through the narrative of how their collaboration—sparked by Cheng's book 'The Emissaries Guide to Whirling' and subsequent NFT experiments together—ultimately catalyzed the founding of the Summer of Protocols program, drawing a parallel to Rachmaninoff's patronage of Sikorsky's helicopter invention."
+description: "Ian Cheng traces his evolution as an artist from early raw motion-capture work ('This Papaya Tastes Perfect') through self-playing simulations ('Entropy Wrangler', 'Emissaries') to the AI-driven creature Bob, built using Richard Evans' neurosymbolic inductive logic programming to model belief-formation and motivated perception. He discusses colliding scripted narrative with open-ended simulation, drawing on Dramatica story theory, Jeff Hawkins' thousand-brains model of mind, and Will Wright's systems-based design philosophy to explain his approach to AI-generated worlds and storytelling in works like 'Life After Bob'."
 tags:
-  - game-engines-as-art-medium
-  - generative-worlds
+  - agent-based-ai-simulation-sims-style-need-architecture
+  - dramatica-narrative-theory
+  - fiction
   - guest-talks
-  - new-media-art-practice
-  - nfts-and-web3
-  - patronage-and-funding-narratives
-  - protocols
+  - neurosymbolic-inductive-logic-programming-richard-evans-model
+  - simulation-vs-scripted-story-as-colliding-sculptural-forces
   - technology
+  - thousand-brains-cortical-column-theory-of-mind-jeff-hawkins
 audience:
   - researcher
   - practitioner

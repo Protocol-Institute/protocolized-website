@@ -4,15 +4,16 @@ type: talk
 authors:
   - name: "Benjamin Funk"
 date: 2024-06-20
-description: "Benjamin Funk, an analyst at Archetype focused on mechanism design, explores how decentralized systems can leverage information disclosure and concealment to create new economic models through crypto-powered information games. He traces his intellectual journey from exchange design and MEV mitigation to programmable information disclosure, arguing that protocol-level approaches to monetizing and consuming information can solve negative externalities and enable sustainable economic systems."
+description: "Benjamin Funk, an analyst at crypto VC firm Archetype, presents a framework for analyzing the 'information supply chain' and argues that surveillance capitalism persists because we lack protocols that work backward from what information consumers (governing bodies, businesses, individuals) actually need to make good decisions. He critiques existing crypto decision-making mechanisms—EigenLayer's token (good for intersubjective faults but not subjective predictions), Optimism's retroactive public goods funding (centralized preference function), and MetaDAO's futarchy (fails to surface surprising information and suffers from reflexivity)—while highlighting the Negation Game as a promising model that incentivizes surfacing consequential and surprising information through self-slashing stakes."
 tags:
-  - crypto-powered-information-games
+  - eigenlayer-intersubjective-faults
+  - futarchy-and-prediction-markets
+  - governance
   - guest-talks
-  - mechanism-design
-  - mev-mitigation
-  - prediction-markets
-  - programmable-information-disclosure
+  - information-supply-chain
+  - negation-game-epistemic-staking
   - protocols
+  - shannons-entropy-as-decision-making-model
   - technology
 audience:
   - researcher

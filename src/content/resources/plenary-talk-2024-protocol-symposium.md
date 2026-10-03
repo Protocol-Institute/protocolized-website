@@ -2,17 +2,20 @@
 title: "Plenary Talk - 2024 Protocol Symposium"
 type: talk
 authors:
-  - name: "Tim Boo"
+  - name: "Tim Beiko"
+  - name: "Venkatesh Rao"
 date: 2024-09-30
-description: "Tim Boo opens the 2024 Protocol Symposium, explaining how Summer of Protocols evolved from studying Ethereum-specific challenges to examining protocols as a cross-domain class of phenomena. The program aims to identify common principles underlying protocols across different fields by funding researchers to study diverse protocol implementations."
+description: "Tim Beiko and Venkatesh Rao open the 2024 Protocol Symposium by recapping Summer of Protocols' two-year evolution, from testing whether 'protocols' form a coherent cross-domain field to this year's focus on applied stewardship, tensions (tradeoff plus conflict), and workshops like the Singapore and Edge Esmeralda pop-ups. Venkatesh then presents three orienting frameworks for the Symposium—the 'technological Tangled Bank,' the 'Erdos-Whitehead protocol age,' and the 'kit space of civilization'—arguing protocols are best understood as a literacy for seeing technology's relation to humans and environment rather than a technology class itself."
 tags:
-  - cross-domain-protocol-analysis
-  - protocol-as-a-class
-  - protocol-research-methodology
+  - erdos-whitehead-protocol-age
+  - governance
+  - kit-space-of-civilization
+  - organizations
   - protocols
-  - research
-  - summer-of-protocols-program
+  - summer-of-protocols-program-structure-and-research-clusters
   - symposium-2024
+  - technological-tangled-bank
+  - tensions-tradeoff-conflict-as-a-framework-for-protocol-stewardship
 audience:
   - researcher
   - academic

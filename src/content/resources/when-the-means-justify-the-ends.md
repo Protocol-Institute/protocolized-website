@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Yancey Strickler"
 date: 2024-02-15
-description: "Yancey Strickler, co-founder of Kickstarter, discusses his two-year journey building Metal Label, a crypto-enabled publishing venture, and reflects on lessons learned navigating tensions between technological determinism and human experience in blockchain technologies. He explores the hard conversations the crypto world often avoids regarding the ethical implications of building with crypto."
+description: "Yancey Strickler, co-founder of Kickstarter, recounts Metalabel's two-year journey building crypto-based infrastructure for creative 'culture labels' inspired by punk record labels and the Royal Society, and how repeated crises (the Gitcoin/Vitalik NFT frenzy, Pepe coin gas spikes, and a wallet drain) led the team to go on a 'crypto diet' and ultimately launch Metalabel with zero blockchains underneath, borrowing crypto's values (decentralized identifiers, open data, shared financial outcomes) while prioritizing end-user experience over ideological means. He argues crypto culture often lets 'the means justify the ends,' making it a poor 'major' but potentially a good 'minor' within a broader post-platform, protocol-literate design space, a point Venkatesh Rao extends with his 'brains, trains, and vibes-mobiles' metaphor."
 tags:
-  - crypto-protocols
-  - ethical-implications-of-blockchain
+  - crypto-diet-climbing-out-of-the-rabbit-hole
+  - culture-labels-metalabel
+  - decentralized-identifiers-and-portable-identity
   - guest-talks
-  - human-experience-in-technology
+  - means-vs-ends-in-protocol-design
+  - protocol-watching
   - protocols
-  - publishing-ventures
-  - technological-determinism
   - technology
+  - vibes-mobiles-vs-trains-and-planes
 audience:
   - researcher
   - practitioner

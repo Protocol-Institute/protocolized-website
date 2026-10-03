@@ -3,18 +3,19 @@ title: "Guest Talk with Bryan Johnson | The Blueprint Protocol"
 type: talk
 authors:
   - name: "Bryan Johnson"
+  - name: "Venkatesh Rao"
 date: 2023-08-03
-description: "Bryan Johnson discusses the Blueprint Protocol, his personal biohacking and longevity project aimed at reversing aging through systematic lifestyle optimization. Johnson, entrepreneur and founder of Braintree (sold to PayPal) and Kernel (a brain-machine interface company), shares his multidisciplinary approach to achieving measurable health improvements and extending human healthspan."
+description: "In an interview format with Venkatesh Rao, Bryan Johnson describes his Blueprint Protocol—a self-experimentation regime using extensive biomarker measurement, strict diet (2000 calories, vegan, 11am last meal), supplement 'survival of the fittest' testing, and sleep optimization—to reverse his biological aging. Johnson also discusses his 'evening Brian vs. morning Brian' internal-personas framework for behavioral control, his brain-interface company Kernel's spectroscopy-based brain-age measurement, and his evolving personal philosophy that 'don't die' is the only meaningful species-level objective given emerging AI superintelligence."
 tags:
-  - biohacking
-  - blueprint-protocol
-  - brain-machine-interface
+  - blueprint-protocol-self-experimentation-framework
+  - closed-loop-biomarker-measurement
+  - dont-die-philosophy-ai-alignment-with-human-longevity
+  - governance
   - guest-talks
-  - health-optimization
-  - longevity
-  - protocols
-  - research
-  - reverse-aging
+  - kernel-brain-age-spectroscopy
+  - multiple-persona-self-governance-morningevening-brian
+  - protocol-watching
+  - technology
 audience:
   - researcher
   - practitioner

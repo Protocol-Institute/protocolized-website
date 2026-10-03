@@ -2,17 +2,18 @@
 title: "AI as Normal Technology"
 type: talk
 authors:
-  - name: "Benet (mentioned as prior influence)"
+  - name: "Arvind Narayanan"
+  - name: "Venkatesh Rao"
 date: 2025-07-03
-description: "A speaker presents a paper proposing 'AI as Normal Technology'—an alternative framework to the superintelligence narrative that emphasizes social and institutional bottlenecks over technological progress alone, arguing that AI's transformative effects will unfold over decades similar to electricity and the internet rather than causing overnight disruption. The speaker challenges the conceptual coherence of 'superintelligence' as a framework, reframing the discussion around incremental technological integration and labor transformation."
+description: "Arvind Narayanan presents his paper/book 'AI as Normal Technology,' arguing against superintelligence narratives by applying innovation-diffusion theory (invention, innovation, diffusion stages) to AI, contending that societal adoption is bottlenecked by slow organizational, business-model, and institutional adaptation rather than by the pace of capability gains. In discussion with Venkatesh Rao, they connect this to protocol theory, framing workflows, business models, and context engineering practices as new 'protocols' that must be invented, while Rao draws analogies to naval warfare tactics, printing-press literacy, and the hardness/mud distinction from Josh Stark's work to explain why protocol adoption is inherently slow but durable."
 tags:
-  - cognitive-automation
-  - governance
-  - normal-technology
+  - ai-as-normal-technology-vs-superintelligence
+  - context-engineering
+  - institutionaltechnological-hardness-crystals-and-mud
+  - invention-innovation-diffusion-framework
   - protocols
-  - social-and-institutional-bottlenecks
-  - superintelligence-critique
-  - technological-timelines
+  - protocols-vs-microcultures
+  - research
   - technology
   - town-hall
 audience:

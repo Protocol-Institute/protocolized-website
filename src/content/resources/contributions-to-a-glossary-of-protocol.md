@@ -3,17 +3,19 @@ title: "Nathan Schneider: Contributions to a Glossary of Protocol"
 type: talk
 authors:
   - name: "Nathan Schneider"
+  - name: "Venkatesh Rao"
 date: 2025-08-21
-description: "Nathan Schneider, professor of media studies at the University of Colorado Boulder, presents his research on protocol studies and shares a glossary project documenting the intellectual history of protocols across disciplines. He traces how the term 'protocol' appears across online economies, blockchains, crypto, and social networks, and discusses his oral history initiative interviewing protocol practitioners worldwide."
+description: "Nathan Schneider, a media studies professor writing a book on protocols for MIT Press, argues that Alexander Galloway's influential 2004 'Protocol' framed protocols purely as top-down control and is historically inaccurate, proposing instead a broad definition of protocols as 'patterns of interaction' that includes vernacular, non-elite protocol-making (developed with Avery Edenfield) and protocol sovereignty/capture dynamics (developed with Johannes Bunke). He also discusses his Protocol Oral History Project interviewing quilters, choreographers, and diplomats, his concept of 'implicit feudalism' in online governance, and a closing debate with Venkatesh Rao over whether centering indigenous/diasporic knowledge in protocol theory is legitimate pluralism or ideological social constructionism."
 tags:
   - governance
-  - online-economies
-  - oral-history-of-protocols
-  - protocol-glossary
-  - protocol-studies
+  - implicit-feudalism
+  - protocol-oral-history-governance-archaeology
+  - protocol-sovereignty-and-capture
   - protocols
+  - protocols-as-patterns-of-interaction-vs-galloways-control-based-definition
   - research
   - town-hall
+  - vernacular-protocols
 audience:
   - researcher
   - practitioner

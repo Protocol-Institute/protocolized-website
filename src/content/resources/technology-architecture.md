@@ -4,16 +4,16 @@ type: talk
 authors:
   - name: "Varun Srinivasan"
 date: 2024-05-16
-description: "Varun Srinivasan, CTO and co-founder of Farcaster, discusses the architecture and technology behind building a blockchain product and protocol ecosystem. The talk explores how Farcaster structures itself as a public protocol (owned by commons) with Merkle Manufacturing as the commercial entity building Warpcast, the consumer product, representing a hybrid model between protocol governance and venture-backed product development."
+description: "Varun Srinivasan, CTO and co-founder of Farcaster, discusses the architecture of Farcaster and its commercial client Warpcast, tracing his path from Coinbase to building a decentralized social protocol. He details the concept of 'sufficient decentralization' (the test that two users must always be able to communicate even if the rest of the network tries to stop them), explains why Farcaster pivoted from a Federated model to a hybrid blockchain-identity approach, and describes how the 'Frames' feature emerged by extending the Open Graph protocol to embed interactive mini-apps directly in the social feed."
 tags:
-  - blockchain-product-development
-  - decentralized-protocol-ecosystems
+  - channelnamespace-governance-and-squatting
+  - federated-vs-client-p2p-vs-blockchain-decentralization-models
+  - frames-interactive-open-graph-extensions
+  - governance
   - guest-talks
-  - organizations
-  - protocol-architecture
-  - protocol-governance-models
+  - product-led-protocol-development
   - protocols
-  - public-commons-ownership
+  - sufficient-decentralization
   - technology
 audience:
   - researcher

@@ -2,18 +2,18 @@
 title: "Seeing SCP as a Narrative Protocol"
 type: talk
 authors:
-  - name: "Simon Dea Rir"
+  - name: "Simon de la Rouviere"
 date: 2023-11-09
-description: "Simon Dea Rir discusses the SCP (Secure Contain Protect) collaborative fiction project, analyzing it as a narrative protocol that combines creative storytelling with structured governance frameworks. He explores parallels between SCP's collaborative mechanisms and protocols from crypto and web technologies, examining how protocol-like elements enable large-scale distributed fiction writing."
+description: "Simon (first name only; writer and crypto technologist) presents SCP (Secure Contain Protect), a collaborative horror-fiction wiki project, as a model of a 'narrative protocol' — a collaborative fiction system defined by open IP, a clear contribution medium (the wiki page format with required fields like classification and containment procedures), thin curation, no canon, and a pervasive 'passive theme' that lets contributors stumble into ideas. He distills these traits into general principles for designing successful collaborative fiction protocols and compares SCP's structure to internet memes as another example of a working narrative protocol."
 tags:
-  - collaborative-fiction
-  - distributed-authorship
   - fiction
   - guest-talks
   - narrative-protocol
-  - protocol-elements
+  - open-ip-and-creative-commons-licensing
+  - passive-vs-active-theme
   - protocols
-  - scp-secure-contain-protect
+  - thin-curation-vs-canon
+  - wiki-as-medium-contribution-model
 audience:
   - researcher
   - practitioner

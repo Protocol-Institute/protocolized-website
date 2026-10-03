@@ -2,17 +2,19 @@
 title: "Summer of Protocols Town Hall"
 type: talk
 authors:
-  - name: "Speaker 1"
-  - name: "Venet"
+  - name: "Venkatesh Rao"
+  - name: "Josh Davis"
+  - name: "Tim Beiko"
 date: 2023-03-13
-description: "The speaker outlines the genesis of Summer of Protocols, explaining how initial questions about Ethereum's governance and evolution revealed a broader gap in understanding protocols across disciplines. The initiative brings together researchers from diverse backgrounds to collaboratively develop a theory of protocols and increase protocol literacy through an intensive summer program."
+description: "Tim and Venkatesh Rao (joined by Josh Davis) introduce the Summer of Protocols program, explaining its origins in Ethereum Foundation discussions about understanding protocol evolution and its goal of building broader 'protocol literacy' across disciplines. Venkatesh outlines the program structure—core researchers, affiliates, guest speakers, and residents—emphasizing open, collaborative 'hackathon-style' work, writing essays plus 'protocolish artifacts,' and fielding extensive audience Q&A on applications, funding, and inclusivity."
 tags:
-  - cross-disciplinary-analysis
+  - core-researchers-vs-affiliate-researchers-structure
   - governance
-  - protocol-evolution
-  - protocol-governance
-  - protocol-literacy
-  - protocol-theory
+  - nerd-sniping-as-a-program-design-goal
+  - openpermissionless-collaborative-research-ethos
+  - organizations
+  - protocol-literacy-and-interdisciplinary-study
+  - protocolish-artifacts-as-research-output
   - protocols
   - town-hall
 audience:

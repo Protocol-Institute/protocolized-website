@@ -4,15 +4,17 @@ type: talk
 authors:
   - name: "Chris Dixon"
 date: 2024-05-02
-description: "Chris Dixon from a16z discusses protocols and their applications in a Q&A interview format as part of the Protocol Institute's guest talk series. Dixon, a prominent entrepreneur and investor known for his work in crypto and venture capital, explores how protocol thinking applies across diverse domains from technology to governance and environmental management."
+description: "Chris Dixon discusses his book Read, Write, Own with Venkatesh Rao, arguing that blockchains represent a third type of network architecture—alongside 'protocol networks' (like HTTP/RSS) and 'corporate networks' (like Facebook)—that combines the societal benefits of open protocols with the competitive funding advantages of corporate platforms. He uses an extended city metaphor (public/private balance, logical vs. organizational decentralization) to explain why Web1 protocols stagnated due to lack of funding mechanisms, while blockchain networks like Ethereum and Farcaster enable 'composability' and persistent user ownership without centralized platform risk."
 tags:
-  - angel-investing
-  - crypto
-  - decentralized-ownership
+  - city-metaphor-for-decentralized-network-governance
+  - composability-and-platform-risk-cant-be-evil
+  - digital-ownership-as-the-own-in-read-write-own
+  - governance
   - guest-talks
+  - protocol-networks-vs-corporate-networks-vs-blockchain-networks
   - protocols
   - technology
-  - venture-capital
+  - value-creation-vs-value-capture-and-token-design
 audience:
   - researcher
   - practitioner

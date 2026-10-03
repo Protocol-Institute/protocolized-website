@@ -4,15 +4,17 @@ type: talk
 authors:
   - name: "Chenoe Hart"
 date: 2024-02-01
-description: "Chenoe Hart presents her Summer Protocols research project on 'Addressable Space,' examining how information systems and protocols are remapping the built environment. She explores how technological systems—from delivery apps to sensors and autonomous vehicles—create new informational layers that coordinate physical space, raising fundamental questions about the role of data structures in architecture."
+description: "Chenoe Hart presents her Summer of Protocols research project 'Addressable Space,' tracing how built environments are remapped through informational systems — from 18th-century European house-numbering schemes that decoupled addresses from physical geography, to skipped floor numbers and hidden 'mechanical voids' in skyscrapers, to elevators as random-access devices. She argues these spatial protocols reshape human experience much like digital file systems, and calls for 'protocol empathy' — the practice of imagining how built space appears from a protocol's or computer system's point of view."
 tags:
   - addressable-space
-  - built-environment-mapping
-  - information-infrastructure
+  - arbitrary-vs-geographic-addressing-systems
+  - mechanical-voids-and-hidden-floors
+  - protocol-empathy
+  - protocol-watching
+  - protocols
   - research
   - researcher-salon
-  - sensor-networks
-  - spatial-protocols
+  - skeuomorphism-in-digitalphysical-interfaces
 audience:
   - researcher
   - academic

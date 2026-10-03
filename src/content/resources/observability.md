@@ -4,15 +4,16 @@ type: talk
 authors:
   - name: "Charity Majors"
 date: 2025-07-31
-description: "Charity Majors, operations engineer and CEO of Honeycomb, discusses observability as a critical concept for protocol design. The talk explores how observability—the ability to understand system behavior through external outputs—applies to both database engineering and protocol architecture, with connections drawn from Majors' interdisciplinary background in music and mathematics."
+description: "Charity Majors, co-founder of Honeycomb, discusses with interviewer Benat (Venkatesh Rao) how observability emerged from her and co-founder Christine's experience with Facebook's Scuba tool, defining it via control theory as understanding internal system state from outputs, and distinguishing it from traditional monitoring through high-cardinality, high-dimensionality data capture. They explore how this concept applies beyond software to protocol governance broadly, using examples like tsunami warning networks and the LEAF Coalition's use of satellite data plus chainsaw-detecting microphones to monitor Amazon deforestation compliance, with Majors emphasizing that the key is capturing enough high-cardinality data to ask novel questions later and tailoring the 'story' to the audience's capacity for action."
 tags:
-  - database-engineering
-  - observability
-  - pattern-recognition
-  - protocol-design
+  - durable-vs-disposable-code
+  - feedback-loops-in-distributed-systems
+  - high-cardinality-data
+  - observability-vs-monitoring
+  - protocol-watching
   - protocols
-  - system-behavior-visibility
   - technology
+  - testing-in-production
   - town-hall
 audience:
   - researcher

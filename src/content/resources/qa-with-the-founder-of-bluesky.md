@@ -5,16 +5,17 @@ authors:
   - name: "Jay Graber"
   - name: "Daniel Holmgren"
 date: 2024-04-04
-description: "Jay Graber discusses her trajectory from digital rights activism through cryptocurrency development to founding Blue Sky, a decentralized social protocol project. Graber argues against decentralization maximalism, instead advocating for pragmatic protocol design that balances decentralization with usability, drawing on her experience with peer-to-peer technologies like Secure Scuttlebutt, IPFS, and blockchain systems."
+description: "Jay Graber (CEO) and Daniel Holmgren (Protocol Lead) of Bluesky discuss building the AT Protocol as a 'hybrid' alternative to both maximalist peer-to-peer decentralization and traditional centralized platforms, emphasizing that decentralization is 'a function of administrative control, not network topology' (quoting advisor Martin Kleppmann). They explain concepts like self-certifying repositories (DIDs, PDS), stackable/composable moderation as 'building blocks' rather than monolithic trust-and-safety, and contrast their 'schematic web' schema approach (Lexicon) with RDF/semantic web ontologies, arguing protocol entrepreneurship requires balancing fast app iteration with slow, methodical protocol design."
 tags:
-  - decentralization-pragmatism
-  - decentralized-social-protocols
-  - digital-rights
-  - organizations
-  - peer-to-peer-architecture
+  - at-protocol-app-proto
+  - decentralization-as-administrative-control-vs-topology
+  - governance
+  - lexicon-schema-language-vs-rdfsemantic-web
   - popular-lectures
-  - protocol-design
   - protocols
+  - self-certifying-data-and-account-portability
+  - stackablecomposable-moderation
+  - technology
 audience:
   - researcher
   - practitioner

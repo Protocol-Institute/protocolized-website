@@ -4,15 +4,16 @@ type: talk
 authors:
   - name: "John Bissell"
 date: 2023-06-03
-description: "John Bissell, CEO of Origin Materials, discusses protocols for transforming matter at human scale through bio-based feedstock chemistry. Origin Materials develops carbon-negative plastics by replacing petroleum-based inputs with biofeedstock, demonstrating a systemic protocol for sustainable materials production that contrasts with traditional carbon-positive petrochemical processes."
+description: "John Bissell, CEO of Origin Materials, argues that the chemical industry lacks a robust protocol for developing new technologies and materials, unlike the highly predictable building-block system used for mass chemical production. He traces this to the computational intractability of quantum mechanics at human scale, illustrates it through the empirically-discovered Haber-Bosch ammonia synthesis, and surveys partial solutions like click chemistry, electrochemistry, synthetic biology, and Origin's own 'mechanical layer' approach of shifting material variability into structural engineering rather than new chemistry."
 tags:
-  - carbon-negative-materials
-  - chemical-engineering-systems
-  - feedstock-protocols
+  - chemical-technology-development-protocol
+  - click-chemistry-and-electrochemistry-as-predictive-frameworks
   - guest-talks
-  - matter-assemblydisassembly
+  - haber-bosch-synthesis-as-empirical-protocol
+  - mechanical-layer-material-engineering-igen-materials
   - protocols
-  - sustainable-polymerization
+  - quantum-mechanical-incomputability-at-human-scale
+  - research
   - technology
 audience:
   - researcher

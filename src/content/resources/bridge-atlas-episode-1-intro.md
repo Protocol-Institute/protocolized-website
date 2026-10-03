@@ -4,18 +4,17 @@ type: interview
 authors:
   - name: "Tim Beiko"
   - name: "Timber Stinson-Schroff"
-  - name: "Christine DKim"
 date: 2025-10-28
-description: "Tim Beiko and Timber Stinson-Schroff introduce the Bridge Atlas interview series and provide an overview of Summer of Protocols, a three-year research program funded by the Ethereum Foundation designed to establish protocols as a first-class concept for understanding the world. The program has evolved through four phases—pilot, research-focused summer, application-focused summer, and education-focused summer—producing essays, projects, and artifacts while engaging approximately 100 participants to study protocol design, management, and improvement."
+description: "In this launch episode of the Bridge Atlas series, host Christine Kim talks with Tim Beiko (Ethereum Foundation) and Timber Stinson-Schroff (Summer of Protocols project manager) about the origins of Summer of Protocols, which Beiko initiated with Venkatesh Rao to find a framework for understanding Ethereum beyond analogy, landing on 'protocols' and 'engineered arguments' as the unifying concept. They discuss key concepts developed over three years—like Nadia Asparouhova's Kafka index for evaluating protocols by their worst failure modes, and Whitehead advances describing how successful protocols disappear into the background—and explain that Bridge Atlas aims to connect Ethereum's protocol engineers with Summer of Protocols alumni from unrelated fields (coal mining safety, wildfire management) ahead of a culminating event at Devconnect."
 tags:
   - bridge-atlas
-  - ethereum-foundation
-  - protocol-design
-  - protocol-management
+  - engineered-arguments
+  - kafka-index
+  - mezo-level-discourse
+  - organizations
   - protocols
-  - protocols-as-first-class-concept
-  - research
-  - summer-of-protocols-program
+  - protocols-as-swiss-army-knives
+  - whitehead-advances
 audience:
   - researcher
   - practitioner

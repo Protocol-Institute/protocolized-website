@@ -2,19 +2,19 @@
 title: "Scaling Bitcoin: The Rise of the Lightning Network"
 type: talk
 authors:
-  - name: "Lisa Nifut"
+  - name: "Lisa Neigut"
 date: 2024-04-11
-description: "Lisa Nifut discusses Bitcoin scaling through the Lightning Network, a layer-2 protocol solution analogous to Ethereum L2s. The talk covers the history and development of Lightning Network technology, Nifut's personal journey in protocol improvement work, and the entrepreneurial process of identifying and implementing protocol upgrades."
+description: "Lisa Neigut (Nifty), a core lightning developer, traces the Lightning Network's history from the 2015 Poon-Dryja whitepaper through the pivotal Scaling Bitcoin conferences and the contentious SegWit soft fork that was a technical prerequisite for mainnet deployment. She details the BOLT specification process—contrasting it with Bitcoin's informal BIP system—and recounts her own multi-year saga drafting, implementing, and finally merging the 'dual funding' (interactive transaction construction) proposal in 2024."
 tags:
-  - bitcoin
+  - bolt-specification-process
+  - dual-funding-interactive-transaction-construction
+  - governance
   - guest-talks
-  - layer-2-scaling
-  - lightning-network
-  - payment-channels
-  - protocol-improvement
+  - lightning-network-payment-channels
   - protocols
   - research
-  - technology
+  - scaling-bitcoin-conference-series
+  - segwit-and-transaction-malleability
 audience:
   - researcher
   - practitioner

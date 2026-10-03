@@ -3,16 +3,19 @@ title: "Protocol Art I - Primavera De Filippi & Felix Beer"
 type: lecture
 authors:
   - name: "Primavera De Filippi"
+  - name: "Felix Beer"
 date: 2025-11-06
-description: "Primavera De Filippi, a legal scholar and artist, introduces a five-module course on protocol art that bridges legal governance and artistic practice. She argues that protocol art—using distributed technologies like blockchain and AI to create works that expose legal and governance challenges—has historical precedents and contemporary applications, with implications for intellectual property and collaborative governance structures."
+description: "Primavera De Filippi introduces 'protocol art' as a conceptual framework distinguishing autographic works (made directly by the artist) from allographic, protocol-based works where an artist designs rules that others instantiate with their own creative discretion, citing Sol LeWitt, Lazlo Moholy-Nagy, and Niele Toroni as historical precedents. She traces how blockchain, generative AI, and digital platforms (e.g., her own Plantoids, Olus's voice-cloning project, and Million Dollar Homepage) expand protocol art's design space, and proposes taxonomic axes—atomic vs. systemic, strict vs. fluid, technical vs. social—for classifying works, while fielding audience questions on discretionary space, copyright implications, and genericide of recognizable protocols."
 tags:
-  - blockchain-art
-  - distributed-technology-governance
-  - intellectual-property-in-protocol-based-work
-  - legal-systems-and-protocol-constraints
+  - atomic-vs-systemic-taxonomy
+  - autographic-vs-allographic-works
+  - fiction
+  - indeterminacy-and-discretionary-instantiation
   - protocol-art
+  - protocol-as-medium-vs-tool
   - protocol-school-2025
   - protocols
+  - technology
 audience:
   - researcher
   - academic

@@ -4,16 +4,16 @@ type: lecture
 authors:
   - name: "Ben Zucker"
 date: 2025-11-06
-description: "Ben Zucker presents music as a protocol—a system of abstract structure and notation that can be analyzed, practiced, and transferred across disciplines—arguing that musicalization (the procedural practice of bringing aesthetic protocols together) offers non-technological frameworks for understanding formal systems and refining creative practice across fields."
+description: "Ben Zucker presents 'Musicalization not Music,' arguing that Western musical notation functions as a protocol in the formal sense—a symbolization (per Lawrence Halprin) that organizes behavior for 'reliable repeatability' while leaving emergent, implicit layers of performance practice to flourish around it. Drawing on Nelson Goodman's notational schemes, Brian Eno, and the Protocol Reader (including Tajuddin's 'phenomenal protocols'), Zucker proposes a framework of parameters—differentiation, discreteness, sufficiency, efficiency vs. thoroughness—for analyzing any protocol's explicit notation against its lore-based implicit practices, then extends this to 'musicalization': applying musical time, embodiment, and aesthetic attention to everyday and ecological protocols like doing laundry or airport security."
 tags:
-  - aesthetic-protocols
-  - formal-modeling-through-music
-  - music-as-protocol
-  - musicalization
-  - notation-and-performance
+  - efficiency-vs-thoroughness-tradeoff
+  - goodmans-notational-schemes-differentiation-discreteness
+  - musicalization-as-aesthetic-protocol-hacking
+  - notation-as-protocolsymbolization
   - protocol-school-2025
   - protocol-watching
   - protocols
+  - sufficiency-and-reliable-repeatability
 audience:
   - researcher
   - academic

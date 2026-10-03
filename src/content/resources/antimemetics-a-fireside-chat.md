@@ -4,16 +4,17 @@ type: talk
 authors:
   - name: "Nadia Asparouhova"
 date: 2025-04-10
-description: "Nadia Asparouhova discusses anti-mimetics—ideas that resist spreading or being remembered—drawing from SCP Foundation fiction and connecting the concept to Venkatesh Rao's 'cozy web' theory. She explores how certain ideas fade from memory despite documentation, and examines the tension between isolated intellectual communities and information spread."
+description: "In this fireside chat, Nadia Asparouhova discusses the concept of anti-memes—ideas that resist spreading or being remembered—drawing on SCP fiction and her book Anti-Mimetic. She extends an epidemiological analogy to online communities, critiquing Venkatesh Rao's 'cozy web' concept by comparing group chats to poorly-ventilated COVID pods that compress and mutate ideas rather than truly insulating people from them, and connects her SOP23 essay's 'Whitehead protocol' (good, attention-freeing automation) versus 'Kafka protocol' (bad, confusion-inducing bureaucracy) to how attention and memory shape which ideas survive."
 tags:
-  - anti-mimetics
-  - cozy-web
-  - memetic-resistance
-  - protocol-fiction
+  - anti-memes
+  - attention-and-memory-as-compass
+  - cozy-web-critique
+  - memeplexanti-memeplex
+  - memory
+  - protocol-watching
   - protocols
-  - research
-  - scp-foundation
   - town-hall
+  - whitehead-protocol-vs-kafka-protocol
 audience:
   - researcher
   - practitioner

@@ -2,17 +2,19 @@
 title: "Towards a Formal Theory of Protocols"
 type: talk
 authors:
-  - name: "Benitesh Raalo"
+  - name: "Venkatesh Rao"
+  - name: "Timber Stinson-Schroff"
 date: 2025-06-12
-description: "Benitesh Raalo kicks off the Protocol Institute's Technical Foundations track, announcing a new special interest group dedicated to formal modeling of protocols. Raalo positions this work as establishing mathematical and theoretical foundations for protocol studies analogous to how economics formalized markets or control theory formalized manufacturing, with plans for a six-month study group featuring bi-weekly co-working sessions and collaborative paper reading."
+description: "Venkatesh Rao (referred to as Benitesh Raalo in the transcript) launches a technical-foundations track for the Protocol Institute, proposing to formalize protocol studies the way control theory formalized manufacturing or general equilibrium theory formalized economics. He walks through worked examples—handwashing as a 'micro protocol' modeled via finite automata and grammar rules, and his own 2004-2006 Air Force battlespace simulation work using region connection calculus and temporal interval calculus—to illustrate how protocols might be formalized across a 'basket of protocols' ranging from Ethereum to royal court etiquette. Timber Stinson-Schroff co-hosts, announcing a parallel 'tension field theory' special interest group and a six-month study group culminating in a fall 'Basket of Protocols' workshop."
 tags:
-  - formal-models-of-protocols
-  - organizations
-  - protocol-theory-formalization
+  - basket-of-protocols
+  - formalization-phase-model-quasipre-paradigmearly-paradigmparadigm-scalingmaturity
+  - governance
+  - macro-vs-micro-protocols
+  - paradigm-levelrelativist-absolutist-field-classification
   - protocols
-  - special-interest-groups
-  - study-group-methodology
-  - technical-foundations
+  - region-connection-calculus-temporal-interval-calculus
+  - technology
   - town-hall
 audience:
   - researcher

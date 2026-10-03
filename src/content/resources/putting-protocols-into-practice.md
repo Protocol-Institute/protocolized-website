@@ -4,17 +4,18 @@ type: talk
 authors:
   - name: "Evan Miyazono"
 date: 2023-06-24
-description: "Evan Miyazono, head of research at Protocol Labs, discusses putting protocols into practice by examining three phases: lessons learned from past protocol development at Protocol Labs (creators of IPFS and Filecoin), current work on funding mechanisms and coordination protocols for public goods, and speculative future protocol designs. He frames protocols through the lens of mechanism design and shares observations from practical experience deploying decentralized infrastructure at scale."
+description: "Evan Miyazono, head of research at Protocol Labs, walks through his mechanism-design approach to protocols—mapping rules to strategies to outcomes—using Filecoin's proof-of-replication and the late addition of Filecoin Plus (a trust layer to prevent 'useless bit' storage attacks) as a case study. He then surveys Protocol Labs' public-goods funding experiments (hypercerts, retroactive funding, the S-process for preference aggregation, Funding the Commons conferences) and closes with speculative thoughts on open agency architecture for AI alignment as a future protocol challenge."
 tags:
-  - coordination-protocols
-  - decentralized-infrastructure
-  - governance
+  - filecoin-plus-trust-layer
+  - filecoin-proof-of-replication
   - guest-talks
+  - hypercerts-and-retroactive-public-goods-funding
   - mechanism-design
+  - open-agency-architecture-ai-alignment
   - organizations
-  - protocol-deployment
   - protocols
-  - public-goods-funding
+  - research
+  - technology
 audience:
   - researcher
   - practitioner

@@ -4,16 +4,18 @@ type: talk
 authors:
   - name: "Rafael Fernández"
 date: 2023-12-21
-description: "Rafael Fernández presents research on swarms and formation, arguing that the absence of protocols—not just their presence—is key to understanding swarm behavior. His project emerged from practical experience running Folklore, a decentralized curation collective, and explores how swarms differ fundamentally from crowds and organized entities through the lens of protocol theory."
+description: "Rafael Fernández presents his summer protocols research 'The Swarm and the Formation,' arguing that digital swarms—networks of people, content, and bots coordinated through algorithms rather than explicit protocols—emerge precisely in the absence of protocol, using the 2017 Puerto Rico hurricane Mutual Aid response and the Silicon Valley Bank collapse as case studies. He proposes a taxonomy distinguishing swarms from crowds, guerrillas, mimetic tribes, digital farms, online communities, and encoded virtual organizations (e.g., MakerDAO), mapped along a spectrum from unprotocolized 'terrain-driven' coordination to fully encoded social protocols, and introduces concepts like 'emergent promise,' swarm life cycles modeled on hurricanes, and 'attunement technologies' (like Community Notes) as an alternative to assimilationist alignment."
 tags:
-  - collective-intelligence
-  - decentralized-curation
-  - negative-space-in-protocols
-  - protocol-absence
+  - attunement-technologies-vs-assimilationalignment-technologies
+  - emergent-promise-and-shared-orientation
+  - protocol-watching
   - protocols
   - research
   - researcher-salon
-  - swarm-dynamics
+  - swarm-life-cycle-hurricane-analogy
+  - swarm-vs-crowd-vs-guerrilla-vs-mimetic-tribe-taxonomy
+  - technology
+  - terrain-as-protocol-absence-of-protocol
 audience:
   - researcher
   - academic

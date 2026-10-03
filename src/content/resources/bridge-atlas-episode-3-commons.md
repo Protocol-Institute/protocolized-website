@@ -2,18 +2,19 @@
 title: "Bridge Atlas - Episode 3: Commons | Yancey Strickler & Trent Van Epps"
 type: interview
 authors:
-  - name: "Yancey Strickler"
   - name: "Trent Van Epps"
+  - name: "Yancey Strickler"
 date: 2025-11-05
-description: "Yancey Strickler and Trent Van Epps discuss Ethereum through the lens of the commons in this Bridge Atlas episode. Trent, who coordinates protocol development for the Ethereum Foundation and leads Protocol Guild (a collective funding mechanism for 200+ core contributors), and Yancey, a writer focused on protocol governance, explore how decentralized systems function as shared resources and the coordination mechanisms required to sustain them."
+description: "Host Christine Kim talks with Trent Van Epps (Ethereum Foundation, Protocol Guild) and Yancey Strickler (Metalabel, Artist Corporations) about Ethereum and creative work as 'commons.' Van Epps explains Protocol Guild's legibility strategy of bundling 200 core developers to attract funding via mechanisms like the 1% pledge, while Strickler describes using label structures, revenue splits, and a proposed legal form (the Artist Corporation) to let creative groups share governance and money without full financialization."
 tags:
+  - artist-corporation-legal-structure
   - bridge-atlas
-  - collective-funding
-  - commons
-  - ethereum-governance
+  - digital-commonsgovernance-of-shared-resources
   - governance
-  - protocol-coordination
-  - protocol-guild
+  - legibility-of-collective-contributors
+  - metalabel-revenue-splits-and-group-treasuries
+  - organizations
+  - protocol-guild-and-the-1-pledge
   - protocols
 audience:
   - researcher

@@ -5,14 +5,14 @@ authors:
   - name: "Qiufan Chen"
   - name: "Amita Shukla"
 date: 2025-10-15
-description: "Qiufan Chen, an award-winning science fiction author, discusses his creative process of integrating large language models into fiction writing with Amita Shukla. Chen explores how LLMs function across multiple stages of his writing practice—from initial research and structural development to drafting and editing—drawing on his experience as one of the earliest serious public experimenters with AI-assisted literary creation."
+description: "Qiufan Chen (referred to as 'Stanley' in the session) discusses with Amita Shukla his multi-model LLM pipeline for fiction writing—using Gemini for long-context novel-length editing, Claude for nuanced language, and GPT variants for ideation—while insisting that trained writerly 'taste' must filter and rewrite every AI output rather than accept it directly. He describes AI as an 'exoskeleton' that augments but doesn't replace authorial intention, illustrates this with his branching-narrative immersive theater production in Hong Kong, and argues writers must craft new hopeful metaphors (solarpunk) to reshape climate storytelling."
 tags:
-  - ai-assisted-fiction-process
-  - creative-protocol-design
+  - ai-as-exoskeleton-collaborator-metaphor
+  - branchingreincarnation-immersive-theater-narrative-design
   - fiction
-  - human-ai-collaboration-in-authorship
-  - llm-integration-in-creative-writing
-  - speculative-fiction-and-ai
+  - metaphor-making-for-climate-storytelling-solarpunk
+  - multi-model-llm-writing-pipeline-gemini-claude-gpt
+  - taste-and-intuition-as-human-filter-for-ai-output
   - technology
   - town-hall
 audience:
