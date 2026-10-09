@@ -236,15 +236,15 @@ export function ResourcesPage({
                   Beta
                 </span>
                 <p class="mt-2 mb-3 text-sm font-sans text-dark leading-snug">
-                  Chat with C-3PO, our archive expert bot.
+                  Chat with PIBot, our archive expert bot.
                 </p>
                 <a
-                  href="https://c3po.protocolized.io?ref=protocolized-resources"
+                  href="https://pibot.protocolized.io?ref=protocolized-resources"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="block w-full text-center text-sm font-sans font-medium bg-primary text-white py-2 rounded-lg hover:bg-primary/90 transition-colors"
                 >
-                  Open C-3PO ↗
+                  Open PIBot ↗
                 </a>
               </div>
 
