@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/phantom-in-eden"
+url: "https://monstroustimes.com/articles/phantom-in-eden/"
 ---

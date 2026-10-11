@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-last-archive"
+url: "https://monstroustimes.com/articles/the-last-archive/"
 ---

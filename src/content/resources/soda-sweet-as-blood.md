@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/soda-sweet-as-blood"
+url: "https://monstroustimes.com/articles/soda-sweet-as-blood/"
 ---

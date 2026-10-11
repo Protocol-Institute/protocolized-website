@@ -11,5 +11,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/jamverse-live"
+url: "https://monstroustimes.com/jamverse/"
 ---

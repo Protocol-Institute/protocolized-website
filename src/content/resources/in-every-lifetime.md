@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/in-every-lifetime"
+url: "https://monstroustimes.com/articles/in-every-lifetime/"
 ---

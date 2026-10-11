@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/carousel-feeding-in-the-asteroid"
+url: "https://monstroustimes.com/articles/carousel-feeding-in-the-asteroid-midden-livelock/"
 ---

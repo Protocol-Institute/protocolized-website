@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-entropic-gate-part-ii"
+url: "https://monstroustimes.com/articles/the-entropic-gate-part-ii/"
 ---

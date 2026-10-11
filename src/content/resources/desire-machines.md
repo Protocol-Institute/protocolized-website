@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/desire-machines"
+url: "https://monstroustimes.com/articles/desire-machines/"
 ---

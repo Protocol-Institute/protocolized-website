@@ -17,32 +17,15 @@
 - Add cover images for 4 Jamverse series books (Trainverse, Legends & Ledgers, Zoothesia, Stockton Chronicles)
 - Add buy links (`url`) for books when available (Substack URLs removed; only local epubs + real retail links should appear)
 
-### Jamverse / Series
-- Jamverse PR #1 was already merged (confirmed Session 22) — stale "awaiting review" note removed. Still worth confirming jamverse.protocolized.io story links work end-to-end if not already checked.
-- **Series wiring is manual, and fails silently.** Legends & Ledgers ch.4 ("The Dismantling", 2026-08-26) sat unwired for a week (fixed Session 23): the post mirrored fine, but had no `series_slug`, so it was missing from the series nav and the book TOC with nothing surfacing the gap. `sync-substack.py` does not infer series membership — new chapters need `scripts/update-series-toc.py` run by hand.
-- Stockton Chronicles ch.2+3: the *placeholder* rows already carry series data, so those two specifically will populate on sync. That is **not** true of new chapters generally — the earlier "no extra steps needed" note overstated it and applied only to those pre-seeded placeholders.
-- **Check after any new fiction post.** Query for fiction posts with no series that share an author with an existing series:
-  ```sql
-  SELECT slug, primary_author, date FROM posts
-  WHERE section='Fictions' AND series_slug IS NULL
-    AND primary_author IN (SELECT DISTINCT primary_author FROM posts WHERE series_slug IS NOT NULL)
-  ORDER BY date DESC LIMIT 10;
-  ```
-  Noisy by design — these authors also write standalone fiction, so most hits are correct as-is. Treat it as a review prompt for *recent* posts, not an alarm. Judging whether a post is a chapter needs the post itself (a title/description like "the series concludes" is the real signal).
-- Note: Jamverse is slated to become a subdomain of the new fiction publication ("Monstrous Times") — see Fiction/Nonfiction Split below. Its protocolized.io story links will keep working via `fiction_redirects` once that cuts over, but Jamverse's own repo should eventually update its links to point directly at the new destination.
-
-### Fiction/Nonfiction Split — Phase 4 (future, not yet triggered)
-Phases 0–3 (classification, dark-shipped filter/redirect wiring, pipeline guardrails, export bundle) are done — see CLAUDE.md "Fiction/Nonfiction Split" section for full status. Phase 4 (actual cutover) triggers once Monstrous Times has a real domain:
-- Re-run `scripts/export-fiction-bundle.py` for a fresh handoff bundle — **required**, not optional: six posts changed section in Session 23, so the 2026-08-17 baseline bundle is stale and under-counts fiction
-- Populate `fiction_redirects` with real destination URLs (per-item — Jamverse-branded content routes differently than standalone fiction)
-- Flip `FICTION_SEGREGATION_ACTIVE = "true"` in `worker/wrangler.toml`, deploy
-- After a soak period, delete fiction rows from D1 + fiction Markdown from `src/content/resources/`
-- Jamverse announcement posts (`jamverse-jam`, `jamverse-live`, `jamverse-jam-contest-closes-today`) route as fiction (`posts.section='Fictions'` via `SECTION_OVERRIDES`) but their resource rows stay `type: article`, which is correct as a format descriptor. At cutover `/p/:slug` will redirect while `/resources/:slug` stays — resolve with per-slug `fiction_redirects` rows, **not** by retyping them as `fiction`.
-- Two borderline items flagged for a content call, not yet acted on: the post `what-is-protocol-fiction` (left nonfiction) and the general finding that the `fiction` tag is used loosely as a topic tag on ~45 nonfiction items (talks/editorials about fiction) — `type`/`section`/`category` are the only reliable fiction signals, not tags.
+### Fiction split — follow-ups (cutover done 2026-10-11, Session 24)
+- **New fiction still posted to the original Substack** (e.g. `where-the-stones-hold`, 2026-10-07; MT's archive stops 2026-09-15). For each: once it's on monstroustimes.com, add it to `data/monstroustimes-map.json`, repoint the resource `url:`, run `scripts/load-fiction-redirects.py --remote`, push. Better long-term: stop posting fiction to the old Substack, or have MT pick it up.
+- **Randy Lubin placeholders** `the-caucus`, `joan-henry-vs-the-algorithm` (unpublished `posts` rows): no MT destination — delete or leave.
+- **Delete fiction rows / R2 post bodies** — optional cleanup; redirects don't depend on them. Not urgent.
+- **`ghosts-in-machines` + `ghosts-in-machines-d0a`** (anthology announcement posts, typed `article`, not on MT) still serve as mirrors here. Decide: redirect to MT `/series/ghosts-in-the-machine/` or keep.
+- **c3po sync reverts manual `type` fixes** on Substack-linked resource files (`map_type()` on every update). Make it preserve an existing `type:`.
 
 ### Infrastructure
 - Automate `migrate-to-d1.py` on push when `src/content/resources/` changes (GH Actions job)
-- **Surface unwired series chapters automatically.** The Session 23 gap (L&L ch.4 unlinked for a week) was invisible because nothing checks for it. Cheapest fix: have `sync-substack.py` print a notice when it mirrors a `Fictions` post whose `primary_author` already has a series, prompting a `update-series-toc.py` decision at sync time instead of relying on someone noticing later. Deliberately a notice, not a hard fail — the same author writing standalone fiction is normal and common.
 
 ### SoP Resource Migration (from summerofprotocols.com)
 Add resource entries for the following SoP content not yet in the library.

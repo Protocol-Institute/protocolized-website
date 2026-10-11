@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/mismatch"
+url: "https://monstroustimes.com/articles/mismatch/"
 ---

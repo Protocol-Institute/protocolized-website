@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/mr-cork-and-the-red-bus"
+url: "https://monstroustimes.com/articles/mr-cork-and-the-red-bus/"
 ---

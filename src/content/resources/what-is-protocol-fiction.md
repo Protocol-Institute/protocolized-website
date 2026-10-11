@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/what-is-protocol-fiction"
+url: "https://monstroustimes.com/articles/what-is-protocol-fiction/"
 ---

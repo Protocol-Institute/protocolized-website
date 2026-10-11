@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-signal-under-innsmouth"
+url: "https://monstroustimes.com/articles/the-signal-under-innsmouth/"
 ---

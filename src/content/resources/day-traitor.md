@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/day-traitor"
+url: "https://monstroustimes.com/articles/day-traitor/"
 ---

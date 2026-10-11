@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/we-shape-our-tools-and-thereafter"
+url: "https://monstroustimes.com/articles/we-shape-our-tools-and-thereafter-our-tools-shape-us/"
 ---

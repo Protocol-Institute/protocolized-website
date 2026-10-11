@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/in-the-garden-of-eden-baby"
+url: "https://monstroustimes.com/articles/in-the-garden-of-eden-baby/"
 ---

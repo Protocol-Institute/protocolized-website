@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/signals-in-the-margins"
+url: "https://monstroustimes.com/articles/signals-in-the-margins/"
 ---

@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-40-hour-work-week"
+url: "https://monstroustimes.com/articles/the-40-hour-work-week/"
 ---

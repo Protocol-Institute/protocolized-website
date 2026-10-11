@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/all-you-can-do-here-is-leave"
+url: "https://monstroustimes.com/articles/all-you-can-do-here-is-leave/"
 ---

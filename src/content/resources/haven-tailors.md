@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/haven-tailors"
+url: "https://monstroustimes.com/articles/haven-tailors/"
 ---

@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/fine-print"
+url: "https://monstroustimes.com/articles/fine-print/"
 ---

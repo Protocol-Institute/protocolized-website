@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/strangeness-illegibility-hardness"
+url: "https://monstroustimes.com/articles/strangeness-legibility-hardness/"
 ---

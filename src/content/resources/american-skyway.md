@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/american-skyway"
+url: "https://monstroustimes.com/articles/american-skyway/"
 ---

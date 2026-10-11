@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/missing-not-at-random"
+url: "https://monstroustimes.com/articles/missing-not-at-random/"
 ---

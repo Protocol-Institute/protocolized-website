@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-predation-circuit"
+url: "https://monstroustimes.com/articles/the-predation-circuit/"
 ---

@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/perception-must-preserve"
+url: "https://monstroustimes.com/articles/perception-must-preserve/"
 ---

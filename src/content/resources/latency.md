@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/latency"
+url: "https://monstroustimes.com/articles/latency/"
 ---

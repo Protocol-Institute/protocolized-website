@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/genius-in-the-bottle"
+url: "https://monstroustimes.com/articles/genius-in-the-bottle/"
 ---

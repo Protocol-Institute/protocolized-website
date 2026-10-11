@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-ductus-of-protocol-fiction"
+url: "https://monstroustimes.com/articles/the-ductus-of-protocol-fiction/"
 ---

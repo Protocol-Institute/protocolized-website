@@ -78,7 +78,7 @@ app.get("/p/:slug", async (c) => {
   const exclude = fictionExcluded(c);
 
   if (exclude) {
-    const redirect = await getFictionRedirect(c.env.DB, slug);
+    const redirect = await getFictionRedirect(c.env.DB, slug, "post");
     if (redirect) return c.redirect(redirect.redirect_url, 301);
   }
 
@@ -123,7 +123,7 @@ app.get("/books/:slug", async (c) => {
   const exclude = fictionExcluded(c);
 
   if (exclude) {
-    const redirect = await getFictionRedirect(c.env.DB, slug);
+    const redirect = await getFictionRedirect(c.env.DB, slug, "book");
     if (redirect) return c.redirect(redirect.redirect_url, 301);
   }
 
@@ -162,7 +162,7 @@ app.get("/anthologies", async (c) => {
     // Entirely fiction-branded page (see static-pages.tsx) -- once fiction
     // has moved out, there's no content left here. Redirect to a configured
     // destination if one's been set for this page, else fall back to /resources.
-    const redirect = await getFictionRedirect(c.env.DB, "anthologies");
+    const redirect = await getFictionRedirect(c.env.DB, "anthologies", "page");
     return c.redirect(redirect?.redirect_url ?? "/resources", 301);
   }
   const anthologies = await getAnthologies(c.env.DB, exclude);
@@ -171,8 +171,10 @@ app.get("/anthologies", async (c) => {
   );
 });
 
+// Fiction stays listed in the library even after the fiction split: its cards
+// link out to Monstrous Times (resource url: fields) rather than disappearing.
 app.get("/resources", async (c) => {
-  const resources = await getAllResources(c.env.DB, fictionExcluded(c));
+  const resources = await getAllResources(c.env.DB);
   return c.html(
     <ResourcesPage currentPath="/resources" resources={resources} />
   );
@@ -190,7 +192,7 @@ app.get("/resources/:slug", async (c) => {
   const exclude = fictionExcluded(c);
 
   if (exclude) {
-    const redirect = await getFictionRedirect(c.env.DB, slug);
+    const redirect = await getFictionRedirect(c.env.DB, slug, "resource");
     if (redirect) return c.redirect(redirect.redirect_url, 301);
   }
 
@@ -219,7 +221,8 @@ app.get("/resources/:slug", async (c) => {
 app.get("/api/lexicon.json", (c) => c.redirect("/lexicon.json", 301));
 
 app.get("/api/resources.json", async (c) => {
-  const resources = await getAllResources(c.env.DB, fictionExcluded(c));
+  // Mirrors /resources: fiction stays in the catalog (linked out to Monstrous Times).
+  const resources = await getAllResources(c.env.DB);
   const data = resources.map((r) => ({
     slug: r.slug,
     title: r.title,

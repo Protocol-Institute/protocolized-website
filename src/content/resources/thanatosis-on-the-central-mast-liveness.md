@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/thanatosis-on-the-central-mast-liveness"
+url: "https://monstroustimes.com/articles/thanatosis-on-the-central-mast-liveness-check/"
 ---

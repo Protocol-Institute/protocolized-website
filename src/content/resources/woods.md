@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/woods"
+url: "https://monstroustimes.com/articles/the-curse-of-wolves/"
 ---

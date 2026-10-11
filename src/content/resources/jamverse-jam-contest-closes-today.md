@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/jamverse-jam-contest-closes-today"
+url: "https://monstroustimes.com/jamverse/"
 ---

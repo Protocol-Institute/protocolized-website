@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/would-you-stop-following-me-if-i"
+url: "https://monstroustimes.com/articles/would-you-stop-following-me-if-i-was-a-worm/"
 ---

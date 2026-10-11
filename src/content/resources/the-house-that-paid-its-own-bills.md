@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-house-that-paid-its-own-bills"
+url: "https://monstroustimes.com/articles/the-house-that-paid-its-own-bills/"
 ---

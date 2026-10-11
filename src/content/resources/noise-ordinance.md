@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/noise-ordinance"
+url: "https://monstroustimes.com/articles/noise-ordinance/"
 ---

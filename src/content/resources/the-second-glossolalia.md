@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-second-glossolalia"
+url: "https://monstroustimes.com/articles/the-second-glossolalia/"
 ---

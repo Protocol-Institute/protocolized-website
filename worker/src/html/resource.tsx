@@ -1,5 +1,5 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
+import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl, isMonstrousTimesUrl } from "./static-pages";
 import type { Resource } from "../db";
 
 const SCHEMA_TYPE: Record<string, string> = {
@@ -33,6 +33,8 @@ export function ResourcePage({
     ? { label: "Download", href: resource.file, download: true, external: false }
     : internalPostUrl
     ? { label: "Read article", href: internalPostUrl, external: false, download: false }
+    : isMonstrousTimesUrl(resource.url)
+    ? { label: "Read at Monstrous Times", href: resource.url!, external: true, download: false }
     : resource.url
     ? { label: "Open resource", href: resource.url, external: true, download: false }
     : null;

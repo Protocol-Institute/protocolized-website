@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/zero-knowledge"
+url: "https://monstroustimes.com/articles/zero-knowledge/"
 ---

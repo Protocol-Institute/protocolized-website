@@ -15,5 +15,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/human-enough-dae"
+url: "https://monstroustimes.com/articles/human-enough/"
 ---

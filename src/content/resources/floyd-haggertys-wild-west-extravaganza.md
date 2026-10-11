@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/floyd-haggertys-wild-west-extravaganza"
+url: "https://monstroustimes.com/articles/floyd-haggerty-s-wild-west-extravaganza-spectacular/"
 ---

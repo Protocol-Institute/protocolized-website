@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-flesh-perfected-is-the-flesh"
+url: "https://monstroustimes.com/articles/the-flesh-perfected-is-the-flesh-possessed/"
 ---

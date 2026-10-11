@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/a-visitors-guide-to-the-disposition"
+url: "https://monstroustimes.com/articles/a-visitor-s-guide-to-the-disposition/"
 ---

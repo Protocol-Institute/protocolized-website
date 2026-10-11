@@ -164,19 +164,26 @@ export async function getAnthologies(
 
 // ── Fiction redirects ────────────────────────────────────────────────────
 
+export type FictionRedirectKind = "post" | "resource" | "book" | "page";
+
 export interface FictionRedirect {
   slug: string;
-  kind: "post" | "resource" | "book";
+  kind: FictionRedirectKind;
   redirect_url: string;
 }
 
+// Scoped by kind because posts, resources and books share slugs: the
+// the-librarians *book* redirects to Monstrous Times, but the the-librarians
+// *resource* is an epub download that stays here. Rows are loaded from
+// data/monstroustimes-map.json by scripts/load-fiction-redirects.py.
 export async function getFictionRedirect(
   db: D1Database,
-  slug: string
+  slug: string,
+  kind: FictionRedirectKind
 ): Promise<FictionRedirect | null> {
   const row = await db
-    .prepare("SELECT * FROM fiction_redirects WHERE slug = ?")
-    .bind(slug)
+    .prepare("SELECT * FROM fiction_redirects WHERE slug = ? AND kind = ?")
+    .bind(slug, kind)
     .first<FictionRedirect>();
   return row ?? null;
 }
@@ -385,8 +392,11 @@ export async function getLatestPosts(
   limit = 50,
   excludeFiction = false
 ): Promise<Post[]> {
+  // Also drop posts that redirect away -- this catches the essays that moved
+  // to Monstrous Times without being in a fiction section.
   const fictionClause = excludeFiction
-    ? ` AND section NOT IN (${Array.from(FICTION_POST_SECTIONS).map(() => "?").join(",")})`
+    ? ` AND section NOT IN (${Array.from(FICTION_POST_SECTIONS).map(() => "?").join(",")})` +
+      ` AND slug NOT IN (SELECT slug FROM fiction_redirects WHERE kind = 'post')`
     : "";
   const sql = `SELECT slug, title, subtitle, date, section, primary_author, authors, cover_image, summary, substack_url, reaction_count, image_count, mirrored_at FROM posts WHERE (is_placeholder IS NULL OR is_placeholder = 0)${fictionClause} ORDER BY date DESC LIMIT ?`;
   const stmt = excludeFiction

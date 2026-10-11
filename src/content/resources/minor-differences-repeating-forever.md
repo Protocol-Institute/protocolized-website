@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/minor-differences-repeating-forever"
+url: "https://monstroustimes.com/articles/minor-differences-repeating-forever/"
 ---

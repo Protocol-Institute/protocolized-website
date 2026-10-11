@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-overloaded-train"
+url: "https://monstroustimes.com/articles/the-overloaded-train/"
 ---

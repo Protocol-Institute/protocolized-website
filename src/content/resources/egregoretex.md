@@ -1,6 +1,6 @@
 ---
 title: "Egregoretex"
-type: article
+type: fiction
 authors:
   - name: "Timber Stinson-Schroff"
 date: 2025-05-07
@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/egregoretex"
+url: "https://monstroustimes.com/articles/egregoretextm/"
 ---

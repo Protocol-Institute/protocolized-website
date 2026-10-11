@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/caduceus-city"
+url: "https://monstroustimes.com/articles/caduceus-city/"
 ---

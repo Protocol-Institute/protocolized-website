@@ -1,5 +1,5 @@
 import { Base } from "./base";
-import { TypeBadge, fmtDate, mobileMenuScript, substackToInternalUrl } from "./static-pages";
+import { TypeBadge, fmtDate, mobileMenuScript, isMonstrousTimesUrl, resourceCardHref } from "./static-pages";
 import type { Resource } from "../db";
 
 const TYPE_LABELS: Record<string, string> = {
@@ -408,7 +408,9 @@ export function ResourcesPage({
                     <div>
                       <h3 class="font-serif text-lg text-dark leading-snug mb-1">
                         <a
-                          href={substackToInternalUrl(r.url) ?? `/resources/${r.slug}`}
+                          href={resourceCardHref(r)}
+                          target={isMonstrousTimesUrl(r.url) ? "_blank" : undefined}
+                          rel={isMonstrousTimesUrl(r.url) ? "noopener" : undefined}
                           class="hover:text-primary transition-colors after:absolute after:inset-0"
                         >
                           {r.title}

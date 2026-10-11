@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/songs-of-hydropolia"
+url: "https://monstroustimes.com/articles/songs-of-hydropolia/"
 ---

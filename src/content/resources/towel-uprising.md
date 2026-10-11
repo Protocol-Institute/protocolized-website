@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/towel-uprising"
+url: "https://monstroustimes.com/articles/towel-uprising/"
 ---

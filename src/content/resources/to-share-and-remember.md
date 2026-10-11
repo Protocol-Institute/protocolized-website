@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/to-share-and-remember"
+url: "https://monstroustimes.com/articles/to-share-and-remember/"
 ---

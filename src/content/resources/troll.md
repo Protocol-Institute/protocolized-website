@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/troll"
+url: "https://monstroustimes.com/articles/t-r-o-l-l/"
 ---

@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/time-to-die"
+url: "https://monstroustimes.com/articles/time-to-die/"
 ---

@@ -17,7 +17,9 @@ bucket_name = "protocolized-resources"
 directory = "./public"
 
 [vars]
-# Flip to "true" once the fiction publication (working name "Monstrous Times")
-# has a real destination and fiction_redirects is populated. See the fiction
-# split plan for the cutover runbook. Unset/false = today's behavior, unchanged.
-FICTION_SEGREGATION_ACTIVE = "false"
+# Fiction split cutover (2026-10-11): fiction now lives at monstroustimes.com.
+# "true" = fiction out of magazine/home/books/feeds/sitemap, and /p/, /books/
+# 301 to Monstrous Times via fiction_redirects (loaded from
+# data/monstroustimes-map.json). Fiction resource cards stay in /resources,
+# linking out. "false" restores pre-cutover behavior.
+FICTION_SEGREGATION_ACTIVE = "true"

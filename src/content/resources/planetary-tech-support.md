@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/planetary-tech-support"
+url: "https://monstroustimes.com/articles/planetary-tech-support/"
 ---

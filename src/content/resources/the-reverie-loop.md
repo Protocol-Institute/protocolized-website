@@ -12,5 +12,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/the-reverie-loop"
+url: "https://monstroustimes.com/articles/the-reverie-loop/"
 ---

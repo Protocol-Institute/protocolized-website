@@ -27,19 +27,18 @@ it should be added before the redirect goes live.
 
 Full redirect mapping and implementation plan: `../admin/sop-domain-migration.md`.
 
-## Fiction/Nonfiction Split (in progress)
+## Fiction/Nonfiction Split (cut over 2026-10-11)
 
-This site + its original Substack are forking into two publications: a **nonfiction publication** (this site, keeps the domain/name/original Substack) and a **new fiction publication** (working name "Monstrous Times," own domain TBD — do not hardcode it anywhere). The existing Jamverse project (jamverse.protocolized.io, separate repo `Protocol-Institute/jamverse`) will become a subdomain of the new pub, not the pub itself.
+This site + its original Substack forked into a **nonfiction publication** (this site) and a **fiction publication, Monstrous Times** at [monstroustimes.com](https://monstroustimes.com) — a separate Astro site that loaded its archive by direct export (no handoff bundle needed). Jamverse lives under it at `monstroustimes.com/jamverse/`.
 
-**Status (2026-08-17):** Phases 0–3 of the segregation plan are implemented — nothing is visibly different on the live site yet (fiction stays live until the new pub has a real destination). What's in place:
-- `worker/src/fiction.ts` / `scripts/fiction_classification.py` — single source of truth for "is this fiction" (`posts.section === 'Fictions'`, `resources.type === 'fiction'`, `books.category === 'fiction'`).
-- Every fiction-touching route/query in the Worker (`/`, `/magazine`, `/books`, `/resources`, `/sitemap.xml`, `/rss.xml`, `/llms.txt`, `/api/resources.json`, `/anthologies`, plus `/p/:slug`, `/resources/:slug`, `/books/:slug` direct access) is dark-shipped behind `FICTION_SEGREGATION_ACTIVE` in `worker/wrangler.toml` (currently `"false"`).
-- D1 table `fiction_redirects` (slug → destination URL, empty until cutover) is the redirect source of truth for `/p/:slug`, `/resources/:slug`, `/books/:slug` once the flag flips — deliberately decoupled from the content tables so redirects keep working after those rows are eventually deleted.
-- `scripts/sync-substack.py` and `scripts/sync-substack-resources.py` print a loud warning (not a hard fail) if they ever encounter a `Fictions`-section post — see "Things to watch out for" below.
-- `resolve_section()` (added Session 23) derives the section from Substack's `section_id`, because the per-post API returns `section_id` but never `section_name`. Before this, every Worker-era synced post defaulted to `"Protocolized"` and 6 fiction posts silently bypassed the guardrail above. Do not reintroduce a `section_name`-only read.
-- `scripts/export-fiction-bundle.py` produces a portable handoff bundle (D1 rows + R2 assets) for the new fiction pub to bootstrap from.
+**How the cutover works (Session 24):**
+- `FICTION_SEGREGATION_ACTIVE = "true"` in `worker/wrangler.toml`. Fiction is out of `/`, `/magazine`, `/books`, `/rss.xml`, `/sitemap.xml`, `/llms.txt`; `/anthologies` 301s to MT's `/series/`.
+- **Fiction resource cards stay in `/resources`** (and `/api/resources.json`) — their Markdown `url:` points at MT and cards link straight out (`resourceCardHref()` / `isMonstrousTimesUrl()` in `worker/src/html/static-pages.tsx`). Deliberate: the library is a catalog of the whole corpus, not only what this site hosts.
+- `/p/:slug` and `/books/:slug` 301 to MT via D1 `fiction_redirects`, **scoped by `kind`** (`post` / `book` / `page` / `resource`) because slugs collide across tables — the `the-librarians` book redirects but the `the-librarians` resource is an epub that stays. No `resource` rows exist; fiction resource detail pages still render with a "Read at Monstrous Times" button.
+- **Source of truth: `data/monstroustimes-map.json`** (protocolized slug → MT URL). MT slugs are title-derived, *not* Substack slugs, so the map is title-matched against MT's `rss.xml` and can't be computed. Load it with `scripts/load-fiction-redirects.py --remote` (idempotent full replace). Includes the 4 essays MT also publishes (`what-is-protocol-fiction`, `the-ductus-of-protocol-fiction`, `strangeness-illegibility-hardness`, `egregoretex`) — the post listings exclude any slug with a `post` redirect row, not just the `Fictions` section.
+- `fiction.ts` / `scripts/fiction_classification.py` remain the single definition of "is this fiction" (`posts.section === 'Fictions'`, `resources.type === 'fiction'`, `books.category === 'fiction'`); `resolve_section()` (Session 23) is still the only supported way to read a post's section.
 
-**Not yet done (Phase 4, future runbook):** flipping the flag, populating `fiction_redirects` with real destination URLs, deleting fiction rows from D1, and removing fiction Markdown from `src/content/resources/`. **Re-run `scripts/export-fiction-bundle.py` first** — the 2026-08-17 baseline bundle predates the Session 23 section repair and under-counts fiction by six posts, so handing it off as-is would ship an incomplete archive to the new publication. Do this only once Monstrous Times' domain (and Jamverse's subdomain destination) actually exist. Full runbook: see the fiction split plan referenced in devlog.
+**Ongoing gap — new fiction still lands on the old Substack.** MT's import stops at 2026-09-15; fiction posted to the original Substack afterward (first: `where-the-stones-hold`, 2026-10-07) mirrors here, trips the sync's fiction WARNING, and is hidden from listings but still served at `/p/:slug`. Once MT publishes it: add the slug to `data/monstroustimes-map.json` (`posts`), set the resource file's `url:` to the MT URL, run `load-fiction-redirects.py --remote`, push. Not done yet: deleting fiction rows/R2 bodies (keep — the redirects don't depend on them, but there's no reason to rush), and the 2 unpublished Randy Lubin placeholder rows (`the-caucus`, `joan-henry-vs-the-algorithm`) which have no MT destination.
 
 ---
 
@@ -131,6 +130,7 @@ scripts/
 ├── sync-pdf-resources.py        # Pull c3po PDF enriched_meta → update resource descriptions + tags
 ├── sync-substack-resources.py   # Pull c3po Substack enriched_meta → resource Markdown (all post types)
 ├── update-series-toc.py         # Add a post as the next chapter in a series book (books.toc + posts.series_slug/position)
+├── load-fiction-redirects.py    # data/monstroustimes-map.json → D1 fiction_redirects (full replace)
 └── migrate-to-d1.py             # Sync all resource Markdown → D1 resources table
 .github/workflows/
 ├── deploy.yml          # Build & deploy Worker on push to main
@@ -194,6 +194,8 @@ After any sync script: run `python3 scripts/migrate-to-d1.py --remote`. See `c3p
 - The build must produce zero errors. Run `npm run build` before pushing.
 
 ## At Session Start
+
+> **Base ritual:** [`Code/devops/rituals.md`](../../devops/rituals.md) (v1.0) is canonical: startup S1–S7, wrap-up W0–W7. The steps below are this project's **local mods** — they run in addition to the base, and the stricter step wins. Check this section against the base when you next edit it; `Code/devops/rituals-survey.md` lists the common gaps (`date`, security sweep W3, cross-project items S4, a wrap-up report keyed to step IDs).
 
 1. Read `status-vgr.md` — review active and upcoming items.
 2. Check Substack sync activity since last session:
@@ -306,7 +308,8 @@ Omitting `--remote` silently succeeds but writes to `.wrangler/state/v3/` instea
 - The `.claude/` directory is gitignored — it contains local Claude Code settings and should not be committed.
 - The `raw_resources/` directory is gitignored — it contains source data used during the initial import.
 - Resource slugs are derived from filenames. Renaming a resource file changes its URL.
-- **Post-fork, new fiction content should not be posted to the original Substack.** `sync-substack.py` and `sync-substack-resources.py` will print a loud `WARNING` if they encounter a `Fictions`-section post — investigate before merging that run's changes rather than assuming it's expected. See "Fiction/Nonfiction Split" above.
+- **Fiction posted to the original Substack after the cutover** trips a loud `WARNING` in `sync-substack.py` / `sync-substack-resources.py`. Expected until fiction stops going there — handle it with the "Ongoing gap" steps under Fiction/Nonfiction Split, don't ignore it.
+- **The c3po resources sync rewrites `type` on every Substack-linked file** (`map_type(section)`), silently reverting manual retypes — this undid the Session 22 `ghosts-in-machines` → `fiction` fix on 2026-08-18. Files whose `url:` is not a Substack URL (e.g. repointed to MT) are skipped entirely.
 - **Substack post sections come from `section_id`, not `section_name`.** The per-post endpoint (`/api/v1/posts/{slug}`) omits `section_name`; only the bulk archive listing (what c3po caches) has it. `scripts/fiction_classification.py` holds the id map (`333103=Obliquities`, `333105=Fictions`, `333110=Articles`, `null=Protocolized`) and `resolve_section()` is the only supported way to read a post's section. If a new section is added on Substack, the sync will warn about an unrecognized `section_id` — add it to `SUBSTACK_SECTION_BY_ID` rather than ignoring the warning.
 - **`SECTION_OVERRIDES` is routing, not format.** It pins which publication a post travels with (the three Jamverse announcements route with the fiction pub). It must NOT reach `map_type()` in the resources sync, or those announcements get retyped `type: fiction` in the library — hence `apply_overrides=False` there. Keep the two meanings separate.
-- **New chapters in an existing series are not wired automatically.** The Substack sync does not infer series membership; run `scripts/update-series-toc.py` by hand after a new chapter publishes, or it silently stays out of the series nav and book TOC. The failure is invisible — the post mirrors and renders normally, it just isn't in the series. After syncing a new `Fictions` post, check whether its author already has a series (see the query in `status-vgr.md` under "Jamverse / Series"); the post's own title/description is the real signal that it's a chapter.
+- **Series wiring (`scripts/update-series-toc.py`) is obsolete for fiction since the cutover** — the Jamverse series books 301 to Monstrous Times, which maintains its own series pages. Only relevant again if a nonfiction series is ever created here.

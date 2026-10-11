@@ -326,6 +326,19 @@ export function substackToInternalUrl(url: string | undefined): string | null {
   return m ? `/p/${m[1]}` : null;
 }
 
+// Fiction moved to Monstrous Times at the fiction split cutover; its resource
+// cards stay in the library but link straight out (see data/monstroustimes-map.json).
+export function isMonstrousTimesUrl(url: string | undefined): boolean {
+  return !!url && /^https:\/\/monstroustimes\.com\//.test(url);
+}
+
+// Where a resource card's title link goes: mirrored post, Monstrous Times,
+// or the resource's own detail page.
+export function resourceCardHref(r: { slug: string; url?: string }): string {
+  if (isMonstrousTimesUrl(r.url)) return r.url!;
+  return substackToInternalUrl(r.url) ?? `/resources/${r.slug}`;
+}
+
 export function fmtDate(
   dateStr: string,
   style: "short" | "long" | "year" = "short"

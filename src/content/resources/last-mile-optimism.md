@@ -13,5 +13,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/last-mile-optimism"
+url: "https://monstroustimes.com/articles/last-mile-optimism/"
 ---

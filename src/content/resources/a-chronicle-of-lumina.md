@@ -14,5 +14,5 @@ audience:
   - researcher
   - practitioner
 featured: false
-url: "https://protocolized.summerofprotocols.com/p/a-chronicle-of-lumina"
+url: "https://monstroustimes.com/articles/a-chronicle-of-lumina/"
 ---
