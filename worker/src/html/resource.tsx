@@ -35,6 +35,8 @@ export function ResourcePage({
     ? { label: "Read article", href: internalPostUrl, external: false, download: false }
     : isMonstrousTimesUrl(resource.url)
     ? { label: "Read at Monstrous Times", href: resource.url!, external: true, download: false }
+    : resource.url && /^https:\/\/(www\.)?(youtube\.com|youtu\.be)\//.test(resource.url)
+    ? { label: "Watch on YouTube", href: resource.url, external: true, download: false }
     : resource.url
     ? { label: "Open resource", href: resource.url, external: true, download: false }
     : null;
