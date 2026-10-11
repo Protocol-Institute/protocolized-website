@@ -10,8 +10,8 @@ c3po builds the archive (ingest/archive_symposium.py): a manifest, one transcrip
 per recording, and the slide PDFs with email addresses already redacted. This
 script owns the presentation of that data on protocolized.io:
 
-  - uploads each slide file to R2 at symposium-2026/<file> (skipped if the CDN
-    already has it)
+  - uploads each slide file to R2 at symposium-2026/<file>, skipped when the CDN
+    already serves identical bytes (so a revised deck is re-uploaded)
   - writes the body of each resource file: recording link, slides list, transcript
   - creates resource files for talks that have none yet (two late recordings, and
     talks with slides but no recording); existing frontmatter is left alone
@@ -30,11 +30,13 @@ Usage:
 """
 
 import argparse
+import hashlib
 import json
 import os
 import re
 import subprocess
 import sys
+import time
 from datetime import date as Date
 from pathlib import Path
 
@@ -81,22 +83,45 @@ def cdn_url(name: str) -> str:
     return f"{CDN_BASE}/{R2_PREFIX}/{name}"
 
 
-def on_cdn(name: str, size: int) -> bool:
+def on_cdn(name: str, path: Path) -> bool:
+    """True when the CDN already serves exactly this file.
+
+    Speakers revise their decks; c3po rebuilds the PDF under the same name when
+    the Drive file changes, and this re-uploads it. R2's ETag is the MD5 of a
+    single-part upload, so it is compared directly — a revision that happens to
+    keep the byte count is still caught. (files.protocolized.io does not cache
+    at the edge, so an overwritten object is served new immediately.)"""
+    if not path.exists():
+        return False
     try:
         r = requests.head(cdn_url(name), timeout=10)
-        return r.status_code == 200 and int(r.headers.get("content-length", -1)) == size
     except Exception:
         return False
+    if r.status_code != 200:
+        return False
+    etag = r.headers.get("etag", "").strip('"')
+    if etag and "-" not in etag:
+        return etag == hashlib.md5(path.read_bytes()).hexdigest()
+    return int(r.headers.get("content-length", -1)) == path.stat().st_size
 
 
-def upload(path: Path, fmt: str, token: str) -> bool:
+def upload(path: Path, fmt: str, token: str, attempts: int = 3) -> bool:
+    """wrangler r2 object put, retried: large PDFs hit transient fetch failures."""
+    for attempt in range(1, attempts + 1):
+        if _put(path, fmt, token, quiet=attempt < attempts):
+            return True
+        time.sleep(5 * attempt)
+    return False
+
+
+def _put(path: Path, fmt: str, token: str, quiet: bool) -> bool:
     result = subprocess.run(
         [str(WRANGLER), "r2", "object", "put", f"{R2_BUCKET}/{R2_PREFIX}/{path.name}",
          "--file", str(path), "--content-type", CONTENT_TYPES[fmt], "--remote"],
         capture_output=True, text=True, cwd=str(REPO_ROOT / "worker"),
         env={**os.environ, "CLOUDFLARE_API_TOKEN": token},
     )
-    if result.returncode != 0:
+    if result.returncode != 0 and not quiet:
         print(f"    wrangler error: {result.stderr.strip()[:160]}")
     return result.returncode == 0
 
@@ -234,7 +259,7 @@ def main():
             if not s.get("file"):
                 continue
             path = ARCHIVE / "slides" / s["file"]
-            if on_cdn(s["file"], path.stat().st_size if path.exists() else -1):
+            if on_cdn(s["file"], path):
                 present += 1
             elif args.dry_run or args.no_upload:
                 print(f"  [UPLOAD?] {s['file']}")
