@@ -179,7 +179,10 @@ def slide_line(s: dict, talk_titles: dict, multi: bool) -> str:
     if s["format"] == "zip":
         return f"- [{label}]({cdn_url(s['file'])}) (zip, supporting materials)"
     pages = f", {s['pages']} pages" if s.get("pages") else ""
-    return f"- [{label}]({cdn_url(s['file'])}) (PDF{pages})"
+    web = ""
+    if s.get("how") == "web deck export":     # published by the speaker as a web deck
+        web = f" · [web version]({s['source_url']})"
+    return f"- [{label}]({cdn_url(s['file'])}) (PDF{pages}){web}"
 
 
 def render_body(r: dict, transcript: dict | None, manifest: dict) -> str:

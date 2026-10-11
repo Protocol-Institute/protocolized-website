@@ -25,6 +25,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-_fX0oiYQ5kk.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=_fX0oiYQ5kk) (43:59)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Thursday, September 24, 2026
 
+## Slides and papers
+
+- [Blygger: AI-intertwingled diachronic-synchronic social publishing](https://files.protocolized.io/symposium-2026/blygger-ai-intertwingled-diachronic-synchronic-social-publis-web.pdf) (PDF, 30 pages) · [web version](https://blygger.org/talks/2026-09-24-blygger/)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*

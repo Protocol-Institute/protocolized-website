@@ -29,6 +29,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-9MeDVUyyeZU.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=9MeDVUyyeZU) (31:32)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Wednesday, September 23, 2026
 
+## Slides and papers
+
+- [Some Candidate Laws of New Nature](https://files.protocolized.io/symposium-2026/some-candidate-laws-of-new-nature-web.pdf) (PDF, 16 pages) · [web version](https://humboldt.protocol-institute.org/talks/2026-09-23-new-nature/)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*
