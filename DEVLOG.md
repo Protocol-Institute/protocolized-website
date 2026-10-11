@@ -393,3 +393,25 @@ A build log for protocolized.io — how the magazine and resource library site w
 - **(1) The fiction export bundle is stale.** `exports/fiction-bundle-2026-08-17.zip` predates the section repair and under-counts fiction by six posts — handing it to Monstrous Times as-is would ship an incomplete archive. Phase 4 now names re-running `export-fiction-bundle.py` as required, not optional. **(2) Series wiring fails silently and has now done so twice** (&quot;The Big Man&quot; caught in Session 21, &quot;The Dismantling&quot; in Session 23). The post mirrors and renders normally; only the series nav and book TOC are missing, so nothing surfaces it. Logged a detection query (fiction posts with no series whose author already has one — deliberately noisy, a review prompt rather than an alarm) and an infra item proposing that `sync-substack.py` print a notice at sync time, when the decision is cheap, instead of relying on someone noticing weeks later. Left as a notice rather than a hard fail because the same authors legitimately write standalone fiction.
 
 ---
+
+## Session 24: Fiction split cutover: fiction repointed to Monstrous Times
+
+*2026-10-11*
+
+**Tracks:** cloudflare-migration, content-sync, ux
+
+- Monstrous Times (`monstroustimes.com`) is an independent Astro site that imported its archive directly, so the Phase 3 `export-fiction-bundle.py` handoff was never used. Phase 4 reduced to pointing this site at MT. The bundle script remains but has no consumer.
+
+- MT's URLs are `/articles/&lt;slugified title&gt;/`, which diverge from Substack slugs whenever a title was shortened in the Substack slug (`carousel-feeding-in-the-asteroid` → `…-asteroid-midden-livelock`) or contains punctuation (`egregoretex` → `egregoretextm`). The mapping therefore cannot be derived and lives in `data/monstroustimes-map.json`, title-matched against MT's `rss.xml` (all 69 MT articles matched; 2 by hand). Any future fiction that MT publishes must be added to that file by hand.
+
+- Departure from the Phase 1 design, by Venkat's call: the flag originally hid fiction from `/resources` too. Now `/resources` and `/api/resources.json` ignore the flag and fiction cards link straight out (`resourceCardHref()`/`isMonstrousTimesUrl()` in `static-pages.tsx`), treating the library as a catalog of the whole Protocol Institute corpus. Magazine, homepage, `/books`, RSS, sitemap and `llms.txt` still exclude fiction, so this site neither hosts nor indexes duplicate content.
+
+- Slugs collide across tables: `the-librarians` is both a fiction book (→ MT series page) and an epub resource (stays here). The original `getFictionRedirect(slug)` ignored `kind`, so a book row would have hijacked the resource page. Each route now asks for its own kind (`post`/`book`/`resource`/`page`). Since `slug` is still the primary key, one slug can't redirect in two kinds; `load-fiction-redirects.py` fails loudly on such a collision.
+
+- `getLatestPosts()` now also excludes any slug with a `post` redirect row. That's needed because the 4 essays MT also publishes (`what-is-protocol-fiction`, `the-ductus-of-protocol-fiction`, `strangeness-illegibility-hardness`, `egregoretex`) aren't in the `Fictions` section; otherwise the magazine would have listed links that 301 away. In practice, `fiction_redirects` is now the authoritative list of what has left this site.
+
+- `sync-substack-resources.py` only updates files whose `url:` is a Substack URL, so the 72 repointed files are skipped from now on. The flip side: the same sync recomputes `type` from section on every Substack-linked file, which had silently reverted Session 22's `ghosts-in-machines` → `fiction` fix on 2026-08-18. Logged as a follow-up rather than fixed.
+
+- `FICTION_SEGREGATION_ACTIVE="true"` deployed; 81 rows in `fiction_redirects` (72 post, 8 book, 1 page); verified live: all 79 distinct MT targets return 200. Fiction rows and R2 bodies are still in D1/R2 and unused by the redirects; deletion is optional. Open: fiction is still being posted to the old Substack (`where-the-stones-hold`, 2026-10-07, not yet on MT), so each such post needs a manual map entry. Rollback is flipping the flag, though browsers cache 301s.
+
+---

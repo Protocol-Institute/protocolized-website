@@ -818,6 +818,52 @@
           "html": "<strong>(1) The fiction export bundle is stale.</strong> <code>exports/fiction-bundle-2026-08-17.zip</code> predates the section repair and under-counts fiction by six posts \u2014 handing it to Monstrous Times as-is would ship an incomplete archive. Phase 4 now names re-running <code>export-fiction-bundle.py</code> as required, not optional. <strong>(2) Series wiring fails silently and has now done so twice</strong> (&quot;The Big Man&quot; caught in Session 21, &quot;The Dismantling&quot; in Session 23). The post mirrors and renders normally; only the series nav and book TOC are missing, so nothing surfaces it. Logged a detection query (fiction posts with no series whose author already has one \u2014 deliberately noisy, a review prompt rather than an alarm) and an infra item proposing that <code>sync-substack.py</code> print a notice at sync time, when the decision is cheap, instead of relying on someone noticing weeks later. Left as a notice rather than a hard fail because the same authors legitimately write standalone fiction."
         }
       ]
+    },
+    {
+      "id": 24,
+      "sort_key": 24.0,
+      "label": "Session 24",
+      "title": "Fiction split cutover: fiction repointed to Monstrous Times",
+      "date": "2026-10-11",
+      "time_pt": "",
+      "tracks": [
+        "cloudflare-migration",
+        "content-sync",
+        "ux"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Destination turned out to be an export, not a handoff:",
+          "html": "Monstrous Times (<code>monstroustimes.com</code>) is an independent Astro site that imported its archive directly, so the Phase 3 <code>export-fiction-bundle.py</code> handoff was never used. Phase 4 reduced to pointing this site at MT. The bundle script remains but has no consumer."
+        },
+        {
+          "title": "MT slugs are title-derived, so the mapping is data, not code:",
+          "html": "MT's URLs are <code>/articles/&lt;slugified title&gt;/</code>, which diverge from Substack slugs whenever a title was shortened in the Substack slug (<code>carousel-feeding-in-the-asteroid</code> \u2192 <code>\u2026-asteroid-midden-livelock</code>) or contains punctuation (<code>egregoretex</code> \u2192 <code>egregoretextm</code>). The mapping therefore cannot be derived and lives in <code>data/monstroustimes-map.json</code>, title-matched against MT's <code>rss.xml</code> (all 69 MT articles matched; 2 by hand). Any future fiction that MT publishes must be added to that file by hand."
+        },
+        {
+          "title": "Library keeps fiction; everything else drops it:",
+          "html": "Departure from the Phase 1 design, by Venkat's call: the flag originally hid fiction from <code>/resources</code> too. Now <code>/resources</code> and <code>/api/resources.json</code> ignore the flag and fiction cards link straight out (<code>resourceCardHref()</code>/<code>isMonstrousTimesUrl()</code> in <code>static-pages.tsx</code>), treating the library as a catalog of the whole Protocol Institute corpus. Magazine, homepage, <code>/books</code>, RSS, sitemap and <code>llms.txt</code> still exclude fiction, so this site neither hosts nor indexes duplicate content."
+        },
+        {
+          "title": "fiction_redirects lookups are now scoped by kind:",
+          "html": "Slugs collide across tables: <code>the-librarians</code> is both a fiction book (\u2192 MT series page) and an epub resource (stays here). The original <code>getFictionRedirect(slug)</code> ignored <code>kind</code>, so a book row would have hijacked the resource page. Each route now asks for its own kind (<code>post</code>/<code>book</code>/<code>resource</code>/<code>page</code>). Since <code>slug</code> is still the primary key, one slug can't redirect in two kinds; <code>load-fiction-redirects.py</code> fails loudly on such a collision."
+        },
+        {
+          "title": "Redirect membership, not section, decides post listings:",
+          "html": "<code>getLatestPosts()</code> now also excludes any slug with a <code>post</code> redirect row. That's needed because the 4 essays MT also publishes (<code>what-is-protocol-fiction</code>, <code>the-ductus-of-protocol-fiction</code>, <code>strangeness-illegibility-hardness</code>, <code>egregoretex</code>) aren't in the <code>Fictions</code> section; otherwise the magazine would have listed links that 301 away. In practice, <code>fiction_redirects</code> is now the authoritative list of what has left this site."
+        },
+        {
+          "title": "Repointing makes files immune to the c3po sync:",
+          "html": "<code>sync-substack-resources.py</code> only updates files whose <code>url:</code> is a Substack URL, so the 72 repointed files are skipped from now on. The flip side: the same sync recomputes <code>type</code> from section on every Substack-linked file, which had silently reverted Session 22's <code>ghosts-in-machines</code> \u2192 <code>fiction</code> fix on 2026-08-18. Logged as a follow-up rather than fixed."
+        },
+        {
+          "title": "State after:",
+          "html": "<code>FICTION_SEGREGATION_ACTIVE=\"true\"</code> deployed; 81 rows in <code>fiction_redirects</code> (72 post, 8 book, 1 page); verified live: all 79 distinct MT targets return 200. Fiction rows and R2 bodies are still in D1/R2 and unused by the redirects; deletion is optional. Open: fiction is still being posted to the old Substack (<code>where-the-stones-hold</code>, 2026-10-07, not yet on MT), so each such post needs a manual map entry. Rollback is flipping the flag, though browsers cache 301s."
+        }
+      ]
     }
   ]
 }
