@@ -5,14 +5,22 @@ authors:
   - name: "Venkatesh Rao"
   - name: "Timber Stinson-Schroff"
 date: 2026-09-25
-description: "Venkatesh Rao delivers a closing synthesis of the five-day symposium, highlighting recurring themes like 'new nature' (Sean Stevenson's test: a system is new nature when there's nobody to appeal to), the interiority/exteriority tension in AI discourse, and the balance between playable protocols and grinding enterprise IT work. Timber Stinson-Schroff co-hosts a town hall where attendees share standout moments, Rao announces the Protocol Institute's transition to fiscal sponsorship under David Lang's Experiment Foundation following the end of Ethereum Foundation funding, and the group plugs…"
+description: "Venkatesh Rao delivers a closing synthesis of the five-day symposium, highlighting recurring themes like 'new nature' (Sean Stevenson's test: a system is new nature when there's nobody to appeal to), the interiority/exteriority tension in AI discourse, and the balance between playable protocols and grinding enterprise IT work. Timber Stinson-Schroff co-hosts a town hall where attendees share standout moments, Rao announces the Protocol Institute's transition to fiscal sponsorship under David Lang's Experiment Foundation following the end of Ethereum Foundation funding, and the group plugs the Monstrous Times fiction magazine spinoff led by Sachin Benny and Spencer Nitkey plus an upcoming November 'book writing month.'</summary>"
 tags:
-  - symposium-2026
+  - continuity-infrastructure
+  - fiscal-sponsorship-via-experiment-foundation
+  - interiority-vs-exteriority-in-aiprotocol-discourse
+  - new-nature-stevensons-test
+  - organizations
+  - protocol-fiction-monstrous-times-magazine
   - protocols
+  - symposium-2026
 audience:
   - researcher
+  - academic
 featured: false
 url: "https://www.youtube.com/watch?v=D_5TryFVjR0"
+thumbnail: "https://files.protocolized.io/covers/yt-D_5TryFVjR0.jpg"
 ---
 
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=D_5TryFVjR0) (45:05)  

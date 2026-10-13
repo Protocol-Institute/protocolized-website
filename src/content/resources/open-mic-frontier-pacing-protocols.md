@@ -8,14 +8,23 @@ authors:
   - name: "Sachin Benny"
   - name: "Rafael Fernández"
 date: 2026-09-24
-description: "In this open-mic session at the symposium, Venkatesh Rao frames the sudden mainstreaming of 'frontier pacing' debates (sparked by Dario Amodei's 'We Must Pace the Frontier' essay) as the collision of three forces: data-center politics, a newly mainstream AI-doom discourse, and genuine economic anxiety over an AI-fueled market bubble. Timber opens the session with a public-choice critique, arguing that AI labs calling for government-imposed pacing standards may be a strategy to offload liability and create a backdoor mechanism for regulating open-weight models out of existence. Other…"
+description: "In this open-mic session at the symposium, Venkatesh Rao frames the sudden mainstreaming of 'frontier pacing' debates (sparked by Dario Amodei's 'We Must Pace the Frontier' essay) as the collision of three forces: data-center politics, a newly mainstream AI-doom discourse, and genuine economic anxiety over an AI-fueled market bubble. Timber opens the session with a public-choice critique, arguing that AI labs calling for government-imposed pacing standards may be a strategy to offload liability and create a backdoor mechanism for regulating open-weight models out of existence. Other participants, including Mike (Travers), Sachin (Benny), and Rafa (Fernández), debate whether hard liability law, a coordinated slowdown, or skepticism toward 'agent swarm' hype is the more honest response to the current AI safety panic."
 tags:
-  - symposium-2026
+  - frontier-pacing
+  - governance
+  - liability-vs-government-imposed-slowdown
+  - manufactured-normalcy-field
+  - open-weight-model-regulation
   - protocols
+  - regulatory-capture-public-choice-critique
+  - symposium-2026
+  - technology
 audience:
   - researcher
+  - academic
 featured: false
 url: "https://www.youtube.com/watch?v=FXhNHhaZyTo"
+thumbnail: "https://files.protocolized.io/covers/yt-FXhNHhaZyTo.jpg"
 ---
 
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=FXhNHhaZyTo) (28:39)  
