@@ -5,7 +5,7 @@ authors:
   - name: "Venkatesh Rao"
   - name: "Timber Stinson-Schroff"
 date: 2026-09-25
-description: "Venkatesh Rao delivers a closing synthesis of the five-day symposium, highlighting recurring themes like 'new nature' (Sean Stevenson's test: a system is new nature when there's nobody to appeal to), the interiority/exteriority tension in AI discourse, and the balance between playable protocols and grinding enterprise IT work. Timber Stinson-Schroff co-hosts a town hall where attendees share standout moments, Rao announces the Protocol Institute's transition to fiscal sponsorship under David Lang's Experiment Foundation following the end of Ethereum Foundation funding, and the group plugs the Monstrous Times fiction magazine spinoff led by Sachin Benny and Spencer Nitkey plus an upcoming November 'book writing month.'</summary>"
+description: "Venkatesh Rao delivers a closing synthesis of the five-day symposium, highlighting recurring themes like 'new nature' (Sean Stevenson's test: a system is new nature when there's nobody to appeal to), the interiority/exteriority tension in AI discourse, and the balance between playable protocols and grinding enterprise IT work. Timber Stinson-Schroff co-hosts a town hall where attendees share standout moments, Rao announces the Protocol Institute's transition to fiscal sponsorship under David Lang's Experiment Foundation following the end of Ethereum Foundation funding, and the group plugs the Monstrous Times fiction magazine spinoff led by Sachin Benny and Spencer Nitkey plus an upcoming November 'book writing month.'"
 tags:
   - continuity-infrastructure
   - fiscal-sponsorship-via-experiment-foundation

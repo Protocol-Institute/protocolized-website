@@ -4,7 +4,7 @@ type: lecture
 authors:
   - name: "Andrés Monroy-Hernández"
 date: 2025-11-06
-description: "Andrés Monroy-Hernández and Soyeon (So-young) outline a Princeton course on 'designing digital worlds,' tracing a lineage from Elinor Ostrom's commons governance and Yochai Benkler's commons-based peer production to today's decentralized social media protocols (ActivityPub, AT Protocol, Nostr, Farcaster), arguing each architecture encodes distinct political trade-offs around identity, curation, and infrastructure power. So presents her research on 'governance frictions' between federated communities and proposes design concepts like 'governance nutrition facts,' 'trust bubbles,' and an 'issue bulletin' to help fediverse moderators coordinate across incompatible norms.</br>"
+description: "Andrés Monroy-Hernández and Soyeon (So-young) outline a Princeton course on 'designing digital worlds,' tracing a lineage from Elinor Ostrom's commons governance and Yochai Benkler's commons-based peer production to today's decentralized social media protocols (ActivityPub, AT Protocol, Nostr, Farcaster), arguing each architecture encodes distinct political trade-offs around identity, curation, and infrastructure power. So presents her research on 'governance frictions' between federated communities and proposes design concepts like 'governance nutrition facts,' 'trust bubbles,' and an 'issue bulletin' to help fediverse moderators coordinate across incompatible norms."
 tags:
   - commons-based-peer-production-vs-common-pool-resource-governance
   - governance
