@@ -415,3 +415,19 @@ A build log for protocolized.io — how the magazine and resource library site w
 - `FICTION_SEGREGATION_ACTIVE="true"` deployed; 81 rows in `fiction_redirects` (72 post, 8 book, 1 page); verified live: all 79 distinct MT targets return 200. Fiction rows and R2 bodies are still in D1/R2 and unused by the redirects; deletion is optional. Open: fiction is still being posted to the old Substack (`where-the-stones-hold`, 2026-10-07, not yet on MT), so each such post needs a manual map entry. Rollback is flipping the flag, though browsers cache 301s.
 
 ---
+
+## Session 25: Symposium 2026 archive merged (PR #9)
+
+*2026-10-13*
+
+**Tracks:** content-sync, c3po-integration, ux
+
+- PR #9 makes each Protocol Symposium 2026 resource page the permanent home of its talk: recording link, slides and papers as PDFs, and a timestamped transcript whose timestamps open the video at that moment. protocol-institute.org keeps only the embedded video and links here, so the division of labour is: PI site = programme, protocolized.io = archive. 38 existing resources gained bodies; 10 were added (Closing Session, Open Mic, and 8 talks with slides but no recording, typed `presentation` with the Download button pointing at the PDF).
+
+- `scripts/sync-symposium-archive.py` renders c3po's `sources/symposium/` archive (built by c3po `ingest/archive_symposium.py`) into the Markdown *body* and regenerates it on every run; it leaves existing frontmatter alone. `sync-youtube-resources.py` owns the frontmatter and now appends the existing body instead of rewriting whole files — before this change its next daemon run would have erased every transcript. Any future script that writes resource files must respect this split.
+
+- Slide/paper files live at `files.protocolized.io/symposium-2026/&lt;file&gt;`. Uploads are skipped when R2's ETag (MD5 of a single-part upload) matches the local file, so a revised deck is re-uploaded even when its size is unchanged. PII: emails are removed from the PDFs in c3po by true redaction before they reach this script.
+
+- The PR required R2 uploads before merge. Checked all 47 referenced URLs (all 200) before merging; the Sync Resources to D1 workflow then published the bodies (largest ~70KB, under D1's 100KB statement limit) and the Worker deploy added the "Watch on YouTube" label for YouTube-URL resources in `worker/src/html/resource.tsx`.
+
+---

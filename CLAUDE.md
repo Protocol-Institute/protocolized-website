@@ -131,6 +131,7 @@ scripts/
 ├── sync-substack-resources.py   # Pull c3po Substack enriched_meta → resource Markdown (all post types)
 ├── update-series-toc.py         # Add a post as the next chapter in a series book (books.toc + posts.series_slug/position)
 ├── load-fiction-redirects.py    # data/monstroustimes-map.json → D1 fiction_redirects (full replace)
+├── sync-symposium-archive.py    # c3po sources/symposium/ → symposium resource bodies (transcript, slides) + R2 symposium-2026/
 └── migrate-to-d1.py             # Sync all resource Markdown → D1 resources table
 .github/workflows/
 ├── deploy.yml          # Build & deploy Worker on push to main
@@ -180,6 +181,8 @@ Each resource is a Markdown file in `src/content/resources/`. Frontmatter fields
 | YouTube videos | `c3po/sources/youtube/enriched_meta.json` | `scripts/sync-youtube-resources.py` |
 | PDFs | `c3po/sources/pdfs/enriched_meta.json` | `scripts/sync-pdf-resources.py` |
 | Substack posts | `c3po/sources/substack/enriched_meta.json` | `scripts/sync-substack-resources.py` |
+
+**Symposium 2026 archive** (Session 25): `scripts/sync-symposium-archive.py` owns the *body* of each symposium resource file (recording link, slides list, timestamped transcript) and regenerates it every run — edit c3po's data or the renderer, not the Markdown. `sync-youtube-resources.py` owns only the frontmatter and preserves the existing body.
 
 After any sync script: run `python3 scripts/migrate-to-d1.py --remote`. See `c3po/plans/resource-pipeline.md` for the full architecture.
 
