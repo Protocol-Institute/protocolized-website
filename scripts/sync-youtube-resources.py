@@ -257,6 +257,16 @@ def get_existing_featured(path: Path) -> bool:
     return bool(m and m.group(1) == "true")
 
 
+def existing_body(path: Path) -> str:
+    """Everything after the frontmatter. This script owns the frontmatter only;
+    a body written by another sync (sync-symposium-archive.py: transcript and
+    slides) must survive a metadata refresh."""
+    text = path.read_text()
+    end = text.find("\n---", 3) if text.startswith("---") else -1
+    body = text[end + 4:].strip() if end != -1 else ""
+    return f"\n{body}\n" if body else ""
+
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 
 def main():
@@ -342,7 +352,7 @@ def main():
         if video_id in matched:
             slug, path = library[video_id]
             featured = get_existing_featured(path)
-            md = make_markdown(video_id, data, date, thumbnail_url, featured)
+            md = make_markdown(video_id, data, date, thumbnail_url, featured) + existing_body(path)
             action = "UPDATE"
             if not args.dry_run:
                 path.write_text(md, encoding="utf-8")
