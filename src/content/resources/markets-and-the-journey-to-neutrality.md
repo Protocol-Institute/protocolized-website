@@ -27,6 +27,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-XNWfz4vZl8Y.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=XNWfz4vZl8Y) (42:41)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Friday, September 25, 2026
 
+## Slides and papers
+
+- [Markets and the Journey to Neutrality](https://files.protocolized.io/symposium-2026/newnatureslides-fett-rcv_fe.pdf) (PDF, 33 pages)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*

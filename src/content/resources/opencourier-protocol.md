@@ -27,6 +27,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-nrjNIqlkC_o.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=nrjNIqlkC_o) (31:23)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Thursday, September 24, 2026
 
+## Slides and papers
+
+- [Copy of OpenCourier-Protocol Symposium-Talk](https://files.protocolized.io/symposium-2026/copy-of-opencourier-protocol-symposium-talk-1j6yMG.pdf) (PDF, 27 pages)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*

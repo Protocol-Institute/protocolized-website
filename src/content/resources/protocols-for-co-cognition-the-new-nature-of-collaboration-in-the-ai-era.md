@@ -26,6 +26,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-xI83khLXArU.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=xI83khLXArU) (28:02)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Wednesday, September 23, 2026
 
+## Slides and papers
+
+- [Protocols for Co-Cognition](https://files.protocolized.io/symposium-2026/peake-symposium26-rcv_pe.pdf) (PDF, 34 pages)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*

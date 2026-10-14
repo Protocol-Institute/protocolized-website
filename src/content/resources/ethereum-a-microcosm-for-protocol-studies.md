@@ -26,6 +26,12 @@ thumbnail: "https://files.protocolized.io/covers/yt-KuCaxZ9-mw4.jpg"
 **Recording:** [Watch on YouTube](https://www.youtube.com/watch?v=KuCaxZ9-mw4) (33:17)  
 **Event:** [Protocol Symposium 2026](https://protocol-institute.org/events/protocol-symposium-2026/), Wednesday, September 23, 2026
 
+## Slides and papers
+
+- [Ethereum: A Microcosm for Protocol Studies (illustrated essay)](https://files.protocolized.io/symposium-2026/ethereum-microcosm-illustrated-rcv_be.pdf) (PDF, 15 pages)
+
+*Shared by the speakers for the symposium. Email addresses have been removed.*
+
 ## Transcript
 
 *YouTube's automatic captions, unedited, so names and technical terms are often misheard. Each timestamp opens the video at that moment.*
