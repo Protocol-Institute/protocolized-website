@@ -1,5 +1,5 @@
 ---
-title: "Special Session - Amber Case - Attention as Natural Law"
+title: "Attention as Natural Law"
 type: talk
 authors:
   - name: "Amber Case"

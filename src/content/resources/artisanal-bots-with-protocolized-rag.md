@@ -1,5 +1,5 @@
 ---
-title: "Special Session - Venkatesh Rao - Artisanal Bots with Protocolized RAG"
+title: "Artisanal Bots with Protocolized RAG"
 type: talk
 authors:
   - name: "Venkatesh Rao"

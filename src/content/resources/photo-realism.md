@@ -1,20 +1,20 @@
 ---
-title: "Special Session - Neilson - Reality and Realism in Generation"
+title: "Reality and Realism in Generation"
 type: talk
 authors:
   - name: "Neilson Koerner-Safrata"
 date: 2026-09-25
-description: "Neilson Koerner-Safrata (World Labs) argues that photorealistic image and video generation is becoming 'a protocol for knowing' — that creating a convincing fake image is inseparable from a model's deeper computational understanding of physical reality, not merely an escape from it. He traces this from Muybridge's chronophotography and Ed Catmull's early 3D hand animation through AlexNet to his own 'image-to-world' toolkit that decomposes a single photo into a physics-enabled 3D scene, framing the current moment as an inversion where 'realism' (trained on photos/video) now acts back on 'reality' itself."
+description: "Neilson Koerner-Safrata (introduced as Nelson Bershad, working at World Labs) argues that photorealistic image and video generation functions as 'a protocol for knowing'—that creating a photoreal image or 3D world from a single photo demonstrates a form of knowledge about reality, inverting the historical arrow from reality-to-realism into realism acting back on reality. He traces this through his own tools (image-to-3D-world generation with physics and sound, camera-roll 'telepathy' search) and historical precedents like Muybridge's chronophotography, Duchamp's response to it, Ed Catmull's hand animation, and AlexNet, concluding that the same technology deepening our computational grasp of reality is simultaneously destroying the shared trust in photorealism as a stable representation of the real."
 tags:
-  - inverse-rendering-image-to-world-generation
-  - photorealism-as-a-protocol-for-knowing
+  - generation-as-a-protocol-for-knowing
+  - history-of-photorealism-muybridge-chronophotography-alexnet
+  - inverse-rendering-world-models
+  - photoreal-image-as-compressed-world-state
+  - protocol-watching
   - protocols
-  - reality-vs-realism-distinction
-  - research
-  - scripted-space-cinematic-narrative-of-reality
+  - reality-vs-realism-vs-photorealism
   - symposium-2026
   - technology
-  - world-models
 audience:
   - researcher
   - academic
