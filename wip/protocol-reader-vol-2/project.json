@@ -614,9 +614,18 @@
   ],
   "versions": [
     {
+      "version": "0.3",
+      "date": "2026-10-19",
+      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.3.pdf",
+      "pages": 238,
+      "added": [],
+      "updated": [],
+      "message": "Added the checklist every essay's next draft must pass, including an open license for every image, and the deadline for editing-ready drafts: November 15, 2026. No draft changes in this version."
+    },
+    {
       "version": "0.2",
       "date": "2026-10-19",
-      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.2.pdf",
+      "file": null,
       "pages": 236,
       "added": [
         "some-candidate-laws-of-new-nature",

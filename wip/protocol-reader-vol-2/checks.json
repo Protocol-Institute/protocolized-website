@@ -48,8 +48,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "6 links"
         },
         "claims": {
           "status": "manual",
@@ -77,10 +77,10 @@
         }
       },
       "summary": {
-        "pass": 11,
+        "pass": 12,
         "fail": 3,
         "warn": 0,
-        "manual": 4,
+        "manual": 3,
         "na": 0,
         "ready": false
       }
@@ -132,8 +132,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "na",
+          "detail": "No links"
         },
         "claims": {
           "status": "manual",
@@ -164,8 +164,8 @@
         "pass": 9,
         "fail": 3,
         "warn": 0,
-        "manual": 4,
-        "na": 2,
+        "manual": 3,
+        "na": 3,
         "ready": false
       }
     },
@@ -216,8 +216,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "warn",
+          "detail": "3 of 4 verified; 1 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -247,8 +247,8 @@
       "summary": {
         "pass": 8,
         "fail": 6,
-        "warn": 0,
-        "manual": 4,
+        "warn": 1,
+        "manual": 3,
         "na": 0,
         "ready": false
       }
@@ -300,8 +300,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "na",
+          "detail": "No links"
         },
         "claims": {
           "status": "manual",
@@ -332,8 +332,8 @@
         "pass": 5,
         "fail": 5,
         "warn": 0,
-        "manual": 6,
-        "na": 2,
+        "manual": 5,
+        "na": 3,
         "ready": false
       }
     },
@@ -384,8 +384,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "warn",
+          "detail": "10 of 11 verified; 1 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -415,8 +415,8 @@
       "summary": {
         "pass": 8,
         "fail": 4,
-        "warn": 1,
-        "manual": 4,
+        "warn": 2,
+        "manual": 3,
         "na": 1,
         "ready": false
       }
@@ -468,8 +468,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "5 links"
         },
         "claims": {
           "status": "manual",
@@ -497,10 +497,10 @@
         }
       },
       "summary": {
-        "pass": 8,
+        "pass": 9,
         "fail": 4,
         "warn": 1,
-        "manual": 4,
+        "manual": 3,
         "na": 1,
         "ready": false
       }
@@ -552,8 +552,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "na",
+          "detail": "No links"
         },
         "claims": {
           "status": "manual",
@@ -584,8 +584,8 @@
         "pass": 10,
         "fail": 2,
         "warn": 0,
-        "manual": 4,
-        "na": 2,
+        "manual": 3,
+        "na": 3,
         "ready": false
       }
     },
@@ -617,7 +617,7 @@
         },
         "no-placeholders": {
           "status": "fail",
-          "detail": "12 found, e.g. [ Reference some scholars ]; [ cite other coliving operators – higher rents, worse amenit; [ Cite structures & cultures paper ]; [ Talk about Seth’s research into observing violations; reve"
+          "detail": "12 found, e.g. [ Reference some scholars ]; [ cite other coliving operators – higher rents, worse ameni…; [ Cite structures & cultures paper ]; [ Talk about Seth’s research into observing violations; rev…"
         },
         "no-status-labels": {
           "status": "pass",
@@ -636,8 +636,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "1 links"
         },
         "claims": {
           "status": "manual",
@@ -665,10 +665,10 @@
         }
       },
       "summary": {
-        "pass": 6,
+        "pass": 7,
         "fail": 6,
         "warn": 0,
-        "manual": 4,
+        "manual": 3,
         "na": 2,
         "ready": false
       }
@@ -720,8 +720,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "warn",
+          "detail": "8 of 13 verified; 5 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -751,8 +751,8 @@
       "summary": {
         "pass": 8,
         "fail": 2,
-        "warn": 2,
-        "manual": 4,
+        "warn": 3,
+        "manual": 3,
         "na": 2,
         "ready": false
       }
@@ -804,8 +804,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "2 links"
         },
         "claims": {
           "status": "manual",
@@ -833,10 +833,10 @@
         }
       },
       "summary": {
-        "pass": 6,
+        "pass": 7,
         "fail": 7,
         "warn": 1,
-        "manual": 4,
+        "manual": 3,
         "na": 0,
         "ready": false
       }
@@ -888,8 +888,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "1 links"
         },
         "claims": {
           "status": "manual",
@@ -917,10 +917,10 @@
         }
       },
       "summary": {
-        "pass": 8,
+        "pass": 9,
         "fail": 3,
         "warn": 1,
-        "manual": 4,
+        "manual": 3,
         "na": 2,
         "ready": false
       }
@@ -972,8 +972,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "warn",
+          "detail": "17 of 19 verified; 2 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -1003,8 +1003,8 @@
       "summary": {
         "pass": 6,
         "fail": 7,
-        "warn": 1,
-        "manual": 4,
+        "warn": 2,
+        "manual": 3,
         "na": 0,
         "ready": false
       }
@@ -1056,8 +1056,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "1 links"
         },
         "claims": {
           "status": "manual",
@@ -1085,10 +1085,10 @@
         }
       },
       "summary": {
-        "pass": 6,
+        "pass": 7,
         "fail": 6,
         "warn": 1,
-        "manual": 4,
+        "manual": 3,
         "na": 1,
         "ready": false
       }
@@ -1140,8 +1140,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "1 links"
         },
         "claims": {
           "status": "manual",
@@ -1169,10 +1169,10 @@
         }
       },
       "summary": {
-        "pass": 5,
+        "pass": 6,
         "fail": 5,
         "warn": 1,
-        "manual": 6,
+        "manual": 5,
         "na": 1,
         "ready": false
       }
@@ -1224,8 +1224,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "warn",
+          "detail": "0 of 2 verified; 2 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -1255,8 +1255,8 @@
       "summary": {
         "pass": 8,
         "fail": 3,
-        "warn": 1,
-        "manual": 4,
+        "warn": 2,
+        "manual": 3,
         "na": 2,
         "ready": false
       }
@@ -1308,8 +1308,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "pass",
+          "detail": "11 links"
         },
         "claims": {
           "status": "manual",
@@ -1337,10 +1337,10 @@
         }
       },
       "summary": {
-        "pass": 8,
+        "pass": 9,
         "fail": 4,
         "warn": 0,
-        "manual": 4,
+        "manual": 3,
         "na": 2,
         "ready": false
       }
@@ -1392,8 +1392,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "na",
+          "detail": "No links"
         },
         "claims": {
           "status": "manual",
@@ -1424,8 +1424,8 @@
         "pass": 6,
         "fail": 7,
         "warn": 0,
-        "manual": 4,
-        "na": 1,
+        "manual": 3,
+        "na": 2,
         "ready": false
       }
     },
@@ -1476,8 +1476,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "manual",
-          "detail": "Link check skipped"
+          "status": "na",
+          "detail": "No links"
         },
         "claims": {
           "status": "manual",
@@ -1508,8 +1508,8 @@
         "pass": 6,
         "fail": 5,
         "warn": 1,
-        "manual": 4,
-        "na": 2,
+        "manual": 3,
+        "na": 3,
         "ready": false
       }
     }
