@@ -1,0 +1,165 @@
+> **Archived 2026-10-19.** Historical plan from branch `feat/cloudflare-migration` (2026-05-30), never merged. Superseded: the site moved to Cloudflare Pages and then to the Hono Worker (`worker/`, deployed by `.github/workflows/deploy.yml`), now on the PI account. The commented C3PO service binding was never adopted. Kept for the personal → PI account migration notes.
+
+# Migration: GitHub Pages → Cloudflare Pages
+
+This document tracks the planned migration of protocolized.io from GitHub Pages to Cloudflare Pages. The discussion issue for this migration is at Protocol-Institute/protocolized-website#[issue number].
+
+## Why Migrate
+
+1. **C3PO integration.** The Protocol Institute is building a RAG research assistant (C3PO — github.com/vgururao/c3po, to be transferred to this org) that will live in the Resources page. C3PO will be deployed as a Cloudflare Worker. Workers integrate with Cloudflare Pages via service bindings — no cross-origin request overhead, no CORS configuration. This is not possible with GitHub Pages hosting.
+
+2. **PDF storage.** The repo currently contains ~353 MB of PDFs in `public/resources/`. That's a git anti-pattern and will hit GitHub limits as the library grows. Cloudflare R2 (object storage) can host these files, reducing repo size and enabling proper CDN delivery. A service binding in `wrangler.toml` would expose R2 to the site.
+
+3. **Edge performance and analytics.** Cloudflare Pages serves from ~300 edge locations globally. protocol-institute.org is already on Cloudflare; migrating protocolized.io makes the entire PI stack consistent. Cloudflare Web Analytics provides privacy-respecting traffic data without a third-party script.
+
+4. **Preview deployments.** Cloudflare Pages generates a preview URL for every branch push, making it easy to review changes before merging to main.
+
+## What Changes
+
+| | Before | After |
+|---|---|---|
+| Hosting | GitHub Pages | Cloudflare Pages |
+| Deploy trigger | GitHub Actions → GH Pages API | GitHub Actions → `cloudflare/pages-action` |
+| DNS | Google Domains → GitHub Pages IPs | Google Domains → Cloudflare Pages |
+| Build | GH Actions runner | GH Actions runner (unchanged) |
+| Substack sync | GH Actions cron (unchanged) | GH Actions cron (unchanged) |
+| Astro config | `output: "static"` (unchanged) | `output: "static"` (unchanged) |
+| Node version | 22 (unchanged) | 22 (unchanged) |
+
+The daily Substack sync workflow (`sync-substack.yml`) is **not affected** — it commits to the repo, which triggers the deploy workflow as usual.
+
+## What Stays the Same
+
+- All Astro pages, components, and content
+- Resource library and filterable grid
+- Magazine sync from Substack
+- `npm run build` / `npm run dev` locally
+- Site URL: protocolized.io
+
+## Migration Steps
+
+### Step 1 — Create Cloudflare Pages project (manual, one-time)
+
+In the Cloudflare dashboard (personal account initially, to be transferred to PI account):
+- Pages → Create a project → Connect to Git → Protocol-Institute/protocolized-website
+- Framework preset: Astro
+- Build command: `npm run build`
+- Build output directory: `dist`
+- Node version environment variable: `NODE_VERSION = 22`
+
+### Step 2 — Add GitHub Actions secrets
+
+In the Protocol-Institute/protocolized-website repo settings → Secrets:
+- `CLOUDFLARE_API_TOKEN` — CF API token with Cloudflare Pages: Edit permission
+- `CLOUDFLARE_ACCOUNT_ID` — CF account ID
+
+### Step 3 — Merge this branch
+
+This branch (`feat/cloudflare-migration`) contains:
+- Updated `deploy.yml` using `cloudflare/pages-action` instead of GitHub Pages actions
+- `wrangler.toml` with Pages config and commented future bindings
+
+Merging to main triggers the first CF Pages deploy. Verify at the `*.pages.dev` preview URL before touching DNS.
+
+### Step 4 — Update DNS
+
+Current `protocolized.io` DNS (in Google Domains):
+- A records → GitHub Pages IPs (185.199.108-111.153)
+- `www` CNAME → ext-sq.squarespace.com (leftover, should be cleaned up)
+
+After Cloudflare Pages project is live:
+- Remove the four A records pointing to GitHub Pages
+- Add CNAME: `protocolized.io` → `<project>.pages.dev`
+- Remove the stale `www` CNAME (or point it to the same CF Pages project)
+
+DNS TTL is typically 3600s — plan for up to 1h propagation.
+
+### Step 5 — Disable GitHub Pages
+
+In repo settings → Pages → set source to "None" after DNS is confirmed working.
+
+### Step 6 — Migrate to PI account (when ready)
+
+Cloudflare has no native "transfer project" feature. Migration is a reconnection + data copy, not a transfer. See the dedicated section below.
+
+## Future: C3PO Integration
+
+Once C3PO is deployed as a Cloudflare Worker (Phase 2 of github.com/vgururao/c3po), the Resources page will be redesigned to include it. The integration will work as follows:
+
+1. Add service binding in `wrangler.toml` (already stubbed):
+   ```toml
+   [[services]]
+   binding = "C3PO"
+   service = "c3po-worker"
+   ```
+2. Resources page gets a chat interface for querying the Protocol Institute research corpus
+3. PDF files currently in `public/resources/` move to Cloudflare R2, served via R2 binding
+
+This integration is only possible on Cloudflare Pages. It is the primary technical driver for this migration.
+
+## Future: PDF Migration to R2
+
+The `public/resources/` directory contains ~353 MB of PDFs committed to git. This should eventually be moved to Cloudflare R2:
+1. Create R2 bucket `protocolized-resources`
+2. Upload existing PDFs via `rclone` or `wrangler r2 object put`
+3. Update resource markdown `file:` fields to point to R2 URLs
+4. Remove PDFs from the repo (large file history requires `git-filter-repo`)
+
+This is a separate migration from the Pages switch and can happen after C3PO is live.
+
+## Developing in Personal Account → Migrating to PI Account
+
+Resources can be built and tested in a personal CF account while the PI org account is being established. Each resource type migrates differently.
+
+**Key invariant:** `wrangler.toml` intentionally omits `account_id` — Wrangler picks it up from the `CLOUDFLARE_ACCOUNT_ID` env var or GitHub Actions secret. The config file is account-neutral and requires no edits when switching accounts.
+
+### Pages project
+
+No native transfer exists. In the PI CF dashboard:
+1. Create a new Pages project connected to `Protocol-Institute/protocolized-website`
+2. Same settings as Step 1: framework preset Astro, build command `npm run build`, output `dist`, `NODE_VERSION=22`
+3. Update the GitHub Actions secrets `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` to PI account values — the deploy workflow is otherwise unchanged
+4. Re-add custom domain `protocolized.io`; update DNS to point to the new `*.pages.dev` URL
+5. Delete the personal-account Pages project
+
+### Workers (C3PO)
+
+Code lives in Git. In the PI account:
+```bash
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler deploy
+```
+Re-add any secrets in the PI account dashboard (`wrangler secret put <NAME>`). No file changes required.
+
+### R2 (PDF storage)
+
+Use `rclone` to copy between accounts. Both accounts expose R2 via an S3-compatible API:
+```bash
+# Configure two rclone remotes (one per account) using R2 S3 API tokens
+rclone copy cf-personal:protocolized-resources cf-pi:protocolized-resources --progress
+```
+Use the same bucket name (`protocolized-resources`) in both accounts — the `wrangler.toml` binding name and all `file:` fields in resource markdown stay the same.
+
+### D1 (if added in future)
+
+D1 database IDs are account-specific UUIDs. When a `[[d1_databases]]` binding is added to `wrangler.toml`, the `database_id` field will be different between accounts. Migration:
+```bash
+# Export from personal account
+wrangler d1 export <db-name> --output=backup.sql
+# Create in PI account and import
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler d1 create <db-name>
+CLOUDFLARE_ACCOUNT_ID=<pi-account-id> wrangler d1 execute <db-name> --file=backup.sql
+```
+Then update `database_id` in `wrangler.toml` to the new PI account value (one-line change).
+
+### Secrets and environment variables
+
+CF Pages env vars and secrets are account/project-specific — they are not in the repo. Keep a record of all env vars set in the personal-account project and re-add them in the PI project. (See the key management policy in `Code/.env.keys` for the authoritative list.)
+
+## Rollback Plan
+
+If CF Pages deploy fails or the site breaks after DNS switch:
+- Point the A records back to GitHub Pages IPs
+- Re-enable GitHub Pages in repo settings
+- Revert `deploy.yml` to the original GitHub Pages workflow
+
+The original `deploy.yml` is preserved in git history on `main` before the merge.
