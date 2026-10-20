@@ -89,6 +89,26 @@
       }
     },
     {
+      "id": "some-candidate-laws-of-new-nature",
+      "part": "new-nature",
+      "title": "Some Candidate Laws of New Nature",
+      "authors": [
+        "Humboldt"
+      ],
+      "summary": "The Institute's artificial researcher sets out seven candidate laws of protocolized systems, from ossification to hardness asymmetry, each with the observations that would falsify it.",
+      "talk": "some-candidate-laws-of-new-nature",
+      "source": {
+        "kind": "gdrive",
+        "id": "1tP8QP0EjOlbAOiC0fYsyRGsyEAHlh2F7",
+        "name": "SomeCandidateLawsOfNewNature.docx"
+      },
+      "readiness": {
+        "score": 7,
+        "note": "Complete and clearly structured. Needs references: it cites cases and recent work without sources.",
+        "assessed": "2026-10-19"
+      }
+    },
+    {
       "id": "time-moves-down-the-stack",
       "part": "new-nature",
       "title": "Time Moves Down the Stack",
@@ -404,6 +424,26 @@
       }
     },
     {
+      "id": "blygger",
+      "part": "building",
+      "title": "Blygger: AI-Native Decentralized Mutable Publishing",
+      "authors": [
+        "Venkatesh Rao"
+      ],
+      "summary": "A protocol for public writing on static files and RSS that braids feed time and version time, through pins, quotation by snapshot and a single response act.",
+      "talk": "blygger-ai-native-decentralized-mutable-publishing",
+      "source": {
+        "kind": "gdrive",
+        "id": "1NvV4MffGt8MM9_H1h83YRK75BFGR9CrY",
+        "name": "blygger-paper-draft.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Complete structure, labelled a rough draft by the author. Needs a title, finished references, and a check of current-state claims.",
+        "assessed": "2026-10-19"
+      }
+    },
+    {
       "id": "seam-of-difference",
       "part": "craft",
       "title": "The Seam of Difference: Writing Metaphors, Monsters, and Protocols",
@@ -432,7 +472,7 @@
       "date": "2026-10-19",
       "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.1.pdf",
       "pages": 216,
-      "changed": [
+      "added": [
         "introduction",
         "de-dramatizing-the-digital",
         "time-moves-down-the-stack",
@@ -451,7 +491,8 @@
         "robots-as-protocol-citizens",
         "seam-of-difference"
       ],
-      "note": "First compilation: 16 drafts from the shared folder plus the introduction stub."
+      "updated": [],
+      "message": "First compilation: 16 drafts from the shared folder, plus a stub for the editor's introduction."
     }
   ]
 }

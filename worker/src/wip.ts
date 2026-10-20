@@ -26,13 +26,17 @@ export interface WipEntry {
   readiness: WipReadiness;
 }
 
+// One changelog entry per published manuscript. `message` is also the git
+// commit message of the release (build-manuscript.py writes both). Only the
+// latest version keeps a `file`: older PDFs are archived locally, not served.
 export interface WipVersion {
   version: string;
   date: string;
-  file: string;
+  file: string | null;
   pages: number;
-  changed: string[];
-  note?: string;
+  added: string[];
+  updated: string[];
+  message: string;
 }
 
 export interface WipProject {
@@ -52,7 +56,7 @@ export interface WipProject {
 }
 
 // Register new projects here.
-const PROJECTS: WipProject[] = [protocolReaderVol2 as WipProject];
+const PROJECTS: WipProject[] = [protocolReaderVol2 as unknown as WipProject];
 
 export function getWipProjects(): WipProject[] {
   return PROJECTS;

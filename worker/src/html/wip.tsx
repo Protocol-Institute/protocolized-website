@@ -15,6 +15,10 @@ function meanReadiness(p: WipProject): number {
   return s.reduce((a, b) => a + b, 0) / s.length;
 }
 
+function titleOf(p: WipProject, id: string): string {
+  return p.contents.find((e) => e.id === id)?.title ?? id;
+}
+
 function StagePill({ stage }: { stage: string }) {
   return (
     <span class="text-xs font-sans px-2.5 py-0.5 rounded-full bg-accent/10 text-accent font-medium">
@@ -146,7 +150,7 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
               )}
             </div>
 
-            {latest ? (
+            {latest?.file ? (
               <a href={latest.file} class="btn-primary w-full text-center block mb-2">
                 Working draft v{latest.version} (PDF)
               </a>
@@ -161,13 +165,12 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
 
             {project.versions.length > 0 && (
               <section>
-                <h2 class="font-sans text-xs uppercase tracking-wider text-secondary mb-2">Versions</h2>
-                <ol class="space-y-2">
+                <h2 class="font-sans text-xs uppercase tracking-wider text-secondary mb-2">Changelog</h2>
+                <ol class="space-y-3">
                   {project.versions.map((v) => (
-                    <li class="font-sans text-xs text-secondary">
-                      <a href={v.file} class="text-primary hover:underline font-medium">v{v.version}</a>
-                      {" · "}{fmtDate(v.date)} · {v.changed.length} {v.changed.length === 1 ? "draft" : "drafts"} folded in
-                      {v.note && <span class="block text-secondary/80">{v.note}</span>}
+                    <li class="font-sans text-xs text-secondary leading-relaxed">
+                      <span class="font-medium text-dark">v{v.version}</span> · {fmtDate(v.date)}
+                      <span class="block">{v.message}</span>
                     </li>
                   ))}
                 </ol>
@@ -182,6 +185,21 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
             {project.subtitle && <p class="font-serif text-xl md:text-2xl text-secondary italic mb-4">{project.subtitle}</p>}
             {project.editor && <p class="font-sans text-sm text-secondary mb-6">Edited by {project.editor}</p>}
             <p class="font-body text-base text-dark leading-relaxed mb-8 max-w-prose">{project.description}</p>
+
+            {latest && (
+              <section class="mb-8 p-4 border-l-4 border-primary bg-primary-light/50 rounded-r max-w-prose">
+                <h2 class="font-sans text-xs uppercase tracking-wider text-primary mb-1">
+                  What's new in v{latest.version} · {fmtDate(latest.date, "long")}
+                </h2>
+                <p class="font-body text-sm text-dark leading-relaxed">{latest.message}</p>
+                {(latest.added.length > 0 || latest.updated.length > 0) && (
+                  <p class="font-sans text-xs text-secondary mt-2">
+                    {latest.added.length > 0 && `Added: ${latest.added.map((id) => titleOf(project, id)).join("; ")}. `}
+                    {latest.updated.length > 0 && `Updated: ${latest.updated.map((id) => titleOf(project, id)).join("; ")}.`}
+                  </p>
+                )}
+              </section>
+            )}
 
             <dl class="grid grid-cols-3 gap-4 max-w-md mb-10">
               <div>

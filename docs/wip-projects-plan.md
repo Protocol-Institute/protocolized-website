@@ -21,15 +21,19 @@ and the result arrives back here as a book and/or resources.
 | Manifest | `wip/<slug>/project.json` | Source of truth: metadata, stage, parts, contents in TOC order, readiness assessments, version history. Reordering the volume means reordering `contents`. |
 | Local chapters | `wip/<slug>/*.md` | E.g. the editor's introduction stub. |
 | Change lock | `wip/<slug>/sources.lock.json` | Text hash of each draft at the last published version. |
-| Draft cache, builds | `wip/<slug>/.cache/`, `build/` | Gitignored. **The repo is public; contributors' drafts never enter it.** |
+| Latest manuscript | `wip/<slug>/<slug>.pdf` | The only manuscript in git, at a stable path. Each release replaces it, so git history is the rewind mechanism. |
+| Archive (local) | `wip/<slug>/archive/versions/`, `archive/chapters/` | Every published version, and the latest synced copy of each draft. Gitignored (**the repo is public; contributors' drafts never enter it**); backed up by Dropbox. The Drive folder stays the intake. |
 | Build script | `scripts/wip/build-manuscript.py` | Fetch from Drive → detect changes → render → merge → publish to R2 → record version. |
 | Cover | `scripts/wip/make-placeholder-cover.py` | Seeded placeholder in the site palette, R2 `wip/<slug>/cover.jpg`. |
 | Pages | `/wip`, `/wip/<slug>` (`worker/src/html/wip.tsx`) | Bundled from the manifest at deploy time. Unlisted: `noindex`, not in nav, sitemap, RSS or llms.txt. |
-| Files | `files.protocolized.io/wip/<slug>/` | Manuscript PDFs (`<slug>-vX.Y.pdf`) and cover. |
+| Files | `files.protocolized.io/wip/<slug>/` | The latest manuscript only (`<slug>-vX.Y.pdf`; the previous one is deleted on release) and the cover. |
 
 **The fold-in loop:** an author updates their doc in the shared Drive folder → run
-`build-manuscript.py <slug>` (preview) → `--publish --note "…"` → commit + push → the
-page shows the new version and flags any readiness score assessed against an older text.
+`build-manuscript.py <slug>` (preview) → `--publish --message "…"`. Publishing archives the
+version, uploads it, and commits and pushes with that message. The same message is the
+changelog entry on the page and at the top of the manuscript, so the git log and the site
+changelog are the same text. The page shows only the latest version and flags any readiness
+score assessed against an older text.
 
 **Adding a new draft:** the script reports any Drive file that no contents entry claims
 (`NEW FILE not in contents`). Add an entry to `contents` (id, part, title, authors,

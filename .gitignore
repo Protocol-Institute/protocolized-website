@@ -17,7 +17,8 @@ exports/
 # Drop zone for session assets (covers, files, etc.)
 inbox/
 
-# Work-in-progress projects: drafts cache and build outputs stay local (published via R2)
-wip/*/.cache/
+# Work-in-progress projects: synced drafts, version archive and previews stay local.
+# Only wip/<slug>/<slug>.pdf (the latest manuscript) is tracked.
+wip/*/archive/
 wip/*/build/
 scripts/wip/.fonts/

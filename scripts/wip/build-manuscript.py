@@ -5,27 +5,40 @@ build-manuscript.py — fold updated drafts into a new versioned working manuscr
 A work-in-progress project lives in wip/<slug>/:
 
   project.json        Source of truth: metadata, contents (in TOC order), readiness
-                      assessments, and the published version history. Edit the order
-                      of "contents" to reorder the volume.
+                      assessments, and the changelog. Edit the order of "contents" to
+                      reorder the volume.
   sources.lock.json   Content hash of each draft as of the last published version.
                       Written by this script; how it knows what changed.
+  <slug>.pdf          The latest compiled manuscript. The only manuscript in git, at a
+                      stable path, so git history is how you rewind.
   intro.md etc.       Local chapters ("source": {"kind": "local"}).
-  .cache/             Downloaded drafts (gitignored: the repo is public, drafts are not).
-  build/              Rendered PDFs and the cover (gitignored; published via R2).
+  archive/versions/   Every published manuscript, <slug>-vX.Y.pdf (local only).
+  archive/chapters/   Latest copy of each draft, synced from the Drive intake folder
+                      (local only: the repo is public, contributors' drafts are not).
+  build/              Previews and the cover (gitignored).
+
+The Drive folder stays the intake: authors add and update drafts there.
 
 What a run does:
-  1. Fetches every draft from the project's Google Drive folder (public-read), and
-     reports Drive files that no contents entry claims yet.
+  1. Syncs every draft from the Drive folder into archive/chapters/, and reports Drive
+     files that no contents entry claims yet (new drafts are never pulled in on their
+     own: add an entry to project.json).
   2. Hashes each draft's *text* (docx → pandoc text, pdf → extracted text). Google Docs
      exports are not byte-stable, so hashing the file itself would flag false changes.
   3. Compares against sources.lock.json. Nothing changed → stops, unless --force.
   4. Renders each chapter (docx/md via pandoc → HTML → WeasyPrint; PDFs inserted as-is,
-     each behind an opener page), then front matter (cover, title page, contents with
-     page numbers and readiness, what changed in this version), merges, stamps a
-     running footer and page numbers, adds bookmarks, and redacts email addresses.
-  5. With --publish: uploads to R2 at wip/<slug>/<slug>-vX.Y.pdf, prepends the version
-     to project.json, rewrites the lock, and flags readiness assessments made against
-     an older text of a draft as stale. Then commit and push so the page updates.
+     each behind an opener page), then front matter (cover, title page with the
+     changelog note, contents with page numbers and readiness, added/updated lists),
+     merges, stamps a running footer and page numbers, adds bookmarks, and redacts
+     email addresses.
+  5. With --publish --message "…":
+       - saves archive/versions/<slug>-vX.Y.pdf and replaces <slug>.pdf,
+       - uploads to R2 at wip/<slug>/<slug>-vX.Y.pdf,
+       - records the version in project.json, with the message as its changelog entry,
+         and rewrites the lock (readiness scores assessed against older text go stale),
+       - commits exactly those files with the same message and pushes, which deploys
+         the page, then deletes the previous version from R2. Only the latest is served.
+     The commit message and the site changelog are the same text by construction.
 
 Without --publish it writes build/<slug>-preview.pdf and changes nothing else.
 
@@ -34,8 +47,9 @@ ready to move to editing; that call is a human one (set "stage" in project.json)
 
 Usage:
   python3 scripts/wip/build-manuscript.py protocol-reader-vol-2              # preview
-  python3 scripts/wip/build-manuscript.py protocol-reader-vol-2 --publish --note "Folded in Kronovet rev 2"
-  python3 scripts/wip/build-manuscript.py protocol-reader-vol-2 --no-fetch   # use cached drafts
+  python3 scripts/wip/build-manuscript.py protocol-reader-vol-2 --publish \
+      --message "Added Humboldt's laws essay; Kronovet revision folded in"
+  python3 scripts/wip/build-manuscript.py protocol-reader-vol-2 --no-fetch   # use synced copies
   python3 scripts/wip/build-manuscript.py protocol-reader-vol-2 --force      # rebuild with no changes
 
 Requires: pandoc, weasyprint (CLI), PyMuPDF (fitz), Pillow, gdown.
@@ -74,7 +88,7 @@ def ext_of(name: str) -> str:
     return Path(name).suffix.lower() or ".docx"
 
 
-def fetch_sources(project: dict, cache: Path) -> None:
+def fetch_sources(project: dict, chapters: Path) -> None:
     import gdown
 
     src = project.get("source", {})
@@ -93,21 +107,24 @@ def fetch_sources(project: dict, cache: Path) -> None:
         if s["kind"] != "gdrive":
             continue
         if s["id"] not in on_drive:
-            print(f"  MISSING from folder (using cache if present): {e['id']}")
+            print(f"  MISSING from folder (using last synced copy if present): {e['id']}")
             continue
         if on_drive[s["id"]] != s.get("name"):
             print(f"  renamed on Drive: {s.get('name')} → {on_drive[s['id']]}")
-        out = cache / f"{e['id']}{ext_of(on_drive[s['id']])}"
+        out = chapters / f"{e['id']}{ext_of(on_drive[s['id']])}"
+        for old in chapters.glob(f"{e['id']}.*"):
+            if old != out:
+                old.unlink()  # draft changed format (e.g. docx → pdf): keep only the latest
         gdown.download(id=s["id"], output=str(out), quiet=True)
-        print(f"  fetched {e['id']}")
+        print(f"  synced {e['id']}")
 
 
-def source_path(entry: dict, project_dir: Path, cache: Path) -> Path | None:
+def source_path(entry: dict, project_dir: Path, chapters: Path) -> Path | None:
     s = entry["source"]
     if s["kind"] == "local":
         return project_dir / s["path"]
     for ext in (ext_of(s.get("name", "")), ".docx", ".pdf"):
-        p = cache / f"{entry['id']}{ext}"
+        p = chapters / f"{entry['id']}{ext}"
         if p.exists():
             return p
     return None
@@ -178,6 +195,7 @@ section.footnotes, aside.footnotes { font-size: 9pt; border-top: 0.5pt solid #cc
 .titlepage h1 { font-size: 40pt; margin: 0; }
 .titlepage .sub { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 18pt; color: #555; margin: 0.3em 0 1.5em; }
 .titlepage .ed { font-size: 13pt; margin-bottom: 3em; }
+.draftbox.changelog { border-color: #0F6E56; background: #E1F5EE; margin-bottom: 10pt; }
 .draftbox { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; border: 1pt solid #D85A30; padding: 8pt 10pt; color: #2C2C2A; }
 .toc { width: 100%; border: none; font-size: 10pt; }
 .toc td { border: none; border-bottom: 0.4pt dotted #bbb; padding: 4pt 2pt; }
@@ -307,27 +325,35 @@ def main() -> None:
     ap.add_argument("slug")
     ap.add_argument("--no-fetch", action="store_true", help="use cached drafts, skip Drive")
     ap.add_argument("--force", action="store_true", help="build even if no draft changed")
-    ap.add_argument("--publish", action="store_true", help="upload, record the version, update the lock")
-    ap.add_argument("--note", default="", help="one-line note for this version")
+    ap.add_argument("--publish", action="store_true",
+                    help="archive, upload, record, commit and push this version")
+    ap.add_argument("--message", default="",
+                    help="changelog entry; also the git commit message (required with --publish)")
+    ap.add_argument("--trailer", action="append", default=[],
+                    help="git trailer for the commit only, e.g. 'Co-Authored-By: …' (repeatable)")
+    ap.add_argument("--no-push", action="store_true", help="commit but don't push")
     args = ap.parse_args()
+    if args.publish and not args.message.strip():
+        ap.error("--publish needs --message: it is both the changelog entry and the commit message")
 
     project_dir = WIP_ROOT / args.slug
     pj_path = project_dir / "project.json"
     lock_path = project_dir / "sources.lock.json"
     project = json.loads(pj_path.read_text())
     lock = json.loads(lock_path.read_text()) if lock_path.exists() else {}
-    cache = project_dir / ".cache"
+    chapters = project_dir / "archive" / "chapters"
+    versions_dir = project_dir / "archive" / "versions"
     build = project_dir / "build"
-    cache.mkdir(exist_ok=True)
-    build.mkdir(exist_ok=True)
+    for d in (chapters, versions_dir, build):
+        d.mkdir(parents=True, exist_ok=True)
 
     if not args.no_fetch:
-        fetch_sources(project, cache)
+        fetch_sources(project, chapters)
 
     # What changed since the last published version?
     paths, hashes, changed = {}, {}, []
     for e in project["contents"]:
-        p = source_path(e, project_dir, cache)
+        p = source_path(e, project_dir, chapters)
         paths[e["id"]] = p
         if p is None:
             print(f"  no draft for {e['id']}")
@@ -335,6 +361,8 @@ def main() -> None:
         hashes[e["id"]] = content_hash(p)
         if lock.get(e["id"], {}).get("hash") != hashes[e["id"]]:
             changed.append(e["id"])
+    added = [i for i in changed if i not in lock]
+    updated = [i for i in changed if i in lock]
 
     version = next_version(project)
     print(f"\n{len(changed)} of {len(project['contents'])} drafts new or changed since "
@@ -403,15 +431,18 @@ def main() -> None:
         scores = [e["readiness"]["score"] for e in project["contents"]]
         names = {e["id"]: e["title"] for e in project["contents"]}
         history = "".join(
-            f"<li>v{esc(v['version'])} · {esc(v['date'])} · {len(v.get('changed', []))} drafts folded in"
-            f"{' · ' + esc(v['note']) if v.get('note') else ''}</li>"
-            for v in project["versions"][:8]
+            f"<li><b>v{esc(v['version'])}</b> · {esc(v['date'])} · {esc(v.get('message', ''))}</li>"
+            for v in project["versions"][:12]
         )
+        def name_list(ids):
+            return "".join(f"<li>{esc(names[i])} <span class='au'>({esc(authors_str(next(e['authors'] for e in project['contents'] if e['id'] == i)))})</span></li>" for i in ids)
+        changelog_note = esc(args.message) if args.message else "Preview build: no changelog entry yet."
         front_html = f"""
 <div class='titlepage'>
   <h1>{esc(project['title'])}</h1>
   <div class='sub'>{esc(project.get('subtitle', ''))}</div>
   <div class='ed'>Edited by {esc(project.get('editor', ''))}</div>
+  <div class='draftbox changelog'><b>What changed in {esc(vlabel)}</b> · {today}<br>{changelog_note}</div>
   <div class='draftbox'><b>Working draft {esc(vlabel)}</b> · compiled {today}<br>
   A front-end working manuscript assembled from authors' drafts as they stand. Not edited,
   not for citation or circulation. Readiness scores (1 = placeholder stub, 10 = finished)
@@ -425,9 +456,11 @@ def main() -> None:
 </div>
 <div class='front changes'>
   <h2>In this version</h2>
-  <ul>{''.join(f'<li>{esc(names[c])}</li>' for c in changed) or '<li>No draft changes (rebuild).</li>'}</ul>
-  {f'<p>{esc(args.note)}</p>' if args.note else ''}
-  {f'<h3>Earlier versions</h3><ul>{history}</ul>' if history else ''}
+  <p>{changelog_note}</p>
+  {f'<h3>Added</h3><ul>{name_list(added)}</ul>' if added else ''}
+  {f'<h3>Updated</h3><ul>{name_list(updated)}</ul>' if updated else ''}
+  {'' if changed else '<p>No draft changes (rebuild).</p>'}
+  {f'<h3>Changelog</h3><ul>{history}</ul>' if history else ''}
 </div>"""
         front_pdf = tmp / "front.pdf"
         render_pdf(page_doc(front_html), front_pdf, tmp)
@@ -474,9 +507,14 @@ def main() -> None:
         print("Preview only. Re-run with --publish to upload and record it as a version.")
         return
 
+    # Archive every version locally; the stable-path copy is the one git tracks.
+    shutil.copy2(out_pdf, versions_dir / fname)
+    latest_pdf = project_dir / f"{args.slug}.pdf"
+    shutil.copy2(out_pdf, latest_pdf)
+
     key = f"wip/{args.slug}/{fname}"
-    subprocess.run([str(WRANGLER), "r2", "object", "put", f"{R2_BUCKET}/{key}", f"--file={out_pdf}",
-                    "--content-type=application/pdf", "--remote"], check=True, cwd=REPO_ROOT / "worker")
+    wrangler(["r2", "object", "put", f"{R2_BUCKET}/{key}", f"--file={out_pdf}",
+              "--content-type=application/pdf"])
     print(f"Uploaded → {FILES_BASE}/{key}")
 
     for e in project["contents"]:
@@ -485,15 +523,46 @@ def main() -> None:
         if h and not r.get("assessed_hash"):
             r["assessed_hash"] = h      # first sighting: the assessment was made against this text
         r["stale"] = bool(h and r.get("assessed_hash") and r["assessed_hash"] != h)
+    superseded = [v["file"] for v in project["versions"] if v.get("file")]
+    for v in project["versions"]:
+        v["file"] = None                # only the latest version is served
     project["versions"].insert(0, {
         "version": version, "date": today, "file": f"{FILES_BASE}/{key}",
-        "pages": pages, "changed": changed, "note": args.note,
+        "pages": pages, "added": added, "updated": updated, "message": args.message.strip(),
     })
     pj_path.write_text(json.dumps(project, indent=2, ensure_ascii=False) + "\n")
     lock_path.write_text(json.dumps(
         {i: {"hash": h, "version": version if i in changed else lock.get(i, {}).get("version", version)}
          for i, h in hashes.items()}, indent=2) + "\n")
-    print(f"Recorded v{version} in project.json and sources.lock.json. Commit and push to update the page.")
+    print(f"Recorded v{version} in project.json and sources.lock.json.")
+
+    # Commit exactly these files, with the changelog entry as the message.
+    tracked = [pj_path, lock_path, latest_pdf]
+    msg = args.message.strip()
+    if args.trailer:
+        msg += "\n\n" + "\n".join(args.trailer)
+    git(["add", "--", *map(str, tracked)])
+    git(["commit", "-q", "-m", msg, "--", *map(str, tracked)])
+    print("Committed: " + args.message.strip().splitlines()[0])
+    if args.no_push:
+        print("Not pushed (--no-push). Push to deploy, then delete the superseded R2 files by hand.")
+        return
+    git(["push", "-q", "origin", "HEAD"])
+    print("Pushed; the Worker deploy updates the page.")
+
+    for url in superseded:
+        old_key = url.removeprefix(FILES_BASE + "/")
+        if old_key != key:
+            wrangler(["r2", "object", "delete", f"{R2_BUCKET}/{old_key}"])
+            print(f"Removed superseded {url} (kept in archive/versions/)")
+
+
+def wrangler(argv: list[str]) -> None:
+    subprocess.run([str(WRANGLER), *argv, "--remote"], check=True, cwd=REPO_ROOT / "worker")
+
+
+def git(argv: list[str]) -> None:
+    subprocess.run(["git", *argv], check=True, cwd=REPO_ROOT)
 
 
 if __name__ == "__main__":
