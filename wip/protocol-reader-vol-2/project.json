@@ -1,0 +1,457 @@
+{
+  "slug": "protocol-reader-vol-2",
+  "title": "Protocol Reader: Volume 2",
+  "subtitle": "Essays based on select talks from the Protocol Symposium 2026",
+  "editor": "Venkatesh Rao",
+  "kind": "proceedings",
+  "stage": "gathering",
+  "started": "2026-10-19",
+  "description": "A proceedings volume of essays developed from talks at the Protocol Symposium 2026. Drafts are being gathered and folded into a versioned working manuscript until the volume is ready for editing.",
+  "cover": "https://files.protocolized.io/wip/protocol-reader-vol-2/cover.jpg",
+  "source": {
+    "kind": "gdrive-folder",
+    "id": "1pMT0S1aB6Vm5WEX0J4g7ljPMitC-1Mwr"
+  },
+  "readiness_scale": {
+    "1": "Placeholder stub",
+    "4": "Partial draft, with gaps or notes-to-self",
+    "6": "Complete draft that needs structural or substantial editing",
+    "8": "Polished draft, ready for a copy edit",
+    "10": "Finished"
+  },
+  "parts": [
+    {
+      "id": "front",
+      "title": ""
+    },
+    {
+      "id": "new-nature",
+      "title": "New Nature"
+    },
+    {
+      "id": "institutions",
+      "title": "Political Economy and Institutions"
+    },
+    {
+      "id": "infrastructures",
+      "title": "Infrastructures and Histories"
+    },
+    {
+      "id": "building",
+      "title": "Building Protocols"
+    },
+    {
+      "id": "craft",
+      "title": "Protocol Fiction Craft"
+    }
+  ],
+  "contents": [
+    {
+      "id": "introduction",
+      "part": "front",
+      "title": "Introduction",
+      "authors": [
+        "Venkatesh Rao"
+      ],
+      "summary": "The editor's introduction to the volume.",
+      "source": {
+        "kind": "local",
+        "path": "intro.md"
+      },
+      "readiness": {
+        "score": 1,
+        "note": "Placeholder. To be written once the contents settle.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "7d1033bc999bcdf6",
+        "stale": false
+      }
+    },
+    {
+      "id": "de-dramatizing-the-digital",
+      "part": "new-nature",
+      "title": "De-Dramatizing the Digital: How AI Descends Into New Nature",
+      "authors": [
+        "Sean Stevenson"
+      ],
+      "summary": "AI may make digital life boring by sinking through the pace layers into New Nature, and “appeal-foreclosure” is how we would know it has arrived.",
+      "talk": "de-dramatizing-the-digital-how-ai-descends-into-new-nature",
+      "source": {
+        "kind": "gdrive",
+        "id": "1GiXxKWTp-ZHUVO1mo31tMVtXILbUZ--H",
+        "name": "De-dramatizing-the-digital-proceedings-Stevenson.docx"
+      },
+      "readiness": {
+        "score": 8,
+        "note": "Complete and well structured, with notes, references and a process note. Ready for a copy edit.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "5974502b50c5766a",
+        "stale": false
+      }
+    },
+    {
+      "id": "time-moves-down-the-stack",
+      "part": "new-nature",
+      "title": "Time Moves Down the Stack",
+      "authors": [
+        "Florian Lohse"
+      ],
+      "summary": "Three books on clocks and atomic time show timekeeping sinking into infrastructure; “Micro Time” still has no way of living built around it.",
+      "talk": "time-moves-down-the-stack",
+      "source": {
+        "kind": "gdrive",
+        "id": "1qy-02V0vkRs8MRcw-YZuxNibW69TJnKJ",
+        "name": "Time Moves Down the Stack_Florian Lohse.docx"
+      },
+      "readiness": {
+        "score": 8,
+        "note": "Polished and complete, with many figures. A few empty headings and figure captions to tidy.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "a89aef76bf82e608",
+        "stale": false
+      }
+    },
+    {
+      "id": "borrowing-courage-from-the-future",
+      "part": "new-nature",
+      "title": "Borrowing Courage from the Future",
+      "authors": [
+        "Aneesh Sathe"
+      ],
+      "summary": "Revisiting a scene generated with the Prime Radiant, argues that a useful prophecy shows what a future would ask of us, not just whether it will come true.",
+      "talk": "building-psychohistory-an-infrastructure-field-report",
+      "source": {
+        "kind": "gdrive",
+        "id": "1Yu3b9iV3HCnQG_ihke7j8a_niTfIq-R8",
+        "name": "borrowing-courage-from-the-future.pdf"
+      },
+      "readiness": {
+        "score": 8,
+        "note": "Typeset 18-page draft with figures and notes. Supplied as PDF only, so edits will need the source file. Author name not yet on the document.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "241359118d6cbe33",
+        "stale": false
+      }
+    },
+    {
+      "id": "protocoling-as-a-design-theory",
+      "part": "new-nature",
+      "title": "Protocoling as a Design Theory",
+      "authors": [
+        "Botao Amber Hu"
+      ],
+      "summary": "Protocol is the design material and “protocoling” the design action: shaping conditions for desirable emergence among agents we cannot fully control.",
+      "talk": "protocoling-hci-hardening-interaction-into-infrastructure",
+      "source": {
+        "kind": "gdrive",
+        "id": "1n2JXal6jI0Nzleam52eIUmxKUuQMIPcxoIsy6fUUcso",
+        "name": "Protocoling as a Design Theory (Initial Draft).docx"
+      },
+      "readiness": {
+        "score": 7,
+        "note": "Complete argument with sources and an AI-assistance note. Needs a title line and section breaks; it is one continuous run of prose.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "5b4ee1f6c30cb08e",
+        "stale": false
+      }
+    },
+    {
+      "id": "political-economy-of-protocols",
+      "part": "institutions",
+      "title": "The Political Economy of Protocols",
+      "authors": [
+        "Trent Van Epps"
+      ],
+      "summary": "Places protocols on a four-corner field of norms, market, state and New Nature, and traces the paths of Linux and Ethereum across it.",
+      "talk": "the-political-economy-of-protocols",
+      "source": {
+        "kind": "gdrive",
+        "id": "1F1jITVDoTenuFyU7juKHD53Dcg_Wwmfq2Xhq8n6C344",
+        "name": "The Political Economy of Protocols (draft 2026-10-15).docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Full argument with references, but still close to the talk in voice and reliant on slide images. Needs converting from talk to essay.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "7c6199ac19f35d24",
+        "stale": false
+      }
+    },
+    {
+      "id": "jubilee-meta-protocols-against-entrenchment",
+      "part": "institutions",
+      "title": "Jubilee: Meta-Protocols Against Entrenchment",
+      "authors": [
+        "Mike Travers"
+      ],
+      "summary": "Reads the Biblical Jubilee as a meta-protocol for resetting accumulated debt, and the prosbul as its first workaround, to argue that forgiveness is load-bearing in protocol design.",
+      "talk": "jubilee-meta-protocols-against-entrenchment",
+      "source": {
+        "kind": "gdrive",
+        "id": "1qmakrUVIMjaPA_fdueEsyxnVrjUnYiTKtIPMmoQ4Jdk",
+        "name": "Jubilee Meta-Protocols Against Entrenchment.docx"
+      },
+      "readiness": {
+        "score": 8,
+        "note": "Tight, complete paper with tables and references. Ready for a copy edit.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "828a43aa960ce201",
+        "stale": false
+      }
+    },
+    {
+      "id": "regenerative-labor-and-new-institutions",
+      "part": "institutions",
+      "title": "Regenerative Labor and New Institutions",
+      "authors": [
+        "Daniel Kronovet"
+      ],
+      "summary": "Defines “regenerative labor” and presents Chore Wheel, the mechanism suite that has run a shared house without managers or paid cleaners since 2022.",
+      "talk": "chores-as-complex-coordination",
+      "source": {
+        "kind": "gdrive",
+        "id": "1NQbTTvhO5lWOIHt3MoVi6B2XfvW0gLmfsFcMfWuf5IA",
+        "name": "Regenerative Labor and New Institutions.docx"
+      },
+      "readiness": {
+        "score": 4,
+        "note": "Core sections drafted; the later sections are still partly outline, with open notes-to-self for citations and planned discussions.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "cd23efc5622db5b5",
+        "stale": false
+      }
+    },
+    {
+      "id": "privacy-in-other-words",
+      "part": "institutions",
+      "title": "Privacy in Other Words: Infrastructure for Expressive Freedom",
+      "authors": [
+        "Jesse Katz",
+        "Eric Alston"
+      ],
+      "summary": "Privacy technology on public blockchains should be protected as infrastructure for First Amendment expression and association.",
+      "talk": "entrenching-privacy-through-speech",
+      "source": {
+        "kind": "gdrive",
+        "id": "1a3NiJ5P8_1c-jGSBe1VXvwJCcO_1FN0X",
+        "name": "Privacy in Other Words, Infrastructure for Expressive Freedom - FINAL.docx"
+      },
+      "readiness": {
+        "score": 8,
+        "note": "Marked final by the authors: a complete legal argument with full references. The longest piece in the volume.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "7b015c4cecd94f34",
+        "stale": false
+      }
+    },
+    {
+      "id": "life-serving-protocols",
+      "part": "institutions",
+      "title": "Life-Serving Protocols",
+      "authors": [
+        "Scott Clearwater",
+        "Jose Leal"
+      ],
+      "summary": "A framework for judging whether a protocol sustains life inside and outside its boundary, worked through on Buurtzorg's home-care model.",
+      "talk": "life-serving-protocols-a-framework-for-evaluating-cooperative",
+      "source": {
+        "kind": "gdrive",
+        "id": "1npf9g5nshbM6YTHr8DcYtxPucVgFQ0A1",
+        "name": "Life_Serving_Protocols_Conference_final.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Complete paper with references. Needs a title in the file and opening up of the framework vocabulary for a general reader.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "2b93b33f1fea8ba2",
+        "stale": false
+      }
+    },
+    {
+      "id": "oil-uni-and-tv",
+      "part": "infrastructures",
+      "title": "Oil, Uni and TV: Post-Soviet Infrastructures Shaping Protocols for the Web",
+      "authors": [
+        "Polina Kolozaridi"
+      ],
+      "summary": "A “protocol archaeology” of three lost Russian city networks, which vanished because they lacked a protocol of the protocol: a manifesto saying what they were.",
+      "talk": "oil-uni-and-tv-post-soviet-infrastructures-shaping-protocols-for-web",
+      "source": {
+        "kind": "gdrive",
+        "id": "1F9IUdWwAITkuN9YdaDqrTvYOFlu6cfbd",
+        "name": "internet protocols kolozaridi.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Complete arc with references. Needs a line edit and a check of fieldwork dates.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "d19ede5782a52850",
+        "stale": false
+      }
+    },
+    {
+      "id": "indelible-importance-of-illegibility",
+      "part": "infrastructures",
+      "title": "The Indelible Importance of Illegibility",
+      "authors": [
+        "Patrick Atwater"
+      ],
+      "summary": "One water valve under a street shared by three jurisdictions shows how infrastructure runs on tacit knowledge that its records cannot capture.",
+      "talk": "the-indelible-importance-of-illegibility",
+      "source": {
+        "kind": "gdrive",
+        "id": "1aX2aMUjyI-6yVVYZV-ksRuhAtDokgrII80vQJlx2N1Q",
+        "name": "The-Indelible-Importance-of-Illegibility w ai writing coda.docx"
+      },
+      "readiness": {
+        "score": 7,
+        "note": "The main essay is polished. Its appendices roughly double the length and include items still to verify; which of them stay is an editorial decision.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "f8d0a2959ccadf88",
+        "stale": false
+      }
+    },
+    {
+      "id": "continuity-infrastructure",
+      "part": "infrastructures",
+      "title": "Continuity Infrastructure",
+      "authors": [
+        "Ruthvik Peddawandla"
+      ],
+      "summary": "Personal intellectual projects need infrastructure for returning to earlier thought, not just tools for storing it.",
+      "talk": "continuity-infrastructure",
+      "source": {
+        "kind": "gdrive",
+        "id": "1UzJcTYXft7ONwMmI9-WTurEKzAet4xUwu9brBBndGyo",
+        "name": "Continuity Infrastructure - Ruthvik Peddawandla.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Clean, complete prose, but abstract: it would benefit from more examples and sources.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "1d7b5ae3ab77efb5",
+        "stale": false
+      }
+    },
+    {
+      "id": "book-as-a-protocol-stack",
+      "part": "infrastructures",
+      "title": "The Book as a Protocol Stack",
+      "authors": [
+        "Jenna Dixon"
+      ],
+      "summary": "Reads the printed book as a stack of eight protocols, then reports on a protocolized book-production factory that eight authors used at the symposium.",
+      "talk": "book-as-protocol-stack-building-a-protocolized-book-production-factory",
+      "source": {
+        "kind": "gdrive",
+        "id": "17DSO1zk63vaNxqwvX94TTL0NDUnAUrrk",
+        "name": "PROCEEDINGS-DRAFT-2026-10-15.pdf"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Rough draft 1, by the author's own label: structure and tables complete, with about twenty marked fact-checks and author-only details still open. Supplied as PDF.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "25fe934fe12ba5fd",
+        "stale": false
+      }
+    },
+    {
+      "id": "opencourier",
+      "part": "building",
+      "title": "OpenCourier: Envisioning an Interoperable Future for Delivery Work",
+      "authors": [
+        "Yuhan Liu",
+        "Varun Nagaraj Rao",
+        "Sohyeon Hwang",
+        "Janet Vertesi",
+        "Andrés Monroy-Hernández"
+      ],
+      "summary": "An open protocol that would let independent delivery platforms interoperate, so the coordination is no longer owned by a single platform.",
+      "talk": "opencourier-protocol",
+      "source": {
+        "kind": "gdrive",
+        "id": "1hnCxH0Cng9ykMtobWcYSkDHDfm36MUElgjHk1Wvhbbw",
+        "name": "OpenCourier - draft.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "Complete and clear, but close to the talk and light on argument beyond describing the project.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "9664be5b761bc358",
+        "stale": false
+      }
+    },
+    {
+      "id": "robots-as-protocol-citizens",
+      "part": "building",
+      "title": "Robots as Protocol Citizens",
+      "authors": [
+        "Anuraj R",
+        "Rafael Fernández"
+      ],
+      "summary": "From a robot rented with one USDC at Devcon to an open stack in which robots carry their own identity and can be discovered, paid and controlled.",
+      "talk": "robots-as-protocol-citizens",
+      "source": {
+        "kind": "gdrive",
+        "id": "1R9voSCvoDAmg1hieVd1K4k8WBABwp4vbZ8_rLz9ulkI",
+        "name": "Robots as Protocol Citizens - Not FINAL.docx"
+      },
+      "readiness": {
+        "score": 7,
+        "note": "Marked not final, but complete and well written, with notes. Mainly needs the authors' final pass.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "d314eb4874d61b62",
+        "stale": false
+      }
+    },
+    {
+      "id": "seam-of-difference",
+      "part": "craft",
+      "title": "The Seam of Difference: Writing Metaphors, Monsters, and Protocols",
+      "authors": [
+        "Spencer Nitkey"
+      ],
+      "summary": "Metaphors, monsters and protocols all live in an unresolved “seam of difference”; with writing exercises for protocol fiction.",
+      "talk": "creating-new-genres-for-new-nature",
+      "source": {
+        "kind": "gdrive",
+        "id": "1qBy2tL4frvOZQJsTkyv1H0qu7VL_XYKapti4hDCm-mo",
+        "name": "The Seam of Difference: Writing Metaphors, Monsters, and Protocols - draft.docx"
+      },
+      "readiness": {
+        "score": 4,
+        "note": "Closer to a workshop handout than an essay so far. Needs a byline, references, a copy edit and one open section resolved.",
+        "assessed": "2026-10-19",
+        "assessed_hash": "e578810a111db621",
+        "stale": false
+      }
+    }
+  ],
+  "versions": [
+    {
+      "version": "0.1",
+      "date": "2026-10-19",
+      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.1.pdf",
+      "pages": 216,
+      "changed": [
+        "introduction",
+        "de-dramatizing-the-digital",
+        "time-moves-down-the-stack",
+        "borrowing-courage-from-the-future",
+        "protocoling-as-a-design-theory",
+        "political-economy-of-protocols",
+        "jubilee-meta-protocols-against-entrenchment",
+        "regenerative-labor-and-new-institutions",
+        "privacy-in-other-words",
+        "life-serving-protocols",
+        "oil-uni-and-tv",
+        "indelible-importance-of-illegibility",
+        "continuity-infrastructure",
+        "book-as-a-protocol-stack",
+        "opencourier",
+        "robots-as-protocol-citizens",
+        "seam-of-difference"
+      ],
+      "note": "First compilation: 16 drafts from the shared folder plus the introduction stub."
+    }
+  ]
+}

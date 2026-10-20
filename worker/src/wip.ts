@@ -1,0 +1,70 @@
+// Work-in-progress projects: front-end working documents (e.g. a proceedings
+// volume gathering drafts) that will eventually become items in the resource
+// archive. Each project's source of truth is wip/<slug>/project.json at the
+// repo root, bundled into the Worker at build time, so a page update is a
+// commit + push. scripts/wip/build-manuscript.py writes the "versions" list
+// when it publishes a new manuscript to R2.
+
+import protocolReaderVol2 from "../../wip/protocol-reader-vol-2/project.json";
+
+export interface WipReadiness {
+  score: number;
+  note: string;
+  assessed: string;
+  assessed_hash?: string;
+  stale?: boolean;
+}
+
+export interface WipEntry {
+  id: string;
+  part: string;
+  title: string;
+  authors: string[];
+  summary: string;
+  talk?: string;
+  source: { kind: string; id?: string; name?: string; path?: string };
+  readiness: WipReadiness;
+}
+
+export interface WipVersion {
+  version: string;
+  date: string;
+  file: string;
+  pages: number;
+  changed: string[];
+  note?: string;
+}
+
+export interface WipProject {
+  slug: string;
+  title: string;
+  subtitle?: string;
+  editor?: string;
+  kind: string;
+  stage: string;
+  started: string;
+  description: string;
+  cover?: string;
+  readiness_scale: Record<string, string>;
+  parts: { id: string; title: string }[];
+  contents: WipEntry[];
+  versions: WipVersion[];
+}
+
+// Register new projects here.
+const PROJECTS: WipProject[] = [protocolReaderVol2 as WipProject];
+
+export function getWipProjects(): WipProject[] {
+  return PROJECTS;
+}
+
+export function getWipProject(slug: string): WipProject | undefined {
+  return PROJECTS.find((p) => p.slug === slug);
+}
+
+export const WIP_STAGES: Record<string, string> = {
+  gathering: "Gathering drafts",
+  editing: "In editing",
+  production: "In production",
+  published: "Published",
+};

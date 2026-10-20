@@ -25,6 +25,8 @@ import { BooksPage, BookPage } from "./html/books";
 import { LexiconPage } from "./html/lexicon";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
 import { NewNatureFeaturePage } from "./html/feature-new-nature";
+import { WipIndexPage, WipProjectPage } from "./html/wip";
+import { getWipProject, getWipProjects } from "./wip";
 
 interface Env {
   DB: D1Database;
@@ -155,6 +157,18 @@ app.get("/features/new-nature", (c) =>
 app.get("/features/new-nature/", (c) =>
   c.redirect("/features/new-nature", 301)
 );
+
+// Works in progress: unlisted (noindex), data bundled from wip/*/project.json.
+app.get("/wip", (c) =>
+  c.html(<WipIndexPage currentPath="/wip" projects={getWipProjects()} />)
+);
+app.get("/wip/:slug", (c) => {
+  const slug = c.req.param("slug");
+  const project = getWipProject(slug);
+  if (!project) return c.html(notFound(), 404);
+  return c.html(<WipProjectPage currentPath={`/wip/${slug}`} project={project} />);
+});
+app.get("/wip/:slug/", (c) => c.redirect(`/wip/${c.req.param("slug")}`, 301));
 
 app.get("/anthologies", async (c) => {
   const exclude = fictionExcluded(c);
