@@ -431,3 +431,23 @@ A build log for protocolized.io — how the magazine and resource library site w
 - The PR required R2 uploads before merge. Checked all 47 referenced URLs (all 200) before merging; the Sync Resources to D1 workflow then published the bodies (largest ~70KB, under D1's 100KB statement limit) and the Worker deploy added the "Watch on YouTube" label for YouTube-URL resources in `worker/src/html/resource.tsx`.
 
 ---
+
+## Session 26: Works in progress: Protocol Reader Vol. 2 project page, manuscript pipeline and editing-ready checklist
+
+*2026-10-19*
+
+**Tracks:** framework, operations, ux
+
+- `/wip` hosts front-end working documents that will later become library items, starting with *Protocol Reader: Volume 2*, a proceedings volume of essays from Protocol Symposium 2026 talks. The phase is deliberately bounded: it starts when drafts arrive and ends when a version is judged ready for editing, after which the volume graduates to a `books` row and per-essay resources. Pages are unlisted (`noindex`, absent from nav, sitemap, RSS and llms.txt) but shareable by link with contributors. Anything that needs real privacy would need auth (secret links or the PI members cookie); see `docs/wip-projects-plan.md`.
+
+- Each project's source of truth is `wip/&lt;slug&gt;/project.json` (contents in TOC order with parts, one-line summaries, readiness 1–10, deadline, checklist, changelog), imported into the Worker at build time via `worker/src/wip.ts`. One editor, a few changes a week, and a history worth diffing made a schema and migrations not worth it; the cost is that every page change is a push and deploy. The plan names the triggers for moving to D1: several editors, several concurrent WIPs, or updates that shouldn't wait for a deploy.
+
+- `scripts/wip/build-manuscript.py` syncs drafts from a public-read Google Drive folder (the intake), keyed by **Drive file ID**. New files are reported and never auto-included. Change detection hashes each draft's *text*, not the file, because Google Docs exports aren't byte-stable (re-downloading 18 unchanged files flagged none). Chapters render through pandoc → HTML → WeasyPrint; drafts supplied as PDF go in as-is behind an opener page. PyMuPDF then merges everything, adds page numbers and a working-draft footer, bookmarks, and email redaction. Heavy raster figures are re-encoded as JPEG (one draft shipped 36 MB of PNG photos; the manuscript went from 41 MB to 11 MB).
+
+- `--publish --message` archives the PDF, uploads it to R2, records the version, then **commits and pushes with that exact message**, which is also the page changelog and the manuscript's “What changed” note, so the git log and the site can't drift. Only the latest PDF is served (the previous R2 object is deleted). The repo is public, so drafts never enter it: every version and the latest chapter files live in gitignored `wip/&lt;slug&gt;/archive/` (Dropbox-backed), and only the latest manuscript is tracked, at a stable path, making git history the rewind mechanism. The c3po/Substack sync commits land on `main` several times a day, and one rejected a release push, so the script now rebases before pushing. Released v0.1 (16 drafts plus intro stub), v0.2 (two new drafts: Humboldt, Blygger) and v0.3 (checklist and deadline); 19 pieces, 238 pages.
+
+- A 19-item checklist in `project.json` (front matter incl. abstract and bio, Heading 2 sections, no placeholders or draft labels, References in Chicago author-date, working links, **open-license images only** (PD/CC0/CC BY/CC BY-SA or own work; no NC/ND, proprietary, screenshots or fair use), editable file, no contact details, a standard “AI assistance” note) with the deadline of Sunday, November 15, 2026. `scripts/wip/draft_checks.py` automates 15 items, run on every build and standalone via `check-drafts.py`, writing `checks.json`, which shows per essay on the page and on each chapter opener. Heuristic checks (citation cross-matching, bot-blocked links) report warnings, not failures, after a first pass showed false positives (essays *about* AI flagged as undisclosed AI use; prose like “how to verify that” flagged as a placeholder). State at v0.3: 0 of 18 drafts pass, mostly because no draft has a bio and 12 lack abstracts.
+
+- Merged PR #10 (symposium slides and recordings) and deleted six merged or obsolete branches, rescuing the unmerged May 2026 Cloudflare Pages migration plan to `docs/` first. Venkat ruled that this repo pushes finished work straight to `main` without PRs, now in CLAUDE.md Conventions.
+
+---

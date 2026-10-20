@@ -40,6 +40,17 @@ This site + its original Substack forked into a **nonfiction publication** (this
 
 **Ongoing gap — new fiction still lands on the old Substack.** MT's import stops at 2026-09-15; fiction posted to the original Substack afterward (first: `where-the-stones-hold`, 2026-10-07) mirrors here, trips the sync's fiction WARNING, and is hidden from listings but still served at `/p/:slug`. Once MT publishes it: add the slug to `data/monstroustimes-map.json` (`posts`), set the resource file's `url:` to the MT URL, run `load-fiction-redirects.py --remote`, push. Not done yet: deleting fiction rows/R2 bodies (keep — the redirects don't depend on them, but there's no reason to rush), and the 2 unpublished Randy Lubin placeholder rows (`the-caucus`, `joan-henry-vs-the-algorithm`) which have no MT destination.
 
+## Works in Progress (`/wip`, since 2026-10-19)
+
+Front-end project management for working documents that will later become library items (first: **Protocol Reader: Volume 2**, a proceedings volume from Symposium 2026 talks, at `/wip/protocol-reader-vol-2`). Pages are **unlisted**: `noindex`, absent from nav, sitemap, RSS, llms.txt.
+
+- **Source of truth:** `wip/<slug>/project.json`: metadata, `contents` (array order = TOC order; `part` groups), readiness scores (1–10, assessed by reading), `deadline`, `checklist`, `versions` (the changelog). Bundled into the Worker via `worker/src/wip.ts` (register new projects there), rendered by `worker/src/html/wip.tsx`.
+- **Intake** is a public-read Google Drive folder; drafts are keyed by **Drive file ID**, so authors edit in place. A new file is only reported, never auto-included: add a `contents` entry.
+- **Release:** `python3 scripts/wip/build-manuscript.py <slug>` (preview) → `--publish --message "…"`. The message is the page changelog, the manuscript's "What changed" note, **and** the git commit message; the script commits + pushes itself (rebasing onto the frequent c3po/Substack sync commits first). Only the latest PDF is served from R2 (`wip/<slug>/<slug>-vX.Y.pdf`; the previous one is deleted).
+- **The repo is public; drafts never enter it.** `wip/<slug>/archive/versions/` (every manuscript) and `archive/chapters/` (latest synced drafts) are gitignored, local only (Dropbox-backed). Only the latest manuscript is tracked, at `wip/<slug>/<slug>.pdf`, so git history is the rewind. Don't put contributor contact details in `project.json`.
+- **Checklist:** defined in `project.json`; automated items in `scripts/wip/draft_checks.py`, run by every build and standalone via `scripts/wip/check-drafts.py <slug> [--entry id -v]` → `checks.json`.
+- Plan for the recurring case and open questions: `docs/wip-projects-plan.md`.
+
 ---
 
 ## Stack
@@ -132,6 +143,9 @@ scripts/
 ├── update-series-toc.py         # Add a post as the next chapter in a series book (books.toc + posts.series_slug/position)
 ├── load-fiction-redirects.py    # data/monstroustimes-map.json → D1 fiction_redirects (full replace)
 ├── sync-symposium-archive.py    # c3po sources/symposium/ → symposium resource bodies (transcript, slides) + R2 symposium-2026/
+├── wip/build-manuscript.py      # WIP: Drive drafts → versioned PDF manuscript; --publish releases (R2 + commit + push)
+├── wip/check-drafts.py          # WIP: run the project checklist against synced drafts → checks.json (logic in wip/draft_checks.py)
+├── wip/make-placeholder-cover.py # WIP: seeded placeholder cover → R2 wip/<slug>/cover.jpg
 └── migrate-to-d1.py             # Sync all resource Markdown → D1 resources table
 .github/workflows/
 ├── deploy.yml          # Build & deploy Worker on push to main
@@ -195,6 +209,7 @@ After any sync script: run `python3 scripts/migrate-to-d1.py --remote`. See `c3p
 - The Substack sync script (`scripts/sync-substack.py`) runs via GitHub Actions on a daily cron. It can also be run manually with `python3 scripts/sync-substack.py`.
 - Commits from the sync bot use the message format: `chore: sync N new Substack post(s) from Protocolized`.
 - The build must produce zero errors. Run `npm run build` before pushing.
+- **Push finished work straight to `main`; no PRs** (Venkat owns the site; decided 2026-10-19). Push deploys the Worker, so verify on the live URL afterwards.
 
 ## At Session Start
 
