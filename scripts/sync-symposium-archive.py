@@ -14,7 +14,9 @@ script owns the presentation of that data on protocolized.io:
     already serves identical bytes (so a revised deck is re-uploaded)
   - writes the body of each resource file: recording link, slides list, transcript
   - creates resource files for talks that have none yet (two late recordings, and
-    talks with slides but no recording); existing frontmatter is left alone
+    talks with slides but no recording); existing frontmatter is left alone,
+    except that a slides-only page whose recording arrived later gains `type: talk`,
+    `url` and `thumbnail`
 
 The body is regenerated on every run; edit c3po's data or this renderer, not the
 Markdown. sync-youtube-resources.py preserves the body when it rewrites
@@ -279,17 +281,33 @@ def main():
             transcript = json.loads((ARCHIVE / r["transcript"]).read_text())
         body = render_body(r, transcript, manifest)
 
+        def thumbnail_for(video_id: str) -> str | None:
+            thumb = f"{CDN_BASE}/covers/yt-{video_id}.jpg"
+            if requests.head(thumb, timeout=10).ok:
+                return thumb
+            return None if args.dry_run or args.no_upload else upload_thumbnail(video_id, token)
+
         md_path = RESOURCES_DIR / f"{slug}.md"
         if md_path.exists():
             fm, _ = split_frontmatter(md_path.read_text(encoding="utf-8"))
             action = "UPDATE"
             updated += 1
+            if r.get("video_url") and not re.search(r"^url:", fm, re.M):
+                # A slides-only page whose recording arrived later: c3po keeps the
+                # page (same URL) and makes it the recording's page. Upgrade the
+                # frontmatter in place; title, authors, description and the slides
+                # file stay as they were.
+                fm = re.sub(r"^type: presentation$", "type: talk", fm, count=1, flags=re.M)
+                add = [f"url: {yaml_str(r['video_url'])}"]
+                thumb = thumbnail_for(r["video_id"])
+                if thumb and not re.search(r"^thumbnail:", fm, re.M):
+                    add.append(f"thumbnail: {yaml_str(thumb)}")
+                fm = fm.rstrip()
+                assert fm.endswith("---")
+                fm = fm[:-3].rstrip("\n") + "\n" + "\n".join(add) + "\n---"
+                action = "UPGRADE"
         else:
-            thumb = None
-            if r.get("video_id"):
-                thumb = f"{CDN_BASE}/covers/yt-{r['video_id']}.jpg"
-                if not requests.head(thumb, timeout=10).ok:
-                    thumb = None if args.dry_run or args.no_upload else upload_thumbnail(r["video_id"], token)
+            thumb = thumbnail_for(r["video_id"]) if r.get("video_id") else None
             fm = new_frontmatter(r, thumb)
             action = "ADD"
             created += 1
