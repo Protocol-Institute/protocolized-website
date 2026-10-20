@@ -547,6 +547,8 @@ def main() -> None:
     if args.no_push:
         print("Not pushed (--no-push). Push to deploy, then delete the superseded R2 files by hand.")
         return
+    # The daily c3po/Substack syncs commit to main often; rebase onto them first.
+    git(["pull", "-q", "--rebase", "--autostash", "origin", "main"])
     git(["push", "-q", "origin", "HEAD"])
     print("Pushed; the Worker deploy updates the page.")
 
