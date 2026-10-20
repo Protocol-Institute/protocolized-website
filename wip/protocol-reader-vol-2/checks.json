@@ -1,0 +1,1517 @@
+{
+  "generated": "2026-10-19",
+  "entries": {
+    "de-dramatizing-the-digital": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "De-Dramatizing the Digital: How AI Descends Into New Nature"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "pass",
+          "detail": "158 words"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "8 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "3,899 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "14 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "3 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“note on process”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 11,
+        "fail": 3,
+        "warn": 0,
+        "manual": 4,
+        "na": 0,
+        "ready": false
+      }
+    },
+    "some-candidate-laws-of-new-nature": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Some Candidate Laws of New Nature"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "9 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "3,481 words"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 9,
+        "fail": 3,
+        "warn": 0,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "time-moves-down-the-stack": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Time Moves Down the Stack"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Florian Lohse"
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "3 empty heading(s)"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "3,338 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "10 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "14 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“Process note”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 6,
+        "warn": 0,
+        "manual": 4,
+        "na": 0,
+        "ready": false
+      }
+    },
+    "borrowing-courage-from-the-future": {
+      "results": {
+        "title": {
+          "status": "manual",
+          "detail": "PDF: check in the editable file"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Aneesh Sathe"
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "manual",
+          "detail": "PDF: check in the editable file"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "7,430 words"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "fail",
+          "detail": "Supplied as PDF only"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 5,
+        "fail": 5,
+        "warn": 0,
+        "manual": 6,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "protocoling-as-a-design-theory": {
+      "results": {
+        "title": {
+          "status": "fail",
+          "detail": "The file doesn't open with the title as Heading 1"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "sections aren't marked with Heading 2"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "2,359 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "13 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "pass",
+          "detail": ""
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 4,
+        "warn": 1,
+        "manual": 4,
+        "na": 1,
+        "ready": false
+      }
+    },
+    "political-economy-of-protocols": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "The Political Economy of Protocols"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "11 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "fail",
+          "detail": "Found: Draft article"
+        },
+        "length": {
+          "status": "pass",
+          "detail": "3,277 words"
+        },
+        "references": {
+          "status": "warn",
+          "detail": "Possibly cited but not in References (check): Beau 1993"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "15 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 4,
+        "warn": 1,
+        "manual": 4,
+        "na": 1,
+        "ready": false
+      }
+    },
+    "jubilee-meta-protocols-against-entrenchment": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Jubilee: Meta-Protocols Against Entrenchment"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "pass",
+          "detail": "146 words"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "11 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "fail",
+          "detail": "Found: Draft Oct 16, 2026"
+        },
+        "length": {
+          "status": "pass",
+          "detail": "3,452 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "10 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 10,
+        "fail": 2,
+        "warn": 0,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "regenerative-labor-and-new-institutions": {
+      "results": {
+        "title": {
+          "status": "fail",
+          "detail": "First heading is “Daniel Kronovet” (level 3), not the title as Heading 1"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "5 sections"
+        },
+        "no-placeholders": {
+          "status": "fail",
+          "detail": "12 found, e.g. [ Reference some scholars ]; [ cite other coliving operators – higher rents, worse amenit; [ Cite structures & cultures paper ]; [ Talk about Seth’s research into observing violations; reve"
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "2,942 words"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 6,
+        "warn": 0,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "privacy-in-other-words": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Privacy in Other Words"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "pass",
+          "detail": "113 words"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "13 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "10,253 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "warn",
+          "detail": "Possibly cited but not in References (check): ODNI 2023, FTC 2024"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 2,
+        "warn": 2,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "life-serving-protocols": {
+      "results": {
+        "title": {
+          "status": "fail",
+          "detail": "The file doesn't open with the title as Heading 1"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "warn",
+          "detail": "Abstract is 281 words (aim for 100–200)"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "11 Heading 1s (only the title should be Heading 1)"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "pass",
+          "detail": "4,628 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "15 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "1 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "fail",
+          "detail": "2 email address(es) in the text"
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“written with ChatGPT”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 7,
+        "warn": 1,
+        "manual": 4,
+        "na": 0,
+        "ready": false
+      }
+    },
+    "oil-uni-and-tv": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Oil, Uni and TV: Post-Soviet Infrastructures Shaping Protocols for the Web"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "sections aren't marked with Heading 2"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "1,793 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "9 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 3,
+        "warn": 1,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "indelible-importance-of-illegibility": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "The Indelible Importance of Illegibility"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "3 Heading 1s (only the title should be Heading 1)"
+        },
+        "no-placeholders": {
+          "status": "fail",
+          "detail": "3 found, e.g. (*to verify; (to verify; *to verify*"
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "7,621 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "7 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“Writing Coda”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 7,
+        "warn": 1,
+        "manual": 4,
+        "na": 0,
+        "ready": false
+      }
+    },
+    "continuity-infrastructure": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Continuity Infrastructure"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Ruthvik Peddawandla"
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "sections aren't marked with Heading 2"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "1,929 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“Edited extensively with ChatGPT”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 6,
+        "warn": 1,
+        "manual": 4,
+        "na": 1,
+        "ready": false
+      }
+    },
+    "book-as-a-protocol-stack": {
+      "results": {
+        "title": {
+          "status": "manual",
+          "detail": "PDF: check in the editable file"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "warn",
+          "detail": "Abstract is 237 words (aim for 100–200)"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "manual",
+          "detail": "PDF: check in the editable file"
+        },
+        "no-placeholders": {
+          "status": "fail",
+          "detail": "21 found, e.g. [check: …]; [scene: …]; [scene: year, house, title]; [check: dates \nagainst Gaskell or Smith 2000]"
+        },
+        "no-status-labels": {
+          "status": "fail",
+          "detail": "Found: Rough draft; first draft"
+        },
+        "length": {
+          "status": "pass",
+          "detail": "6,597 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "67 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "fail",
+          "detail": "Supplied as PDF only"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "fail",
+          "detail": "Has a process note (“coding agent on exe.dev that built the factory with me and d”) but not in the standard “AI assistance” form"
+        }
+      },
+      "summary": {
+        "pass": 5,
+        "fail": 5,
+        "warn": 1,
+        "manual": 6,
+        "na": 1,
+        "ready": false
+      }
+    },
+    "opencourier": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "OpenCourier: Envisioning an Interoperable Future for Delivery Work"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "7 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "2,259 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "2 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 3,
+        "warn": 1,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "robots-as-protocol-citizens": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Robots as Protocol Citizens"
+        },
+        "byline": {
+          "status": "pass",
+          "detail": ""
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "12 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "fail",
+          "detail": "Found: NOT FINAL"
+        },
+        "length": {
+          "status": "pass",
+          "detail": "4,416 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "9 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 4,
+        "warn": 0,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "blygger": {
+      "results": {
+        "title": {
+          "status": "fail",
+          "detail": "First heading is “Abstract” (level 1), not the title as Heading 1"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Venkatesh Rao"
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "pass",
+          "detail": "167 words"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "9 Heading 1s (only the title should be Heading 1)"
+        },
+        "no-placeholders": {
+          "status": "fail",
+          "detail": "2 found, e.g. [Source for “the thicket” — to add.]; (to be completed"
+        },
+        "no-status-labels": {
+          "status": "fail",
+          "detail": "Found: Rough draft"
+        },
+        "length": {
+          "status": "pass",
+          "detail": "4,124 words"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "11 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "fail",
+          "detail": "2 image(s), 0 open-license statement(s) found in the text"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 7,
+        "warn": 0,
+        "manual": 4,
+        "na": 1,
+        "ready": false
+      }
+    },
+    "seam-of-difference": {
+      "results": {
+        "title": {
+          "status": "fail",
+          "detail": "The file doesn't open with the title as Heading 1"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Spencer Nitkey"
+        },
+        "talk-note": {
+          "status": "pass",
+          "detail": ""
+        },
+        "abstract": {
+          "status": "fail",
+          "detail": "No abstract"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "3 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "2,254 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "fail",
+          "detail": "No References section"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "manual",
+          "detail": "Link check skipped"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 6,
+        "fail": 5,
+        "warn": 1,
+        "manual": 4,
+        "na": 2,
+        "ready": false
+      }
+    }
+  }
+}

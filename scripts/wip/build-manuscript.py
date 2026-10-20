@@ -9,6 +9,8 @@ A work-in-progress project lives in wip/<slug>/:
                       reorder the volume.
   sources.lock.json   Content hash of each draft as of the last published version.
                       Written by this script; how it knows what changed.
+  checks.json         Each draft's results against the checklist in project.json
+                      (draft_checks.py). Written on every build; committed on publish.
   <slug>.pdf          The latest compiled manuscript. The only manuscript in git, at a
                       stable path, so git history is how you rewind.
   intro.md etc.       Local chapters ("source": {"kind": "local"}).
@@ -26,6 +28,7 @@ What a run does:
   2. Hashes each draft's *text* (docx → pandoc text, pdf → extracted text). Google Docs
      exports are not byte-stable, so hashing the file itself would flag false changes.
   3. Compares against sources.lock.json. Nothing changed → stops, unless --force.
+     Runs the checklist against every draft and writes checks.json.
   4. Renders each chapter (docx/md via pandoc → HTML → WeasyPrint; PDFs inserted as-is,
      each behind an opener page), then front matter (cover, title page with the
      changelog note, contents with page numbers and readiness, added/updated lists),
@@ -69,6 +72,9 @@ from pathlib import Path
 
 import fitz  # PyMuPDF
 from PIL import Image
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import draft_checks  # noqa: E402
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
 WIP_ROOT = REPO_ROOT / "wip"
@@ -195,6 +201,15 @@ section.footnotes, aside.footnotes { font-size: 9pt; border-top: 0.5pt solid #cc
 .titlepage h1 { font-size: 40pt; margin: 0; }
 .titlepage .sub { font-family: 'Instrument Serif', Georgia, serif; font-style: italic; font-size: 18pt; color: #555; margin: 0.3em 0 1.5em; }
 .titlepage .ed { font-size: 13pt; margin-bottom: 3em; }
+.draftbox.deadline { border: none; background: #D85A30; color: white; font-size: 10pt; margin-bottom: 10pt; }
+.draftbox.deadline b { font-size: 13pt; }
+.todo { margin-top: 0.6em; color: #2C2C2A; }
+.todo ul { margin: 0.3em 0 0 1.2em; padding: 0; }
+.todo li { margin: 0.15em 0; color: #8a3a1e; }
+.checklist h3 { font-family: Helvetica, Arial, sans-serif; font-size: 8pt; letter-spacing: 0.12em; text-transform: uppercase; color: #0F6E56; margin: 1.1em 0 0.3em; }
+.checklist li { font-family: Helvetica, Arial, sans-serif; font-size: 8.5pt; margin: 0.35em 0; }
+.checklist li b { color: #2C2C2A; }
+.checklist .tag { font-size: 6.5pt; color: #777; border: 0.5pt solid #bbb; border-radius: 2pt; padding: 0 2pt; margin-left: 3pt; }
 .draftbox.changelog { border-color: #0F6E56; background: #E1F5EE; margin-bottom: 10pt; }
 .draftbox { font-family: Helvetica, Arial, sans-serif; font-size: 9pt; border: 1pt solid #D85A30; padding: 8pt 10pt; color: #2C2C2A; }
 .toc { width: 100%; border: none; font-size: 10pt; }
@@ -268,7 +283,8 @@ def authors_str(authors: list[str]) -> str:
     return ", ".join(authors[:-1]) + ", and " + authors[-1]
 
 
-def opener_html(n: int, e: dict, path: Path | None, stale: bool, changed: bool) -> str:
+def opener_html(n: int, e: dict, path: Path | None, stale: bool, changed: bool,
+                check: dict | None = None, labels: dict | None = None) -> str:
     r = e["readiness"]
     low = " low" if r["score"] <= 4 else ""
     rows = [f"<div><span class='score{low}'>{r['score']}/10</span>&nbsp; Readiness, assessed {esc(r['assessed'])}{' (draft has changed since)' if stale else ''}: {esc(r['note'])}</div>"]
@@ -278,6 +294,12 @@ def opener_html(n: int, e: dict, path: Path | None, stale: bool, changed: bool) 
         rows.append(f"<div>Source: {esc(e['source'].get('name', ''))}{' · updated in this version' if changed else ''}</div>")
     if path is None:
         rows.append("<div><b>Draft not available.</b></div>")
+    if check:
+        todo = [f"{esc(labels[i])}{' (' + esc(res['detail']) + ')' if res['detail'] else ''}"
+                for i, res in check["results"].items() if res["status"] in ("fail", "warn")]
+        rows.append("<div class='todo'><b>Checklist: " + ("all automated checks pass" if not todo else
+                    f"{len(todo)} item(s) to fix for the next draft") + "</b>"
+                    + ("<ul>" + "".join(f"<li>{t}</li>" for t in todo) + "</ul>" if todo else "") + "</div>")
     label = "Introduction" if e["part"] == "front" else f"Chapter {n}"
     return (
         f"<div class='opener'><div class='num'>{label}</div>"
@@ -332,6 +354,7 @@ def main() -> None:
     ap.add_argument("--trailer", action="append", default=[],
                     help="git trailer for the commit only, e.g. 'Co-Authored-By: …' (repeatable)")
     ap.add_argument("--no-push", action="store_true", help="commit but don't push")
+    ap.add_argument("--no-links", action="store_true", help="skip the online link check")
     args = ap.parse_args()
     if args.publish and not args.message.strip():
         ap.error("--publish needs --message: it is both the changelog entry and the commit message")
@@ -361,6 +384,13 @@ def main() -> None:
         hashes[e["id"]] = content_hash(p)
         if lock.get(e["id"], {}).get("hash") != hashes[e["id"]]:
             changed.append(e["id"])
+    print("Running the checklist…")
+    checks = draft_checks.run_checks(project, project_dir, chapters, not args.no_links, source_path)
+    checks_path = project_dir / "checks.json"
+    checks_path.write_text(json.dumps({"generated": dt.date.today().isoformat(), "entries": checks},
+                                      indent=2, ensure_ascii=False) + "\n")
+    labels = {it["id"]: it["label"] for it in project.get("checklist", [])}
+    print(f"  {sum(1 for c in checks.values() if c['summary']['ready'])} of {len(checks)} drafts pass every automated check")
     added = [i for i in changed if i not in lock]
     updated = [i for i in changed if i in lock]
 
@@ -387,7 +417,7 @@ def main() -> None:
             p = paths[e["id"]]
             r = e["readiness"]
             stale = bool(r.get("assessed_hash")) and r["assessed_hash"] != hashes.get(e["id"])
-            opener = opener_html(n, e, p, stale, e["id"] in changed)
+            opener = opener_html(n, e, p, stale, e["id"] in changed, checks.get(e["id"]), labels)
             wd = tmp / e["id"]
             wd.mkdir()
             out = wd / "chapter.pdf"
@@ -437,11 +467,35 @@ def main() -> None:
         def name_list(ids):
             return "".join(f"<li>{esc(names[i])} <span class='au'>({esc(authors_str(next(e['authors'] for e in project['contents'] if e['id'] == i)))})</span></li>" for i in ids)
         changelog_note = esc(args.message) if args.message else "Preview build: no changelog entry yet."
+        dl = project.get("deadline")
+        deadline_box = ""
+        checklist_page = ""
+        if dl:
+            when = dt.date.fromisoformat(dl["date"]).strftime("%A, %B %-d, %Y")
+            deadline_box = (f"<div class='draftbox deadline'>{esc(dl['label'])}<br><b>{when}</b><br>"
+                            f"{esc(dl['detail'])}</div>")
+        if project.get("checklist"):
+            secs = list(dict.fromkeys(it["section"] for it in project["checklist"]))
+            ready_n = sum(1 for c in checks.values() if c["summary"]["ready"])
+            parts_html = "".join(
+                f"<h3>{esc(sec)}</h3><ul>" + "".join(
+                    f"<li><b>{esc(it['label'])}</b>"
+                    f"{'<span class=tag>auto</span>' if it.get('auto') else ''}"
+                    f"{'<span class=tag>guideline</span>' if it.get('advisory') else ''}"
+                    f" {esc(it['detail'])}</li>"
+                    for it in project["checklist"] if it["section"] == sec) + "</ul>"
+                for sec in secs)
+            checklist_page = (f"<div class='front checklist'><h2>Checklist for the next draft</h2>"
+                              f"{deadline_box}"
+                              f"<p class='changes'>Items marked auto are checked by script against the draft in the shared "
+                              f"folder; each chapter's opener page lists what is still open. {ready_n} of {len(checks)} "
+                              f"drafts currently pass every automated check.</p>{parts_html}</div>")
         front_html = f"""
 <div class='titlepage'>
   <h1>{esc(project['title'])}</h1>
   <div class='sub'>{esc(project.get('subtitle', ''))}</div>
   <div class='ed'>Edited by {esc(project.get('editor', ''))}</div>
+  {deadline_box}
   <div class='draftbox changelog'><b>What changed in {esc(vlabel)}</b> · {today}<br>{changelog_note}</div>
   <div class='draftbox'><b>Working draft {esc(vlabel)}</b> · compiled {today}<br>
   A front-end working manuscript assembled from authors' drafts as they stand. Not edited,
@@ -461,7 +515,8 @@ def main() -> None:
   {f'<h3>Updated</h3><ul>{name_list(updated)}</ul>' if updated else ''}
   {'' if changed else '<p>No draft changes (rebuild).</p>'}
   {f'<h3>Changelog</h3><ul>{history}</ul>' if history else ''}
-</div>"""
+</div>
+{checklist_page}"""
         front_pdf = tmp / "front.pdf"
         render_pdf(page_doc(front_html), front_pdf, tmp)
 
@@ -480,6 +535,10 @@ def main() -> None:
         redacted = redact_emails(final)
 
         outline = [[1, "Contents", 2]]
+        for i in range(front_count):
+            if "Checklist for the next draft" in final[i].get_text():
+                outline.append([1, "Checklist for the next draft", i + 1])
+                break
         cur_part = None
         for e in project["contents"]:
             level = 1
@@ -537,7 +596,7 @@ def main() -> None:
     print(f"Recorded v{version} in project.json and sources.lock.json.")
 
     # Commit exactly these files, with the changelog entry as the message.
-    tracked = [pj_path, lock_path, latest_pdf]
+    tracked = [pj_path, lock_path, checks_path, latest_pdf]
     msg = args.message.strip()
     if args.trailer:
         msg += "\n\n" + "\n".join(args.trailer)

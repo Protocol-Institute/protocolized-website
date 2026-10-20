@@ -1,6 +1,6 @@
 import { Base } from "./base";
 import { fmtDate, mobileMenuScript } from "./static-pages";
-import { WIP_STAGES, type WipEntry, type WipProject } from "../wip";
+import { WIP_STAGES, type WipChecklistItem, type WipEntry, type WipProject } from "../wip";
 
 // Work-in-progress pages are unlisted: noindex, absent from nav, sitemap,
 // RSS and llms.txt. They are shareable by link while drafts are gathered.
@@ -58,6 +58,11 @@ export function WipIndexPage({ currentPath, projects }: { currentPath: string; p
                     {p.contents.length} pieces · mean readiness {meanReadiness(p).toFixed(1)}/10
                     {p.versions[0] && ` · draft v${p.versions[0].version}`}
                   </p>
+                  {p.deadline && (
+                    <p class="font-sans text-sm text-accent font-medium mt-1">
+                      {p.deadline.label}: {longDate(p.deadline.date)}
+                    </p>
+                  )}
                 </div>
               </a>
             ))}
@@ -65,6 +70,131 @@ export function WipIndexPage({ currentPath, projects }: { currentPath: string; p
         </div>
       </section>
     </Base>
+  );
+}
+
+// ── Deadline and checklist ─────────────────────────────────────────────────
+
+function daysUntil(date: string): number {
+  const today = new Date(new Date().toISOString().slice(0, 10) + "T00:00:00Z");
+  return Math.round((new Date(date + "T00:00:00Z").getTime() - today.getTime()) / 86_400_000);
+}
+
+function longDate(date: string): string {
+  return new Date(date + "T00:00:00Z").toLocaleDateString("en-US", {
+    weekday: "long", year: "numeric", month: "long", day: "numeric", timeZone: "UTC",
+  });
+}
+
+function DeadlineBanner({ project }: { project: WipProject }) {
+  const d = project.deadline;
+  if (!d) return null;
+  const left = daysUntil(d.date);
+  const when = left > 1 ? `${left} days left` : left === 1 ? "Due tomorrow" : left === 0 ? "Due today" : "Deadline passed";
+  return (
+    <section class="px-6 lg:px-8 pt-6" aria-label="Deadline">
+      <div class="max-w-wide mx-auto rounded-lg bg-accent text-white px-6 py-5 flex flex-col md:flex-row md:items-center gap-3 md:gap-8">
+        <div class="shrink-0">
+          <p class="font-sans text-xs uppercase tracking-wider text-white/80">{d.label}</p>
+          <p class="font-serif text-3xl md:text-4xl leading-tight">{longDate(d.date)}</p>
+          <p class="font-sans text-sm font-medium text-white/90">{when}</p>
+        </div>
+        <div class="flex-1">
+          <p class="font-sans text-sm leading-relaxed text-white/95">{d.detail}</p>
+          <a href="#checklist" class="inline-block mt-2 font-sans text-sm font-medium underline underline-offset-2">
+            Read the checklist ↓
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const STATUS_STYLE: Record<string, string> = {
+  pass: "text-primary",
+  fail: "text-accent",
+  warn: "text-amber-700",
+  manual: "text-secondary",
+  na: "text-secondary",
+};
+const STATUS_MARK: Record<string, string> = { pass: "✓", fail: "✗", warn: "!", manual: "·", na: "–" };
+
+function Checklist({ items }: { items: WipChecklistItem[] }) {
+  const sections = [...new Set(items.map((i) => i.section))];
+  return (
+    <section id="checklist" class="mb-12 scroll-mt-24">
+      <h2 class="font-serif text-2xl text-dark mb-1">Checklist for the next draft</h2>
+      <p class="font-sans text-sm text-secondary mb-5 max-w-prose">
+        Every essay's next draft should meet all of these. Items marked <span class="font-medium">auto</span> are checked by script against the draft in the shared folder; the editor checks the rest by reading.
+      </p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6">
+        {sections.map((sec) => (
+          <div>
+            <h3 class="font-sans text-xs uppercase tracking-wider text-primary mb-2">{sec}</h3>
+            <ol class="space-y-3">
+              {items.filter((i) => i.section === sec).map((i) => (
+                <li class="font-sans text-sm">
+                  <p class="text-dark font-medium">
+                    {i.label}
+                    {i.auto && <span class="ml-2 text-[10px] uppercase tracking-wider text-secondary border border-gray-300 rounded px-1 py-px align-middle">auto</span>}
+                    {i.advisory && <span class="ml-1 text-[10px] uppercase tracking-wider text-secondary border border-gray-300 rounded px-1 py-px align-middle">guideline</span>}
+                  </p>
+                  <p class="text-secondary text-xs leading-relaxed mt-0.5">{i.detail}</p>
+                  {i.licenses && (
+                    <p class="text-xs mt-1">
+                      <span class="text-dark">Accepted licenses:</span>{" "}
+                      {i.licenses.map((l) => (
+                        <span class="inline-block mr-1 mb-1 px-1.5 py-px rounded bg-primary-light text-primary">{l}</span>
+                      ))}
+                    </p>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function EntryChecks({ project, entry }: { project: WipProject; entry: WipEntry }) {
+  const c = project.checks?.entries[entry.id];
+  if (!c || !project.checklist) return null;
+  const items = project.checklist;
+  const auto = items.filter((i) => i.auto);
+  const passing = auto.filter((i) => ["pass", "na"].includes(c.results[i.id]?.status)).length;
+  const open = items.filter((i) => ["fail", "warn"].includes(c.results[i.id]?.status));
+  return (
+    <details class="mt-3 group">
+      <summary class="cursor-pointer font-sans text-xs text-secondary list-none">
+        <span class={c.summary.ready ? "text-primary font-medium" : "text-dark font-medium"}>
+          Checklist: {passing} of {auto.length} automated checks pass
+        </span>
+        {open.length > 0 && (
+          <span>
+            {" · "}to fix:{" "}
+            {open.map((i, k) => (
+              <span class={STATUS_STYLE[c.results[i.id].status]}>{i.label}{k < open.length - 1 ? ", " : ""}</span>
+            ))}
+          </span>
+        )}
+        <span class="ml-1 text-primary group-open:hidden">show details</span>
+      </summary>
+      <ul class="mt-2 pl-3 border-l-2 border-gray-200 space-y-1">
+        {items.map((i) => {
+          const res = c.results[i.id];
+          if (!res) return null;
+          return (
+            <li class="font-sans text-xs leading-relaxed">
+              <span class={`inline-block w-4 ${STATUS_STYLE[res.status]}`}>{STATUS_MARK[res.status]}</span>
+              <span class="text-dark">{i.label}</span>
+              {res.detail && <span class="text-secondary">: {res.detail}</span>}
+            </li>
+          );
+        })}
+      </ul>
+    </details>
   );
 }
 
@@ -84,7 +214,7 @@ function ReadinessMeter({ score }: { score: number }) {
   );
 }
 
-function EntryRow({ entry, num }: { entry: WipEntry; num: number | null }) {
+function EntryRow({ project, entry, num }: { project: WipProject; entry: WipEntry; num: number | null }) {
   const r = entry.readiness;
   return (
     <li class="py-5 border-b border-gray-200 last:border-b-0">
@@ -103,6 +233,7 @@ function EntryRow({ entry, num }: { entry: WipEntry; num: number | null }) {
               {r.stale && <span class="text-accent"> Draft updated since this assessment.</span>}
             </p>
           </div>
+          <EntryChecks project={project} entry={entry} />
           {entry.talk && (
             <a href={`/resources/${entry.talk}`} class="inline-block mt-2 font-sans text-xs text-primary hover:underline">
               The talk →
@@ -139,6 +270,8 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
           </nav>
         </div>
       </div>
+
+      <DeadlineBanner project={project} />
 
       <article class="px-6 lg:px-8 py-10">
         <div class="max-w-wide mx-auto flex flex-col lg:flex-row gap-10 lg:gap-16">
@@ -201,7 +334,7 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
               </section>
             )}
 
-            <dl class="grid grid-cols-3 gap-4 max-w-md mb-10">
+            <dl class="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-2xl mb-10">
               <div>
                 <dt class="font-sans text-xs text-secondary">Pieces</dt>
                 <dd class="font-serif text-3xl text-dark">{project.contents.length}</dd>
@@ -214,7 +347,18 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
                 <dt class="font-sans text-xs text-secondary">Copy-edit ready (8+)</dt>
                 <dd class="font-serif text-3xl text-dark">{ready}</dd>
               </div>
+              {project.checks && (
+                <div>
+                  <dt class="font-sans text-xs text-secondary">Pass the checklist</dt>
+                  <dd class="font-serif text-3xl text-dark">
+                    {Object.values(project.checks.entries).filter((c) => c.summary.ready).length}
+                    <span class="text-lg text-secondary">/{Object.keys(project.checks.entries).length}</span>
+                  </dd>
+                </div>
+              )}
             </dl>
+
+            {project.checklist && <Checklist items={project.checklist} />}
 
             <h2 class="font-serif text-2xl text-dark mb-1">Contents</h2>
             <p class="font-sans text-xs text-secondary mb-4">Provisional order.</p>
@@ -229,7 +373,7 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
                   <ol>
                     {entries.map((e) => {
                       const num = e.part === "front" ? null : ++n;
-                      return <EntryRow entry={e} num={num} />;
+                      return <EntryRow project={project} entry={e} num={num} />;
                     })}
                   </ol>
                 </section>

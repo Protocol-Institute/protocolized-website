@@ -12,6 +12,147 @@
     "kind": "gdrive-folder",
     "id": "1pMT0S1aB6Vm5WEX0J4g7ljPMitC-1Mwr"
   },
+  "deadline": {
+    "date": "2026-11-15",
+    "label": "Editing-ready drafts due",
+    "detail": "Every essay's next draft should pass the checklist below, so that the next version of the manuscript has consistent formatting and no placeholder elements. Revision and editing start from that version."
+  },
+  "checklist": [
+    {
+      "id": "title",
+      "section": "Front matter",
+      "auto": true,
+      "label": "Title at the top",
+      "detail": "The essay's title (and subtitle, if any) is the first line of the file, styled as Heading 1."
+    },
+    {
+      "id": "byline",
+      "section": "Front matter",
+      "auto": true,
+      "label": "Byline",
+      "detail": "A byline directly under the title naming every author as they should appear in print."
+    },
+    {
+      "id": "talk-note",
+      "section": "Front matter",
+      "auto": true,
+      "label": "Talk note",
+      "detail": "One italic line under the byline naming the Protocol Symposium 2026 talk the essay is adapted from."
+    },
+    {
+      "id": "abstract",
+      "section": "Front matter",
+      "auto": true,
+      "label": "Abstract",
+      "detail": "An abstract of 100–200 words under the heading “Abstract”, before the first section."
+    },
+    {
+      "id": "bio",
+      "section": "Front matter",
+      "auto": true,
+      "label": "Author bio",
+      "detail": "A bio of 2–3 sentences for each author, at the end under the heading “About the author” (or “About the authors”)."
+    },
+    {
+      "id": "headings",
+      "section": "Structure",
+      "auto": true,
+      "label": "Consistent headings",
+      "detail": "Sections use Heading 2 and subsections Heading 3, with no empty or stray headings and no manual numbering that skips."
+    },
+    {
+      "id": "no-placeholders",
+      "section": "Structure",
+      "auto": true,
+      "label": "No placeholders or notes-to-self",
+      "detail": "Every section is finished prose. No [check], [scene], [cite], TODO, TBD or “to verify” markers, bracketed instructions, or outline bullets standing in for paragraphs."
+    },
+    {
+      "id": "no-status-labels",
+      "section": "Structure",
+      "auto": true,
+      "label": "No draft-status labels",
+      "detail": "Remove “NOT FINAL”, “rough draft”, draft dates and similar from the text. The manuscript's version number does that job."
+    },
+    {
+      "id": "length",
+      "section": "Structure",
+      "auto": true,
+      "advisory": true,
+      "label": "Length",
+      "detail": "Aim for 2,500–7,500 words of body text, excluding references. Longer pieces and appendices only by agreement with the editor."
+    },
+    {
+      "id": "references",
+      "section": "References",
+      "auto": true,
+      "label": "References section",
+      "detail": "A “References” section listing every work cited in the text; every in-text citation has an entry and every entry is cited."
+    },
+    {
+      "id": "ref-style",
+      "section": "References",
+      "auto": false,
+      "label": "One citation style",
+      "detail": "Chicago author-date: (Author Year, page) in the text and an alphabetical reference list with full details, including a URL or DOI for online sources. Footnotes are for commentary only."
+    },
+    {
+      "id": "links",
+      "section": "References",
+      "auto": true,
+      "label": "Links resolve",
+      "detail": "Every link and DOI opens the intended source."
+    },
+    {
+      "id": "claims",
+      "section": "References",
+      "auto": false,
+      "label": "Facts and quotations checked",
+      "detail": "Figures, dates and names are checked, and direct quotations carry a page number or a precise source."
+    },
+    {
+      "id": "figures",
+      "section": "Figures",
+      "auto": false,
+      "label": "Figures ready",
+      "detail": "Every figure is referenced in the text, has a numbered caption, and is supplied at print resolution (300 dpi at the intended size)."
+    },
+    {
+      "id": "image-rights",
+      "section": "Figures",
+      "auto": true,
+      "label": "Open license for every image",
+      "detail": "Each image's caption ends with a rights line: creator, source, license (e.g. “Photo: Jane Doe, Wikimedia Commons, CC BY 4.0”). Accepted: public domain or CC0; CC BY (any version); CC BY-SA (any version); your own work, released under CC BY 4.0 or CC0 (this includes AI-generated images you made; name the tool). Not accepted: proprietary or “all rights reserved” images, any NonCommercial (NC) or NoDerivatives (ND) license, screenshots of proprietary products, sites or media, and images used under fair use or with one-off permission. The volume will not include proprietary images, so replace or remove any image without an accepted license.",
+      "licenses": [
+        "Public domain",
+        "CC0",
+        "CC BY",
+        "CC BY-SA",
+        "Own work under CC BY 4.0 or CC0"
+      ]
+    },
+    {
+      "id": "editable-source",
+      "section": "Housekeeping",
+      "auto": true,
+      "label": "Editable file",
+      "detail": "Submitted as a Google Doc or .docx in the shared folder, not as a PDF only."
+    },
+    {
+      "id": "no-contact",
+      "section": "Housekeeping",
+      "auto": true,
+      "label": "No contact details",
+      "detail": "No email addresses or phone numbers in the text. Put contact details in the bio only if you want them printed."
+    },
+    {
+      "id": "ai-note",
+      "section": "Housekeeping",
+      "auto": true,
+      "label": "AI assistance note",
+      "detail": "If AI tools helped write or edit the essay, one short note at the end under the heading “AI assistance”: which tools, for what. No other process notes in the text."
+    }
+  ],
   "readiness_scale": {
     "1": "Placeholder stub",
     "4": "Partial draft, with gaps or notes-to-self",
@@ -64,7 +205,8 @@
         "assessed": "2026-10-19",
         "assessed_hash": "7d1033bc999bcdf6",
         "stale": false
-      }
+      },
+      "checklist": false
     },
     {
       "id": "de-dramatizing-the-digital",

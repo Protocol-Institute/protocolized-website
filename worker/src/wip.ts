@@ -6,6 +6,7 @@
 // when it publishes a new manuscript to R2.
 
 import protocolReaderVol2 from "../../wip/protocol-reader-vol-2/project.json";
+import protocolReaderVol2Checks from "../../wip/protocol-reader-vol-2/checks.json";
 
 export interface WipReadiness {
   score: number;
@@ -24,6 +25,7 @@ export interface WipEntry {
   talk?: string;
   source: { kind: string; id?: string; name?: string; path?: string };
   readiness: WipReadiness;
+  checklist?: boolean;
 }
 
 // One changelog entry per published manuscript. `message` is also the git
@@ -39,6 +41,27 @@ export interface WipVersion {
   message: string;
 }
 
+export interface WipChecklistItem {
+  id: string;
+  section: string;
+  label: string;
+  detail: string;
+  auto: boolean;
+  advisory?: boolean;
+  licenses?: string[];
+}
+
+export type CheckStatus = "pass" | "fail" | "warn" | "manual" | "na";
+
+// Written by scripts/wip/check-drafts.py (and on each published build).
+export interface WipChecks {
+  generated: string;
+  entries: Record<string, {
+    results: Record<string, { status: CheckStatus; detail: string }>;
+    summary: { pass: number; fail: number; warn: number; manual: number; na: number; ready: boolean };
+  }>;
+}
+
 export interface WipProject {
   slug: string;
   title: string;
@@ -50,13 +73,18 @@ export interface WipProject {
   description: string;
   cover?: string;
   readiness_scale: Record<string, string>;
+  deadline?: { date: string; label: string; detail: string };
+  checklist?: WipChecklistItem[];
+  checks?: WipChecks;
   parts: { id: string; title: string }[];
   contents: WipEntry[];
   versions: WipVersion[];
 }
 
 // Register new projects here.
-const PROJECTS: WipProject[] = [protocolReaderVol2 as unknown as WipProject];
+const PROJECTS: WipProject[] = [
+  { ...(protocolReaderVol2 as unknown as WipProject), checks: protocolReaderVol2Checks as WipChecks },
+];
 
 export function getWipProjects(): WipProject[] {
   return PROJECTS;
