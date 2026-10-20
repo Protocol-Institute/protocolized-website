@@ -1,17 +1,24 @@
 ---
-title: "Artisanal Bots with Protocolized RAG"
+title: "Special Session - Venkatesh Rao - Artisanal Bots with Protocolized RAG"
 type: talk
 authors:
   - name: "Venkatesh Rao"
 date: 2026-09-24
-description: "In this talk, I will share techniques and lessons learned from my experiences building multiple RAG bots based on personal and institutional archival material. I will cover 3 bots: vgr_zirp (my personal archival bot), c3po (PI oracle bot) and Humboldt (artificial researcher). I will share general principles of using RAG (Retrieval Augmented Generation) in a protocolized way to make such bots."
+description: "Venkatesh Rao presents techniques for building 'artisanal bots' — RAG systems that embody a personality rather than just a knowledge base — demonstrated through three examples: vgr_zirp (his personal archival bot built from Ribbon Farm and Contraptions writing), C3PO (the Protocol Institute's institutional helper bot), and Humboldt (an artificial researcher persona). He details protocol patterns like modeling ignorance and refusals to prevent 'leak-through' (where Claude's general knowledge bleeds through in the persona's voice), weighting sources, true-naming personas, and designing guardrails against misuse of sensitive material like his 'Gervais Principle' writing."
 tags:
-  - symposium-2026
+  - artisanal-bots-vgr-zirp-c3po-humboldt
+  - guardrails-and-persona-refusals
+  - leak-through-and-ignorance-modeling
+  - organizations
   - protocols
+  - retrieval-augmented-generation-rag
+  - soul-document-persona-modeling
+  - symposium-2026
+  - technology
 audience:
   - researcher
+  - academic
 featured: false
-file: "https://files.protocolized.io/symposium-2026/artisanal-bots-with-protocolized-rag-web.pdf"
 url: "https://www.youtube.com/watch?v=orQVxjgo-rs"
 thumbnail: "https://files.protocolized.io/covers/yt-orQVxjgo-rs.jpg"
 ---

@@ -1,17 +1,25 @@
 ---
-title: "Attention as Natural Law"
+title: "Special Session - Amber Case - Attention as Natural Law"
 type: talk
 authors:
   - name: "Amber Case"
 date: 2026-09-24
-description: "Attention as Natural Law: Certification as a Protocol for Human Perceptual Limits In 1995, Mark Weiser proposed that technology should be designed around the natural structure of human attention: the center, which demands conscious focus, and the periphery, which informs without interrupting. They were describing a constraint, not a preference. Human cognitive architecture has limits that do not negotiate with product roadmaps. Calm Technology Institute's certification framework takes that constraint seriously as a protocol design problem. It provides an 81-point framework, organized across…"
+description: "Amber Case presents the Calm Technology Institute's 81-point certification framework, arguing that human attention operates like a law of nature—distinguishing prefrontal-cortex-demanding 'center' attention from pass-through 'peripheral' attention—and that products (from car buttons to AI interfaces) should be designed and governed accordingly. She traces the framework's lineage to Mark Weiser's 1995 calm technology principles and discusses the legitimacy problem of building certification authority without statutory power, comparing CTI to Underwriter Laboratories and the Good Housekeeping Seal. The session closes with audience discussion, including Venkatesh Rao connecting the talk to Kairos/Chronos time and AI's 'staircase' temporality."
 tags:
-  - symposium-2026
+  - attention-as-natural-law-center-vs-periphery-mark-weiser
+  - calm-technology-certification-framework-81-point-six-categories
+  - certification-legitimacy-and-protocol-authority-without-enforcement-power
+  - governance
+  - kairos-vs-chronos-time-in-technology-design
+  - neurogonomics-and-proprioceptive-vs-prefrontal-cortex-engagement
   - protocols
+  - research
+  - symposium-2026
+  - technology
 audience:
   - researcher
+  - academic
 featured: false
-file: "https://files.protocolized.io/symposium-2026/amber-case-attention-as-natural-law-1iWhwA.pdf"
 url: "https://www.youtube.com/watch?v=bCjlrKQ0IUw"
 thumbnail: "https://files.protocolized.io/covers/yt-bCjlrKQ0IUw.jpg"
 ---

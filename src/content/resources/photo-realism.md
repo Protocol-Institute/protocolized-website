@@ -1,17 +1,24 @@
 ---
-title: "Photo Realism"
+title: "Special Session - Neilson - Reality and Realism in Generation"
 type: talk
 authors:
   - name: "Neilson Koerner-Safrata"
 date: 2026-09-25
-description: "Technical demos of doing telepathy with each other's camera rolls, how to create 3D environments from a single image, and the history of photorealism. Based on the recent technological events, this talk pulls apart reality, realism, and generation in order to understand the “fake” and the “real”, how generation will play a part both in deeply understanding reality while unintentionally destroying what is left of the era of photo realism–our shared cinematic narrative of reality."
+description: "Neilson Koerner-Safrata (World Labs) argues that photorealistic image and video generation is becoming 'a protocol for knowing' — that creating a convincing fake image is inseparable from a model's deeper computational understanding of physical reality, not merely an escape from it. He traces this from Muybridge's chronophotography and Ed Catmull's early 3D hand animation through AlexNet to his own 'image-to-world' toolkit that decomposes a single photo into a physics-enabled 3D scene, framing the current moment as an inversion where 'realism' (trained on photos/video) now acts back on 'reality' itself."
 tags:
-  - symposium-2026
+  - inverse-rendering-image-to-world-generation
+  - photorealism-as-a-protocol-for-knowing
   - protocols
+  - reality-vs-realism-distinction
+  - research
+  - scripted-space-cinematic-narrative-of-reality
+  - symposium-2026
+  - technology
+  - world-models
 audience:
   - researcher
+  - academic
 featured: false
-file: "https://files.protocolized.io/symposium-2026/photo-realism-v0-neilson-koerner-safrata-1PmFao.pdf"
 url: "https://www.youtube.com/watch?v=nLyoELj8d3k"
 thumbnail: "https://files.protocolized.io/covers/yt-nLyoELj8d3k.jpg"
 ---
