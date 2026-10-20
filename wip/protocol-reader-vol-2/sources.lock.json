@@ -7,6 +7,10 @@
     "hash": "5974502b50c5766a",
     "version": "0.1"
   },
+  "some-candidate-laws-of-new-nature": {
+    "hash": "6c31338208feb267",
+    "version": "0.2"
+  },
   "time-moves-down-the-stack": {
     "hash": "a89aef76bf82e608",
     "version": "0.1"
@@ -62,6 +66,10 @@
   "robots-as-protocol-citizens": {
     "hash": "d314eb4874d61b62",
     "version": "0.1"
+  },
+  "blygger": {
+    "hash": "268f1287f6fa9996",
+    "version": "0.2"
   },
   "seam-of-difference": {
     "hash": "e578810a111db621",

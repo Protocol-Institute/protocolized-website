@@ -105,7 +105,9 @@
       "readiness": {
         "score": 7,
         "note": "Complete and clearly structured. Needs references: it cites cases and recent work without sources.",
-        "assessed": "2026-10-19"
+        "assessed": "2026-10-19",
+        "assessed_hash": "6c31338208feb267",
+        "stale": false
       }
     },
     {
@@ -440,7 +442,9 @@
       "readiness": {
         "score": 6,
         "note": "Complete structure, labelled a rough draft by the author. Needs a title, finished references, and a check of current-state claims.",
-        "assessed": "2026-10-19"
+        "assessed": "2026-10-19",
+        "assessed_hash": "268f1287f6fa9996",
+        "stale": false
       }
     },
     {
@@ -468,9 +472,21 @@
   ],
   "versions": [
     {
+      "version": "0.2",
+      "date": "2026-10-19",
+      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.2.pdf",
+      "pages": 236,
+      "added": [
+        "some-candidate-laws-of-new-nature",
+        "blygger"
+      ],
+      "updated": [],
+      "message": "Added two new drafts: Humboldt's “Some Candidate Laws of New Nature” and Venkatesh Rao's Blygger paper."
+    },
+    {
       "version": "0.1",
       "date": "2026-10-19",
-      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.1.pdf",
+      "file": null,
       "pages": 216,
       "added": [
         "introduction",
