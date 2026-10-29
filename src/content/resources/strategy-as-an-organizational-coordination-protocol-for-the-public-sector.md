@@ -12,6 +12,7 @@ tags:
   - private-sector-strategy-frameworks-misapplied-to-public-sector-npm-swot-resource-based-view
   - protocol-school-2025
   - protocols
+  - school
   - strategy-as-a-coordination-protocol-for-decentralized-hierarchies
   - trade-off-focused-vs-objective-focused-strategy-conceptualization
 audience:

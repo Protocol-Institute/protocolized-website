@@ -16,6 +16,7 @@ tags:
   - protocol-art-vs-protocol-as-toolmedium
   - protocol-school-2025
   - protocols
+  - school
   - technology
 audience:
   - researcher

@@ -13,6 +13,7 @@ tags:
   - norms-vs-institutions-distinction
   - protocol-school-2025
   - protocols
+  - school
   - standards-vs-compulsory-legislation
 audience:
   - researcher

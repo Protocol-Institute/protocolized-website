@@ -13,6 +13,7 @@ tags:
   - hardness-cost-to-corrupt-a-trusted-system
   - protocol-school-2025
   - protocols
+  - school
   - technology
   - trust-experience-design-evidence-primitives-rituals
   - value-based-vs-proof-based-trust

@@ -14,6 +14,7 @@ tags:
   - protocol-school-2025
   - protocols
   - research
+  - school
   - sociotechnical-systems
   - technology
 audience:

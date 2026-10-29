@@ -13,6 +13,7 @@ tags:
   - protocol-school-2025
   - protocol-watching
   - protocols
+  - school
   - sufficiency-and-reliable-repeatability
 audience:
   - researcher

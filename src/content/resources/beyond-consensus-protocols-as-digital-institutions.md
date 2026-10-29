@@ -13,6 +13,7 @@ tags:
   - protocols
   - research
   - roleplay-based-protocol-analysis
+  - school
   - technology
   - ten-properties-of-good-protocols-constrained-generative-defensible-mortal-etc
 audience:

@@ -13,6 +13,7 @@ tags:
   - protocols
   - research
   - roleplaying-protocols-with-llms-as-a-sparringanalysis-technique
+  - school
   - technology
   - ten-properties-of-a-good-protocol-constrained-generative-learnable-legible-ludic-stewardable-defensible-evolvable-mortal-legitimate
   - town-hall

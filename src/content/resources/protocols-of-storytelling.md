@@ -14,6 +14,7 @@ tags:
   - mythmetaphor-as-deepest-narrative-layer
   - protocol-school-2025
   - protocols
+  - school
   - technology
 audience:
   - researcher

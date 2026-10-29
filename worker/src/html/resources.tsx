@@ -335,13 +335,15 @@ export function ResourcesPage({
                   Category
                 </p>
                 <div class="flex flex-wrap gap-2">
-                  <button
-                    class="filter-pill font-sans text-xs px-3 py-1.5 rounded-full border border-gray-200 text-secondary hover:border-primary hover:text-primary transition-colors"
-                    data-filter="category"
-                    data-value="case-study"
-                  >
-                    Case study
-                  </button>
+                  {([["case-study", "Case study"], ["school", "School"]] as const).map(([val, label]) => (
+                    <button
+                      class="filter-pill font-sans text-xs px-3 py-1.5 rounded-full border border-gray-200 text-secondary hover:border-primary hover:text-primary transition-colors"
+                      data-filter="category"
+                      data-value={val}
+                    >
+                      {label}
+                    </button>
+                  ))}
                 </div>
               </div>
 

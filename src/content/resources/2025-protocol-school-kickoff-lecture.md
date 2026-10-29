@@ -15,6 +15,7 @@ tags:
   - protocol-watching
   - protocol-watching-protocol-built
   - protocols
+  - school
 audience:
   - researcher
   - academic
