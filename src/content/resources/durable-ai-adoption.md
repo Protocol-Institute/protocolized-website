@@ -8,6 +8,7 @@ description: "A practical guide to AI adoption across organizations, developed b
 tags:
   - ai-adoption
   - business-protocols
+  - case-study
   - governance
   - organizational-design
   - organizations

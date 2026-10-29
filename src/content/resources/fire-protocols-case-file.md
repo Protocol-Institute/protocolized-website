@@ -7,6 +7,7 @@ authors:
 date: 2024-09-30
 description: "Fire Protocols reframes fire from a destructive force to be suppressed into an essential ecological tool by developing community-based protocols for fire knowledge transmission and large-scale coordinated action across social, political, and ecological systems in Sonoma County. The framework positions attention as an autopoietic space that allows communities to regenerate and maintain fire knowledge while resolving tensions between geopolitical top-down structures and cultural knowledge systems."
 tags:
+  - case-study
   - climate
   - community
   - governance

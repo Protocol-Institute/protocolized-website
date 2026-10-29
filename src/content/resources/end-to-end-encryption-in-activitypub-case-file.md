@@ -7,6 +7,7 @@ authors:
 date: 2024-09-30
 description: "This case file documents an effort to integrate end-to-end encryption into ActivityPub, the distributed social network protocol, by mapping Messaging Layer Security (MLS RFC9420) onto the existing standard as an extension. The central tension is balancing security robustness with implementability simplicity, requiring the authors to examine user interfaces across messaging platforms and architectural variations before recommending a design approach for E2EE in federated social networks."
 tags:
+  - case-study
   - fiction
   - infrastructure
   - protocols

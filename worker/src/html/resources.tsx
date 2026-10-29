@@ -52,13 +52,14 @@ export function ResourcesPage({
     ${mobileMenuScript()}
 
     (function() {
-      var state = { query: '', types: new Set(), mediaTypes: new Set(), audiences: new Set(), sort: 'newest' };
+      var state = { query: '', types: new Set(), mediaTypes: new Set(), audiences: new Set(), categories: new Set(), sort: 'newest' };
 
       var params = new URLSearchParams(window.location.search);
       if (params.get('q')) state.query = params.get('q');
       params.getAll('type').forEach(function(v) { if (v) state.types.add(v); });
       params.getAll('media').forEach(function(v) { if (v) state.mediaTypes.add(v); });
       params.getAll('audience').forEach(function(v) { if (v) state.audiences.add(v); });
+      params.getAll('category').forEach(function(v) { if (v) state.categories.add(v); });
       if (params.get('sort')) state.sort = params.get('sort');
 
       var searchInput = document.getElementById('search-input');
@@ -69,11 +70,18 @@ export function ResourcesPage({
       var emptyState = document.getElementById('empty-state');
       var typePills = document.querySelectorAll('[data-filter="type"]');
       var mediaPills = document.querySelectorAll('[data-filter="media"]');
+      var categoryPills = document.querySelectorAll('[data-filter="category"]');
       var audienceCheckboxes = document.querySelectorAll('.audience-checkbox');
 
       if (searchInput && state.query) searchInput.value = state.query;
       typePills.forEach(function(pill) {
         if (state.types.has(pill.dataset.value)) {
+          pill.classList.add('bg-primary', 'text-white', 'border-primary');
+          pill.classList.remove('text-secondary', 'border-gray-200');
+        }
+      });
+      categoryPills.forEach(function(pill) {
+        if (state.categories.has(pill.dataset.value)) {
           pill.classList.add('bg-primary', 'text-white', 'border-primary');
           pill.classList.remove('text-secondary', 'border-gray-200');
         }
@@ -97,6 +105,7 @@ export function ResourcesPage({
         state.types.forEach(function(v) { p.append('type', v); });
         state.mediaTypes.forEach(function(v) { p.append('media', v); });
         state.audiences.forEach(function(v) { p.append('audience', v); });
+        state.categories.forEach(function(v) { p.append('category', v); });
         if (state.sort && state.sort !== 'newest') p.set('sort', state.sort);
         var newURL = window.location.pathname + (p.toString() ? '?' + p.toString() : '');
         window.history.replaceState({}, '', newURL);
@@ -125,7 +134,10 @@ export function ResourcesPage({
           var matchesMedia = state.mediaTypes.size === 0 || state.mediaTypes.has(item.dataset.mediaType);
           var matchesAudience = state.audiences.size === 0
             || JSON.parse(item.dataset.audience || '[]').some(function(a) { return state.audiences.has(a); });
-          var show = matchesQuery && matchesType && matchesMedia && matchesAudience;
+          var itemTags = JSON.parse(item.dataset.tags || '[]');
+          var matchesCategory = state.categories.size === 0
+            || itemTags.some(function(t) { return state.categories.has(t); });
+          var show = matchesQuery && matchesType && matchesMedia && matchesAudience && matchesCategory;
           item.style.display = show ? '' : 'none';
           if (show) visible++;
         });
@@ -133,7 +145,7 @@ export function ResourcesPage({
         if (resourceCount) resourceCount.textContent = String(visible);
         if (emptyState) emptyState.classList.toggle('hidden', visible > 0);
         if (grid) grid.classList.toggle('hidden', visible === 0);
-        var hasFilters = state.query || state.types.size > 0 || state.mediaTypes.size > 0 || state.audiences.size > 0;
+        var hasFilters = state.query || state.types.size > 0 || state.mediaTypes.size > 0 || state.audiences.size > 0 || state.categories.size > 0;
         if (clearBtn) clearBtn.classList.toggle('hidden', !hasFilters);
         updateURL();
       }
@@ -152,6 +164,22 @@ export function ResourcesPage({
             pill.classList.add('text-secondary', 'border-gray-200');
           } else {
             state.types.add(v);
+            pill.classList.add('bg-primary', 'text-white', 'border-primary');
+            pill.classList.remove('text-secondary', 'border-gray-200');
+          }
+          applyFilters();
+        });
+      });
+
+      categoryPills.forEach(function(pill) {
+        pill.addEventListener('click', function() {
+          var v = pill.dataset.value;
+          if (state.categories.has(v)) {
+            state.categories.delete(v);
+            pill.classList.remove('bg-primary', 'text-white', 'border-primary');
+            pill.classList.add('text-secondary', 'border-gray-200');
+          } else {
+            state.categories.add(v);
             pill.classList.add('bg-primary', 'text-white', 'border-primary');
             pill.classList.remove('text-secondary', 'border-gray-200');
           }
@@ -193,8 +221,13 @@ export function ResourcesPage({
         state.types.clear();
         state.mediaTypes.clear();
         state.audiences.clear();
+        state.categories.clear();
         if (searchInput) searchInput.value = '';
         typePills.forEach(function(p) {
+          p.classList.remove('bg-primary', 'text-white', 'border-primary');
+          p.classList.add('text-secondary', 'border-gray-200');
+        });
+        categoryPills.forEach(function(p) {
           p.classList.remove('bg-primary', 'text-white', 'border-primary');
           p.classList.add('text-secondary', 'border-gray-200');
         });
@@ -207,7 +240,7 @@ export function ResourcesPage({
       });
 
       if (state.query || state.types.size > 0 || state.mediaTypes.size > 0
-          || state.audiences.size > 0 || state.sort !== 'newest') applyFilters();
+          || state.audiences.size > 0 || state.categories.size > 0 || state.sort !== 'newest') applyFilters();
     })();
   `;
 
@@ -294,6 +327,21 @@ export function ResourcesPage({
                       {TYPE_LABELS[type] ?? type}
                     </button>
                   ))}
+                </div>
+              </div>
+
+              <div class="mb-6">
+                <p class="text-xs font-sans font-medium text-secondary uppercase tracking-wider mb-2">
+                  Category
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  <button
+                    class="filter-pill font-sans text-xs px-3 py-1.5 rounded-full border border-gray-200 text-secondary hover:border-primary hover:text-primary transition-colors"
+                    data-filter="category"
+                    data-value="case-study"
+                  >
+                    Case study
+                  </button>
                 </div>
               </div>
 
