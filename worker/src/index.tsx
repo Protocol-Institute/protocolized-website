@@ -25,7 +25,7 @@ import { BooksPage, BookPage } from "./html/books";
 import { LexiconPage } from "./html/lexicon";
 import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/static-pages";
 import { NewNatureFeaturePage } from "./html/feature-new-nature";
-import { WipIndexPage, WipProjectPage } from "./html/wip";
+import { WipChecklistPage, WipIndexPage, WipProjectPage, checklistMarkdown } from "./html/wip";
 import { getWipProject, getWipProjects } from "./wip";
 
 interface Env {
@@ -167,6 +167,22 @@ app.get("/wip/:slug", (c) => {
   const project = getWipProject(slug);
   if (!project) return c.html(notFound(), 404);
   return c.html(<WipProjectPage currentPath={`/wip/${slug}`} project={project} />);
+});
+app.get("/wip/:slug/checklist", (c) => {
+  const slug = c.req.param("slug");
+  const project = getWipProject(slug);
+  if (!project?.checklist) return c.html(notFound(), 404);
+  return c.html(<WipChecklistPage currentPath={`/wip/${slug}/checklist`} project={project} />);
+});
+app.get("/wip/:slug/checklist.md", (c) => {
+  const slug = c.req.param("slug");
+  const project = getWipProject(slug);
+  if (!project?.checklist) return c.html(notFound(), 404);
+  return c.body(checklistMarkdown(project), 200, {
+    "Content-Type": "text/markdown; charset=utf-8",
+    "Content-Disposition": `attachment; filename="${slug}-checklist.md"`,
+    "X-Robots-Tag": "noindex",
+  });
 });
 app.get("/wip/:slug/", (c) => c.redirect(`/wip/${c.req.param("slug")}`, 301));
 

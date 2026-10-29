@@ -101,9 +101,11 @@ function DeadlineBanner({ project }: { project: WipProject }) {
         </div>
         <div class="flex-1">
           <p class="font-sans text-sm leading-relaxed text-white/95">{d.detail}</p>
-          <a href="#checklist" class="inline-block mt-2 font-sans text-sm font-medium underline underline-offset-2">
-            Read the checklist ↓
-          </a>
+          <p class="mt-2 font-sans text-sm font-medium">
+            <a href={`/wip/${project.slug}/checklist`} class="underline underline-offset-2">Read the checklist →</a>
+            <span class="mx-2 text-white/60" aria-hidden="true">·</span>
+            <a href={`/wip/${project.slug}/checklist.md`} download class="underline underline-offset-2">Download (.md)</a>
+          </p>
         </div>
       </div>
     </section>
@@ -358,8 +360,6 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
               )}
             </dl>
 
-            {project.checklist && <Checklist items={project.checklist} />}
-
             <h2 class="font-serif text-2xl text-dark mb-1">Contents</h2>
             <p class="font-sans text-xs text-secondary mb-4">Provisional order.</p>
             {parts.map((part) => {
@@ -394,6 +394,64 @@ export function WipProjectPage({ currentPath, project }: { currentPath: string; 
           </div>
         </div>
       </article>
+    </Base>
+  );
+}
+
+/** The checklist as a Markdown document, for the download and for pasting to authors. */
+export function checklistMarkdown(project: WipProject): string {
+  const items = project.checklist ?? [];
+  const out: string[] = [`# Checklist for the next draft: ${project.title}`, ""];
+  if (project.deadline) {
+    out.push(`**${project.deadline.label}:** ${longDate(project.deadline.date)}`, "", project.deadline.detail, "");
+  }
+  out.push(
+    "Every essay's next draft should meet all of these. Items marked *auto* are checked by script against the draft in the shared folder; the editor checks the rest by reading.",
+    ""
+  );
+  for (const sec of [...new Set(items.map((i) => i.section))]) {
+    out.push(`## ${sec}`, "");
+    for (const i of items.filter((x) => x.section === sec)) {
+      const tags = [i.auto ? "auto" : "", i.advisory ? "guideline" : ""].filter(Boolean);
+      out.push(`- [ ] **${i.label}**${tags.length ? ` *(${tags.join(", ")})*` : ""}  `, `  ${i.detail}`);
+      if (i.licenses) out.push(`  Accepted licenses: ${i.licenses.join(", ")}.`);
+    }
+    out.push("");
+  }
+  return out.join("\n");
+}
+
+export function WipChecklistPage({ project, currentPath }: { project: WipProject; currentPath: string }) {
+  return (
+    <Base
+      title={`Checklist: ${project.title}`}
+      description={`Checklist every essay's next draft must pass for ${project.title}.`}
+      currentPath={currentPath}
+      bodyScript={mobileMenuScript()}
+      noindex
+    >
+      <div class="px-6 lg:px-8 pt-6">
+        <div class="max-w-wide mx-auto">
+          <nav class="text-sm font-sans text-secondary" aria-label="Breadcrumb">
+            <a href="/wip" class="hover:text-primary transition-colors">Works in progress</a>
+            <span class="mx-2 text-gray-300" aria-hidden="true">›</span>
+            <a href={`/wip/${project.slug}`} class="hover:text-primary transition-colors">{project.title}</a>
+            <span class="mx-2 text-gray-300" aria-hidden="true">›</span>
+            <span class="text-dark">Checklist</span>
+          </nav>
+        </div>
+      </div>
+      <DeadlineBanner project={project} />
+      <div class="px-6 lg:px-8 py-10">
+        <div class="max-w-wide mx-auto">
+          <p class="font-sans text-sm mb-6">
+            <a href={`/wip/${project.slug}`} class="text-primary hover:underline">← Back to the project</a>
+            <span class="mx-2 text-gray-300" aria-hidden="true">·</span>
+            <a href={`/wip/${project.slug}/checklist.md`} download class="text-primary hover:underline">Download (.md)</a>
+          </p>
+          {project.checklist && <Checklist items={project.checklist} />}
+        </div>
+      </div>
     </Base>
   );
 }
