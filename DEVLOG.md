@@ -451,3 +451,17 @@ A build log for protocolized.io — how the magazine and resource library site w
 - Merged PR #10 (symposium slides and recordings) and deleted six merged or obsolete branches, rescuing the unmerged May 2026 Cloudflare Pages migration plan to `docs/` first. Venkat ruled that this repo pushes finished work straight to `main` without PRs, now in CLAUDE.md Conventions.
 
 ---
+
+## Session 27: Case-study and school categories; Protocol Reader v0.4; checklist on its own page
+
+*2026-10-29*
+
+**Tracks:** ux, operations, content-sync
+
+- A second kind of facet beside Type, Media and Audience. Categories are **ordinary tags** (`case-study`, `school`) surfaced as pills, matched in `applyFilters()` against `data-tags` and serialized as repeated `?category=` params. No schema or D1 change, so a new category is a tag plus one entry in the pill list in `resources.tsx`. Caveat: the c3po sync scripts merge tags, so these should survive, but a sync that rewrites tags wholesale would drop them. `case-study` covers 10 items (four case-file 2-pagers, their four 2024 Symposium talks, the ARC/IETF talk, Durable AI Adoption); `school` covers 14 Protocol School 2025 videos (the 13 already tagged `protocol-school-2025` plus Harrahan's September workshop video).
+
+- Two new Drive drafts from Kaliya Young (*The Nature of Trust*, with Kevin Triplett; *Group Brains*, its companion) added under Political Economy and Institutions, readiness 6/10 each from a structural skim (both ~11–13k words with open provenance flags). 293 pages, 21 pieces. Deadline for editing-ready drafts moved Nov 15 → **Nov 30, 2026**. Open editorial question: keep the two essays separate or merge/trim.
+
+- The inline checklist pushed Contents below the fold. It now lives at `/wip/:slug/checklist` with a Markdown download at `/wip/:slug/checklist.md`, generated from `project.json` by `checklistMarkdown()` so page and file cannot drift. The deadline banner (shown on both pages) carries both links.
+
+---

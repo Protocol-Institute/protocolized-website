@@ -48,6 +48,7 @@ Front-end project management for working documents that will later become librar
 - **Intake** is a public-read Google Drive folder; drafts are keyed by **Drive file ID**, so authors edit in place. A new file is only reported, never auto-included: add a `contents` entry.
 - **Release:** `python3 scripts/wip/build-manuscript.py <slug>` (preview) → `--publish --message "…"`. The message is the page changelog, the manuscript's "What changed" note, **and** the git commit message; the script commits + pushes itself (rebasing onto the frequent c3po/Substack sync commits first). Only the latest PDF is served from R2 (`wip/<slug>/<slug>-vX.Y.pdf`; the previous one is deleted).
 - **The repo is public; drafts never enter it.** `wip/<slug>/archive/versions/` (every manuscript) and `archive/chapters/` (latest synced drafts) are gitignored, local only (Dropbox-backed). Only the latest manuscript is tracked, at `wip/<slug>/<slug>.pdf`, so git history is the rewind. Don't put contributor contact details in `project.json`.
+- **Checklist page:** rendered at `/wip/<slug>/checklist` with a Markdown download at `/wip/<slug>/checklist.md` (generated from `project.json`); the project page only links to it.
 - **Checklist:** defined in `project.json`; automated items in `scripts/wip/draft_checks.py`, run by every build and standalone via `scripts/wip/check-drafts.py <slug> [--entry id -v]` → `checks.json`.
 - Plan for the recurring case and open questions: `docs/wip-projects-plan.md`.
 
