@@ -15,7 +15,7 @@
   "deadline": {
     "date": "2026-11-30",
     "label": "Editing-ready drafts due",
-    "detail": "Every essay's next draft should pass the checklist below, so that the next version of the manuscript has consistent formatting and no placeholder elements. Revision and editing start from that version."
+    "detail": "Every essay's next draft should pass the checklist, so that the next version of the manuscript has consistent formatting and no placeholder elements. Revision and editing start from that version."
   },
   "checklist": [
     {
