@@ -13,7 +13,7 @@
     "id": "1pMT0S1aB6Vm5WEX0J4g7ljPMitC-1Mwr"
   },
   "deadline": {
-    "date": "2026-11-15",
+    "date": "2026-11-30",
     "label": "Editing-ready drafts due",
     "detail": "Every essay's next draft should pass the checklist below, so that the next version of the manuscript has consistent formatting and no placeholder elements. Revision and editing start from that version."
   },
@@ -431,6 +431,51 @@
       }
     },
     {
+      "id": "the-nature-of-trust",
+      "part": "institutions",
+      "title": "The Nature of Trust: Weaving Identity, Relationship, and Place",
+      "authors": [
+        "Kaliya Young",
+        "Kevin Triplett"
+      ],
+      "summary": "Relationality — who is real, who is connected to whom, who belongs — is not the soft afterthought to hard protocols but a hard requirement the field left out of scope, and a buildable one.",
+      "talk": "the-nature-of-trust-weaving-identity-relationship-and-place",
+      "source": {
+        "kind": "gdrive",
+        "id": "1p1GQb8cx6NZpRIqjhHpMR3TBWj3inf06cvKVF8fj5o8",
+        "name": "The Nature of Trust Weaving identity, relationship, and place. Kaliya Young & Kevin Triplett.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "A complete, substantive essay (~11k words) with abstract, references and a process note. Still carries working flags (⚠️/⛔ provenance claims for the Foo Camp 2009 quadrant model and the “neighborshed” coinage) and is long for a chapter. Needs those confirmed or cut, plus a trim.",
+        "assessed": "2026-10-29",
+        "assessed_hash": "0d95b395ec68dd8f",
+        "stale": false
+      }
+    },
+    {
+      "id": "group-brains",
+      "part": "institutions",
+      "title": "Group Brains: Minds Made of People",
+      "authors": [
+        "Kaliya Young"
+      ],
+      "summary": "Long-lived communities remember, deliberate and decide as a coherent mind; the IETF, studied in depth, shows how a group brain works and why AI makes them more essential.",
+      "talk": "group-brains-minds-made-of-people",
+      "source": {
+        "kind": "gdrive",
+        "id": "1r2_A_Y0MdZ48jcdY3BjXJeGO5XISbdnoPq9t3HgABes",
+        "name": "Group Brains Minds Made of People Kaliya Young.docx"
+      },
+      "readiness": {
+        "score": 6,
+        "note": "A complete, well-built essay (~13.5k words) with definition, five specimens, an IETF case study and references. Labelled a companion to The Nature of Trust v8, so the pair needs an editorial decision, and at this length it needs a trim. Working flags remain in the file.",
+        "assessed": "2026-10-29",
+        "assessed_hash": "d620e52dc25dc710",
+        "stale": false
+      }
+    },
+    {
       "id": "oil-uni-and-tv",
       "part": "infrastructures",
       "title": "Oil, Uni and TV: Post-Soviet Infrastructures Shaping Protocols for the Web",
@@ -614,9 +659,21 @@
   ],
   "versions": [
     {
+      "version": "0.4",
+      "date": "2026-10-29",
+      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.4.pdf",
+      "pages": 293,
+      "added": [
+        "the-nature-of-trust",
+        "group-brains"
+      ],
+      "updated": [],
+      "message": "Added two new drafts from Kaliya Young: The Nature of Trust (with Kevin Triplett) and its companion Group Brains: Minds Made of People. The deadline for editing-ready drafts moves to November 30, 2026."
+    },
+    {
       "version": "0.3",
       "date": "2026-10-19",
-      "file": "https://files.protocolized.io/wip/protocol-reader-vol-2/protocol-reader-vol-2-v0.3.pdf",
+      "file": null,
       "pages": 238,
       "added": [],
       "updated": [],

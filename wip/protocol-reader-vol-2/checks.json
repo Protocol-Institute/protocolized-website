@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-19",
+  "generated": "2026-10-29",
   "entries": {
     "de-dramatizing-the-digital": {
       "results": {
@@ -841,6 +841,174 @@
         "ready": false
       }
     },
+    "the-nature-of-trust": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "The Nature of Trust"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Kaliya Young, Kevin Triplett"
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "warn",
+          "detail": "Abstract is 334 words (aim for 100–200)"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "pass",
+          "detail": "21 sections"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "9,694 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "63 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "pass",
+          "detail": "3 links"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 8,
+        "fail": 3,
+        "warn": 2,
+        "manual": 3,
+        "na": 2,
+        "ready": false
+      }
+    },
+    "group-brains": {
+      "results": {
+        "title": {
+          "status": "pass",
+          "detail": "Group Brains: Minds Made of People"
+        },
+        "byline": {
+          "status": "fail",
+          "detail": "Not named near the top: Kaliya Young"
+        },
+        "talk-note": {
+          "status": "fail",
+          "detail": "No line naming the symposium talk"
+        },
+        "abstract": {
+          "status": "warn",
+          "detail": "Abstract is 6 words (aim for 100–200)"
+        },
+        "bio": {
+          "status": "fail",
+          "detail": "No “About the author” section"
+        },
+        "headings": {
+          "status": "fail",
+          "detail": "1 empty heading(s)"
+        },
+        "no-placeholders": {
+          "status": "pass",
+          "detail": ""
+        },
+        "no-status-labels": {
+          "status": "pass",
+          "detail": ""
+        },
+        "length": {
+          "status": "warn",
+          "detail": "12,752 words (guideline 2,500–7,500)"
+        },
+        "references": {
+          "status": "pass",
+          "detail": "37 entries"
+        },
+        "ref-style": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "links": {
+          "status": "pass",
+          "detail": "1 links"
+        },
+        "claims": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "figures": {
+          "status": "manual",
+          "detail": "Checked by the editor when reading"
+        },
+        "image-rights": {
+          "status": "na",
+          "detail": "No images"
+        },
+        "editable-source": {
+          "status": "pass",
+          "detail": "docx"
+        },
+        "no-contact": {
+          "status": "pass",
+          "detail": ""
+        },
+        "ai-note": {
+          "status": "na",
+          "detail": "No AI assistance noted"
+        }
+      },
+      "summary": {
+        "pass": 7,
+        "fail": 4,
+        "warn": 2,
+        "manual": 3,
+        "na": 2,
+        "ready": false
+      }
+    },
     "oil-uni-and-tv": {
       "results": {
         "title": {
@@ -973,7 +1141,7 @@
         },
         "links": {
           "status": "warn",
-          "detail": "17 of 19 verified; 2 couldn't be checked automatically (blocked or slow)"
+          "detail": "16 of 19 verified; 3 couldn't be checked automatically (blocked or slow)"
         },
         "claims": {
           "status": "manual",
@@ -1056,8 +1224,8 @@
           "detail": "Checked by the editor when reading"
         },
         "links": {
-          "status": "pass",
-          "detail": "1 links"
+          "status": "fail",
+          "detail": "1 of 1 broken: https://summerofprotocols.com/artificial-memory-web"
         },
         "claims": {
           "status": "manual",
@@ -1085,8 +1253,8 @@
         }
       },
       "summary": {
-        "pass": 7,
-        "fail": 6,
+        "pass": 6,
+        "fail": 7,
         "warn": 1,
         "manual": 3,
         "na": 1,
