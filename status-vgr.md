@@ -7,7 +7,7 @@
 
 ### Protocol Reader Vol. 2 (WIP, `/wip/protocol-reader-vol-2`)
 - **Add author emails** to project management (Venkat has them; next session). Decide where: `project.json` is public, so contact details must not go there.
-- **Nov 15, 2026: editing-ready drafts due.** After the deadline: sync, review `checks.json`, re-score readiness for changed drafts (stale flags), publish the next version.
+- **Nov 30, 2026: editing-ready drafts due** (moved from Nov 15 on 2026-10-29). After the deadline: sync, review `checks.json`, re-score readiness for changed drafts (stale flags), publish the next version.
 - New Drive files need a `project.json` entry before they're folded in; authors were asked to edit in place (the script keys drafts by Drive file ID).
 - Sathe and Dixon drafts are PDF-only: swap `source` to the editable file when it arrives.
 - Write the editor's Introduction (stub); fix Blygger draft's own title/references; Humboldt's essay needs references (Venkat revises).
