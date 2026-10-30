@@ -1,6 +1,6 @@
 import { Base } from "./base";
 import { fmtDate, mobileMenuScript } from "./static-pages";
-import type { PdfMeta } from "../pitch";
+import { PI_SITE, type PdfMeta } from "../pitch";
 
 // Typography for the pitch document, shared by the web page (scoped under
 // .pitch-doc) and the standalone print template WeasyPrint renders.
@@ -24,15 +24,28 @@ const DOC_CSS = `
 `;
 
 const PRINT_CSS = `
-@page{size:Letter;margin:22mm 20mm 24mm;@bottom-center{content:"Protocol Institute Overview · " counter(page) " / " counter(pages);font:8pt Outfit,sans-serif;color:#888}}
+@page{size:Letter;margin:24mm 24mm 26mm;
+  @bottom-left{content:"Protocol Institute";font:7.5pt Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#9a9a94}
+  @bottom-right{content:counter(page);font:8pt Outfit,sans-serif;color:#9a9a94}}
 body{background:#fff;margin:0}
-.pitch-doc{font-size:10.5pt;line-height:1.5}
-.pitch-doc h1{font-size:28pt}
-.pitch-doc h2{font-size:17pt;margin-top:1.6rem;break-after:avoid}
-.pitch-doc h3{break-after:avoid}
-.pitch-doc li,.pitch-doc ul.people li{break-inside:avoid}
-.pitch-doc a{text-decoration:none}
-.stamp{font:8pt Outfit,sans-serif;color:#888;margin:0 0 1.2rem}
+.pitch-doc{font-size:10.3pt;line-height:1.62;color:#222}
+.masthead{display:flex;align-items:center;justify-content:space-between;padding-bottom:9mm;margin-bottom:11mm;border-bottom:.5pt solid #cfcfc8}
+.masthead .brand{display:flex;align-items:center;gap:4mm}
+.masthead img{height:13mm;width:auto}
+.masthead .org{font:500 8.5pt Outfit,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#222}
+.masthead .stamp{font:7.5pt Outfit,sans-serif;letter-spacing:.06em;color:#9a9a94}
+.pitch-doc h1{font-size:34pt;line-height:1.05;letter-spacing:-.01em;margin:0 0 3mm}
+.pitch-doc h1 + p{font-size:9.5pt;color:#77776f;margin:0 0 9mm}
+.pitch-doc h2{font-size:18pt;color:#222;margin:11mm 0 3mm;padding-top:5mm;border-top:.5pt solid #cfcfc8;break-after:avoid}
+.pitch-doc h3{font:600 8.5pt Outfit,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#0F6E56;margin:7mm 0 2mm;break-after:avoid}
+.pitch-doc p{margin:0 0 3.2mm;orphans:3;widows:3}
+.pitch-doc a{color:inherit;text-decoration:none;border-bottom:.4pt solid #0F6E56}
+.pitch-doc ul.people,.pitch-doc ul.roadmap{margin:2mm 0 4mm}
+.pitch-doc ul.people li,.pitch-doc ul.roadmap li{border-left:0;padding:2.4mm 0;margin:0;border-bottom:.4pt solid #e4e4de;break-inside:avoid}
+.pitch-doc ul.people li:last-child,.pitch-doc ul.roadmap li:last-child{border-bottom:0}
+.pitch-doc li{break-inside:avoid}
+.pitch-doc .notes{margin-top:12mm;font-size:8.6pt;color:#555}
+.pitch-doc .notes h2{font-size:12pt;border-top:.5pt solid #cfcfc8}
 `;
 
 // ── Login ──────────────────────────────────────────────────────────────────
@@ -134,5 +147,7 @@ export function pitchPrintDocument(html: string, stamp: string): string {
 <title>Protocol Institute Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Lora:ital,wght@0,400;0,500;1,400&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
 <style>${DOC_CSS}${PRINT_CSS}</style></head>
-<body><article class="pitch-doc"><p class="stamp">${stamp}</p>${html}</article></body></html>`;
+<body><article class="pitch-doc">
+<header class="masthead"><div class="brand"><img src="${PI_SITE}/assets/logo-static.png" alt=""><span class="org">Protocol Institute</span></div><span class="stamp">${stamp}</span></header>
+${html}</article></body></html>`;
 }
