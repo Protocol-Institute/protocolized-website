@@ -22,3 +22,6 @@ inbox/
 wip/*/archive/
 wip/*/build/
 scripts/wip/.fonts/
+
+# Living pitch document: text is private (repo is public); lives in R2, local copy here
+/pitch/

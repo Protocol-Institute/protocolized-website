@@ -27,11 +27,15 @@ import { AboutPage, CommunityPage, MagazinePage, AnthologiesPage } from "./html/
 import { NewNatureFeaturePage } from "./html/feature-new-nature";
 import { WipChecklistPage, WipIndexPage, WipProjectPage, checklistMarkdown } from "./html/wip";
 import { getWipProject, getWipProjects } from "./wip";
+import { PitchEditPage, PitchLoginPage, PitchPage, pitchPrintDocument } from "./html/pitch";
+import { getPdfMeta, getSource, isAuthed, isEditor, renderPitch, roleFor, saveSource, sessionCookies } from "./pitch";
 
 interface Env {
   DB: D1Database;
   FILES: R2Bucket;
   FICTION_SEGREGATION_ACTIVE?: string;
+  PITCH_PASSWORD?: string;
+  PITCH_EDIT_PASSWORD?: string;
 }
 
 const app = new Hono<{ Bindings: Env }>();
@@ -185,6 +189,76 @@ app.get("/wip/:slug/checklist.md", (c) => {
   });
 });
 app.get("/wip/:slug/", (c) => c.redirect(`/wip/${c.req.param("slug")}`, 301));
+
+// Living pitch document: password-gated (cookie for browsers, Bearer for the
+// PDF build), noindex, absent from nav/sitemap. See worker/src/pitch.ts.
+const PRIVATE = { "Cache-Control": "private, no-store", "X-Robots-Tag": "noindex" };
+
+app.get("/pitch", async (c) => {
+  c.header("Cache-Control", PRIVATE["Cache-Control"]);
+  c.header("X-Robots-Tag", PRIVATE["X-Robots-Tag"]);
+  if (!(await isAuthed(c.env, c.req.raw))) return c.html(<PitchLoginPage />);
+  const doc = await renderPitch(c.env);
+  if (!doc) return c.html(notFound(), 404);
+  const pdf = await getPdfMeta(c.env);
+  return c.html(<PitchPage html={doc.html} hash={doc.hash} pdf={pdf} degraded={doc.degraded} canEdit={await isEditor(c.env, c.req.raw)} />);
+});
+app.get("/pitch/", (c) => c.redirect("/pitch", 301));
+
+app.post("/pitch/login", async (c) => {
+  const form = await c.req.parseBody();
+  const role = await roleFor(c.env, typeof form.password === "string" ? form.password : "");
+  c.header("Cache-Control", PRIVATE["Cache-Control"]);
+  if (!role) return c.html(<PitchLoginPage error />, 401);
+  for (const cookie of await sessionCookies(c.env, role)) c.header("Set-Cookie", cookie, { append: true });
+  return c.redirect("/pitch", 303);
+});
+
+// Markdown editor for the pitch's own (private) text. Public sections come
+// from the Institute site's managed pages via {{page:KEY}} and are edited there.
+app.get("/pitch/edit", async (c) => {
+  if (!(await isEditor(c.env, c.req.raw))) return c.redirect("/pitch", 302);
+  c.header("Cache-Control", PRIVATE["Cache-Control"]);
+  return c.html(<PitchEditPage source={(await getSource(c.env)) ?? ""} />);
+});
+app.post("/pitch/edit", async (c) => {
+  if (!(await isEditor(c.env, c.req.raw))) return c.text("Forbidden", 403, PRIVATE);
+  const form = await c.req.parseBody();
+  const md = typeof form.source === "string" ? form.source.replace(/\r\n/g, "\n") : "";
+  if (!md.trim()) return c.text("Refusing to save an empty document", 400, PRIVATE);
+  await saveSource(c.env, md);
+  return c.redirect("/pitch", 303);
+});
+
+// Standalone print HTML; the hash and degraded flag let the build skip no-op
+// runs and refuse to bake placeholders into a PDF.
+app.get("/pitch/print", async (c) => {
+  if (!(await isAuthed(c.env, c.req.raw))) return c.text("Unauthorized", 401, PRIVATE);
+  const doc = await renderPitch(c.env);
+  if (!doc) return c.text("No pitch source in R2 (pitch/source.md)", 404, PRIVATE);
+  if (doc.degraded) return c.text("Live data unavailable", 503, PRIVATE);
+  const stamp = `Live lists as of ${new Date().toISOString().slice(0, 10)}`;
+  return c.html(pitchPrintDocument(doc.html, stamp), 200, { ...PRIVATE, "X-Pitch-Hash": doc.hash });
+});
+
+app.get("/pitch/status.json", async (c) => {
+  if (!(await isAuthed(c.env, c.req.raw))) return c.text("Unauthorized", 401, PRIVATE);
+  const [doc, pdf] = await Promise.all([renderPitch(c.env), getPdfMeta(c.env)]);
+  return c.json({ hash: doc?.hash ?? null, degraded: doc?.degraded ?? null, pdf }, 200, PRIVATE);
+});
+
+app.get("/pitch/protocol-institute-overview.pdf", async (c) => {
+  if (!(await isAuthed(c.env, c.req.raw))) return c.redirect("/pitch", 302);
+  const obj = await c.env.FILES.get("pitch/protocol-institute-overview.pdf");
+  if (!obj) return c.html(notFound(), 404);
+  return new Response(obj.body, {
+    headers: {
+      ...PRIVATE,
+      "Content-Type": "application/pdf",
+      "Content-Disposition": 'attachment; filename="Protocol-Institute-Overview.pdf"',
+    },
+  });
+});
 
 app.get("/anthologies", async (c) => {
   const exclude = fictionExcluded(c);

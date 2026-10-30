@@ -1,0 +1,45 @@
+name: Build pitch PDF
+
+# Rebuilds the password-protected pitch PDF when the live document changes
+# (text edited in R2, or the Institute's team / research groups / roadmap).
+# The build is a no-op when the content hash matches the last PDF.
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  push:
+    branches: [main]
+    paths:
+      - scripts/pitch/**
+      - worker/src/pitch.ts
+      - worker/src/html/pitch.tsx
+      - .github/workflows/pitch-pdf.yml
+  workflow_dispatch:
+    inputs:
+      force:
+        description: Rebuild even if the content is unchanged
+        type: boolean
+        default: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: worker/package-lock.json
+
+      - run: npm ci
+        working-directory: worker
+
+      - run: pip install weasyprint
+
+      - name: Build and upload PDF
+        run: python3 scripts/pitch/build-pitch-pdf.py ${{ inputs.force && '--force' || '' }}
+        env:
+          PITCH_PASSWORD: ${{ secrets.PITCH_PASSWORD }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
