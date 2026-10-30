@@ -11,6 +11,9 @@ import { marked } from "marked";
 export const PI_SITE = "https://protocol-institute.org";
 const ROADMAP_PROGRAM = "research-roadmap";
 const ROADMAP_YEAR = "2027";
+// Hosts of a group who are not "leads" for funding purposes: left out of the
+// research-leads list and of each group's lead credit.
+const NOT_FUNDING_LEADS = new Set(["spencernitkeywriting"]);
 
 export interface PitchEnv {
   FILES: R2Bucket;
@@ -174,7 +177,7 @@ function teamHtml(d: LiveData): string {
 }
 
 function leadsHtml(d: LiveData): string {
-  const leads = d.members.filter((m) => m.tier === "community_lead");
+  const leads = d.members.filter((m) => m.tier === "community_lead" && !NOT_FUNDING_LEADS.has(m.slug));
   return `<ul class="people">${leads
     .map((m) => {
       const gs = d.groups.filter((g) => g.hosts.some((h) => h.slug === m.slug)).map((g) => g.title);
@@ -186,7 +189,7 @@ function leadsHtml(d: LiveData): string {
 function groupsHtml(d: LiveData): string {
   return `<ol class="groups">${d.groups
     .map((g) => {
-      const leads = g.hosts.map((h) => h.name);
+      const leads = g.hosts.filter((h) => !NOT_FUNDING_LEADS.has(h.slug)).map((h) => h.name);
       return (
         `<li><strong><a href="${PI_SITE}${g.href}">${esc(g.title)}</a>:</strong> ${esc(abstract(g.description, 600))}` +
         `${leads.length ? ` <em>(lead${leads.length > 1 ? "s" : ""}: ${esc(listOf(leads))})</em>` : ""}</li>`
