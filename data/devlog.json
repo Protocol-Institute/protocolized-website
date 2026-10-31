@@ -970,6 +970,38 @@
           "html": "The inline checklist pushed Contents below the fold. It now lives at <code>/wip/:slug/checklist</code> with a Markdown download at <code>/wip/:slug/checklist.md</code>, generated from <code>project.json</code> by <code>checklistMarkdown()</code> so page and file cannot drift. The deadline banner (shown on both pages) carries both links."
         }
       ]
+    },
+    {
+      "id": 27,
+      "sort_key": 28.0,
+      "label": "Session 28",
+      "title": "Institute overview prototyped here, then moved to protocol-institute.org",
+      "date": "2026-10-30",
+      "time_pt": "",
+      "tracks": [
+        "operations"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "Outcome:",
+          "html": "Net zero for this repo. A password-gated living pitch document (<code>/pitch</code>) was built on this Worker, shipped, then removed the same day (commit <code>19c3f28</code>) when Venkat chose to host it on protocol-institute.org instead. <code>/pitch</code> now returns 404; the Worker's code is identical to Session 27's."
+        },
+        {
+          "title": "Why it moved:",
+          "html": "The Institute site already has member auth (<code>pi_session</code>), the managed-page markdown editor, and the data the document pulls live (team, research groups, 2027 roadmap). Hosting it here meant a second auth scheme (shared password + edit password) and cross-site data fetches. Shipped there as website PR #22 with native access (admin/team) and a build that assembles HTML + PDF every 15 minutes, hash-gated."
+        },
+        {
+          "title": "Design that carried over (lives in the website repo now):",
+          "html": "Directive-based assembly: the overview's own private text uses <code>{{team}}</code>, <code>{{research-groups}}</code>, <code>{{roadmap-projects}}</code>, counts, and <code>{{page:static/values}}</code> to inline public pages, so each piece of text has one source. The website repo is public, so the private text lives in D1 behind a read guard and a gitignored local copy, never in a migration."
+        },
+        {
+          "title": "Cleanup done:",
+          "html": "Worker secrets <code>PITCH_PASSWORD</code>/<code>PITCH_EDIT_PASSWORD</code>, the GH secret, R2 <code>pitch/*</code> objects and <code>.env.keys</code> entries deleted; retirement logged in <code>admin/keys.md</code>. No incident: nothing leaked. One classifier denial on first secret write was resolved by Venkat approving the exact commands."
+        }
+      ]
     }
   ]
 }

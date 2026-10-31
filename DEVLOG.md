@@ -465,3 +465,19 @@ A build log for protocolized.io — how the magazine and resource library site w
 - The inline checklist pushed Contents below the fold. It now lives at `/wip/:slug/checklist` with a Markdown download at `/wip/:slug/checklist.md`, generated from `project.json` by `checklistMarkdown()` so page and file cannot drift. The deadline banner (shown on both pages) carries both links.
 
 ---
+
+## Session 28: Institute overview prototyped here, then moved to protocol-institute.org
+
+*2026-10-30*
+
+**Tracks:** operations
+
+- Net zero for this repo. A password-gated living pitch document (`/pitch`) was built on this Worker, shipped, then removed the same day (commit `19c3f28`) when Venkat chose to host it on protocol-institute.org instead. `/pitch` now returns 404; the Worker's code is identical to Session 27's.
+
+- The Institute site already has member auth (`pi_session`), the managed-page markdown editor, and the data the document pulls live (team, research groups, 2027 roadmap). Hosting it here meant a second auth scheme (shared password + edit password) and cross-site data fetches. Shipped there as website PR #22 with native access (admin/team) and a build that assembles HTML + PDF every 15 minutes, hash-gated.
+
+- Directive-based assembly: the overview's own private text uses `{{team}}`, `{{research-groups}}`, `{{roadmap-projects}}`, counts, and `{{page:static/values}}` to inline public pages, so each piece of text has one source. The website repo is public, so the private text lives in D1 behind a read guard and a gitignored local copy, never in a migration.
+
+- Worker secrets `PITCH_PASSWORD`/`PITCH_EDIT_PASSWORD`, the GH secret, R2 `pitch/*` objects and `.env.keys` entries deleted; retirement logged in `admin/keys.md`. No incident: nothing leaked. One classifier denial on first secret write was resolved by Venkat approving the exact commands.
+
+---
