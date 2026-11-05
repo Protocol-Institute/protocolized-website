@@ -39,6 +39,8 @@ PLACEHOLDERS = [
     re.compile(r"[(\[]\s*\*?(to verify|to be (completed|added|confirmed|written)|to add|placeholder)\b", re.I),
     re.compile(r"\*(to verify|to be (completed|added|confirmed))\*", re.I),
 ]
+# Emoji and pictographic symbols used as working flags (⚠️ ✅ ⛔ ❌ ⭐ 🔴 …).
+EMOJI = re.compile("[\U0001F300-\U0001FAFF\u2600-\u26FF\u2700-\u27BF\u2B50\u2B55\u2B06\u2B07\u2B05\u27A1]")
 STATUS_LABELS = [
     re.compile(r"\bnot final\b", re.I),
     re.compile(r"\b(rough|initial|first) draft\b", re.I),
@@ -200,10 +202,14 @@ def check_placeholders(md: str) -> dict:
     for pat in PLACEHOLDERS:
         hits += [m.group(0).strip() for m in pat.finditer(text)]
     hits = list(dict.fromkeys(hits))
+    flags = list(dict.fromkeys(EMOJI.findall(text)))
+    found = []
     if hits:
         shown = "; ".join(h if len(h) <= 60 else h[:59] + "…" for h in hits[:4])
-        return r("fail", f"{len(hits)} found, e.g. {shown}")
-    return r("pass")
+        found.append(f"{len(hits)} found, e.g. {shown}")
+    if flags:
+        found.append("emoji used as flags: " + " ".join(flags[:6]))
+    return r("fail", "; ".join(found)) if found else r("pass")
 
 
 def check_status_labels(md: str) -> dict:
@@ -299,6 +305,85 @@ def check_image_rights(path: Path, md: str) -> dict:
     return r("pass", f"{n} image(s), each with an open license stated")
 
 
+FIG_CAPTION = re.compile(r"^\s*(figure|fig\.?)\s*(\d+)\s*[.:]", re.I)
+FIG_MENTION = re.compile(r"\bfig(?:ure|ures|s|\.)?\s+(\d+(?:\s*(?:,|and|&|or|–|-|to)\s*\d+)*)", re.I)
+WNS = "{http://schemas.openxmlformats.org/wordprocessingml/2006/main}"
+EMU_PER_INCH = 914400
+
+
+def docx_figures(path: Path) -> list[dict]:
+    """Each image in a .docx, in document order: the caption paragraph below it and its print dpi."""
+    import xml.etree.ElementTree as ET
+    import zipfile
+    with zipfile.ZipFile(path) as z:
+        root = ET.fromstring(z.read("word/document.xml"))
+        rels = {}
+        if "word/_rels/document.xml.rels" in z.namelist():
+            for rel in ET.fromstring(z.read("word/_rels/document.xml.rels")):
+                rels[rel.get("Id")] = rel.get("Target", "")
+        paras = list(root.iter(WNS + "p"))
+        figs = []
+        for i, p in enumerate(paras):
+            drawings = [d for d in p.iter(WNS + "drawing")]
+            for d in drawings:
+                blip = next((e for e in d.iter() if e.tag.endswith("}blip")), None)
+                ext = next((e for e in d.iter() if e.tag.endswith("}extent")), None)
+                if blip is None:
+                    continue           # a chart or shape, not a picture
+                rid = next((v for k, v in blip.attrib.items() if k.endswith("}embed")), None)
+                dpi = None
+                target = rels.get(rid, "")
+                if target and ext is not None and int(ext.get("cx", 0)) > 0:
+                    try:
+                        from PIL import Image
+                        name = "word/" + target.lstrip("/").removeprefix("word/")
+                        with z.open(name) as f, Image.open(f) as im:
+                            dpi = im.width / (int(ext.get("cx")) / EMU_PER_INCH)
+                    except Exception:
+                        dpi = None     # vector or unreadable format: skip the resolution check
+                caption = ""
+                for q in paras[i + 1:]:
+                    text = "".join(t.text or "" for t in q.iter(WNS + "t")).strip()
+                    if text or any(True for _ in q.iter(WNS + "drawing")):
+                        caption = text
+                        break
+                figs.append({"caption": caption, "dpi": dpi})
+        return figs
+
+
+def check_figures(path: Path, md: str) -> dict:
+    if path.suffix == ".pdf":
+        return r("manual", "PDF: check in the editable file") if count_images(path, md) else r("na", "No images")
+    figs = docx_figures(path)
+    if not figs:
+        return r("na", "No images")
+    uncaptioned = [k + 1 for k, f in enumerate(figs) if not FIG_CAPTION.match(f["caption"])]
+    numbers = {int(m.group(2)) for f in figs if (m := FIG_CAPTION.match(f["caption"]))}
+    mentions: dict[int, int] = {}
+    for m in FIG_MENTION.finditer(plain(md)):
+        nums = [int(n) for n in re.findall(r"\d+", m.group(1))]
+        if len(nums) == 2 and re.search(r"–|-|to", m.group(1)):
+            nums = list(range(nums[0], nums[1] + 1))
+        for n in nums:
+            mentions[n] = mentions.get(n, 0) + 1
+    unmentioned = sorted(n for n in numbers if mentions.get(n, 0) < 2)   # the caption itself is one
+    # 300 dpi at the size placed, with 10% grace: 290 dpi prints as well as 300.
+    low = [(k + 1, f["dpi"]) for k, f in enumerate(figs) if f["dpi"] and f["dpi"] < 270]
+    problems = []
+    if uncaptioned:
+        problems.append(f"{len(uncaptioned)} of {len(figs)} image(s) without a caption below starting "
+                        f"“Figure N.” (image {', '.join(map(str, uncaptioned[:6]))}"
+                        f"{'…' if len(uncaptioned) > 6 else ''})")
+    if unmentioned:
+        problems.append("not mentioned in the text: " + ", ".join(f"figure {n}" for n in unmentioned[:6]))
+    if problems:
+        return r("fail", "; ".join(problems))
+    if low:
+        return r("warn", f"{len(low)} image(s) under 300 dpi at the size placed, e.g. image {low[0][0]} at "
+                         f"{low[0][1]:.0f} dpi (supply a larger file, or size it smaller)")
+    return r("pass", f"{len(figs)} figure(s), captioned and mentioned")
+
+
 def check_editable(path: Path) -> dict:
     return r("fail", "Supplied as PDF only") if path.suffix == ".pdf" else r("pass", path.suffix.lstrip("."))
 
@@ -345,6 +430,7 @@ def run_checks(project: dict, project_dir: Path, chapters: Path, check_links_onl
             "length": lambda: check_length(md),
             "references": lambda: check_references(md),
             "links": lambda: check_links(md, link_cache) if check_links_online else r("manual", "Link check skipped"),
+            "figures": lambda: check_figures(path, md),
             "image-rights": lambda: check_image_rights(path, md),
             "editable-source": lambda: check_editable(path),
             "no-contact": lambda: check_contact(md),
