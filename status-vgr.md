@@ -11,6 +11,8 @@
 - New Drive files need a `project.json` entry before they're folded in; authors were asked to edit in place (the script keys drafts by Drive file ID).
 - Sathe and Dixon drafts are PDF-only: swap `source` to the editable file when it arrives.
 - Write the editor's Introduction (stub); fix Blygger draft's own title/references; Humboldt's essay needs references (Venkat revises).
+- **Figures check gaps (`check_figures`, PR #11):** mention pattern misses "Figures 1, 2, and 3" (last number), "Figures 1 through 3", "figs. 1 and 2"; caption pattern rejects "Figure 1a." and "Figure 1 — text" and accepts "Figure 1:" (confirm Jenna's book build does too); emoji range also flags ✓ ★ ♀. No current draft is affected; fix in `draft_checks.py` if an author disputes a result.
+- **Next `build-manuscript.py` run** fills in the new figures results and puts 6 new failures on the page (4 figures, 2 emoji). The authors will need to fix captions, in-text mentions and flags before Nov 30.
 - Open questions in `docs/wip-projects-plan.md`: visibility of readiness notes, `/wip` graduation path, volume length (~238 pp).
 
 ### Carousel — next session
@@ -63,6 +65,8 @@ Add resource entries for the following SoP content not yet in the library.
 
 
 ## Done
+
+**2026-11-05 (Session 29):** Reviewed and merged PR #11 from Jenna (jdbb studio): three checklist wording tweaks for print (emoji flags, real footnotes, caption directly below starting "Figure 1.") and an automated figures check (`check_figures`). Ran it against the 20 local drafts and her counts reproduce: figures fail 4, pass 1, no images 15; emoji newly fail 2; no ready-status change. GitHub's merge API returned 500s, so merged locally and pushed (`b59857f`); GitHub recorded the PR as merged. Deploy succeeded and the wording is live; drafts show "N of 16". `checks.json` deliberately not regenerated: it updates at the next release.
 
 <!-- completed items, reverse chronological -->
 - **2026-10-30** — Session 28. **Net zero for this repo: the Institute overview (`/pitch`) was prototyped here, then moved to protocol-institute.org.** Built a password-gated living pitch document on this Worker (live team / research-group / roadmap lists from the Institute APIs, markdown editor, WeasyPrint PDF built by a GH Action, R2-stored private text, minimalist masthead with the PI logo), then Venkat moved it to the Institute site, which has native member auth, the managed-page editor and the data. Shipped there as **website PR #22** (merged) with a new public `/values` page under More (migration 062, `static/values`, canonical values text; D1 + repo typos fixed incl. Charles Lindblom). Here: all pitch code reverted and deployed (`/pitch` → 404; commit 19c3f28), Worker secrets, GH secret, R2 `pitch/*` objects and `.env.keys` entries deleted, `admin/keys.md` rotation log notes the retirement. Private text lives in `website/pitch-private/` (gitignored; the website repo is public). State: this repo's code is identical to pre-session. Open: none here; PR #22 deploy steps (seed D1, repo secret, first forced build) belong to the website project.

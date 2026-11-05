@@ -1002,6 +1002,47 @@
           "html": "Worker secrets <code>PITCH_PASSWORD</code>/<code>PITCH_EDIT_PASSWORD</code>, the GH secret, R2 <code>pitch/*</code> objects and <code>.env.keys</code> entries deleted; retirement logged in <code>admin/keys.md</code>. No incident: nothing leaked. One classifier denial on first secret write was resolved by Venkat approving the exact commands."
         }
       ]
+    },
+    {
+      "id": 28,
+      "sort_key": 29.0,
+      "label": "Session 29",
+      "title": "Checklist print-fit wording and an automated figures check (PR #11, Jenna)",
+      "date": "2026-11-05",
+      "time_pt": "",
+      "tracks": [
+        "operations",
+        "framework"
+      ],
+      "costs_usd": {},
+      "vector_counts": {},
+      "deployed": true,
+      "items": [
+        {
+          "title": "What merged:",
+          "html": "PR #11 from Jenna (jdbb studio), who audited the 20 Protocol Reader drafts for what would actually break in print. Deliberately minimal: no new checklist items, three wording changes in <code>project.json</code>, and <code>figures</code> moved from editor-checked to automated. Only problems that occur in the current drafts got wording; floating images, text boxes and tab-built tables occur in none."
+        },
+        {
+          "title": "check_figures design:",
+          "html": "Reads the .docx XML rather than the converted Markdown, because Pandoc's output varies (<code>&lt;figcaption&gt;</code> vs a plain following paragraph). Each picture needs a next non-empty paragraph starting <code>Figure N.</code>, because the book build recognizes only that form or caption styling. A figure needs two mentions in the text, since the caption itself counts as one. Under about 270 dpi at placed size (300 with grace) is a warning, not a failure; PDFs stay manual."
+        },
+        {
+          "title": "Verified against real drafts:",
+          "html": "Ran in a throwaway worktree with the gitignored drafts symlinked in, so the tracked <code>checks.json</code> stayed untouched. Reproduced the PR's counts: figures fail 4 (36 uncaptioned images across 3 drafts, plus <code>de-dramatizing-the-digital</code>, whose figures appear only in their captions), pass 1, no images 15; emoji newly fail 2 (<code>the-nature-of-trust</code>, <code>group-brains</code>). No draft changed ready status."
+        },
+        {
+          "title": "Current state:",
+          "html": "Live pages count 16 automated items, but the tracked <code>checks.json</code> predates the check, so figures stays uncounted until the next <code>build-manuscript.py</code> run. That run surfaces the 6 new failures. Left for the release rather than regenerated alone, because results and the manuscript ship together."
+        },
+        {
+          "title": "Known gaps, accepted for now:",
+          "html": "The mention pattern misses the last number in <q>Figures 1, 2, and 3</q> and the later ones in <q>Figures 1 through 3</q>, and all of <q>figs. 1 and 2</q>. The caption pattern rejects <q>Figure 1a.</q> and accepts <q>Figure 1:</q>. The emoji range also flags ✓ ★ ♀. No current draft hits these. Tracked in <code>status-vgr.md</code>; per policy, fix <code>draft_checks.py</code> rather than overriding per entry."
+        },
+        {
+          "title": "Merge route:",
+          "html": "The merge API returned HTTP 500 repeatedly (permissions fine, <code>main</code> unprotected, GitHub status green), so the merge was made locally as <code>b59857f</code> and pushed, keeping Jenna's commit <code>884861e</code>. GitHub recorded the PR as merged against that commit."
+        }
+      ]
     }
   ]
 }

@@ -481,3 +481,23 @@ A build log for protocolized.io — how the magazine and resource library site w
 - Worker secrets `PITCH_PASSWORD`/`PITCH_EDIT_PASSWORD`, the GH secret, R2 `pitch/*` objects and `.env.keys` entries deleted; retirement logged in `admin/keys.md`. No incident: nothing leaked. One classifier denial on first secret write was resolved by Venkat approving the exact commands.
 
 ---
+
+## Session 29: Checklist print-fit wording and an automated figures check (PR #11, Jenna)
+
+*2026-11-05*
+
+**Tracks:** operations, framework
+
+- PR #11 from Jenna (jdbb studio), who audited the 20 Protocol Reader drafts for what would actually break in print. Deliberately minimal: no new checklist items, three wording changes in `project.json`, and `figures` moved from editor-checked to automated. Only problems that occur in the current drafts got wording; floating images, text boxes and tab-built tables occur in none.
+
+- Reads the .docx XML rather than the converted Markdown, because Pandoc's output varies (`&lt;figcaption&gt;` vs a plain following paragraph). Each picture needs a next non-empty paragraph starting `Figure N.`, because the book build recognizes only that form or caption styling. A figure needs two mentions in the text, since the caption itself counts as one. Under about 270 dpi at placed size (300 with grace) is a warning, not a failure; PDFs stay manual.
+
+- Ran in a throwaway worktree with the gitignored drafts symlinked in, so the tracked `checks.json` stayed untouched. Reproduced the PR's counts: figures fail 4 (36 uncaptioned images across 3 drafts, plus `de-dramatizing-the-digital`, whose figures appear only in their captions), pass 1, no images 15; emoji newly fail 2 (`the-nature-of-trust`, `group-brains`). No draft changed ready status.
+
+- Live pages count 16 automated items, but the tracked `checks.json` predates the check, so figures stays uncounted until the next `build-manuscript.py` run. That run surfaces the 6 new failures. Left for the release rather than regenerated alone, because results and the manuscript ship together.
+
+- The mention pattern misses the last number in Figures 1, 2, and 3 and the later ones in Figures 1 through 3, and all of figs. 1 and 2. The caption pattern rejects Figure 1a. and accepts Figure 1:. The emoji range also flags ✓ ★ ♀. No current draft hits these. Tracked in `status-vgr.md`; per policy, fix `draft_checks.py` rather than overriding per entry.
+
+- The merge API returned HTTP 500 repeatedly (permissions fine, `main` unprotected, GitHub status green), so the merge was made locally as `b59857f` and pushed, keeping Jenna's commit `884861e`. GitHub recorded the PR as merged against that commit.
+
+---
