@@ -65,7 +65,7 @@
       "section": "Structure",
       "auto": true,
       "label": "No placeholders or notes-to-self",
-      "detail": "Every section is finished prose. No [check], [scene], [cite], TODO, TBD or “to verify” markers, bracketed instructions, or outline bullets standing in for paragraphs."
+      "detail": "Every section is finished prose. No [check], [scene], [cite], TODO, TBD or “to verify” markers, emoji flags such as ⚠️ or ✅, bracketed instructions, or outline bullets standing in for paragraphs."
     },
     {
       "id": "no-status-labels",
@@ -94,7 +94,7 @@
       "section": "References",
       "auto": false,
       "label": "One citation style",
-      "detail": "Chicago author-date: (Author Year, page) in the text and an alphabetical reference list with full details, including a URL or DOI for online sources. Footnotes are for commentary only."
+      "detail": "Chicago author-date: (Author Year, page) in the text and an alphabetical reference list with full details, including a URL or DOI for online sources. Footnotes are for commentary only, made with your editor's footnote feature rather than typed superscript numbers."
     },
     {
       "id": "links",
@@ -113,9 +113,9 @@
     {
       "id": "figures",
       "section": "Figures",
-      "auto": false,
+      "auto": true,
       "label": "Figures ready",
-      "detail": "Every figure is referenced in the text, has a numbered caption, and is supplied at print resolution (300 dpi at the intended size)."
+      "detail": "Every figure is referenced in the text (“figure 1 shows…”), has a caption directly below it that starts “Figure 1.”, and is supplied at print resolution (300 dpi at the intended size)."
     },
     {
       "id": "image-rights",
