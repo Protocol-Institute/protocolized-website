@@ -94,15 +94,53 @@ def ext_of(name: str) -> str:
     return Path(name).suffix.lower() or ".docx"
 
 
-def fetch_sources(project: dict, chapters: Path) -> None:
-    import gdown
+FOLDER_USER_AGENT = ("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 "
+                     "(KHTML, like Gecko) Chrome/98.0.4758.102 Safari/537.36")
+DOCS_EXPORT = "https://docs.google.com/document/d/{id}/export?format=docx"
 
+
+def list_drive_folder(folder_id: str) -> dict[str, tuple[str, bool]]:
+    """{file id: (name, is native Google Doc)} for the folder, without downloading.
+
+    gdown.download_folder(skip_download=True) still resolves native Docs through
+    drive.google.com/uc, which Google stopped serving for them (Nov 2026), so read the
+    folder view through gdown's parser directly. Native Docs get the ".docx" their
+    export carries, matching the names recorded in project.json.
+    """
+    from gdown.download import _get_session
+    from gdown.download_folder import _download_and_parse_google_drive_link, _get_directory_structure
+
+    sess, _ = _get_session(proxy=None, use_cookies=False, user_agent=FOLDER_USER_AGENT, cookies_file=None)
+    root = _download_and_parse_google_drive_link(sess=sess, folder_id=folder_id, quiet=True,
+                                                 verify=True, timeout=None)
+    out = {}
+    for f, path in _get_directory_structure(gdrive_file=root, previous_path=""):
+        if f is None:
+            continue
+        native = f.is_google_native()
+        out[f.id] = (Path(path).name + (".docx" if native else ""), native)
+    return out
+
+
+def download_drive_file(fid: str, native: bool, out: Path) -> None:
+    import gdown
+    import requests
+
+    if not native:
+        gdown.download(id=fid, output=str(out), quiet=True)
+        return
+    r = requests.get(DOCS_EXPORT.format(id=fid), timeout=120)
+    r.raise_for_status()
+    out.write_bytes(r.content)
+
+
+def fetch_sources(project: dict, chapters: Path) -> None:
     src = project.get("source", {})
     if src.get("kind") != "gdrive-folder":
         return
     print("Listing Drive folder…")
-    listing = gdown.download_folder(id=src["id"], skip_download=True, quiet=True) or []
-    on_drive = {f.id: Path(f.path).name for f in listing}
+    listing = list_drive_folder(src["id"])
+    on_drive = {fid: name for fid, (name, _) in listing.items()}
     claimed = {e["source"]["id"] for e in project["contents"] if e["source"]["kind"] == "gdrive"}
 
     for fid, name in on_drive.items():
@@ -121,7 +159,7 @@ def fetch_sources(project: dict, chapters: Path) -> None:
         for old in chapters.glob(f"{e['id']}.*"):
             if old != out:
                 old.unlink()  # draft changed format (e.g. docx → pdf): keep only the latest
-        gdown.download(id=s["id"], output=str(out), quiet=True)
+        download_drive_file(s["id"], listing[s["id"]][1], out)
         print(f"  synced {e['id']}")
 
 
